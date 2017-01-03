@@ -1,0 +1,92 @@
+Unknown resource: UTIL/409 in DATA/PATCH2.BIF (#999)
+Unknown resource: UI/408 in DATA/PATCH2.BIF (#997)
+Unknown resource: TOOLTIP/40a in DATA/PATCH2.BIF (#995)
+Unknown resource: TOOLFONT/40a in DATA/PATCH2.BIF (#994)
+Unknown resource: SUBTITLE/40a in DATA/PATCH2.BIF (#992)
+Unknown resource: STONESML/40a in DATA/PATCH2.BIF (#991)
+Unknown resource: STONEBIG/40a in DATA/PATCH2.BIF (#990)
+Unknown resource: STATES2/40a in DATA/PATCH2.BIF (#987)
+Unknown resource: SHERWOOD/40a in DATA/PATCH2.BIF (#908)
+Unknown resource: REALMS/40a in DATA/PATCH2.BIF (#903)
+Unknown resource: POSTANTI/40a in DATA/PATCH2.BIF (#898)
+Unknown resource: NORMAL/40a in DATA/PATCH2.BIF (#860)
+Unknown resource: MODESTOM/40a in DATA/PATCH2.BIF (#832)
+Unknown resource: L_PT_BR/409 in DATA/PATCH2.BIF (#725)
+Unknown resource: L_IT_IT/409 in DATA/PATCH2.BIF (#724)
+Unknown resource: L_ES_ES/409 in DATA/PATCH2.BIF (#723)
+Unknown resource: L_EN_US/409 in DATA/PATCH2.BIF (#722)
+Unknown resource: L_DE_DE/409 in DATA/PATCH2.BIF (#721)
+Unknown resource: L_CS_CZ/409 in DATA/PATCH2.BIF (#720)
+Unknown resource: INCLUDES/409 in DATA/PATCH2.BIF (#701)
+Unknown resource: FLOATTXT/40a in DATA/PATCH2.BIF (#643)
+Unknown resource: FEINEN/40a in DATA/PATCH2.BIF (#642)
+Unknown resource: DIALOG/40a in DATA/PATCH2.BIF (#504)
+Unknown resource: BGEE/409 in DATA/PATCH2.BIF (#449)
+Unknown resource: /0 in DATA/STORES.BIF (#0)
+Found 610 table(s) in chitin.key.
+Found 0 music(s) in chitin.key.
+Found 423 area(s) in chitin.key.
+Found 17106 animation(s) in chitin.key.
+Found 4356 script(s) in chitin.key.
+Found 4 biography(s) in chitin.key.
+Found 2651 bitmap(s) in chitin.key.
+Found 4 character(s) in chitin.key.
+Found 35 user interface(s) in chitin.key.
+Found 4732 creature(s) in chitin.key.
+Found 2884 dialog(s) in chitin.key.
+Found 542 external effect(s) in chitin.key.
+Found 1 game(s) in chitin.key.
+Found 70 identifiers(s) in chitin.key.
+Found 466 parameters(s) in chitin.key.
+Found 2864 item(s) in chitin.key.
+Found 617 tiled image(s) in chitin.key.
+Found 0 musiclist(s) in chitin.key.
+Found 0 movie(s) in chitin.key.
+Found 196 paperdoll(s) in chitin.key.
+Found 231 projectile(s) in chitin.key.
+Found 1607 spell(s) in chitin.key.
+Found 0 string resource(s) in chitin.key.
+Found 172 store(s) in chitin.key.
+Found 460 tileset(s) in chitin.key.
+Found 1 visual effect(s) in chitin.key.
+Found 224 videocell(s) in chitin.key.
+Found 17719 sound(s) in chitin.key.
+Found 400 wedfile(s) in chitin.key.
+Found 7 wave effect(s) in chitin.key.
+Found 2 worldmap(s) in chitin.key.
+Found 13 font(s) in chitin.key.
+Found 2 SQL script(s) in chitin.key.
+Found 1 GUI script(s) in chitin.key.
+Found 33 movie(s) in chitin.key.
+Found 3671 tile surface(s) in chitin.key.
+Found 31 shader script(s) in chitin.key.
+Found 240 table(s) not listed in chitin.key
+Found 118 area(s) not listed in chitin.key
+Found 1366 animation(s) not listed in chitin.key
+Found 1511 script(s) not listed in chitin.key
+Found 717 bitmap(s) not listed in chitin.key
+Found 1348 creature(s) not listed in chitin.key
+Found 721 dialog(s) not listed in chitin.key
+Found 332 external effect(s) not listed in chitin.key
+Found 2 identifiers(s) not listed in chitin.key
+Found 2 parameters(s) not listed in chitin.key
+Found 1503 item(s) not listed in chitin.key
+Found 75 tiled image(s) not listed in chitin.key
+Found 1 musiclist(s) not listed in chitin.key
+Found 68 projectile(s) not listed in chitin.key
+Found 1669 spell(s) not listed in chitin.key
+Found 30 store(s) not listed in chitin.key
+Found 71 tileset(s) not listed in chitin.key
+Found 8 visual effect(s) not listed in chitin.key
+Found 211 videocell(s) not listed in chitin.key
+Found 1469 sound(s) not listed in chitin.key
+Found 68 wedfile(s) not listed in chitin.key
+Found 74 tile surface(s) not listed in chitin.key
+Generating music list...
+Found 542 musics listed in musiclists.
+Generating music list...
+Found 0 musics listed in musiclists.
+Generating music list...
+Found 0 musics listed in musiclists.
+Searching cure names...
+Resolved cure names...
