@@ -52,7 +52,7 @@ ADD_KIT ~C0TRB~
  // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da
   SAY ~Troubadour~
   SAY ~Troubadour~
-  SAY ~TROUBADOUR: Troubadours are musicians that specialize in lyric poetry. Their songs are often of chivalry and courtly love. In adventuring, troubadour bards are valuable due to their proficiency in healing spells, including songs of rejuvenation that protect their comrades. Women that choose the profession of the troubadour are usually known as trobaritz.
+  SAY ~TROUBADOUR: Troubadours are musicians that specialize in lyric poetry. Their songs are often of chivalry and courtly love. In adventuring, troubadour bards are valuable due to their proficiency in healing spells, including songs of rejuvenation that protect their comrades. Women that choose the profession of the troubadour are usually known as trobairitz.
 
 Advantages:
 
@@ -67,8 +67,8 @@ SONG OF HEALING: The troubadour's song gradually heals <PRO_HISHER> allies and p
 - Gains the following priest spells in their spellbook:
 
 1st Level: Cure Light Wounds
-2nd Level: Cure Medium Wounds
-3rd Level: Remove Paralysis
+2nd Level: Remove Paralysis
+3rd Level: Cure Medium Wounds
 4th Level: Cure Serious Wounds
 5th Level: Cure Critical Wounds
 6th Level: Mass Cure
@@ -82,8 +82,7 @@ Disadvantages:
 - May not wear armor heavier than studded leather.
 - May only be proficient in weapons usable by thieves.
 - Only has one-half normal Lore value.
-- Only has one-half Pick Pockets percentage
-Pick pockets ability one-half normal.
+- Only has one-half Pick Pockets percentage.
 - May only be of Neutral Good, Chaotic Good, True Neutral or Chaotic Neutral alignment.~
 
 LAF fl#add_kit_ee
@@ -475,3 +474,23 @@ Weight: 2~
 COPY ~BardicWonders/items/c0bwsw2.spl~ ~override~
 SAY NAME1 ~Crescendo!~
 SAY NAME2 ~Crescendo!~
+
+COPY ~BardicWonders/items/c0jest1.eff~ ~override~
+COPY ~BardicWonders/items/c0jest2.eff~ ~override~
+COPY ~BardicWonders/items/c0jest3.eff~ ~override~
+COPY ~BardicWonders/items/c0jest4.eff~ ~override~
+COPY ~BardicWonders/items/c0jest.spl~ ~override~
+COPY ~BardicWonders/items/chan10.itm~ ~override~
+SAY DESC ~Friends of Dekirh Fasthands, a bard who insisted on playing the rowdiest towns on the Sword Coast, gave him this suit of magical chain as a gift. The chain mail was given to protect Dekirh from the drunken spectators who often threw rotting produce, chairs, and even knives at Dekirh. The bard appreciated the gift but painted it with wild colors to better fit into his show.
+
+STATISTICS:
+
+Equipped abilities:
+ - Spellcasting is not disabled
+ - Armor Class vs. Missiles: +4 (Jesters)
+ - Chaos Shield (Jesters)
+ - Wild Magic: 5% chance that a spell cast by the wearer will be affected by a wild surge.
+
+Armor Class: 1 (-1 vs. slashing, 3 vs. crushing)
+Requires:
+ 8 Strength~
