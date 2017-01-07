@@ -1,0 +1,11 @@
+// KIT
+
+IF
+  InParty(Myself)
+  Class(Myself,BARD)
+  Global("C0GarrickTroubadour","LOCALS",0)
+THEN
+  RESPONSE #100
+    AddKit(C0TRB)
+    SetGlobal("C0GarrickTroubadour","LOCALS",1)
+END

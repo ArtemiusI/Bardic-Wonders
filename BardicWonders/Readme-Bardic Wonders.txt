@@ -80,6 +80,14 @@ Jester's Chain for Jesters: The Jester's Chain is massively disappointing for tw
 
 Also, the armor is now significantly more colorful. No self-respecting jester would settle for less.
 
+==============================================================
+Component 3 - Garrick the Troubadour (requires Troubadour kit)
+==============================================================
+
+This component gives Garrick the Troubadour kit, turning him from a somewhat below average bard to a consistently useful healer.
+
+For reasons that should be obvious, I would not recommend installing this with any other mod that changes Garrick's class or kit. Hopefully, the script that does the work in the background will only trigger if Garrick is a regular, unkitted bard, but... bad things have been known to happen.
+
 ===============
 Final Comments
 ===============
@@ -89,6 +97,9 @@ It was kind of a shame to watch these bits and pieces sit there and gather dust.
 ===========
 Change Log
 ===========
+
+v0.3
+ - Garrick the Troubadour - gives Garrick the troubadour kit
 
 v0.2
  - Jester's Chain for Jesters - improved Jester's Chain component added

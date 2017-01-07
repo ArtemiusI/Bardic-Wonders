@@ -494,3 +494,9 @@ Equipped abilities:
 Armor Class: 1 (-1 vs. slashing, 3 vs. crushing)
 Requires:
  8 Strength~
+ 
+BEGIN ~Bardic Wonders: Garrick the Troubadour~
+REQUIRE_PREDICATE GAME_IS ~bgee sod~ ~This component must be played on BG:EE or BG:SoD~
+REQUIRE_COMPONENT ~Setup-BardicWonders.tp2~ ~0~ ~This component requires the Troubadour Kit to be installed~
+
+EXTEND_TOP ~garrick.bcs~ ~BardicWonders/troubadour/garrick/garrick.baf~
