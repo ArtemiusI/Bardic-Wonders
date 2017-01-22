@@ -204,7 +204,7 @@ Saving Throw: None
 When casting this spell, the troubadour must picture the faces of <PRO_HISHER> fellow party members clearly and focus on the unity of the group. Upon completion, all party members within a 30-ft. radius of the caster are healed 1d8 + 1/level Hit Points. Curing is permanent only insofar as the creature does not sustain further damage; caused wounds will heal - or can be cured - just as any normal injury.~
 
 BEGIN ~Bardic Wonders: Items~
-REQUIRE_PREDICATE GAME_IS ~bg2ee~ ~This component must be played on BG2:EE~
+REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ ~This component must be played on BG2:EE~
 
 // DIALOGUE
 
@@ -496,7 +496,11 @@ Requires:
  8 Strength~
  
 BEGIN ~Bardic Wonders: Garrick the Troubadour~
-REQUIRE_PREDICATE GAME_IS ~bgee sod~ ~This component must be played on BG:EE or BG:SoD~
+REQUIRE_PREDICATE GAME_IS ~bgee sod eet~ ~This component must be played on BG:EE or BG:SoD~
 REQUIRE_COMPONENT ~Setup-BardicWonders.tp2~ ~0~ ~This component requires the Troubadour Kit to be installed~
 
-EXTEND_TOP ~garrick.bcs~ ~BardicWonders/troubadour/garrick/garrick.baf~
+ACTION_IF GAME_IS ~eet~ BEGIN
+  EXTEND_TOP ~garrick.bcs~ ~BardicWonders/troubadour/garrick/garrick.baf~
+END ELSE BEGIN
+  EXTEND_TOP ~garrick_.bcs~ ~BardicWonders/troubadour/garrick/garrick.baf~
+END
