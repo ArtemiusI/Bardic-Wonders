@@ -1,0 +1,143 @@
+//////////// TROUBADOUR
+COPY ~%MOD_FOLDER%/troubadour~ ~override~
+
+ADD_KIT ~C0TRB~
+
+ // appended to CLASWEAP.2da
+ ~C0TRB		1           1           1           1           1           1           1           1~
+
+ // appended column-wise to WEAPPROF.2da
+ ~C0TRB		0 1 0 0 1 0 0 1 0 1 1 0 0 1 1 1 0 1 0 0 0 0 1 1 0 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+    
+ // appended to ABCLASRQ.2da
+ ~C0TRB				0      12	0	13	0	15~
+
+ // appended to ABCLSMOD.2da
+ ~C0TRB				0	0	0	0	0	0~
+
+ // appended to ABDCDSRQ.2da
+ ~C0TRB                		0       0       0       0       0       0~
+
+ // appended to ABDCSCRQ.2da
+ ~C0TRB                 	0       0       0       0       0		0~
+
+ // appended to ALIGNMNT.2da
+ ~C0TRB                  	0       0       0       1       1	0       1       1       0~
+
+ // appended to DUALCLAS.2da
+ ~C0TRB                  	0       0       0       0       0       0~
+
+ // path to your CLAB-style 2da file 
+ ~%MOD_FOLDER%/troubadour/C0TRB.2da~
+
+ // PC races and classes allowed to use this kit, from KITTABLE.2da
+ ~K_B_H K_B_E K_B_HE K_B_HL K_B_G K_B_D K_B_HO~
+
+ // usability flags, added to the end of the KITLIST.2da entry
+ ~0x00010000     5~
+
+ // HLA table to use; see LUABBR.2da
+ ~C0TRB~
+
+ // list of starting equipment for PCs starting in ToB. Appended column-wise to 25STWEAP.2da
+ ~LEAT07 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
+
+ // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da
+  SAY ~Troubadour~
+  SAY ~Troubadour~
+  SAY ~TROUBADOUR: Troubadours are musicians that specialize in lyric poetry. Their songs are often of chivalry and courtly love. In adventuring, troubadour bards are valuable due to their proficiency in healing spells, including songs of rejuvenation that protect their comrades. Women that choose the profession of the troubadour are usually known as trobairitz.
+
+Advantages:
+– May cast spells while wearing armor.
+– The troubadour's Bard Song, "Song of Healing", gradually heals <PRO_HISHER> allies and provides them with resistance to any attempts to impair their movement, magical or otherwise.
+
+1st level: allies regenerate 1 hit point per round and are immune to slows.
+9th level: allies regenerate 2 hit points per round and are immune to all movement-impairing effects.
+18th level: allies regenerate 3 hit points per round and are immune to all mind-affecting and movement-impairing effects.
+
+– Gains the following priest spells in their spellbook:
+
+1st level: Cure Light Wounds
+2nd level: Aid
+3rd level: Cure Medium Wounds
+4th level: Cure Serious Wounds
+5th level: Mass Cure
+6th level: Heal
+
+– 10th level: May use the Voice of Peace ability once per day.
+
+VOICE OF PEACE: Chanting a soft melody, the troubadour soothes <PRO_HISHER> allies' spirits and renews their confidence, healing them for 1d6 (+1 per level) hit points. All allies affected also gain 10% physical resistance and immunity to berserk effects for 1 turn. However, allied barbarians and berserkers will find themselves unable to call upon their rage while the aura of calm is in effect.
+
+– 14th level: May use the Sacred Breath ability once per day.
+
+SACRED BREATH: This ability functions the same way as the 5th level priest spell Raise Dead, restoring the target to life.
+
+Disadvantages:
+– May not wear armor heavier than studded leather.
+– May only be proficient in weapons usable by thieves.
+– Only has one-half Pick Pockets percentage.
+– May only be of Neutral Good, Chaotic Good, True Neutral or Chaotic Neutral alignment.~
+
+LAF fl#add_kit_ee
+  STR_VAR
+    kit_name = C0TRB
+	clascolr = ~28 138 91 98 100~
+	thiefscl = ~50 0 0 0 0 0 0 0~
+END
+
+COPY ~%MOD_FOLDER%/troubadour/c0trbso.spl~ ~override~
+  LPF ALTER_EFFECT
+    INT_VAR
+      timing = 10
+	  duration = 100
+	  power = 0
+	  savingthrow = 0
+  END
+COPY ~%MOD_FOLDER%/troubadour/c0trbso2.spl~ ~override~
+  LPF ALTER_EFFECT
+    INT_VAR
+      timing = 10
+	  duration = 100
+	  power = 0
+	  savingthrow = 0
+  END
+COPY ~%MOD_FOLDER%/troubadour/c0trbps.spl~ ~override~
+COPY ~%MOD_FOLDER%/troubadour/C0TRBINB.bam~ ~override~
+COPY ~%MOD_FOLDER%/troubadour/c0trbin.spl~ ~override~
+SAY NAME1 ~Voice of Peace~
+SAY NAME2 ~Voice of Peace~
+SAY UNIDENTIFIED_DESC ~Voice of Peace
+Chanting a soft melody, the troubadour soothes <PRO_HISHER> allies' spirits and renews their confidence, healing them for 1d6 (+1 per level) hit points. All allies affected also gain 10% physical resistance and immunity to berserk effects for 1 turn. However, allied barbarians and berserkers will find themselves unable to call upon their rage as a result while the aura of calm is in effect.~
+
+COPY ~%MOD_FOLDER%/troubadour/c0trbin2.spl~ ~override~
+SAY NAME1 ~Sacred Breath~
+SAY NAME2 ~Sacred Breath~
+SAY UNIDENTIFIED_DESC ~Sacred Breath
+This ability functions the same way as the 5th level priest spell Raise Dead, restoring the target to life.~
+
+COPY_EXISTING ~SPPR103.spl~ ~override/C0TRBS1.spl~
+WRITE_SHORT 0x1C 1
+WRITE_LONG 0x34 1
+COPY_EXISTING ~SPPR201.spl~ ~override/C0TRBS2.spl~
+WRITE_SHORT 0x1C 1
+WRITE_LONG 0x34 2
+COPY_EXISTING ~SPPR315.spl~ ~override/C0TRBS3.spl~
+WRITE_SHORT 0x1C 1
+WRITE_LONG 0x34 3
+COPY_EXISTING ~SPPR401.spl~ ~override/C0TRBS4.spl~
+WRITE_SHORT 0x1C 1
+WRITE_LONG 0x34 4
+COPY_EXISTING ~SPPR514.spl~ ~override/C0TRBS5.spl~
+WRITE_SHORT 0x1C 1
+WRITE_LONG 0x34 5
+COPY_EXISTING ~SPPR607.spl~ ~override/C0TRBS6.spl~
+WRITE_SHORT 0x1C 1
+WRITE_LONG 0x34 6
+
+COPY ~%MOD_FOLDER%/troubadour/c0trbhl.spl~ ~override~
+SAY NAME1 ~Holy Hymn of Eldath~
+SAY NAME2 ~Holy Hymn of Eldath~
+SAY UNIDENTIFIED_DESC ~Holy Hymn of Eldath
+This song is a powerful aid to both the Troubadour and to <PRO_HISHER> allies. The Holy Hymn of Eldath causes all recipients to regenerate for five hit points per round and become immune to all movement-impairing and mind-affecting effects, poison, disease, level drain and instant death effects. The party also gains a +4 bonus to Armor Class and Saving Throws, with a +2 extra vs. evil creatures. There is also a 5% chance all recipients will be healed for 40% of their total hit points.
+
+This ability replaces the current Bard Song.~

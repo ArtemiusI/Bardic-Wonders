@@ -1,0 +1,255 @@
+COPY ~%MOD_FOLDER%/deathsinger~ ~override~
+
+ADD_KIT ~C0DEATHSINGER~
+
+ // appended to CLASWEAP.2da
+ ~C0DEATHSINGER		1           1           1           1           1           1           1           1~
+
+ // appended column-wise to WEAPPROF.2da
+ ~C0DEATHSINGER		1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+    
+ // appended to ABCLASRQ.2da
+ ~C0DEATHSINGER				0      12	0	13	0	15~
+
+ // appended to ABCLSMOD.2da
+ ~C0DEATHSINGER				0	0	0	0	0	0~
+
+ // appended to ABDCDSRQ.2da
+ ~C0DEATHSINGER                		0       0       0       0       0       0~
+
+ // appended to ABDCSCRQ.2da
+ ~C0DEATHSINGER                 	0       0       0       0       0		0~
+
+ // appended to ALIGNMNT.2da
+ ~C0DEATHSINGER                  	0       1       1       0       1		1       0       1       1~
+
+ // appended to DUALCLAS.2da
+ ~C0DEATHSINGER                  	0       0       0       0       0       0~
+
+ // path to your CLAB-style 2da file 
+ ~%MOD_FOLDER%/deathsinger/C0DEATHS.2da~
+
+ // PC races and classes allowed to use this kit, from KITTABLE.2da
+ ~K_B_H K_B_E K_B_HE K_B_HL K_B_G K_B_D K_B_HO~
+
+ // usability flags, added to the end of the KITLIST.2da entry
+ ~0x00001000     5~
+
+ // HLA table to use; see LUABBR.2da
+ ~C0DEAT~
+
+ // list of starting equipment for PCs starting in ToB. Appended column-wise to 25STWEAP.2da
+ ~CHAN16 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
+
+ // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da
+  SAY ~deathsinger~
+  SAY ~Deathsinger~
+  SAY ~DEATHSINGER: A morbid class of bards, deathsingers take pleasure in singing tales of the macabre, and their magical songs are capable of raising the dead from their graves.
+
+Advantages:
+
+– Receives a +15% bonus when scribing scrolls from the Necromancy school.
+– Receives a +2 bonus when making Saving Throws against spells from the Necromancy school.
+– Targets suffer a -2 penalty when making Saving Throws against spells from the Necromancy school.
+– The Deathsinger's Bard Song, "Call of the Grave", does not assist allies. Instead, the deathsinger may summon undead creatures under <PRO_HISHER> control. While singing, the Deathsinger takes a -4 penalty to Armor Class. Each round while the Deathsinger sings, there is a 35% base chance plus 2% for each level of the Deathsinger that a skeleton will answer the call, up to a maximum of 75% at level 20. Any summoned skeletons will be destroyed if the Deathsinger stops singing. The strength and maximum amount of skeletons summoned increases with level.
+   1st – 5th level: Summons up to two skeletons with 3 HD.
+   6th – 11th level: Summons up to three skeletons with up to 5 HD.
+   12th – 17th level: Summons up to four skeletons with up to 7 HD.
+   18th level: Summons up to five skeletons with up to 9 HD.
+
+– Gains the following spells as mage spells:
+
+   1st level: Doom
+   2nd level: Death Armor
+   3rd level: Bestow Curse
+   4th level: Cloak of Fear
+   5th level: Slay Living
+   6th level: Destruction
+
+Disadvantages:
+– May not learn or cast any spells of the Illusion school.
+– Receives a -15% penalty when scribing scrolls from other schools.
+– May not be good-aligned.
+– Only has one-quarter Pick Pockets percentage.~
+
+LAF fl#add_kit_ee
+  STR_VAR
+    kit_name = C0DEATHSINGER
+	clascolr = ~0 65 66 136 182~
+	thiefscl = ~25 0 0 0 0 0 0 0~
+END
+
+COPY_EXISTING ~SKELSU01.CRE~ ~override/C0DESUM1.CRE~
+WRITE_ASCII 0x248 ~C0DEUNSU~  #8  // override
+WRITE_ASCII 0x268 ~BDSUM00~  #8  // default
+WRITE_ASCII 0x280 ~C0DESUM1~ #32 // death variable
+ADD_CRE_ITEM ~c0deaths~ #0 #0 #0 ~NONE~ ~amulet~
+
+COPY_EXISTING ~SKELSU07.CRE~ ~override/C0DESUM2.CRE~
+WRITE_ASCII 0x248 ~C0DEUNSU~  #8  // override
+WRITE_ASCII 0x268 ~BDSUM00~  #8  // default
+WRITE_ASCII 0x280 ~C0DESUM1~ #32 // death variable
+ADD_CRE_ITEM ~c0deaths~ #0 #0 #0 ~NONE~ ~amulet~
+
+COPY_EXISTING ~SKELSU11.CRE~ ~override/C0DESUM3.CRE~
+WRITE_ASCII 0x248 ~C0DEUNSU~  #8  // override
+WRITE_ASCII 0x268 ~BDSUM00~  #8  // default
+WRITE_ASCII 0x280 ~C0DESUM1~ #32 // death variable
+ADD_CRE_ITEM ~c0deaths~ #0 #0 #0 ~NONE~ ~amulet~
+
+COPY_EXISTING ~SKELWASU.CRE~ ~override/C0DESUM4.CRE~
+WRITE_ASCII 0x248 ~C0DEUNSU~  #8  // override
+WRITE_ASCII 0x268 ~BDSUM00~  #8  // default
+WRITE_ASCII 0x280 ~C0DESUM1~ #32 // death variable
+ADD_CRE_ITEM ~c0deaths~ #0 #0 #0 ~NONE~ ~amulet~
+
+COPY ~%MOD_FOLDER%/DEATHSINGER/C0DESUM5.CRE~ ~OVERRIDE~
+SAY NAME1 ~Skeleton Warrior~
+SAY NAME2 ~Skeleton Warrior~
+WRITE_ASCII 0x248 ~C0DEUNSU~  #8  // override
+WRITE_ASCII 0x268 ~BDSUM00~  #8  // default
+WRITE_ASCII 0x280 ~C0DESUM1~ #32 // death variable
+ADD_CRE_ITEM ~c0deaths~ #0 #0 #0 ~NONE~ ~amulet~
+
+COPY_EXISTING ~SPPR113.spl~ ~override/C0DESP1.spl~
+WRITE_SHORT 0x1C 1
+WRITE_LONG 0x34 1
+COPY ~%MOD_FOLDER%/DEATHSINGER/C0DESP2.SPL~ ~OVERRIDE~
+SAY NAME1 ~Death Armor~
+SAY UNIDENTIFIED_DESC ~Death Armor
+(Necromancy)
+
+Level: 2
+Range: 0
+Duration: 1 round/level
+Casting Time: 4
+Area of Effect: The caster 
+Saving Throw: None 
+
+A magical aura surrounds the caster, injuring creatures that touch <PRO_HIMHER>. Any creature that strikes <PRO_HIMHER> in melee range takes 1d4+1 magical damage plus one additional point per caster level after 4th level to a maximum of +5 at 12th level.~
+COPY ~%MOD_FOLDER%/DEATHSINGER/C0DESP3.SPL~ ~OVERRIDE~
+SAY NAME1 ~Bestow Curse~
+SAY UNIDENTIFIED_DESC ~Bestow Curse
+(Necromancy)
+
+Level: 3
+Range: Touch
+Duration: Permanent
+Casting Time: 3 
+Area of Effect: 1 creature
+Saving Throw: None 
+
+This baleful spell inflicts a deadly curse upon the target, permanently reducing all of their attributes and saving throws by 3 points. This effect is permanent and can only be removed via a Remove Curse spell.~
+COPY_EXISTING ~SPPR416.spl~ ~override/C0DESP4.spl~
+WRITE_SHORT 0x1C 1
+WRITE_LONG 0x34 4
+COPY_EXISTING ~SPPR511.spl~ ~override/C0DESP5.spl~
+WRITE_SHORT 0x1C 1
+WRITE_LONG 0x34 5
+COPY ~%MOD_FOLDER%/DEATHSINGER/C0DESP6.SPL~ ~OVERRIDE~
+SAY NAME1 ~Destruction~
+SAY UNIDENTIFIED_DESC ~Destruction
+(Necromancy)
+
+Level: 6
+Range: Touch
+Duration: Permanent
+Casting Time: 5
+Area of Effect: 1 creature
+Saving Throw: Neg.
+
+The caster touches the target creature with a hand infused with necromantic energy. The target creature must make a Save vs. Death at -2 or die instantly. A successful save still results in the target taking 10d6 points of magical damage.~
+
+COPY_EXISTING ~SPSH004.spl~ ~override/C0DESP7.spl~
+LPF ALTER_EFFECT
+	INT_VAR
+		match_opcode = 142
+		match_parameter2 = 191
+		parameter2 = 40
+END
+LPF ALTER_EFFECT
+	INT_VAR
+		match_opcode = 139
+		match_parameter1 = RESOLVE_STR_REF (~A minor animal spirit answers your call.~)
+		parameter1 = RESOLVE_STR_REF (~A 3 HD skeleton answers your call.~)
+END
+LPF ALTER_EFFECT
+	INT_VAR
+		match_opcode = 139
+		match_parameter1 = RESOLVE_STR_REF (~A major animal spirit answers your call.~)
+		parameter1 = RESOLVE_STR_REF (~A 5 HD skeleton answers your call.~)
+END
+LPF ALTER_EFFECT
+	INT_VAR
+		match_opcode = 139
+		match_parameter1 = RESOLVE_STR_REF (~A minor nature spirit answers your call.~)
+		parameter1 = RESOLVE_STR_REF (~A 7 HD skeleton answers your call.~)
+END
+LPF ALTER_EFFECT
+	INT_VAR
+		match_opcode = 139
+		match_parameter1 = RESOLVE_STR_REF (~A major nature spirit answers your call.~)
+		parameter1 = RESOLVE_STR_REF (~A 9 HD skeleton answers your call.~)
+END
+LPF ALTER_EFFECT
+	INT_VAR
+		match_opcode = 139
+		match_parameter1 = RESOLVE_STR_REF (~No spirits answer your call.~)
+		parameter1 = RESOLVE_STR_REF (~Nothing answers your call.~)
+END
+LPF ALTER_EFFECT
+	INT_VAR
+		match_opcode = 318
+	STR_VAR
+		match_resource = spsh004
+		resource = C0DESP7
+END
+LPF ALTER_EFFECT
+	INT_VAR
+		match_opcode = 331
+	STR_VAR
+		match_resource = BDSHAM01
+		resource = C0DESUM1
+END
+LPF ALTER_EFFECT
+	INT_VAR
+		match_opcode = 331
+	STR_VAR
+		match_resource = BDSHAM06
+		resource = C0DESUM3
+END
+LPF ALTER_EFFECT
+	INT_VAR
+		match_opcode = 331
+	STR_VAR
+		match_resource = BDSHAM12
+		resource = C0DESUM3
+END
+LPF ALTER_EFFECT
+	INT_VAR
+		match_opcode = 331
+	STR_VAR
+		match_resource = BDSHAM18
+		resource = C0DESUM4
+END
+
+COMPILE ~%MOD_FOLDER%/DEATHSINGER/C0DEUNSU.BAF~
+
+COPY ~%MOD_FOLDER%/DEATHSINGER/C0DESP9.SPL~ ~OVERRIDE~
+LPF ALTER_EFFECT
+	INT_VAR
+		match_opcode = 139
+		match_parameter1 = 130445
+		parameter1 = RESOLVE_STR_REF (~A 9 HD skeleton answers your call.~)
+END
+LPF ALTER_EFFECT
+	INT_VAR
+		match_opcode = 139
+		match_parameter1 = 130446
+		parameter1 = RESOLVE_STR_REF (~A 15 HD skeleton answers your call.~)
+END
+
+COPY ~%MOD_FOLDER%/DEATHSINGER/C0DESPHL.SPL~ ~OVERRIDE~
+SAY NAME1 ~Legion of the Dead~
+SAY UNIDENTIFIED_DESC ~Legion of the Dead
+This macabre hymn allows the deathsinger to rouse the bones of the dead to fight on <PRO_HISHER> behalf. The deathsinger's song now always summons a 9 HD skeleton each round up to the maximum cap, and there is a 25% chance that a 15 HD skeleton will be summoned instead. Additionally, the deathsinger now gains a +10 bonus to Armor Class, a +6 bonus to all Saving Throws, +20% Magic Resistance and +50% Magic Damage Resistance while singing.~

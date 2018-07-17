@@ -1,0 +1,288 @@
+// DIALOGUE
+
+COMPILE	~%MOD_FOLDER%/dialogue/c0leanne.d~ 
+
+// SCRIPT
+
+EXTEND_TOP ~ar2017.bcs~ ~%MOD_FOLDER%/scripts/ar2017.baf~
+
+// CREATURE
+
+COPY ~%MOD_FOLDER%/creatures/c0leanne.cre~ ~override~
+SAY NAME1 ~Leanne~
+SAY NAME2 ~Leanne~
+WRITE_ASCII 0x2cc ~c0leanne~ #8  // dialogue
+WRITE_ASCII 0x248 ~c0leanne~  #8  // override
+WRITE_ASCII 0x280 ~c0leanne~ #32 // death variable
+
+// STORE
+
+COPY ~%MOD_FOLDER%/store/c0leanne.sto~ ~override~
+SAY 0xc ~Leanne's Bardic Wonders~
+
+// ITEMS
+
+COPY ~%MOD_FOLDER%/items/c0bwam1.bam~ ~override~
+COPY ~%MOD_FOLDER%/items/c0bwam1.itm~ ~override~
+SAY NAME1 ~Silence~
+SAY NAME2 ~Silence~
+SAY DESC ~Legends once spoke of a skilled bard who had lost his singing voice who took up the way of the sword. Whether this amulet was responsible for his change or whether it took on some of his identity after his passing, but one thing is known – wearers of this strange amulet will gain great skill at arms, but at a significant cost.
+
+STATISTICS:
+
+Equipped abilities:
+ – May only be removed with a Remove Curse spell
+ – Spellcasting is disabled
+ – 1 extra attack per round
+ – Strength: +2
+ – Dexterity: +2
+
+Weight: 1~
+
+COPY ~%MOD_FOLDER%/items/c0bwar1.bam~ ~override~
+COPY ~%MOD_FOLDER%/items/c0bwar1.itm~ ~override~
+SAY NAME1 ~Armor of the Grey Fox +3~
+SAY NAME2 ~Armor of the Grey Fox +3~
+SAY DESC ~This suit of leather armor is both lightweight and fashionable. It bears the emblem of a fox playing a lute, and no doubt once belonged to a bard. It is designed to complement a bard's talents, and is of little use of anyone else.
+
+STATISTICS:
+
+Equipped abilities:
+ – Spellcasting is not disabled
+ – The wearer can memorize two extra 1st and 2nd-level spells, one extra 3rd-level spell and one extra 4th-level spell
+
+Armor Class: 5 (7 vs. piercing and missile)
+Requires:
+ 3 Strength
+
+Weight: 4~
+
+COPY ~%MOD_FOLDER%/items/c0bwar2.bam~ ~override~
+COPY ~%MOD_FOLDER%/items/c0bwar2.itm~ ~override~
+SAY NAME1 ~Whispering Links +2~
+SAY NAME2 ~Whispering Links +2~
+SAY DESC ~Despite being made of metal chain, this suit of mail is light and quiet as fabric. According to Leanne, it was created by rogues that stole the secret of forging elven chain mail from the elves of Cormanthor. What became of the thieves, and if the elves ever discovered their theft, is unknown.
+
+STATISTICS:
+
+Equipped abilities:
+ – Spellcasting is not disabled
+
+Armor Class: 3 (1 vs. slashing, 5 vs. crushing)
+Requires:
+ 5 Strength~
+ 
+COPY ~%MOD_FOLDER%/items/c0bwbo1.bam~ ~override~
+COPY ~%MOD_FOLDER%/items/c0bwbo1.itm~ ~override~
+SAY NAME1 ~Lament +5~
+SAY NAME2 ~Lament +5~
+SAY DESC ~A deadly weapon, Lament is a weapon well suited for the most legendary of bards. Its creator only ever forged two weapons of its kind, making it truly unique. Each of its wielders has made some form of mark upon the Realms with its aid, whether as a hero or a tyrant.
+
+This powerful shortbow requires neither arrow nor string, for it fires waves of sound strong enough to break bones.
+
+STATISTICS:
+
+Equipped abilities:
+ – 3 attacks per round
+ – Glissando: 1% chance per hit to set attacks per round to 10 and deal maximum damage per hit for the next round
+
+Combat abilities:
+ – When no arrows are equipped, the bow fires missiles that are treated as +5 for the purposes of determining what enemies they can damage. The missiles receive +4 to hit including the bonus listed below, and deal a total of 1d4+3 crushing and 1d4+2 magic damage
+
+THAC0: +5
+Damage: 1d4+3 (crushing), +1d4+2 magic
+Speed Factor: 2
+Proficiency Type: Shortbow
+Type: Two-handed
+Requires:
+ 3 Strength
+
+Weight: 2~
+
+COPY ~%MOD_FOLDER%/items/c0bwbo1.spl~ ~override~
+SAY NAME1 ~Glissando!~
+SAY NAME2 ~Glissando!~
+
+COPY ~%MOD_FOLDER%/items/c0bwbt1.bam~ ~override~
+COPY ~%MOD_FOLDER%/items/c0bwbt1a.eff~ ~override~
+COPY ~%MOD_FOLDER%/items/c0bwbt1b.eff~ ~override~
+COPY ~%MOD_FOLDER%/items/c0bwbt1.itm~ ~override~
+SAY NAME1 ~Dancing Heels~
+SAY NAME2 ~Dancing Heels~
+SAY DESC ~This pair of dancing slippers are not only comfortable to wear, but bestows upon its wearer fleetness of foot. A powerful enchantment on the soles grants even the clumsiest person masterful dancing skills, and for some strange reason, it improves the wearer's skills further if they sing.
+
+STATISTICS:
+
+Equipped abilities:
+ – Movement rate: +1
+ – Dexterity: +2 (Bards), +1 (others)
+ – Armor Class: +2 (Bards)
+
+Weight: 2~
+
+COPY ~%MOD_FOLDER%/items/c0bwcl1.bam~ ~override~
+COPY ~%MOD_FOLDER%/items/c0bwcl1.itm~ ~override~
+SAY NAME1 ~Cloak of the Wild Singer~
+SAY NAME2 ~Cloak of the Wild Singer~
+SAY DESC ~Collin D'mass, the owner of this vibrant cloak, was an eccentric bard who desperately wished to learn and master wild magic. He travelled to a remote forest where wild magic was said to flourish, and practiced spells there for three days and three nights. When others came to his camp, they found this cloak lying next to a fire with a squirrel nesting inside. No one alive knows what became of the bard D'mass.
+
+STATISTICS:
+
+Charge abilities:
+ – Nahal's Reckless Dweomer 3x/day
+
+Equipped abilities:
+ – Chaos Shield
+
+Weight: 3~
+
+COPY ~%MOD_FOLDER%/items/c0bwha1.bam~ ~override~
+COPY ~%MOD_FOLDER%/items/c0bwha1a.spl~ ~override~
+COPY ~%MOD_FOLDER%/items/c0bwha1.itm~ ~override~
+SAY NAME1 ~Cacophonic Voice +4~
+SAY NAME2 ~Cacophonic Voice +4~
+SAY DESC ~This terrifying halberd is as heavy as it is colossal, but its most terrifying attribute is the explosive eruptions of sound that burst from the blade whenever it strikes a target. Bystanders of battles involving a wielder of this weapon have claimed that the horrible cacophony from the weapon can enough to pulverize one's foe into a pulp... and sometimes oneself as well. Fortunately for would-be wielders, one of this halberd's former owners had the wisdom to enchant it with a protective enchantment as a safety precaution.
+
+Combat abilities:
+ – Deals 1d4 magic damage and deafens target and everyone within range (save vs. spell to avoid deafness)
+ – Cacophony: 1% chance to deal 100 crushing damage to the target, the wielder, or both
+
+Equipped abilities:
+ – Immunity to deafness
+ – Magic Damage Resistance: 40%
+
+STATISTICS:
+
+THAC0: +4
+Damage: 1d10+6 (slashing or piercing, whichever is better)
+Speed Factor: 10
+Proficiency Type: Halberd
+Type: Two-handed
+Requires:
+ 17 Strength
+
+Weight: 20~
+
+COPY ~%MOD_FOLDER%/items/c0bwha1b.spl~ ~override~
+SAY NAME1 ~Cacophonic Blast!~
+SAY NAME2 ~Cacophonic Blast!~
+
+COPY ~%MOD_FOLDER%/items/c0bwmi1.bam~ ~override~
+COPY ~%MOD_FOLDER%/items/c0bwmi1.itm~ ~override~
+SAY NAME1 ~Harp of Tranquility~
+SAY NAME2 ~Harp of Tranquility~
+SAY DESC ~This strange harp makes no sound when played, but in the hands of a musician that knows the correct song it can expel an aromatic mist that soothes those that breathe it. Harps of this kind were created and used by a rare branch of harpists that worshipped Eldath, the goddess of peace.
+
+STATISTICS:
+
+Special Abilities:
+    Casts Eldath's Mist 1x/day – blankets the area of effect with a silver-blue mist – any creature within the mist will be cured of disease, poison, and healed of 25 points of damage. The user is unaffected by the mist.
+
+Weight: 3~
+
+COPY ~%MOD_FOLDER%/items/c0bwmi2.bam~ ~override~
+COPY ~%MOD_FOLDER%/items/c0bwmi2.itm~ ~override~
+SAY NAME1 ~Haven Lute~
+SAY NAME2 ~Haven Lute~
+SAY DESC ~When this lute is played, a protective bubble surrounds the bard that shields it from everything from the outside world. Many adventurers have owed their lives to the magic of this instrument – though those without the knowledge of how to dispel the barrier found themselves meeting a far crueler fate – starvation.
+
+STATISTICS:
+
+Special Abilities:
+    Casts Otiluke's Resilient Sphere 3x/day (self only, no save)
+
+Weight: 3~
+
+COPY ~%MOD_FOLDER%/items/c0bwsh1.bam~ ~override~
+COPY ~%MOD_FOLDER%/items/c0bwsh1a.eff~ ~override~
+COPY ~%MOD_FOLDER%/items/c0bwsh1b.eff~ ~override~
+COPY ~%MOD_FOLDER%/items/c0bwsh1c.eff~ ~override~
+COPY ~%MOD_FOLDER%/items/c0bwsh1.itm~ ~override~
+SAY NAME1 ~Resonating Shield +1~
+SAY NAME2 ~Resonating Shield +1~
+SAY DESC ~Bearing a noticeable resemblance to a gong, this shield makes a pleasant humming sound when struck lightly. Thanks to the enchantments placed upon it, the shield makes the humming sound of its own accord when in the hands of a singing bard – at the same time increasing its power greatly.
+
+STATISTICS:
+
+Equipped abilities:
+ –  Armor Class: +4 (Bards), +2 (others)
+ –  No protection against missile and piercing attacks
+
+Requires:
+ 4 Strength
+
+Weight: 2~
+
+COPY ~%MOD_FOLDER%/items/c0bwsw1.bam~ ~override~
+COPY ~%MOD_FOLDER%/items/c0bwsw1a.eff~ ~override~
+COPY ~%MOD_FOLDER%/items/c0bwsw1b.eff~ ~override~
+COPY ~%MOD_FOLDER%/items/c0bwsw1c.eff~ ~override~
+COPY ~%MOD_FOLDER%/items/c0bwsw1d.eff~ ~override~
+COPY ~%MOD_FOLDER%/items/c0bwsw1.itm~ ~override~
+SAY NAME1 ~Unseen +4~
+SAY NAME2 ~Unseen +4~
+SAY DESC ~The blade of this short sword shimmers so strangely that you feel as though you are holding a mirage. It has an affinity for rogues, and in the hands of one, it can extend its illusory protection to the wielder, creating a lifelike decoy to fool opponents.
+
+STATISTICS:
+
+Combat abilities:
+ – On a critical hit, cast Mislead on the wielder (Thieves and Bards only)
+ – On a critical miss, cast Reflected Image on the wielder (Thieves and Bards only)
+
+THAC0: +2, +4 for Thieves and Bards, always strikes as a +4 weapon
+Damage: 1d6+2, +4 for Thieves and Bards (piercing)
+Speed Factor: 1
+Proficiency Type: Short Sword/Ninja-To
+Type: One-handed
+Requires:
+ 5 Strength
+
+Weight: 2~
+
+COPY ~%MOD_FOLDER%/items/c0bwsw2.bam~ ~override~
+COPY ~%MOD_FOLDER%/items/c0bwsw2.itm~ ~override~
+SAY NAME1 ~Dirge +5~
+SAY NAME2 ~Dirge +5~
+SAY DESC ~A deadly weapon, Dirge is a weapon well suited for the most legendary of bards. Its creator only ever forged two weapons of its kind, making it truly unique. Each of its wielders has made some form of mark upon the Realms with its aid, whether as a hero or a tyrant.
+
+This sword has a keen edge augmented by sound itself, allowing it to strike lethal wounds with terrifying frequency.
+
+STATISTICS:
+
+Equipped abilities:
+ – Critical Hit Chance: +10% (this weapon)
+ – Crescendo: 1% chance per hit for all attacks to become critical hits and deal maximum damage for the next round
+
+THAC0: +5
+Damage: 1d8+3 (slashing), +1d4+2 magic
+Speed Factor: 2
+Proficiency Type: Long Sword
+Type: One-handed
+Requires:
+ 6 Strength
+
+Weight: 2~
+
+COPY ~%MOD_FOLDER%/items/c0bwsw2.spl~ ~override~
+SAY NAME1 ~Crescendo!~
+SAY NAME2 ~Crescendo!~
+
+COPY ~%MOD_FOLDER%/items/c0jest1.eff~ ~override~
+COPY ~%MOD_FOLDER%/items/c0jest2.eff~ ~override~
+COPY ~%MOD_FOLDER%/items/c0jest3.eff~ ~override~
+COPY ~%MOD_FOLDER%/items/c0jest4.eff~ ~override~
+COPY ~%MOD_FOLDER%/items/c0jest.spl~ ~override~
+COPY ~%MOD_FOLDER%/items/chan10.itm~ ~override~
+SAY DESC ~Friends of Dekirh Fasthands, a bard who insisted on playing the rowdiest towns on the Sword Coast, gave him this suit of magical chain as a gift. The chain mail was given to protect Dekirh from the drunken spectators who often threw rotting produce, chairs, and even knives at Dekirh. The bard appreciated the gift but painted it with wild colors to better fit into his show.
+
+STATISTICS:
+
+Equipped abilities:
+ – Spellcasting is not disabled
+ – Armor Class vs. Missiles: +4 (Jesters)
+ – Chaos Shield (Jesters)
+ – Wild Magic: 5% chance that a spell cast by the wearer will be affected by a wild surge.
+
+Armor Class: 1 (-1 vs. slashing, 3 vs. crushing)
+Requires:
+ 8 Strength~

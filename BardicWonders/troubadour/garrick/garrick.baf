@@ -8,4 +8,5 @@ THEN
   RESPONSE #100
     AddKit(C0TRB)
     SetGlobal("C0GarrickTroubadour","LOCALS",1)
+	Continue()
 END
