@@ -22,6 +22,8 @@ SAY 0xc ~Leanne's Bardic Wonders~
 
 // ITEMS
 
+COPY ~%MOD_FOLDER%/items~ ~override~
+
 COPY ~%MOD_FOLDER%/items/c0bwam1.bam~ ~override~
 COPY ~%MOD_FOLDER%/items/c0bwam1.itm~ ~override~
 SAY NAME1 ~Silence~
@@ -31,11 +33,8 @@ SAY DESC ~Legends once spoke of a skilled bard who had lost his singing voice wh
 STATISTICS:
 
 Equipped abilities:
- – May only be removed with a Remove Curse spell
- – Spellcasting is disabled
- – 1 extra attack per round
- – Strength: +2
- – Dexterity: +2
+– May only be removed with a Remove Curse spell
+– Elegy of Lost Tongues: The wearer gains a +2 bonus to THAC0, damage and Armor Class as well as an extra attack per round, but loses the ability to cast arcane spells
 
 Weight: 1~
 
@@ -48,8 +47,8 @@ SAY DESC ~This suit of leather armor is both lightweight and fashionable. It bea
 STATISTICS:
 
 Equipped abilities:
- – Spellcasting is not disabled
- – The wearer can memorize two extra 1st and 2nd-level spells, one extra 3rd-level spell and one extra 4th-level spell
+– Spellcasting is not disabled
+– The wearer can memorize two extra 1st and 2nd-level spells, one extra 3rd-level spell and one extra 4th-level spell
 
 Armor Class: 5 (7 vs. piercing and missile)
 Requires:
@@ -66,7 +65,7 @@ SAY DESC ~Despite being made of metal chain, this suit of mail is light and quie
 STATISTICS:
 
 Equipped abilities:
- – Spellcasting is not disabled
+– Spellcasting is not disabled
 
 Armor Class: 3 (1 vs. slashing, 5 vs. crushing)
 Requires:
@@ -83,11 +82,11 @@ This powerful shortbow requires neither arrow nor string, for it fires waves of 
 STATISTICS:
 
 Equipped abilities:
- – 3 attacks per round
- – Glissando: 1% chance per hit to set attacks per round to 10 and deal maximum damage per hit for the next round
+– 3 attacks per round
+– Glissando: 1% chance per hit to set attacks per round to 10 and deal maximum damage per hit for the next round
 
 Combat abilities:
- – When no arrows are equipped, the bow fires missiles that are treated as +5 for the purposes of determining what enemies they can damage. The missiles receive +4 to hit including the bonus listed below, and deal a total of 1d4+3 crushing and 1d4+2 magic damage
+– When no arrows are equipped, the bow fires missiles that are treated as +5 for the purposes of determining what enemies they can damage. The missiles receive +4 to hit including the bonus listed below, and deal a total of 1d4+3 crushing and 1d4+2 magic damage
 
 THAC0: +5
 Damage: 1d4+3 (crushing), +1d4+2 magic
@@ -105,7 +104,6 @@ SAY NAME2 ~Glissando!~
 
 COPY ~%MOD_FOLDER%/items/c0bwbt1.bam~ ~override~
 COPY ~%MOD_FOLDER%/items/c0bwbt1a.eff~ ~override~
-COPY ~%MOD_FOLDER%/items/c0bwbt1b.eff~ ~override~
 COPY ~%MOD_FOLDER%/items/c0bwbt1.itm~ ~override~
 SAY NAME1 ~Dancing Heels~
 SAY NAME2 ~Dancing Heels~
@@ -114,9 +112,9 @@ SAY DESC ~This pair of dancing slippers are not only comfortable to wear, but be
 STATISTICS:
 
 Equipped abilities:
- – Movement rate: +1
- – Dexterity: +2 (Bards), +1 (others)
- – Armor Class: +2 (Bards)
+– Free Action: The wearer is immune to all movement-impairing effects, whether magical or otherwise.
+– Dexterity: +2 (Bards), +1 (others)
+– Movement Rate: +1
 
 Weight: 2~
 
@@ -129,10 +127,10 @@ SAY DESC ~Collin D'mass, the owner of this vibrant cloak, was an eccentric bard 
 STATISTICS:
 
 Charge abilities:
- – Nahal's Reckless Dweomer 3x/day
+– Nahal's Reckless Dweomer 3x/day
 
 Equipped abilities:
- – Chaos Shield
+– Improved Chaos Shield
 
 Weight: 3~
 
@@ -144,12 +142,12 @@ SAY NAME2 ~Cacophonic Voice +4~
 SAY DESC ~This terrifying halberd is as heavy as it is colossal, but its most terrifying attribute is the explosive eruptions of sound that burst from the blade whenever it strikes a target. Bystanders of battles involving a wielder of this weapon have claimed that the horrible cacophony from the weapon can enough to pulverize one's foe into a pulp... and sometimes oneself as well. Fortunately for would-be wielders, one of this halberd's former owners had the wisdom to enchant it with a protective enchantment as a safety precaution.
 
 Combat abilities:
- – Deals 1d4 magic damage and deafens target and everyone within range (save vs. spell to avoid deafness)
- – Cacophony: 1% chance to deal 100 crushing damage to the target, the wielder, or both
+– Deals 1d4 magic damage and deafens target and everyone within range (save vs. spell to avoid deafness)
+– Cacophony: 1% chance to deal 100 crushing damage to the target, the wielder, or both
 
 Equipped abilities:
- – Immunity to deafness
- – Magic Damage Resistance: 40%
+– Immunity to deafness
+– Magic Damage Resistance: 40%
 
 STATISTICS:
 
@@ -176,7 +174,8 @@ SAY DESC ~This strange harp makes no sound when played, but in the hands of a mu
 STATISTICS:
 
 Special Abilities:
-    Casts Eldath's Mist 1x/day – blankets the area of effect with a silver-blue mist – any creature within the mist will be cured of disease, poison, and healed of 25 points of damage. The user is unaffected by the mist.
+– Eldath's Mist once per day
+  Special: Blankets the area of effect with a silver-blue mist – any creature within the mist will be cured of disease, poison, and healed of 25 points of damage. The user is unaffected by the mist.
 
 Weight: 3~
 
@@ -189,7 +188,7 @@ SAY DESC ~When this lute is played, a protective bubble surrounds the bard that 
 STATISTICS:
 
 Special Abilities:
-    Casts Otiluke's Resilient Sphere 3x/day (self only, no save)
+– Casts Otiluke's Resilient Sphere 3x/day (self only, no save)
 
 Weight: 3~
 
@@ -198,15 +197,16 @@ COPY ~%MOD_FOLDER%/items/c0bwsh1a.eff~ ~override~
 COPY ~%MOD_FOLDER%/items/c0bwsh1b.eff~ ~override~
 COPY ~%MOD_FOLDER%/items/c0bwsh1c.eff~ ~override~
 COPY ~%MOD_FOLDER%/items/c0bwsh1.itm~ ~override~
-SAY NAME1 ~Resonating Shield +1~
-SAY NAME2 ~Resonating Shield +1~
-SAY DESC ~Bearing a noticeable resemblance to a gong, this shield makes a pleasant humming sound when struck lightly. Thanks to the enchantments placed upon it, the shield makes the humming sound of its own accord when in the hands of a singing bard – at the same time increasing its power greatly.
+SAY NAME1 ~Resonating Shield +3~
+SAY NAME2 ~Resonating Shield +3~
+SAY DESC ~Bearing a noticeable resemblance to a gong, this shield makes a pleasant humming sound when struck lightly. Thanks to the enchantments placed upon it, the shield makes the humming sound of its own accord when in the hands of a singing bard, echoing their song and causing their music to linger.
 
 STATISTICS:
 
 Equipped abilities:
- –  Armor Class: +4 (Bards), +2 (others)
- –  No protection against missile and piercing attacks
+– Armor Class: +4
+– Lingering Song: Bard Song effects linger on for additional 2 rounds after the bard stops singing
+– No protection against missile and piercing attacks
 
 Requires:
  4 Strength
@@ -226,8 +226,8 @@ SAY DESC ~The blade of this short sword shimmers so strangely that you feel as t
 STATISTICS:
 
 Combat abilities:
- – On a critical hit, cast Mislead on the wielder (Thieves and Bards only)
- – On a critical miss, cast Reflected Image on the wielder (Thieves and Bards only)
+– On a critical hit, cast Mislead on the wielder (Thieves and Bards only)
+– On a critical miss, cast Reflected Image on the wielder (Thieves and Bards only)
 
 THAC0: +2, +4 for Thieves and Bards, always strikes as a +4 weapon
 Damage: 1d6+2, +4 for Thieves and Bards (piercing)
@@ -250,8 +250,8 @@ This sword has a keen edge augmented by sound itself, allowing it to strike leth
 STATISTICS:
 
 Equipped abilities:
- – Critical Hit Chance: +10% (this weapon)
- – Crescendo: 1% chance per hit for all attacks to become critical hits and deal maximum damage for the next round
+– Critical Hit Chance: +10% (this weapon)
+– Crescendo: 1% chance per hit for all attacks to become critical hits and deal maximum damage for the next round
 
 THAC0: +5
 Damage: 1d8+3 (slashing), +1d4+2 magic
@@ -278,11 +278,107 @@ SAY DESC ~Friends of Dekirh Fasthands, a bard who insisted on playing the rowdie
 STATISTICS:
 
 Equipped abilities:
- – Spellcasting is not disabled
- – Armor Class vs. Missiles: +4 (Jesters)
- – Chaos Shield (Jesters)
- – Wild Magic: 5% chance that a spell cast by the wearer will be affected by a wild surge.
+– Spellcasting is not disabled
+– Armor Class vs. Missiles: +4 (Jesters)
+– Chaos Shield (Jesters)
+– Wild Magic: 5% chance that a spell cast by the wearer will be affected by a wild surge.
 
 Armor Class: 1 (-1 vs. slashing, 3 vs. crushing)
 Requires:
  8 Strength~
+ 
+COPY ~%MOD_FOLDER%/items/c0bchan1.itm~ ~override~
+SAY NAME1 ~Chain Mail~
+SAY NAME2 ~Isai's Lucky Armor~
+SAY DESC ~Chain Mail +1: Isai's Lucky Armor
+The half-elven blade Isai Halvaryn was said to have been born with the blessing of Tymora. Though neither the most powerful nor the most knowledgable of adventurers, he made his name through countless tales of taking part in suicidally dangerous escapades and living to tell the tale, usually by the skin of his teeth. Whether his luck was imbued upon his favorite suit of magical chain mail is unknown, but those who wear it seem to find the scales tippin in their favor more often than not. Curiously, the armor also changes its color to match its wearer's aesthetic.
+
+In a touch of irony, Isai was never as fortunate in love as he was in adventuring.
+
+STATISTICS:
+
+Equipped abilities:
+– Luck: +1
+– Spellcasting is not disabled
+
+Armor Class: 5 (3 vs. slashing, 7 vs. crushing)
+Requires: 
+ 5 Strength
+
+Weight: 7~
+ 
+ACTION_IF FILE_EXISTS_IN_GAME ~ar3601.are~ THEN BEGIN
+COPY_EXISTING ~ar3601.are~ ~override~
+LPF ADD_AREA_ITEM INT_VAR container_to_add_to = 1 STR_VAR item_to_add = c0bchan1 END
+END
+
+COPY ~%MOD_FOLDER%/items/c0bhelm1.itm~ ~override~
+SAY NAME1 ~Silken Veil~
+SAY NAME2 ~Yvossa's Veil~
+SAY DESC ~Yvossa's Veil
+A famously beautiful Amnian singer with an enrapturing voice, Yvossa was once one of the land's most celebrated artists, and many men of power travelled to the Lucent Aria Theatre to witness her performances. On a fateful day, however, when the theatre was due to perform for a certain noble of power, Yvossa did not step onto the stage. No one knew where she went, and three days later her silk veil was found floating ashore. Those who wear it find their songs being echoed with Yvossa's voice, lingering in the air as though a ghost.
+
+STATISTICS:
+
+Equipped abilities:
+– Magic Resistance: +5% (+15% for Females)
+– Bard song effects linger on for an additional round after the bard stops singing
+
+Weight: 0~
+ 
+COPY ~%MOD_FOLDER%/items/c0bbelt1.itm~ ~override~
+SAY NAME1 ~Belt~
+SAY NAME2 ~Belt of Profane Poise~
+SAY DESC ~Belt of Profane Poise
+The less savory bards know exactly how to exploit their skills for personal benefit. A wandering troupe of seven once wore these belts while travelling throuhgout the Sword Coast, drawing the attention of common folk and nobility alike with their magically-bolstered charm. When their audience was inevitably enthralled by their performances during the day and returned to watch their evening performances, a few members of the troupe would hide among them and cut their purses. The enchantments on this curious belt seem to change its properties based on the time of day, and as the sun sets, the ruby embedded in the belt slowly darkens to a deep violet.
+
+STATISTICS
+
+Equipped abilities:
+– Pick Pockets: +15%
+– If daytime, Charisma: +1. If nighttime, Dexterity: +1 
+
+Weight: 1~
+ 
+ACTION_IF FILE_EXISTS_IN_GAME ~nimbul.cre~ THEN BEGIN
+COPY_EXISTING ~nimbul.cre~ ~override~
+ADD_CRE_ITEM ~c0bbelt1~ #0 #0 #0 ~NONE~ ~belt~
+END
+
+COPY ~%MOD_FOLDER%/items/c0bring1.itm~ ~override~
+SAY NAME1 ~Ring~
+SAY NAME2 ~The Sylphen Song~
+SAY DESC ~Ring of Protection +3: The Sylphen Song
+The history of this ring exists only in songs and fables. One such tale discerns its origins from Titania, Faerie Queen of the Feywild, who once upon a time gifted this to a mortal bard fortunate enough to gain the favor of the mysterious fey. Wearers are granted the knowledge of an ancient faerie song which brings the ring's hidden powers to life, protecting them from even the most dangerous of adversaries. However, the memory of the song fades as quickly as it is gained when the ring is removed.
+
+STATISTICS:
+
+Equipped abilities:
+– Armor Class: +3
+– Saving Throws: +3
+
+Weight: 0~
+ 
+ACTION_IF FILE_EXISTS_IN_GAME ~ar0514.are~ THEN BEGIN
+COPY_EXISTING ~ar0514.are~ ~override~
+LPF ADD_AREA_ITEM INT_VAR container_to_add_to = 36 STR_VAR item_to_add = c0bring1 END
+END
+
+COPY ~%MOD_FOLDER%/items/c0bring2.itm~ ~override~
+SAY NAME1 ~Ring~
+SAY NAME2 ~The Learned~
+SAY DESC ~Ring of Knowledge: The Learned
+The skills of a bard can be surprisingly valuable in the academic field. Priests of Oghma commissions multiple of these rings for bards working in service of their churches and libraries, allowing them to perform their duties more efficently in gathering and memorizing knowledge.
+
+STATISTICS:
+
+Equipped abilities:
+– Intelligence: +2
+– Can memorize 2 extra 1st and 2nd level spells.
+
+Weight: 0~
+
+ACTION_IF FILE_EXISTS_IN_GAME ~tem2304.sto~ THEN BEGIN
+COPY_EXISTING ~tem2304.sto~ ~override~
+ADD_STORE_ITEM ~c0bring2~ #0 #0 #0 ~IDENTIFIED~ #1
+END

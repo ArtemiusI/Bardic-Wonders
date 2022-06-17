@@ -1,56 +1,42 @@
 COPY ~%MOD_FOLDER%/deathsinger~ ~override~
 
-ADD_KIT ~C0DEATHSINGER~
+COPY_EXISTING ~LUBA0.2DA~ ~OVERRIDE/LUC0DEAT.2DA~
+  REPLACE_TEXTUALLY ~AP_SPCL920~ ~AP_C0DESPHL~
 
+ACTION_IF NOT MOD_IS_INSTALLED ~RR/SETUP-RR.TP2~ ~0~ BEGIN
+ADD_KIT ~C0DEATHSINGER~
  // appended to CLASWEAP.2da
  ~C0DEATHSINGER		1           1           1           1           1           1           1           1~
-
  // appended column-wise to WEAPPROF.2da
  ~C0DEATHSINGER		1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
-    
  // appended to ABCLASRQ.2da
- ~C0DEATHSINGER				0      12	0	13	0	15~
-
+ ~C0DEATHSINGER				0      12	0	13	0	13~
  // appended to ABCLSMOD.2da
- ~C0DEATHSINGER				0	0	0	0	0	0~
-
+ ~C0DEATHSINGER				0	0	0	0	0	-2~
  // appended to ABDCDSRQ.2da
  ~C0DEATHSINGER                		0       0       0       0       0       0~
-
  // appended to ABDCSCRQ.2da
  ~C0DEATHSINGER                 	0       0       0       0       0		0~
-
  // appended to ALIGNMNT.2da
  ~C0DEATHSINGER                  	0       1       1       0       1		1       0       1       1~
-
  // appended to DUALCLAS.2da
  ~C0DEATHSINGER                  	0       0       0       0       0       0~
-
  // path to your CLAB-style 2da file 
  ~%MOD_FOLDER%/deathsinger/C0DEATHS.2da~
-
  // PC races and classes allowed to use this kit, from KITTABLE.2da
  ~K_B_H K_B_E K_B_HE K_B_HL K_B_G K_B_D K_B_HO~
-
  // usability flags, added to the end of the KITLIST.2da entry
- ~0x00001000     5~
-
+ ~0x00004000     5~
  // HLA table to use; see LUABBR.2da
  ~C0DEAT~
-
  // list of starting equipment for PCs starting in ToB. Appended column-wise to 25STWEAP.2da
  ~CHAN16 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
-
  // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da
   SAY ~deathsinger~
   SAY ~Deathsinger~
   SAY ~DEATHSINGER: A morbid class of bards, deathsingers take pleasure in singing tales of the macabre, and their magical songs are capable of raising the dead from their graves.
 
 Advantages:
-
-– Receives a +15% bonus when scribing scrolls from the Necromancy school.
-– Receives a +2 bonus when making Saving Throws against spells from the Necromancy school.
-– Targets suffer a -2 penalty when making Saving Throws against spells from the Necromancy school.
 – The Deathsinger's Bard Song, "Call of the Grave", does not assist allies. Instead, the deathsinger may summon undead creatures under <PRO_HISHER> control. While singing, the Deathsinger takes a -4 penalty to Armor Class. Each round while the Deathsinger sings, there is a 35% base chance plus 2% for each level of the Deathsinger that a skeleton will answer the call, up to a maximum of 75% at level 20. Any summoned skeletons will be destroyed if the Deathsinger stops singing. The strength and maximum amount of skeletons summoned increases with level.
    1st – 5th level: Summons up to two skeletons with 3 HD.
    6th – 11th level: Summons up to three skeletons with up to 5 HD.
@@ -58,7 +44,6 @@ Advantages:
    18th level: Summons up to five skeletons with up to 9 HD.
 
 – Gains the following spells as mage spells:
-
    1st level: Doom
    2nd level: Death Armor
    3rd level: Bestow Curse
@@ -67,8 +52,7 @@ Advantages:
    6th level: Destruction
 
 Disadvantages:
-– May not learn or cast any spells of the Illusion school.
-– Receives a -15% penalty when scribing scrolls from other schools.
+– Incurs a -2 penalty to Charisma.
 – May not be good-aligned.
 – Only has one-quarter Pick Pockets percentage.~
 
@@ -77,6 +61,68 @@ LAF fl#add_kit_ee
     kit_name = C0DEATHSINGER
 	clascolr = ~0 65 66 136 182~
 	thiefscl = ~25 0 0 0 0 0 0 0~
+END
+END
+
+ACTION_IF MOD_IS_INSTALLED ~RR/SETUP-RR.TP2~ ~0~ BEGIN
+ADD_KIT ~C0DEATHSINGER~
+ // appended to CLASWEAP.2da
+ ~C0DEATHSINGER		1           1           1           1           1           1           1           1~
+ // appended column-wise to WEAPPROF.2da
+ ~C0DEATHSINGER		1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+ // appended to ABCLASRQ.2da
+ ~C0DEATHSINGER				0      12	0	13	0	13~
+ // appended to ABCLSMOD.2da
+ ~C0DEATHSINGER				0	0	0	0	0	-2~
+ // appended to ABDCDSRQ.2da
+ ~C0DEATHSINGER                		0       0       0       0       0       0~
+ // appended to ABDCSCRQ.2da
+ ~C0DEATHSINGER                 	0       0       0       0       0		0~
+ // appended to ALIGNMNT.2da
+ ~C0DEATHSINGER                  	0       1       1       0       1		1       0       1       1~
+ // appended to DUALCLAS.2da
+ ~C0DEATHSINGER                  	0       0       0       0       0       0~
+ // path to your CLAB-style 2da file 
+ ~%MOD_FOLDER%/deathsinger/C0DEATHS.2da~
+ // PC races and classes allowed to use this kit, from KITTABLE.2da
+ ~K_B_H K_B_E K_B_HE K_B_HL K_B_G K_B_D K_B_HO~
+ // usability flags, added to the end of the KITLIST.2da entry
+ ~0x00004000     5~
+ // HLA table to use; see LUABBR.2da
+ ~C0DEAT~
+ // list of starting equipment for PCs starting in ToB. Appended column-wise to 25STWEAP.2da
+ ~CHAN16 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
+ // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da
+  SAY ~deathsinger~
+  SAY ~Deathsinger~
+  SAY ~DEATHSINGER: A morbid class of bards, deathsingers take pleasure in singing tales of the macabre, and their magical songs are capable of raising the dead from their graves.
+
+Advantages:
+– The Deathsinger's Bard Song, "Call of the Grave", does not assist allies. Instead, the deathsinger may summon undead creatures under <PRO_HISHER> control. While singing, the Deathsinger takes a -4 penalty to Armor Class. Each round while the Deathsinger sings, there is a 35% base chance plus 2% for each level of the Deathsinger that a skeleton will answer the call, up to a maximum of 75% at level 20. Any summoned skeletons will be destroyed if the Deathsinger stops singing. The strength and maximum amount of skeletons summoned increases with level.
+   1st – 5th level: Summons up to two skeletons with 3 HD.
+   6th – 11th level: Summons up to three skeletons with up to 5 HD.
+   12th – 17th level: Summons up to four skeletons with up to 7 HD.
+   18th level: Summons up to five skeletons with up to 9 HD.
+
+– Gains the following spells as mage spells:
+   1st level: Doom
+   2nd level: Death Armor
+   3rd level: Bestow Curse
+   4th level: Cloak of Fear
+   5th level: Slay Living
+   6th level: Destruction
+
+Disadvantages:
+– Incurs a -2 penalty to Charisma.
+– May not be good-aligned.
+– Only has one-quarter Pick Pockets percentage.~
+
+LAF fl#add_kit_ee
+  STR_VAR
+    kit_name = C0DEATHSINGER
+	clascolr = ~0 65 66 136 182~
+	thiefscl = ~25 0 0 0 0 0 0 0~
+END
 END
 
 COPY_EXISTING ~SKELSU01.CRE~ ~override/C0DESUM1.CRE~
@@ -166,40 +212,47 @@ LPF ALTER_EFFECT
 		match_opcode = 142
 		match_parameter2 = 191
 		parameter2 = 40
+		silent = 1
 END
 LPF ALTER_EFFECT
 	INT_VAR
 		match_opcode = 139
 		match_parameter1 = RESOLVE_STR_REF (~A minor animal spirit answers your call.~)
 		parameter1 = RESOLVE_STR_REF (~A 3 HD skeleton answers your call.~)
+		silent = 1
 END
 LPF ALTER_EFFECT
 	INT_VAR
 		match_opcode = 139
 		match_parameter1 = RESOLVE_STR_REF (~A major animal spirit answers your call.~)
 		parameter1 = RESOLVE_STR_REF (~A 5 HD skeleton answers your call.~)
+		silent = 1
 END
 LPF ALTER_EFFECT
 	INT_VAR
 		match_opcode = 139
 		match_parameter1 = RESOLVE_STR_REF (~A minor nature spirit answers your call.~)
 		parameter1 = RESOLVE_STR_REF (~A 7 HD skeleton answers your call.~)
+		silent = 1
 END
 LPF ALTER_EFFECT
 	INT_VAR
 		match_opcode = 139
 		match_parameter1 = RESOLVE_STR_REF (~A major nature spirit answers your call.~)
 		parameter1 = RESOLVE_STR_REF (~A 9 HD skeleton answers your call.~)
+		silent = 1
 END
 LPF ALTER_EFFECT
 	INT_VAR
 		match_opcode = 139
 		match_parameter1 = RESOLVE_STR_REF (~No spirits answer your call.~)
 		parameter1 = RESOLVE_STR_REF (~Nothing answers your call.~)
+		silent = 1
 END
 LPF ALTER_EFFECT
 	INT_VAR
 		match_opcode = 318
+		silent = 1
 	STR_VAR
 		match_resource = spsh004
 		resource = C0DESP7
@@ -207,6 +260,7 @@ END
 LPF ALTER_EFFECT
 	INT_VAR
 		match_opcode = 331
+		silent = 1
 	STR_VAR
 		match_resource = BDSHAM01
 		resource = C0DESUM1
@@ -214,6 +268,7 @@ END
 LPF ALTER_EFFECT
 	INT_VAR
 		match_opcode = 331
+		silent = 1
 	STR_VAR
 		match_resource = BDSHAM06
 		resource = C0DESUM3
@@ -221,6 +276,7 @@ END
 LPF ALTER_EFFECT
 	INT_VAR
 		match_opcode = 331
+		silent = 1
 	STR_VAR
 		match_resource = BDSHAM12
 		resource = C0DESUM3
@@ -228,6 +284,7 @@ END
 LPF ALTER_EFFECT
 	INT_VAR
 		match_opcode = 331
+		silent = 1
 	STR_VAR
 		match_resource = BDSHAM18
 		resource = C0DESUM4
