@@ -2,37 +2,47 @@
 
 COPY ~%MOD_FOLDER%/dancer~ ~override~
 
-COPY_EXISTING ~LUBA0.2DA~ ~OVERRIDE/LUC0DANC.2DA~
-  REPLACE_TEXTUALLY ~AP_SPCL920~ ~AP_C0DANCHL~
-
-ACTION_IF NOT MOD_IS_INSTALLED ~RR/SETUP-RR.TP2~ ~0~ BEGIN
 ADD_KIT ~C0DANCE~
+
  // appended to CLASWEAP.2da
  ~C0DANCE		1           1           1           1           1           1           1           1~
+
  // appended column-wise to WEAPPROF.2da
- ~C0DANCE		1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+ ~C0DANCE		1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+    
  // appended to ABCLASRQ.2da
  ~C0DANCE				0      15	0	9	0	15~
+
  // appended to ABCLSMOD.2da
  ~C0DANCE				0	0	0	0	0	0~
+
  // appended to ABDCDSRQ.2da
  ~C0DANCE                		0       0       0       0       0       0~
+
  // appended to ABDCSCRQ.2da
  ~C0DANCE                 	0       0       0       0       0		0~
+
  // appended to ALIGNMNT.2da
  ~C0DANCE                  	0       1       0       1       1	1       0       1       0~
+
  // appended to DUALCLAS.2da
  ~C0DANCE                  	0       0       0       0       0       0~
+
  // path to your CLAB-style 2da file 
  ~%MOD_FOLDER%/dancer/C0DANCE.2da~
+
  // PC races and classes allowed to use this kit, from KITTABLE.2da
  ~K_B_H K_B_E K_B_HE K_B_HL K_B_G K_B_D K_B_HO~
+
  // usability flags, added to the end of the KITLIST.2da entry
  ~0x10000000     5~
+
  // HLA table to use; see LUABBR.2da
  ~C0DANC~
+
  // list of starting equipment for PCs starting in ToB. Appended column-wise to 25STWEAP.2da
  ~* * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
+
  // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da
   SAY ~dancer~
   SAY ~Dancer~
@@ -40,15 +50,15 @@ ADD_KIT ~C0DANCE~
 
 ADVANTAGES:
 – May place 3 slots in Two-Weapon Style.
-– +2 bonus to base Armor Class at 1st level. Gains an additional +1 bonus at 10th level and every 10 levels thereafter.
+– +2 bonus to Armor Class at 1st level. Gains an additional +1 bonus to Armor Class every 10 levels.
 – +1 bonus to Armor Class vs. missile weapons at 1st level. Gains an additional +1 bonus to Armor Class every 5 levels.
 – +2 to movement rate.
 – The Dancer's Bard Song, "Dance of the Floating Lily", immobilizes the dancer while inspiring <PRO_HISHER> allies, providing immunity to fear and morale failure and grants the following bonuses:
-	1st level: +1 to hit and damage, +1/2 attack per round, dancer gains +2 to Armor Class
-	6th level: +2 to hit and damage, +1/2 attack per round, dancer gains +4 to Armor Class
-	11th level: +3 to hit and damage, +1/2 attack per round, dancer gains +6 to Armor Class
-	16th level: +4 to hit and damage, +1 attack per round, dancer gains +8 to Armor Class
-	21st level: +5 to hit and damage, +1 attack per round, dancer gains +10 to Armor Class
+	1st level: +2 to hit and damage, +1/2 attack per round, dancer gains +2 to Armor Class
+	6th level: +3 to hit and damage, +1/2 attack per round, dancer gains +4 to Armor Class
+	11th level: +4 to hit and damage, +1/2 attack per round, dancer gains +6 to Armor Class
+	16th level: +5 to hit and damage, +1 attack per round, dancer gains +8 to Armor Class
+	21st level: +6 to hit and damage, +1 attack per round, dancer gains +10 to Armor Class
 
 – From 4th level onwards, may use the Adrenaline Rush ability once per day.
 
@@ -56,7 +66,6 @@ ADRENALINE RUSH: The dancer temporarily gains a huge boost in power for three ro
 
 DISADVANTAGES:
 – May not wear any armor.
-– May not use shields.
 – May memorize one less spell per level.
 – Only has one-half normal Lore value.~
 
@@ -64,69 +73,6 @@ LAF fl#add_kit_ee
   STR_VAR
     kit_name = C0DANCE
 	clascolr = ~110 87 174 168 102~
-END
-END
-
-ACTION_IF MOD_IS_INSTALLED ~RR/SETUP-RR.TP2~ ~0~ BEGIN
-ADD_KIT ~C0DANCE~
- // appended to CLASWEAP.2da
- ~C0DANCE		1           1           1           1           1           1           1           1~
- // appended column-wise to WEAPPROF.2da
- ~C0DANCE		1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
- // appended to ABCLASRQ.2da
- ~C0DANCE				0      15	0	9	0	15~
- // appended to ABCLSMOD.2da
- ~C0DANCE				0	0	0	0	0	0~
- // appended to ABDCDSRQ.2da
- ~C0DANCE                		0       0       0       0       0       0~
- // appended to ABDCSCRQ.2da
- ~C0DANCE                 	0       0       0       0       0		0~
- // appended to ALIGNMNT.2da
- ~C0DANCE                  	0       1       0       1       1	1       0       1       0~
- // appended to DUALCLAS.2da
- ~C0DANCE                  	0       0       0       0       0       0~
- // path to your CLAB-style 2da file 
- ~%MOD_FOLDER%/dancer/C0DANCE.2da~
- // PC races and classes allowed to use this kit, from KITTABLE.2da
- ~K_B_H K_B_E K_B_HE K_B_HL K_B_G K_B_D K_B_HO~
- // usability flags, added to the end of the KITLIST.2da entry
- ~0x10000000     5~
- // HLA table to use; see LUABBR.2da
- ~C0DANC~
- // list of starting equipment for PCs starting in ToB. Appended column-wise to 25STWEAP.2da
- ~* * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
- // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da
-  SAY ~dancer~
-  SAY ~Dancer~
-  SAY ~DANCER: The dancer is an entertainer, an acrobat and a surprisingly dangerous combatant when drawn to battle, emphasizing speed and agility to confuse and unnerve <PRO_HISHER> opponents while inspiring allies to fight with increased confidence.
-
-ADVANTAGES:
-– Gains 3 points in Two-Weapon Style at 1st level.
-– +2 bonus to base Armor Class at 1st level. Gains an additional +1 bonus at 10th level and every 10 levels thereafter.
-– +1 bonus to Armor Class vs. missile weapons at 1st level. Gains an additional +1 bonus to Armor Class every 5 levels.
-– +2 to movement rate.
-– The Dancer's Bard Song, "Dance of the Floating Lily", immobilizes the dancer while inspiring <PRO_HISHER> allies, providing immunity to fear and morale failure and grants the following bonuses:
-	1st level: +1 to hit and damage, +1/2 attack per round, dancer gains +2 to Armor Class
-	6th level: +2 to hit and damage, +1/2 attack per round, dancer gains +4 to Armor Class
-	11th level: +3 to hit and damage, +1/2 attack per round, dancer gains +6 to Armor Class
-	16th level: +4 to hit and damage, +1 attack per round, dancer gains +8 to Armor Class
-	21st level: +5 to hit and damage, +1 attack per round, dancer gains +10 to Armor Class
-
-– From 4th level onwards, may use the Adrenaline Rush ability once per day.
-
-ADRENALINE RUSH: The dancer temporarily gains a huge boost in power for three rounds, gaining +1 to hit and damage for every four levels. Attacks per round are also doubled. However, <PRO_HISHER> Armor Class is reduced by four points and <PRO_HESHE> is unable to use <PRO_HISHER> Bard Song, and after the duration ends, <PRO_HESHE> becomes winded, suffering a huge penalty to fatigue and inability to use <PRO_HISHER> Bard Song for one turn. From 18th level onwards, the dancer is no longer fatigued after the effect expires.
-
-DISADVANTAGES:
-– May not wear any armor.
-– May not use shields.
-– May memorize one less spell per level.
-– Only has one-half normal Lore value.~
-
-LAF fl#add_kit_ee
-  STR_VAR
-    kit_name = C0DANCE
-	clascolr = ~110 87 174 168 102~
-END
 END
 
 COPY ~%MOD_FOLDER%/dancer/c0dancso.spl~ ~override~
@@ -138,15 +84,15 @@ COPY ~%MOD_FOLDER%/dancer/c0dancso.spl~ ~override~
 	  savingthrow = 0
   END
 
-ACTION_IF MOD_IS_INSTALLED ~RR/SETUP-RR.TP2~ ~0~ BEGIN
-COPY ~%MOD_FOLDER%/dancer/rr~ ~override~
-END
-    
 COPY ~%MOD_FOLDER%/dancer/c0dance3.spl~ ~override~
 SAY NAME1 ~Adrenaline Rush~
 SAY NAME2 ~Adrenaline Rush~
 SAY UNIDENTIFIED_DESC ~Adrenaline Rush
 The dancer temporarily gains a huge boost in power for three rounds, gaining +1 to hit and damage for every four levels. Attacks per round are also doubled. However, <PRO_HISHER> Armor Class is reduced by four points and <PRO_HESHE> is unable to use <PRO_HISHER> Bard Song, and after the duration ends, <PRO_HESHE> becomes winded, suffering a huge penalty to fatigue and inability to use <PRO_HISHER> Bard Song for one turn. From 18th level onwards, the dancer is no longer fatigued after the effect expires.~
+
+COPY ~%MOD_FOLDER%/dancer/c0dance4.spl~ ~override~
+SAY NAME1 ~Fatigue~
+SAY NAME2 ~Fatigue~
 
 COPY ~%MOD_FOLDER%/dancer/c0danchl.spl~ ~override~
 SAY NAME1 ~Swift-As-Flowing-Water~
