@@ -1,46 +1,37 @@
 COPY ~%MOD_FOLDER%/abettor~ ~override~
 
-ADD_KIT ~C0ABETT~
+COPY_EXISTING ~LUBA0.2DA~ ~OVERRIDE/LUC0ABET.2DA~
+  REPLACE_TEXTUALLY ~AP_SPCL920     *          *         1         99         1            *            *             *~ ~AP_C0ABETT5 *          *          1          99         1          *           *          *          ~
+  REPLACE_TEXTUALLY ~GA_SPCL921     *          *         1         99         1            *            *             *~ ~AP_C0ABETHL *          *          1          99         1          AP_C0ABETT5 *          *          ~
 
+ACTION_IF NOT MOD_IS_INSTALLED ~RR/SETUP-RR.TP2~ ~0~ BEGIN
+ADD_KIT ~C0ABETT~
  // appended to CLASWEAP.2da
  ~C0ABETT		1           1           1           1           1           1           1           1~
-
  // appended column-wise to WEAPPROF.2da
  ~C0ABETT		0 1 0 0 1 0 0 1 0 1 1 0 0 1 1 1 0 1 0 0 0 0 1 1 0 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
-    
  // appended to ABCLASRQ.2da
  ~C0ABETT				0      12	0	13	0	15~
-
  // appended to ABCLSMOD.2da
  ~C0ABETT				0	0	0	0	0	0~
-
  // appended to ABDCDSRQ.2da
  ~C0ABETT                		0       0       0       0       0       0~
-
  // appended to ABDCSCRQ.2da
  ~C0ABETT                 	0       0       0       0       0		0~
-
  // appended to ALIGNMNT.2da
  ~C0ABETT                  	0       0       0       0       1	1       0       1       1~
-
  // appended to DUALCLAS.2da
  ~C0ABETT                  	0       0       0       0       0       0~
-
  // path to your CLAB-style 2da file 
  ~%MOD_FOLDER%/abettor/C0ABETTO.2da~
-
  // PC races and classes allowed to use this kit, from KITTABLE.2da
  ~K_B_H K_B_E K_B_HE K_B_HL K_B_G K_B_D K_B_HO~
-
  // usability flags, added to the end of the KITLIST.2da entry
  ~0x00004000     5~
-
  // HLA table to use; see LUABBR.2da
  ~C0ABET~
-
  // list of starting equipment for PCs starting in ToB. Appended column-wise to 25STWEAP.2da
  ~CHAN16 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
-
  // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da
   SAY ~abettor of mask~
   SAY ~Abettor of Mask~
@@ -74,6 +65,71 @@ LAF fl#add_kit_ee
   STR_VAR
     kit_name = C0ABETT
 	clascolr = ~27 185 183 83 21~
+END
+END
+
+ACTION_IF MOD_IS_INSTALLED ~RR/SETUP-RR.TP2~ ~0~ BEGIN
+ADD_KIT ~C0ABETT~
+ // appended to CLASWEAP.2da
+ ~C0ABETT		1           1           1           1           1           1           1           1~
+ // appended column-wise to WEAPPROF.2da
+ ~C0ABETT		0 1 0 0 1 0 0 1 0 1 1 0 0 1 1 1 0 1 0 0 0 0 1 1 0 1 1 1 1 1 1 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+ // appended to ABCLASRQ.2da
+ ~C0ABETT				0      12	0	13	0	15~
+ // appended to ABCLSMOD.2da
+ ~C0ABETT				0	0	0	0	0	0~
+ // appended to ABDCDSRQ.2da
+ ~C0ABETT                		0       0       0       0       0       0~
+ // appended to ABDCSCRQ.2da
+ ~C0ABETT                 	0       0       0       0       0		0~
+ // appended to ALIGNMNT.2da
+ ~C0ABETT                  	0       0       0       0       1	1       0       1       1~
+ // appended to DUALCLAS.2da
+ ~C0ABETT                  	0       0       0       0       0       0~
+ // path to your CLAB-style 2da file 
+ ~%MOD_FOLDER%/abettor/C0ABETTO.2da~
+ // PC races and classes allowed to use this kit, from KITTABLE.2da
+ ~K_B_H K_B_E K_B_HE K_B_HL K_B_G K_B_D K_B_HO~
+ // usability flags, added to the end of the KITLIST.2da entry
+ ~0x00004000     5~
+ // HLA table to use; see LUABBR.2da
+ ~C0ABET~
+ // list of starting equipment for PCs starting in ToB. Appended column-wise to 25STWEAP.2da
+ ~CHAN16 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
+ // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da
+  SAY ~abettor of mask~
+  SAY ~Abettor of Mask~
+  SAY ~ABETTOR OF MASK: Contrary to popular belief, the trickster god Mask's favor extends past those who walk the path of stealthy arts and trickery. The Abettor is a faithful Maskarran, a deceptive agent of the Lord of Shadows whose gall is tested through tasks that typical bards would balk at due to their dark natures.
+
+ADVANTAGES:
+
+– Receives a +5% bonus to Pick Pockets per level.
+– Gains a backstab multiplier of x2.
+– The Abettor's song, "One's Loss, Another's Gain", provides thieving and stealth bonuses to the party. The song grants +15% to all thieving skills, increasing by 5% per rank and grants the following effects:
+	3rd level: Party members passively detect traps
+	6th level: Party members gain Blur (+3 to AC, +1 to all saving throws)
+	9th level: The singer has a 50% chance to gain Improved Invisibility for one round
+	12th level: Party members gain Non-Detection
+	15th level: The singer has a 100% chance to gain Improved Invisibility for one round
+
+– From 10th level onwards, the Abettor passively has a 1% chance upon taking damage to turn invisible for one turn.
+– From 12th level onwards, gains one use of Shadowstep.
+
+SHADOWSTEP: The character steps into the Shadow Plane and may move for 7 seconds while others are frozen in time. The caster cannot attack or cast spells while in the Shadow Plane.
+
+– May learn the Assassination high level ability upon reaching 24th level.
+
+DISADVANTAGES:
+– Must be of True Neutral, Chaotic Neutral, Neutral Evil or Chaotic Evil alignment.
+– Only has one-half normal Lore value.
+– May not learn the Magic Flute high level ability.
+– May only be proficient in weapons usable by thieves.~
+
+LAF fl#add_kit_ee
+  STR_VAR
+    kit_name = C0ABETT
+	clascolr = ~27 185 183 83 21~
+END
 END
 
 COPY ~%MOD_FOLDER%/abettor/c0abetso.spl~ ~override~

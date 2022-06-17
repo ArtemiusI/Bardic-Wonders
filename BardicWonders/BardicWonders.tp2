@@ -1,0 +1,62 @@
+BACKUP ~BardicWonders/backup~
+AUTHOR ~Artemius_I~
+AUTO_TRA ~%MOD_FOLDER%/translations/%s~
+ALWAYS
+  INCLUDE ~%MOD_FOLDER%/lib/fl#add_kit_ee.tpa~
+  INCLUDE ~%MOD_FOLDER%/lib/kit_strref.tpa~
+  INCLUDE ~%MOD_FOLDER%/lib/alter_script.tpa~
+END
+LANGUAGE ~English~
+         ~English~
+
+BEGIN ~Bardic Wonders: Blade Overhaul~
+GROUP ~Kits~
+INCLUDE ~%MOD_FOLDER%/LIB/blade.tpa~
+
+BEGIN ~Bardic Wonders: Jester Overhaul~
+GROUP ~Kits~
+INCLUDE ~%MOD_FOLDER%/LIB/jester.tpa~
+
+BEGIN ~Bardic Wonders: Skald Overhaul~
+GROUP ~Kits~
+INCLUDE ~%MOD_FOLDER%/LIB/skald.tpa~
+
+BEGIN ~Bardic Wonders: Abettor of Mask Kit~
+GROUP ~Kits~
+INCLUDE ~%MOD_FOLDER%/LIB/abettor.tpa~
+
+BEGIN ~Bardic Wonders: Dancer Kit~
+GROUP ~Kits~
+INCLUDE ~%MOD_FOLDER%/LIB/dancer.tpa~
+
+BEGIN ~Bardic Wonders: Darkbloom Bard Kit~
+GROUP ~Kits~
+INCLUDE ~%MOD_FOLDER%/LIB/darkbloom.tpa~
+
+BEGIN ~Bardic Wonders: Storm Drummer Kit~
+GROUP ~Kits~
+INCLUDE ~%MOD_FOLDER%/LIB/stormdrummer.tpa~
+
+BEGIN ~Bardic Wonders: Troubadour Kit~
+GROUP ~Kits~
+INCLUDE ~%MOD_FOLDER%/LIB/troubadour.tpa~
+
+BEGIN ~Bardic Wonders: Deathsinger Kit~
+GROUP ~Kits~
+INCLUDE ~%MOD_FOLDER%/LIB/deathsinger.tpa~
+
+BEGIN ~Bardic Wonders: Items~
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ ~This component must be played on BG:EE or BG2:EE.~
+INCLUDE ~%MOD_FOLDER%/LIB/itempack.tpa~
+
+BEGIN ~Bardic Wonders: Inspirations~
+GROUP ~Tweaks~
+INCLUDE ~%MOD_FOLDER%/LIB/inspirations.tpa~
+
+BEGIN ~Bardic Wonders: Armored Casting for Bards~
+GROUP ~Tweaks~
+INCLUDE ~%MOD_FOLDER%/LIB/armored_casting.tpa~
+
+BEGIN ~Bardic Wonders: Bard Song Mechanics Tweak~
+GROUP ~Tweaks~
+INCLUDE ~%MOD_FOLDER%/LIB/bardsongtweaks.tpa~

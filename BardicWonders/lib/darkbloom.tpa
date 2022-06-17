@@ -1,0 +1,365 @@
+//////////// darkbloom
+COPY ~%MOD_FOLDER%/darkbloom~ ~override~
+
+COPY_EXISTING ~LUBA0.2DA~ ~OVERRIDE/LUC0BDD.2DA~
+  REPLACE_TEXTUALLY ~AP_SPCL920~ ~AP_C0BDDHL~
+
+ACTION_IF NOT MOD_IS_INSTALLED ~RR/SETUP-RR.TP2~ ~0~ BEGIN
+ADD_KIT ~C0BDD~
+ // appended to CLASWEAP.2da
+ ~C0BDD		1           1           1           1           1           1           1           1~
+ // appended column-wise to WEAPPROF.2da
+//11                                T   S           F   Q             S S
+//10                                W   C           L   U             W I
+//9                         B L S   O   I   W       A   A             O N
+//8                         A O H   H   M   A       I   R C   S       R G
+//7         L S           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6         _ _       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5         S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4         W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3         O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2         R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1         D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+ ~C0BDD		1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~    
+ // appended to ABCLASRQ.2da
+ ~C0BDD				0      12	0	13	0	12~
+ // appended to ABCLSMOD.2da
+ ~C0BDD				-2	0	-2	0	0	-4~
+ // appended to ABDCDSRQ.2da
+ ~C0BDD                		0       0       0       0       0       0~
+ // appended to ABDCSCRQ.2da
+ ~C0BDD                 	0       0       0       0       0		0~
+ // appended to ALIGNMNT.2da
+ ~C0BDD                  	0 0 0 0 1 1 0 0 0~
+ // appended to DUALCLAS.2da
+ ~C0BDD                  	0       0       0       0       0       0~
+ // path to your CLAB-style 2da file 
+ ~%MOD_FOLDER%/darkbloom/C0BDD.2da~
+ // PC races and classes allowed to use this kit, from KITTABLE.2da
+ ~K_B_H K_B_E K_B_HE K_B_HL K_B_G K_B_D K_B_HO~
+ // usability flags, added to the end of the KITLIST.2da entry
+ ~0x00000000     5~
+ // HLA table to use; see LUABBR.2da
+ ~C0BDD~
+ // list of starting equipment for PCs starting in ToB. Appended column-wise to 25STWEAP.2da
+ ~LEAT07 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
+ // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da
+  SAY ~darkbloom bard~
+  SAY ~Darkbloom Bard~
+  SAY ~DARKBLOOM BARD: Rarely seen in the Realms, Darkbloom Bards are recognized for their skills in using the powers of nature. Unlike druids, however, Darkbloom Bards appear to twist the beauty of flora and fauna into wicked and twisted visions—the stuff of eldritch dreams and nightmares. While some believe these are borne of the alien fantasies of practitioners, others fear that Darkbloom Bards are, in fact, drawing upon pieces of otherworldly aberrations that are attempting to infiltrate the waking world.
+
+ADVANTAGES: 
+
+– +15 bonus to Lore.
+– +5% bonus to Magic Resistance.
+– Receives one additional spell slot per spell level.
+– +2 bonus to Armor Class vs Spectral Undead, Shadows, Myconids, Shambling Mounds, Shriekers, Slimes and Spectres.
+– Receives the following druidic spells, which are automatically scribed into their spellbook: Curse, Beast Claw, Mold Touch, Thorn Spray, Insect Plague, Fire Seeds, Mist of Eldath.
+
+– The Darkbloom Bard's song, "Silence of Dreamrealm's Bog", inflicts Silence upon all surrounding creatures, both friendly and hostile, as well as reducing Magic Resistance by 10% plus an additional 2% per two levels, up to a maximum of 50%. All creatures may make a Saving Throw vs. Spells at +2 (-1 modifier per 6 levels) to avoid being Silenced.
+
+– 6th level: May use Dark Entanglement once per day.
+
+DARK ENTANGLEMENT: By means of this spell, the caster is able to cause dark plants and roots in the area of effect to entangle creatures within the area. Once per round, a creature can attempt to make a Saving Throw vs. Spell with a +3 bonus to avoid entanglement. An entangled creature can still attack but receives a -2 penalty to its Armor Class and -10% to Magic Resistance. There is 10% chance upon entanglement that the creature will be poisoned and suffer 1 damage per second for 5 seconds.
+
+– 12th level: May Backstab at x2 damage, additionally dealing 2d8 acid damage. There is also a 50% chance that the victim will be Entangled by dark vines for one round.
+
+DISADVANTAGES:
+
+– Incurs a -2 penalty to Strength and Constitution and a -4 penalty to Charisma.
+– Incurs a -1 penalty to all Saving Throws.
+– Only has one-quarter Pick Pockets percentage.
+– May only be of True Neutral and Neutral Evil alignment.~
+
+LAF fl#add_kit_ee
+  STR_VAR
+    kit_name = C0BDD
+	clascolr = ~27 62 191 83 6~ // Metal, Minor, Major, Leather, Armor
+	thiefscl = ~25 0 0 0 0 0 0 0~
+END
+END
+
+ACTION_IF MOD_IS_INSTALLED ~RR/SETUP-RR.TP2~ ~0~ BEGIN
+ADD_KIT ~C0BDD~
+ // appended to CLASWEAP.2da
+ ~C0BDD		1           1           1           1           1           1           1           1~
+ // appended column-wise to WEAPPROF.2da
+//11                                T   S           F   Q             S S
+//10                                W   C           L   U             W I
+//9                         B L S   O   I   W       A   A             O N
+//8                         A O H   H   M   A       I   R C   S       R G
+//7         L S           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6         _ _       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5         S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4         W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3         O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2         R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1         D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+ ~C0BDD		1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~    
+ // appended to ABCLASRQ.2da
+ ~C0BDD				0      12	0	13	0	12~
+ // appended to ABCLSMOD.2da
+ ~C0BDD				-2	0	-2	0	0	-4~
+ // appended to ABDCDSRQ.2da
+ ~C0BDD                		0       0       0       0       0       0~
+ // appended to ABDCSCRQ.2da
+ ~C0BDD                 	0       0       0       0       0		0~
+ // appended to ALIGNMNT.2da
+ ~C0BDD                  	0 0 0 0 1 1 0 0 0~
+ // appended to DUALCLAS.2da
+ ~C0BDD                  	0       0       0       0       0       0~
+ // path to your CLAB-style 2da file 
+ ~%MOD_FOLDER%/darkbloom/C0BDD.2da~
+ // PC races and classes allowed to use this kit, from KITTABLE.2da
+ ~K_B_H K_B_E K_B_HE K_B_HL K_B_G K_B_D K_B_HO~
+ // usability flags, added to the end of the KITLIST.2da entry
+ ~0x00000000     5~
+ // HLA table to use; see LUABBR.2da
+ ~C0BDD~
+ // list of starting equipment for PCs starting in ToB. Appended column-wise to 25STWEAP.2da
+ ~LEAT07 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
+ // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da
+  SAY ~darkbloom bard~
+  SAY ~Darkbloom Bard~
+  SAY ~DARKBLOOM BARD: Rarely seen in the Realms, Darkbloom Bards are recognized for their skills in using the powers of nature. Unlike druids, however, Darkbloom Bards appear to twist the beauty of flora and fauna into wicked and twisted visions—the stuff of eldritch dreams and nightmares. While some believe these are borne of the alien fantasies of practitioners, others fear that Darkbloom Bards are, in fact, drawing upon pieces of otherworldly aberrations that are attempting to infiltrate the waking world.
+
+ADVANTAGES: 
+
+– +15 bonus to Lore.
+– +5% bonus to Magic Resistance.
+– Receives one additional spell slot per spell level.
+– +2 bonus to Armor Class vs Spectral Undead, Shadows, Myconids, Shambling Mounds, Shriekers, Slimes and Spectres.
+– Receives the following druidic spells, which are automatically scribed into their spellbook: Curse, Beast Claw, Mold Touch, Thorn Spray, Insect Plague, Fire Seeds, Mist of Eldath.
+
+– The Darkbloom Bard's song, "Silence of Dreamrealm's Bog", inflicts Silence upon all surrounding creatures, both friendly and hostile, as well as reducing Magic Resistance by 10% plus an additional 2% per two levels, up to a maximum of 50%. All creatures may make a Saving Throw vs. Spells at +2 (-1 modifier per 6 levels) to avoid being Silenced.
+
+– 6th level: May use Dark Entanglement once per day.
+
+DARK ENTANGLEMENT: By means of this spell, the caster is able to cause dark plants and roots in the area of effect to entangle creatures within the area. Once per round, a creature can attempt to make a Saving Throw vs. Spell with a +3 bonus to avoid entanglement. An entangled creature can still attack but receives a -2 penalty to its Armor Class and -10% to Magic Resistance. There is 10% chance upon entanglement that the creature will be poisoned and suffer 1 damage per second for 5 seconds.
+
+– 12th level: May Backstab at x2 damage, additionally dealing 2d8 acid damage. There is also a 50% chance that the victim will be Entangled by dark vines for one round.
+
+DISADVANTAGES:
+
+– Incurs a -2 penalty to Strength and Constitution and a -4 penalty to Charisma.
+– Incurs a -1 penalty to all Saving Throws.
+– Only has one-quarter Pick Pockets percentage.
+– May only be of True Neutral and Neutral Evil alignment.~
+
+LAF fl#add_kit_ee
+  STR_VAR
+    kit_name = C0BDD
+	clascolr = ~27 62 191 83 6~ // Metal, Minor, Major, Leather, Armor
+	thiefscl = ~25 0 0 0 0 0 0 0~
+END
+END
+  
+COPY_EXISTING ~C0BDDHL.spl~ ~override~
+SAY NAME1 ~Millenia of Deathly Stillness~
+SAY UNIDENTIFIED_DESC ~Millenia of Deathly Stillness
+This is a powerful aid to both the Darkbloom Bard and to <PRO_HISHER> allies. This song gives the Darkbloom Bard <PRO_HIMHER>self regeneration for 10% of <PRO_HISHER> maximum hit points per round and increases <PRO_HISHER> allies' casting level by 6 and casting speed by 2. Enemies within range have their Magic Resistance and must make a Save vs. Spell at -6 or be Silenced.
+
+This ability replaces the current Bard Song.~
+
+ADD_PROJECTILE ~%MOD_FOLDER%/darkbloom/C0BDD#1.PRO~ ~Dark Entanglement~
+ADD_PROJECTILE ~%MOD_FOLDER%/darkbloom/C0BDD#SO.PRO~ ~Bard Song Ignore Caster~
+COPY ~%MOD_FOLDER%/darkbloom/C0BDD#SO.spl~ ~override~
+READ_LONG 0x64 "abil_off"
+READ_SHORT 0x68 "abil_num"
+SET "delta" = 0
+FOR (index = 0; index < abil_num; index = index + 1) BEGIN
+WRITE_SHORT (%abil_off% + (0x28 * %index%) + 0x26) ~%C0BDD#SO%~
+END
+COPY ~%MOD_FOLDER%/darkbloom/C0BDD#1.spl~ ~override~
+READ_LONG 0x64 "abil_off"
+READ_SHORT 0x68 "abil_num"
+SET "delta" = 0
+FOR (index = 0; index < abil_num; index = index + 1) BEGIN
+WRITE_SHORT (%abil_off% + (0x28 * %index%) + 0x26) ~%C0BDD#1%~
+END
+SAY NAME1 ~Dark Entanglement~
+SAY UNIDENTIFIED_DESC ~Dark Entanglement
+By means of this spell, the caster is able to cause dark plants and roots in the area of effect to entangle creatures within the area for five rounds. An entangled creature can still attack but receives a -2 penalty to its Armor Class and -10% to Magic Resistance. There is 10% chance upon entanglement that the creature will be poisoned and suffer 1 damage per second for 5 seconds.~
+
+// Curse
+ACTION_IF FILE_EXISTS_IN_GAME ~SPPR112.SPL~ THEN BEGIN
+COPY_EXISTING ~SPPR112.spl~ ~override/C0BDDS1.spl~
+WRITE_SHORT 0x1C 1
+WRITE_LONG 0x34 1
+END
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~SPPR112.SPL~ THEN BEGIN
+COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR112B.BAM~ ~override~
+COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR112C.BAM~ ~override~
+COPY ~%MOD_FOLDER%/darkbloom/BGEE/AREA1X.BAM~ ~override~
+COPY ~%MOD_FOLDER%/darkbloom/BGEE/#BLESS.VVC~ ~override~
+ADD_PROJECTILE ~%MOD_FOLDER%/darkbloom/BGEE/IDPRO237.PRO~ ~Thorn Spray~
+COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR112.SPL~ ~override/C0BDDS1.spl~
+READ_LONG 0x64 "abil_off"
+READ_SHORT 0x68 "abil_num"
+SET "delta" = 0
+FOR (index = 0; index < abil_num; index = index + 1) BEGIN
+WRITE_SHORT (%abil_off% + (0x28 * %index%) + 0x26) ~%IDPRO237%~
+END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 139 // display string
+ parameter1 = RESOLVE_STR_REF (~Cursed~)
+END
+SAY NAME1 ~Curse~
+SAY UNIDENTIFIED_DESC ~Curse
+(Conjuration/Summoning)
+
+Level: 1
+Sphere: All
+Range: Visual range of the caster
+Duration: 6 rounds
+Casting Time: 9
+Area of Effect: 15-ft. radius
+Saving Throw: None
+
+When uttering the Curse spell, the caster lowers the morale of enemy creatures and any Saving Throws and attack rolls they make by 1. At the instant the spell is completed, it affects all creatures in a 15-ft. radius centered on the point selected by the caster. Affected creatures leaving the area are still subject to the spell's effect; those entering the area after the casting is completed are not.~
+END
+// Beast Claw
+ACTION_IF FILE_EXISTS_IN_GAME ~SPPR219.SPL~ THEN BEGIN
+COPY_EXISTING ~SPPR219.spl~ ~override/C0BDDS2.spl~
+WRITE_SHORT 0x1C 1
+WRITE_LONG 0x34 2
+END
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~SPPR219.SPL~ THEN BEGIN
+COPY ~%MOD_FOLDER%/darkbloom/BGEE/IBCLAW.BAM~ ~override~
+COPY ~%MOD_FOLDER%/darkbloom/BGEE/BCLAW.ITM~ ~override~
+COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR219B.BAM~ ~override~
+COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR219C.BAM~ ~override~
+COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR219.spl~ ~override/C0BDDS2.spl~
+SAY NAME1 ~Beast Claw~
+SAY UNIDENTIFIED_DESC ~Beast Claw
+(Alteration)
+
+Level: 2
+Sphere: Combat
+Range: 0
+Duration: 1 turn
+Casting Time: 5
+Area of Effect: The caster
+Saving Throw: None
+
+This spell transforms the caster's arms into the claws of a mighty beast, giving the caster 18/72 Strength and the ability to rake an opponent for 2d4 (plus Strength bonus) points of slashing damage. The caster can attack twice per round with the beast claws, with a +2 bonus to hit.~
+END
+// Mold Touch
+ACTION_IF FILE_EXISTS_IN_GAME ~SPPR326.SPL~ THEN BEGIN
+COPY_EXISTING ~SPPR326.spl~ ~override/C0BDDS3.spl~
+WRITE_SHORT 0x1C 1
+WRITE_LONG 0x34 3
+END
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~SPPR326.SPL~ THEN BEGIN
+COPY ~%MOD_FOLDER%/darkbloom/BGEE/MTOUCHH.BAM~ ~override~
+COPY ~%MOD_FOLDER%/darkbloom/BGEE/MTOUCHH.VVC~ ~override~
+COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR326B.BAM~ ~override~
+COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR326C.BAM~ ~override~
+ADD_PROJECTILE ~%MOD_FOLDER%/darkbloom/BGEE/IDMOLD.PRO~ ~Thorn Spray~
+COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR326B.spl~ ~override~
+READ_LONG 0x64 "abil_off"
+READ_SHORT 0x68 "abil_num"
+SET "delta" = 0
+FOR (index = 0; index < abil_num; index = index + 1) BEGIN
+WRITE_SHORT (%abil_off% + (0x28 * %index%) + 0x26) ~%IDMOLD%~
+END
+COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR326.spl~ ~override/C0BDDS3.spl~
+SAY NAME1 ~Mold Touch~
+SAY UNIDENTIFIED_DESC ~Mold Touch
+(Alteration)
+
+Level: 3
+Sphere: Plant
+Range: Touch
+Duration: Special
+Casting Time: 6
+Area of Effect: 10-ft. radius
+Saving Throw: Special
+
+This spell infects the creature the caster touches with a rapidly spreading brown mold. If the infected creature fails a Save vs. Spell, the infection is severe and the creature takes magic damage as follows:
+
+1st round: 4d6 damage
+2nd round: 3d6 damage
+3rd round: 2d6 damage
+4th round: 1d6 damage
+
+If the Saving Throw is successful, the damage is reduced as follows:
+
+1st round: 2d6 damage
+2nd round: 1d6 damage
+3rd round: 1d6 damage
+
+Each round after the first, the nearest creature within 10 ft. of the victim must make a Save vs. Spell or be infected by the mold at full strength. This process continues until the mold fails to infect a suitable host in time. Creatures already under the effects of the mold cannot contract it again. The brown mold quickly dies once the spell expires.~
+END
+// Thorn Spray
+ACTION_IF FILE_EXISTS_IN_GAME ~SPPR427.SPL~ THEN BEGIN
+COPY_EXISTING ~SPPR427.spl~ ~override/C0BDDS4.spl~
+WRITE_SHORT 0x1C 1
+WRITE_LONG 0x34 4
+END
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~SPPR427.SPL~ THEN BEGIN
+COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR427B.BAM~ ~override~
+COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR427C.BAM~ ~override~
+COPY ~%MOD_FOLDER%/darkbloom/BGEE/tsprayt.BAM~ ~override~
+ADD_PROJECTILE ~%MOD_FOLDER%/darkbloom/BGEE/idpro303.PRO~ ~Thorn Spray~
+COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR427.spl~ ~override/C0BDDS4.spl~
+READ_LONG 0x64 "abil_off"
+READ_SHORT 0x68 "abil_num"
+SET "delta" = 0
+FOR (index = 0; index < abil_num; index = index + 1) BEGIN
+WRITE_SHORT (%abil_off% + (0x28 * %index%) + 0x26) ~%idpro303%~
+END
+SAY NAME1 ~Thorn Spray~
+SAY UNIDENTIFIED_DESC ~Thorn Spray
+(Alteration)
+
+Level: 4
+Sphere: Plant
+Range: 30 ft.
+Duration: Instant
+Casting Time: 3
+Area of Effect: 17-ft. cone with 90-deg. arc
+Saving Throw: 1/2
+
+By means of this spell, the caster can cause a spray of barbs, spikes, thorns, and spines to spring forth from <PRO_HISHER> hand. The thorn spray covers a 17-ft.-long cone, inflicting 2d10 points of piercing damage to all creatures within the area of effect, or 1d10 points of damage if a Save vs. Death is successful.~
+END
+// Insect Plague
+COPY_EXISTING ~SPPR517.spl~ ~override/C0BDDS5.spl~
+WRITE_SHORT 0x1C 1
+WRITE_LONG 0x34 5
+// Fire Seeds
+COPY_EXISTING ~SPPR606.spl~ ~override/C0BDDS6.spl~
+WRITE_SHORT 0x1C 1
+WRITE_LONG 0x34 6
+// Mist of Eldath
+ACTION_IF FILE_EXISTS_IN_GAME ~SPPR736.SPL~ THEN BEGIN
+COPY_EXISTING ~SPPR736.spl~ ~override/C0BDDS7.spl~
+WRITE_SHORT 0x1C 1
+WRITE_LONG 0x34 7
+END
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~SPPR736.SPL~ THEN BEGIN
+COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR736B.BAM~ ~override~
+COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR736C.BAM~ ~override~
+ADD_PROJECTILE ~%MOD_FOLDER%/darkbloom/BGEE/idpro307.PRO~ ~Mist of Eldath~
+COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR736.spl~ ~override/C0BDDS7.spl~
+READ_LONG 0x64 "abil_off"
+READ_SHORT 0x68 "abil_num"
+SET "delta" = 0
+FOR (index = 0; index < abil_num; index = index + 1) BEGIN
+WRITE_SHORT (%abil_off% + (0x28 * %index%) + 0x26) ~%idpro307%~
+END
+SAY NAME1 ~Mist of Eldath~
+SAY UNIDENTIFIED_DESC ~Mist of Eldath
+(Invocation)
+
+Level: 7
+Sphere: Elemental
+Range: Visual range of the caster
+Duration: Instant
+Casting Time: 9
+Area of Effect: 7-ft. radius
+Saving Throw: None
+
+This spell blankets the area of effect with a silver-blue mist—any creature within the mist will be cured of disease and poison and healed 25 Hit Points.~
+END

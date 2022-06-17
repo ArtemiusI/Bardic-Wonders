@@ -2,51 +2,41 @@
 
 COPY ~%MOD_FOLDER%/storm~ ~override~
 
-ADD_KIT ~C0SDRUM~
+COPY_EXISTING ~LUBA0.2DA~ ~OVERRIDE/LUC0SDRU.2DA~
+  REPLACE_TEXTUALLY ~AP_SPCL920~ ~AP_C0SDRUHL~
 
+ACTION_IF NOT MOD_IS_INSTALLED ~RR/SETUP-RR.TP2~ ~0~ BEGIN
+ADD_KIT ~C0SDRUM~
  // appended to CLASWEAP.2da
  ~C0SDRUM		1           1           1           1           1           1           1           1~
-
  // appended column-wise to WEAPPROF.2da
  ~C0SDRUM		0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
-    
  // appended to ABCLASRQ.2da
  ~C0SDRUM				0      15	0	9	0	15~
-
  // appended to ABCLSMOD.2da
  ~C0SDRUM				0	0	0	0	0	0~
-
  // appended to ABDCDSRQ.2da
  ~C0SDRUM                		0       0       0       0       0       0~
-
  // appended to ABDCSCRQ.2da
  ~C0SDRUM                 	0       0       0       0       0		0~
-
  // appended to ALIGNMNT.2da
  ~C0SDRUM                  	0       1       0       1       1	1       0       1       0~
-
  // appended to DUALCLAS.2da
  ~C0SDRUM                  	0       0       0       0       0       0~
-
  // path to your CLAB-style 2da file 
  ~%MOD_FOLDER%/storm/C0SDRUM.2da~
-
  // PC races and classes allowed to use this kit, from KITTABLE.2da
  ~K_B_H K_B_E K_B_HE K_B_HL K_B_G K_B_D K_B_HO~
-
  // usability flags, added to the end of the KITLIST.2da entry
  ~0x00020000     5~
-
  // HLA table to use; see LUABBR.2da
  ~C0SDRU~
-
  // list of starting equipment for PCs starting in ToB. Appended column-wise to 25STWEAP.2da
  ~* * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
-
  // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da
   SAY ~storm drummer~
   SAY ~Storm Drummer~
-  SAY ~STORM DRUMMER: Storm Drummers are particularly powerful bards whose music has the power to summon lightning storms. Their drums and booming voices, loud as thunder, can unnerve both enemies and allies alike. However, their unique skills have led them to shun metal weapons and armor in order to optimize their abilities.
+  SAY ~STORM DRUMMER: Storm Drummers are particularly powerful bards whose music has the power to summon lightning storms. Their drums and booming voices, loud as thunder, can unnerve both enemies and allies alike. However, their unique training has led them to shun metal weapons and armor in order to optimize their abilities.
 
 ADVANTAGES:
 
@@ -82,6 +72,77 @@ LAF fl#add_kit_ee
     kit_name = C0SDRUM
 	clascolr = ~196 30 96 107 18~
 	thiefscl = ~50 0 0 0 0 0 0 0~
+END
+END
+
+ACTION_IF MOD_IS_INSTALLED ~RR/SETUP-RR.TP2~ ~0~ BEGIN
+ADD_KIT ~C0SDRUM~
+ // appended to CLASWEAP.2da
+ ~C0SDRUM		1           1           1           1           1           1           1           1~
+ // appended column-wise to WEAPPROF.2da
+ ~C0SDRUM		0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 1 1 1 1 1 1 1 1 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+ // appended to ABCLASRQ.2da
+ ~C0SDRUM				0      15	0	9	0	15~
+ // appended to ABCLSMOD.2da
+ ~C0SDRUM				0	0	0	0	0	0~
+ // appended to ABDCDSRQ.2da
+ ~C0SDRUM                		0       0       0       0       0       0~
+ // appended to ABDCSCRQ.2da
+ ~C0SDRUM                 	0       0       0       0       0		0~
+ // appended to ALIGNMNT.2da
+ ~C0SDRUM                  	0       1       0       1       1	1       0       1       0~
+ // appended to DUALCLAS.2da
+ ~C0SDRUM                  	0       0       0       0       0       0~
+ // path to your CLAB-style 2da file 
+ ~%MOD_FOLDER%/storm/C0SDRUM.2da~
+ // PC races and classes allowed to use this kit, from KITTABLE.2da
+ ~K_B_H K_B_E K_B_HE K_B_HL K_B_G K_B_D K_B_HO~
+ // usability flags, added to the end of the KITLIST.2da entry
+ ~0x00020000     5~
+ // HLA table to use; see LUABBR.2da
+ ~C0SDRU~
+ // list of starting equipment for PCs starting in ToB. Appended column-wise to 25STWEAP.2da
+ ~* * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
+ // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da
+  SAY ~storm drummer~
+  SAY ~Storm Drummer~
+  SAY ~STORM DRUMMER: Storm Drummers are particularly powerful bards whose music has the power to summon lightning storms. Their drums and booming voices, loud as thunder, can unnerve both enemies and allies alike. However, their unique training has led them to shun metal weapons and armor in order to optimize their abilities.
+
+ADVANTAGES:
+
+– +20% bonus to electrical damage dealt from all sources.
+– +10% resistance to electrical damage. Gains an additional 5% every three levels.
+– The Storm Drummer's Bard Song, "Thunder and Lightning", does not affect allies. Instead, it has a chance of causing bolts of lightning to strike down from the sky dealing electrical damage to all nearby enemies.
+	1st level: 20% chance of dealing 2d6 electrical damage
+	4th level: 25% chance of dealing 2d8 electrical damage
+	7th level: 30% chance of dealing 2d10 electrical damage
+	10th level: 35% chance of dealing 3d8 electrical damage
+	13th level: 40% chance of dealing 3d10 electrical damage
+	16th level: 45% chance of dealing 4d8 electrical damage
+	19th level: 50% chance of dealing 4d10 electrical damage
+
+	Due to the song's magical nature, it can be used indoors.
+
+– From 5th level onwards, may use the Storm Shield ability once per day. Extra uses are gained at 10th and 15th level.
+
+STORM SHIELD: This spell lasts 1 round per level of the caster. It protects the caster completely from lightning, fire, cold, and normal missiles.
+
+– From 10th level onwards, may use the Thunderclap ability once per day.
+
+THUNDERCLAP: The Storm Drummer claps <PRO_HISHER> hands together, causing a deafeningly loud blast of sound. All creatures around the Storm Drummer must save vs. spells at -4 or be stunned for one turn. Even if the save is made successfully, all targets are deafened, suffering a 50% chance to miscast any spells. Only the caster is immune to the spell's effects.
+
+DISADVANTAGES:
+– May not use any metal weapons.
+– May not wear armor heavier than studded leather.
+– Only has one-half normal Lore value.
+– Only has one-half normal Pick Pockets percentage.~
+
+LAF fl#add_kit_ee
+  STR_VAR
+    kit_name = C0SDRUM
+	clascolr = ~196 30 96 107 18~
+	thiefscl = ~50 0 0 0 0 0 0 0~
+END
 END
 
 COPY ~%MOD_FOLDER%/storm/c0sdrum3.spl~ ~override~
