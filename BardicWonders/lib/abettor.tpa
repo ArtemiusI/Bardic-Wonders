@@ -1,8 +1,13 @@
 COPY ~%MOD_FOLDER%/abettor~ ~override~
 
 COPY_EXISTING ~LUBA0.2DA~ ~OVERRIDE/LUC0ABET.2DA~
-  REPLACE_TEXTUALLY ~AP_SPCL920     *          *         1         99         1            *            *             *~ ~AP_C0ABETT5 *          *          1          99         1          *           *          *          ~
-  REPLACE_TEXTUALLY ~GA_SPCL921     *          *         1         99         1            *            *             *~ ~AP_C0ABETHL *          *          1          99         1          AP_C0ABETT5 *          *          ~
+REPLACE_TEXTUALLY ~AP_SPCL920~ ~*~
+REPLACE_TEXTUALLY ~GA_SPCL921~ ~*~
+REPLACE_TEXTUALLY ~ABILITY       ICON        STRREF    MIN_LEV   MAX_LEVEL  NUM_ALLOWED  PREREQUISITE EXCLUDED_BY   ALIGNMENT_RESTRICT~
+~ABILITY       ICON        STRREF    MIN_LEV   MAX_LEVEL  NUM_ALLOWED  PREREQUISITE EXCLUDED_BY   ALIGNMENT_RESTRICT
+X1      AP_C0ABETT5     *          *         1         99         1            *            *             *
+X2      AP_C0ABETHL     *          *         1         99         1            AP_C0ABETT5            *             *
+X3      GA_SPCL915      *          *         1         99         1            *            *             *~
 
 ACTION_IF NOT MOD_IS_INSTALLED ~RR/SETUP-RR.TP2~ ~0~ BEGIN
 ADD_KIT ~C0ABETT~
@@ -67,6 +72,9 @@ LAF fl#add_kit_ee
 	clascolr = ~27 185 183 83 21~
 END
 END
+APPEND ~backstab.2da~ ~C0ABETT 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 22 2 2 2 2 2 2 2 2 22 2 2 2 2 2 2 2 2 2 2~
+APPEND ~sneakatt.2da~ ~C0ABETT 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 5 5 5 5 5 5 5 5 6~
+APPEND ~crippstr.2da~ ~C0ABETT 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4~
 
 ACTION_IF MOD_IS_INSTALLED ~RR/SETUP-RR.TP2~ ~0~ BEGIN
 ADD_KIT ~C0ABETT~

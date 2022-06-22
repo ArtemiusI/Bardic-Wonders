@@ -1,6 +1,20 @@
 COPY ~%MOD_FOLDER%/Skald/2da~ ~override~
 COPY ~%MOD_FOLDER%/Skald/spells~ ~override~
 
+COPY_EXISTING ~luabbr.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
+	  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~SKALD~ BEGIN
+	    SET patch_row = %row%
+		SET_2DA_ENTRY (%patch_row%) 1 cols ~BA3~
+	  END
+	END
+	
+COPY_EXISTING ~LUBA0.2DA~ ~OVERRIDE/LUBA3.2DA~
+  REPLACE_TEXTUALLY ~AP_SPCL920~ ~AP_C0SKD02~
+
 LAF ~GET_KIT_STRREF~ STR_VAR kit_name = ~SKALD~ RET kit_strref END
 STRING_SET_EVALUATE kit_strref ~SKALD: This nordic Bard is also a warrior of great strength, skill, and virtue; <PRO_HISHER> songs are inspiring sagas of battle and valor, and the Skald devotes <PRO_HISHER> life to those pursuits.
 

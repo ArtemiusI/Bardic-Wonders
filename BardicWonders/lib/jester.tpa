@@ -1,6 +1,20 @@
 COPY ~%MOD_FOLDER%/Jester/2da~ ~override~
 COPY ~%MOD_FOLDER%/Jester/spells~ ~override~
 
+COPY_EXISTING ~luabbr.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
+	  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~JESTER~ BEGIN
+	    SET patch_row = %row%
+		SET_2DA_ENTRY (%patch_row%) 1 cols ~BA2~
+	  END
+	END
+	
+COPY_EXISTING ~LUBA0.2DA~ ~OVERRIDE/LUBA2.2DA~
+  REPLACE_TEXTUALLY ~AP_SPCL920~ ~AP_C0JES03~
+
 LAF ~GET_KIT_STRREF~ STR_VAR kit_name = ~JESTER~ RET kit_strref END
 STRING_SET_EVALUATE kit_strref ~JESTER: This Bard is well versed in the arts of ridicule and hilarity, and uses <PRO_HISHER> abilities to distract and confuse <PRO_HISHER> enemies, cavorting madly during combat. Do not mistake <PRO_HIMHER> for a true fool, however, as <PRO_HESHE> can also be quite deadly.
 

@@ -46,17 +46,18 @@ GROUP ~Kits~
 INCLUDE ~%MOD_FOLDER%/LIB/deathsinger.tpa~
 
 BEGIN ~Bardic Wonders: Items~
+GROUP ~Tweaks & Additions~
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ ~This component must be played on BG:EE or BG2:EE.~
 INCLUDE ~%MOD_FOLDER%/LIB/itempack.tpa~
 
 BEGIN ~Bardic Wonders: Inspirations~
-GROUP ~Tweaks~
+GROUP ~Tweaks & Additions~
 INCLUDE ~%MOD_FOLDER%/LIB/inspirations.tpa~
 
 BEGIN ~Bardic Wonders: Armored Casting for Bards~
-GROUP ~Tweaks~
+GROUP ~Tweaks & Additions~
 INCLUDE ~%MOD_FOLDER%/LIB/armored_casting.tpa~
 
 BEGIN ~Bardic Wonders: Bard Song Mechanics Tweak~
-GROUP ~Tweaks~
+GROUP ~Tweaks & Additions~
 INCLUDE ~%MOD_FOLDER%/LIB/bardsongtweaks.tpa~
