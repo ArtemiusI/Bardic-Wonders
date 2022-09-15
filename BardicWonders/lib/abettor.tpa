@@ -72,7 +72,7 @@ LAF fl#add_kit_ee
 	clascolr = ~27 185 183 83 21~
 END
 END
-APPEND ~backstab.2da~ ~C0ABETT 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 22 2 2 2 2 2 2 2 2 22 2 2 2 2 2 2 2 2 2 2~
+APPEND ~backstab.2da~ ~C0ABETT 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2~
 APPEND ~sneakatt.2da~ ~C0ABETT 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 5 5 5 5 5 5 5 5 6~
 APPEND ~crippstr.2da~ ~C0ABETT 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4~
 
