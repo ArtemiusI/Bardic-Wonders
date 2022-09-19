@@ -128,3 +128,98 @@ OUTER_PATCH_SAVE bard_description ~%bard_description%~ BEGIN
 END
 
 STRING_SET_EVALUATE ~%bard_strref%~ ~%bard_description%~
+
+// NIGHTSINGER - DARK INSPIRATIONS
+
+ACTION_IF FILE_EXISTS_IN_GAME ~C0SABARD.2DA~ BEGIN
+COPY ~%MOD_FOLDER%/Inspirations/nightsinger~ ~OVERRIDE~
+COPY_EXISTING ~C0SABARD.2DA~ OVERRIDE
+APPEND ~C0SABARD.2DA~ ~INSPIRATIONS     GA_C0BDS00  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****~
+
+COPY_EXISTING C0BDS00.SPL OVERRIDE
+SAY NAME1 ~Dark Inspiration~
+SAY UNIDENTIFIED_DESC ~The Nightsinger's presence inspires their companions, providing various benefits that persist so long as they are within visual range of the Nightsinger. Only one inspiration may be active at any given time.
+
+Inspire Audacity (1st level): Allies gain +5% to all damage dealt. Bonuses increase to +10% at 8th level, +15% at 15th level and +20% at 22nd level.
+
+Inspire Ambition (3rd level): Allies gain +2 to Casting Level and +10% to all Thieving Skills. Bonuses increase to +4 and +20% respectively at 10th level and +8 and +30% respectively at 17th level.
+
+Inspire Preservation (6th level): Allies gain +3% Magic Resistance. Bonuses increase to +6% at 10th level, +9% at 15th level and +12% at 20th level.
+
+Inspire Vigor (10th level): Allies regenerate for 1 hit point per round. Regeneration increases to 2 hit points at 17th level and 3 hit points at 24th level.
+
+Inspire Wrath (12th level): Allies gain +1 to Backstab and Critical Hit Modifiers. Bonuses increase to +2 at 19th level and +3 at 26th level.
+
+Inspire Dominance (20th level): Allies gain +4 to Luck modifier for attack and damage rolls. Bonuses increase to +10 at 40th level.~
+
+COPY_EXISTING C0BDS00I.BAM ~OVERRIDE/C0BDS0IA.BAM~
+COPY_EXISTING C0BDS00I.BAM ~OVERRIDE/C0BDS0IB.BAM~
+COPY_EXISTING C0BDS00I.BAM ~OVERRIDE/C0BDS0IC.BAM~
+COPY_EXISTING C0BDS00I.BAM ~OVERRIDE/C0BDS0ID.BAM~
+COPY_EXISTING C0BDS00I.BAM ~OVERRIDE/C0BDS0IE.BAM~
+COPY_EXISTING C0BDS00I.BAM ~OVERRIDE/C0BDS0IF.BAM~
+
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Inspire Audacity~) STR_VAR bam_file = C0BDS0IA RET C0BDS0IA = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Inspire Ambition~) STR_VAR bam_file = C0BDS0IB RET C0BDS0IB = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Inspire Preservation~) STR_VAR bam_file = C0BDS0IC RET C0BDS0IC = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Inspire Vigor~) STR_VAR bam_file = C0BDS0ID RET C0BDS0ID = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Inspire Wrath~) STR_VAR bam_file = C0BDS0IE RET C0BDS0IE = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Inspire Dominance~) STR_VAR bam_file = C0BDS0IF RET C0BDS0IF = icon END
+
+COPY_EXISTING C0BDS01.SPL OVERRIDE
+SAY NAME1 ~Inspire Audacity~
+      LPF ADD_SPELL_EFFECT
+      INT_VAR
+	    opcode = 142
+	    target = 2
+		timing = 9
+        parameter2 = C0BDS0IA
+      END
+COPY_EXISTING C0BDS02.SPL OVERRIDE
+SAY NAME1 ~Inspire Ambition~
+      LPF ADD_SPELL_EFFECT
+      INT_VAR
+	    opcode = 142
+	    target = 2
+		timing = 9
+        parameter2 = C0BDS0IB
+      END
+COPY_EXISTING C0BDS03.SPL OVERRIDE
+SAY NAME1 ~Inspire Preservation~
+      LPF ADD_SPELL_EFFECT
+      INT_VAR
+	    opcode = 142
+	    target = 2
+		timing = 9
+        parameter2 = C0BDS0IC
+      END
+COPY_EXISTING C0BDS04.SPL OVERRIDE
+SAY NAME1 ~Inspire Vigor~
+      LPF ADD_SPELL_EFFECT
+      INT_VAR
+	    opcode = 142
+	    target = 2
+		timing = 9
+        parameter2 = C0BDS0ID
+      END
+COPY_EXISTING C0BDS05.SPL OVERRIDE
+SAY NAME1 ~Inspire Wrath~
+      LPF ADD_SPELL_EFFECT
+      INT_VAR
+	    opcode = 142
+	    target = 2
+		timing = 9
+        parameter2 = C0BDS0IE
+      END
+COPY_EXISTING C0BDS06.SPL OVERRIDE
+SAY NAME1 ~Inspire Dominance~
+      LPF ADD_SPELL_EFFECT
+      INT_VAR
+	    opcode = 142
+	    target = 2
+		timing = 9
+        parameter2 = C0BDS0IF
+      END
+
+END
+

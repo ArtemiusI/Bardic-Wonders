@@ -376,6 +376,9 @@ Equipped abilities:
 – Intelligence: +2
 – Can memorize 2 extra 1st and 2nd level spells.
 
+Requires:
+  14 Wisdom
+
 Weight: 0~
 
 ACTION_IF FILE_EXISTS_IN_GAME ~tem2304.sto~ THEN BEGIN
