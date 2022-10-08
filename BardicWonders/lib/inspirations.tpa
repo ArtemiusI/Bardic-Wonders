@@ -183,7 +183,7 @@ OUTER_SPRINT new_bard ~– May use Bardic Inspirations. Inspirations provide var
 // NIGHTSINGER - DARK INSPIRATIONS
 
 ACTION_IF FILE_EXISTS_IN_GAME ~C0SABARD.2DA~ BEGIN
-COPY ~%MOD_FOLDER/inspirations/nightsinger~ OVERRIDE
+COPY ~%MOD_FOLDER%/inspirations/nightsinger~ OVERRIDE
 COPY_EXISTING ~C0SABARD.2DA~ OVERRIDE
   LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = GA_C0BDS00 END // Inspirations
 
