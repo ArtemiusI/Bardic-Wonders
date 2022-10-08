@@ -32,7 +32,7 @@ ADD_KIT ~C0DANCE~
  // HLA table to use; see LUABBR.2da
  ~C0DANC~
  // list of starting equipment for PCs starting in ToB. Appended column-wise to 25STWEAP.2da
- ~* * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
+ ~* * * BAG30 RING06 RING34 CLCK02 BOOT01 AMUL19 BRAC16 BELT10 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 DAGG12 SW1H28 STAF08~
  // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da
   SAY ~dancer~
   SAY ~Dancer~
@@ -50,7 +50,7 @@ ADVANTAGES:
 	16th level: +4 to hit and damage, +1 attack per round, dancer gains +8 to Armor Class
 	21st level: +5 to hit and damage, +1 attack per round, dancer gains +10 to Armor Class
 
-– From 4th level onwards, may use the Adrenaline Rush ability once per day.
+– From 4th level onwards, may use the Adrenaline Rush ability once per day. Gains an additional use at 8th and 12th level.
 
 ADRENALINE RUSH: The dancer temporarily gains a huge boost in power for three rounds, gaining +1 to hit and damage for every four levels. Attacks per round are also doubled. However, <PRO_HISHER> Armor Class is reduced by four points and <PRO_HESHE> is unable to use <PRO_HISHER> Bard Song, and after the duration ends, <PRO_HESHE> becomes winded, suffering a huge penalty to fatigue and inability to use <PRO_HISHER> Bard Song for one turn. From 18th level onwards, the dancer is no longer fatigued after the effect expires.
 

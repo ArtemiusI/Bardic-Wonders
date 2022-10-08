@@ -5,6 +5,7 @@ ALWAYS
   INCLUDE ~%MOD_FOLDER%/lib/fl#add_kit_ee.tpa~
   INCLUDE ~%MOD_FOLDER%/lib/kit_strref.tpa~
   INCLUDE ~%MOD_FOLDER%/lib/alter_script.tpa~
+  INCLUDE ~%MOD_FOLDER%/lib/functions.tph~
 END
 LANGUAGE ~English~
          ~English~
@@ -44,6 +45,10 @@ INCLUDE ~%MOD_FOLDER%/LIB/troubadour.tpa~
 BEGIN ~Bardic Wonders: Deathsinger Kit~
 GROUP ~Kits~
 INCLUDE ~%MOD_FOLDER%/LIB/deathsinger.tpa~
+
+BEGIN ~Bardic Wonders: Strategist Kit~
+GROUP ~Kits~
+INCLUDE ~%MOD_FOLDER%/LIB/strategist.tpa~
 
 BEGIN ~Bardic Wonders: Items~
 GROUP ~Tweaks & Additions~

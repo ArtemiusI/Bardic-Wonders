@@ -1,0 +1,234 @@
+COPY ~%MOD_FOLDER%/strategist/2das~ ~override~
+COPY ~%MOD_FOLDER%/strategist/spells~ ~override~
+/*
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~C0A_A01.SPL~ BEGIN
+INCLUDE ~%MOD_FOLDER%/LIB/ANALYZE.TPA~
+END
+*/
+ADD_KIT ~C0_STRATEGIST~
+
+ // appended to CLASWEAP.2da
+ ~C0_STRATEGIST		1           1           1           1           1           1           1           1~
+
+ // appended column-wise to WEAPPROF.2da
+//11                                    		T   S           F   Q             S S
+//10                                   			W   C           L   U             W I
+//9                        			    B L S   O   I   W       A   A             O N
+//8                        				A O H   H   M   A       I   R C   S       R G
+//7         			L S           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6         			_ _       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5         			S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4         			W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3         			O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2        				R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1      	  			D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+ ~C0_STRATEGIST			2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+    
+ // appended to ABCLASRQ.2da
+ ~C0_STRATEGIST				0	12	0	16	0	15~
+
+ // appended to ABCLSMOD.2da
+ ~C0_STRATEGIST				0	0	0	0	0	0~
+
+ // appended to ABDCDSRQ.2da
+ ~C0_STRATEGIST				0	0	0	0	0	0~
+
+ // appended to ABDCSCRQ.2da
+ ~C0_STRATEGIST				0	0	0	0	0	0~
+
+ // appended to ALIGNMNT.2da
+ ~C0_STRATEGIST				1	1	1	1	1	1	1	1	1~
+
+ // appended to DUALCLAS.2da
+ ~C0_STRATEGIST				0	0	0	0	0	0~
+
+ // path to your CLAB-style 2da file 
+ ~override/C0STRATE.2da~
+
+ // PC races and classes allowed to use this kit, from KITTABLE.2da
+ ~K_B_H K_B_E K_B_HE K_B_HL K_B_G K_B_D K_B_HO~
+
+ // usability flags, added to the end of the KITLIST.2da entry
+ ~0x00004000     5~
+
+ // HLA table to use; see LUABBR.2da
+ ~C0STRA~
+
+ // list of starting equipment for PCs starting in ToB. Appended column-wise to 25STWEAP.2da
+ ~CHAN12 * * BAG30 RING06 RING34 CLCK02 BOOT01 AMUL19 BRAC16 BELT10 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 DAGG12 SW1H28 STAF08~
+
+ // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da
+  SAY ~strategist~
+  SAY ~Strategist~
+  SAY ~STRATEGIST: Masters of battlefield control, strategists regard combat the way most people would consider a puzzle to be solved. Relying on guile and cunning to outwit their enemies and best aid their allies, the greatest strength of the strategist is in their tactical thinking. They are the champions of plots and ploys, of gambits and fianchettos, of pronged attacks and of victories won through sacrifice. With planning and preparation they are granted unparalleled versatility on the battlefield, able to turn even certain failure to success.
+
+Advantages:
+– May Specialize (two slots) in any weapon.
+– Tactical Coordination: The strategist passively grants all allies within visual range (excluding <PRO_HIMHER>self) a +1 bonus to hit, which increases to +2 at 19 Intelligence, +3 at 22 Intelligence and +4 at 25 Intelligence.
+– Instead of a regular Bard Song, the Strategist may use Battle Tactics, granting all allies a +2 bonus to their minimum damage modifier, increasing to +4 at 10th level and +6 at 15th level. From 8th level onwards, Battle Tactics also grants the strategist's Combat Prowess bonus to all non-warrior allies.
+
+– May use the Analyze ability at will.
+
+ANALYZE: With this ability, the user carefully observes the target and identifies their strengths and weaknesses, revealing their Hit Die, THAC0, Saving Throws, Magic Resistance, Damage Resistance and vulnerability to Poison and Backstabs. This ability may be used an unlimited number of times.
+
+– 8th level: Combat Prowess: The strategist gains an additional half attack per round, which increases to a full attack per round at 16th level.
+– 9th level: May use Tactical Casting once per day.
+
+TACTICAL CASTING: The strategist is a versatile party member capable of adapting to the group's needs. This ability may be activated while outside of combat to change to Tactical Casting mode, granting the strategist two bonus spell slots per level, but also removes their own Combat Prowess bonus until the effect is deactivated via using the ability again.
+
+– 10th level: Ambush Awareness: The strategist permanently becomes immune to backstabs and gains an innate 10% chance to detect traps around them.
+– 14th level: May use the Combination Tactics ability three times per day.
+
+COMBINATION TACTICS: The strategist coordinates their attacks with a targeted ally, granting <PRO_HIMHER>self and the ally a +4 bonus to movement rate, +2 to critical hit rate and one bonus attack per round for a number of seconds equal to the individual target's Intelligence, with a minimum of 12 seconds. Combination Tactics will have no effect if not used on an ally.
+
+– 16th level: Gains the Counterattack Gambit passive effect.
+
+COUNTERATTACK GAMBIT: When the strategist falls below half of their maximum hit points, they grant the closest ally a +2 bonus to their melee critical hit modifier. The ally will also never critically miss while under the effects.
+
+– From 20th level onwards, may use the Checkmate ability once per day.
+
+CHECKMATE: The strategist changes the tides of battle with a spectacular tactical maneuver, forcing all enemies within their visual range to make a Saving Throw vs. Death (-1 modifier per point of the strategist's Intelligence above 16) or become Stunned for two rounds, while all of the strategist's allies gain the effects of Improved Haste for the same duration. Enemy creatures with Intelligence equal to or greater than the strategist are unaffected by the Stun effect.
+	
+Disadvantages:
+– May cast one fewer spell per level per day.
+– Only has one half the normal Pick Pockets skill.~
+
+LAF fl#add_kit_ee
+  STR_VAR
+    kit_name = C0_STRATEGIST
+	clascolr = ~6 195 83 21 28~
+	thiefscl = ~50 0 0 0 0 0 0 0~
+END
+
+// INTELLIGENCE
+APPEND ~splprot.2da~ ~C0HTINT%TAB%38%TAB%-1%TAB%1~ UNLESS ~C0HTINT~
+COPY_EXISTING ~splprot.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 0 ~stat~ // read column value
+	  PATCH_IF ~%stat%~ STRING_EQUAL_CASE ~C0HTINT~ BEGIN
+	    SET C0HTINT = %row%
+	  END
+	END
+
+DEFINE_ACTION_FUNCTION cd_new_portrait_icon
+  INT_VAR string = 0
+  STR_VAR bam_file = "****"
+  RET     icon
+  BEGIN
+
+  COPY_EXISTING ~statdesc.2da~ ~override~
+    COUNT_2DA_ROWS 3 count
+    READ_2DA_ENTRY (count - 1) 0 3 icon
+    SET icon += 1
+
+  APPEND ~statdesc.2da~ ~%icon% %string% %bam_file%~ UNLESS ~%bam_file%~
+
+END
+
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Battle Tactics~) STR_VAR bam_file = C0STRASI RET C0STRASI = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Combination Tactics~) STR_VAR bam_file = C0STRA4I RET C0STRA4I = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Counterattack Gambit~) STR_VAR bam_file = C0STRA5I RET C0STRA5I = icon END
+
+ADD_PROJECTILE ~%MOD_FOLDER%/strategist/spells/c0strapr.PRO~ ~C0 STRATEGIST PROJECTILE~
+  
+COPY_EXISTING ~C0STRASO.SPL~ OVERRIDE
+LPF ALTER_EFFECT INT_VAR match_opcode = 318 match_parameter2 = 109 parameter1 = IDS_OF_SYMBOL (~KIT~ ~C0_STRATEGIST~) END
+LPF ALTER_EFFECT INT_VAR match_opcode = 142 parameter2 = C0STRASI END
+COPY_EXISTING ~C0STRASH.SPL~ OVERRIDE
+LPF ALTER_EFFECT INT_VAR match_opcode = 318 match_parameter2 = 109 parameter1 = IDS_OF_SYMBOL (~KIT~ ~C0_STRATEGIST~) END
+LPF ALTER_EFFECT INT_VAR match_opcode = 142 parameter2 = C0STRASI END
+
+COPY_EXISTING ~C0STRA0A.SPL~ OVERRIDE
+LPF ALTER_EFFECT INT_VAR match_opcode = 326 match_parameter2 = 0 parameter2 = C0HTINT END
+
+COPY_EXISTING ~C0STRA2.SPL~ OVERRIDE
+SAY NAME1 ~Tactical Casting~
+SAY UNIDENTIFIED_DESC ~Tactical Casting
+The strategist is a versatile party member capable of adapting to the group's needs. This ability may be activated while outside of combat to change to Tactical Casting mode, removing the strategist's penalties to spellcasting and grants an additional spell slot per level, but also removes their own Combat Prowess bonus until the effect is deactivated via using the ability again.~
+
+COPY_EXISTING ~C0STRA4.SPL~ OVERRIDE
+SAY NAME1 ~Combination Tactics~
+SAY UNIDENTIFIED_DESC ~Combination Tactics
+The strategist coordinates their attacks with a targeted ally, granting <PRO_HIMHER>self and the ally a +4 bonus to movement rate, +2 to critical hit rate and one bonus attack per round for a number of seconds equal to their Intelligence. Combination Tactics will have no effect if not used on an ally.~
+
+COPY_EXISTING ~C0STRA4A.SPL~ OVERRIDE
+LPF ALTER_EFFECT INT_VAR match_opcode = 326 match_parameter2 = 0 parameter2 = C0HTINT END
+
+COPY_EXISTING ~C0STRA4B.SPL~ OVERRIDE
+LPF ALTER_EFFECT INT_VAR match_opcode = 142 parameter2 = C0STRA4I END
+COPY_EXISTING ~C0STRA4B.SPL~ ~OVERRIDE/C0STRA4C.SPL~
+LPF ALTER_EFFECT INT_VAR match_duration = 12 duration = 13 END
+COPY_EXISTING ~C0STRA4B.SPL~ ~OVERRIDE/C0STRA4D.SPL~
+LPF ALTER_EFFECT INT_VAR match_duration = 12 duration = 14 END
+COPY_EXISTING ~C0STRA4B.SPL~ ~OVERRIDE/C0STRA4E.SPL~
+LPF ALTER_EFFECT INT_VAR match_duration = 12 duration = 15 END
+COPY_EXISTING ~C0STRA4B.SPL~ ~OVERRIDE/C0STRA4F.SPL~
+LPF ALTER_EFFECT INT_VAR match_duration = 12 duration = 16 END
+COPY_EXISTING ~C0STRA4B.SPL~ ~OVERRIDE/C0STRA4G.SPL~
+LPF ALTER_EFFECT INT_VAR match_duration = 12 duration = 17 END
+COPY_EXISTING ~C0STRA4B.SPL~ ~OVERRIDE/C0STRA4H.SPL~
+LPF ALTER_EFFECT INT_VAR match_duration = 12 duration = 18 END
+COPY_EXISTING ~C0STRA4B.SPL~ ~OVERRIDE/C0STRA4I.SPL~
+LPF ALTER_EFFECT INT_VAR match_duration = 12 duration = 19 END
+COPY_EXISTING ~C0STRA4B.SPL~ ~OVERRIDE/C0STRA4J.SPL~
+LPF ALTER_EFFECT INT_VAR match_duration = 12 duration = 20 END
+COPY_EXISTING ~C0STRA4B.SPL~ ~OVERRIDE/C0STRA4K.SPL~
+LPF ALTER_EFFECT INT_VAR match_duration = 12 duration = 21 END
+COPY_EXISTING ~C0STRA4B.SPL~ ~OVERRIDE/C0STRA4L.SPL~
+LPF ALTER_EFFECT INT_VAR match_duration = 12 duration = 22 END
+COPY_EXISTING ~C0STRA4B.SPL~ ~OVERRIDE/C0STRA4M.SPL~
+LPF ALTER_EFFECT INT_VAR match_duration = 12 duration = 23 END
+COPY_EXISTING ~C0STRA4B.SPL~ ~OVERRIDE/C0STRA4N.SPL~
+LPF ALTER_EFFECT INT_VAR match_duration = 12 duration = 24 END
+COPY_EXISTING ~C0STRA4B.SPL~ ~OVERRIDE/C0STRA4O.SPL~
+LPF ALTER_EFFECT INT_VAR match_duration = 12 duration = 25 END
+
+COPY_EXISTING ~C0STRA5A.SPL~ OVERRIDE
+  LPF ALTER_SPELL_HEADER INT_VAR projectile = c0strapr END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 142 parameter2 = C0STRA5I END
+
+COPY_EXISTING ~C0STRA6.SPL~ OVERRIDE
+SAY NAME1 ~Checkmate~
+SAY UNIDENTIFIED_DESC ~Checkmate
+The strategist changes the tides of battle with a spectacular tactical maneuver, forcing all enemies within their visual range to make a Saving Throw vs. Death (-1 modifier per point of the strategist's Intelligence above 16) or become Stunned for one round, while all of the strategist's allies gain the effects of Improved Haste for the same duration. Enemy creatures with Intelligence equal to or greater than the strategist are unaffected by the Stun effect.~
+LPF ALTER_EFFECT INT_VAR match_opcode = 326 match_parameter2 = 0 parameter2 = C0HTINT END
+
+COPY_EXISTING ~C0STRA6A.SPL~ ~OVERRIDE/C0STRA6B.SPL~
+LPF ALTER_EFFECT INT_VAR match_opcode = 324 parameter1 = 17 STR_VAR resource = C0STRA6B END
+LPF ALTER_EFFECT INT_VAR match_savebonus = 0 savebonus = (0 - 1) END
+COPY_EXISTING ~C0STRA6A.SPL~ ~OVERRIDE/C0STRA6C.SPL~
+LPF ALTER_EFFECT INT_VAR match_opcode = 324 parameter1 = 18 STR_VAR resource = C0STRA6C END
+LPF ALTER_EFFECT INT_VAR match_savebonus = 0 savebonus = (0 - 2) END
+COPY_EXISTING ~C0STRA6A.SPL~ ~OVERRIDE/C0STRA6D.SPL~
+LPF ALTER_EFFECT INT_VAR match_opcode = 324 parameter1 = 19 STR_VAR resource = C0STRA6D END
+LPF ALTER_EFFECT INT_VAR match_savebonus = 0 savebonus = (0 - 3) END
+COPY_EXISTING ~C0STRA6A.SPL~ ~OVERRIDE/C0STRA6E.SPL~
+LPF ALTER_EFFECT INT_VAR match_opcode = 324 parameter1 = 20 STR_VAR resource = C0STRA6E END
+LPF ALTER_EFFECT INT_VAR match_savebonus = 0 savebonus = (0 - 4) END
+COPY_EXISTING ~C0STRA6A.SPL~ ~OVERRIDE/C0STRA6F.SPL~
+LPF ALTER_EFFECT INT_VAR match_opcode = 324 parameter1 = 21 STR_VAR resource = C0STRA6F END
+LPF ALTER_EFFECT INT_VAR match_savebonus = 0 savebonus = (0 - 5) END
+COPY_EXISTING ~C0STRA6A.SPL~ ~OVERRIDE/C0STRA6G.SPL~
+LPF ALTER_EFFECT INT_VAR match_opcode = 324 parameter1 = 22 STR_VAR resource = C0STRA6G END
+LPF ALTER_EFFECT INT_VAR match_savebonus = 0 savebonus = (0 - 6) END
+COPY_EXISTING ~C0STRA6A.SPL~ ~OVERRIDE/C0STRA6H.SPL~
+LPF ALTER_EFFECT INT_VAR match_opcode = 324 parameter1 = 23 STR_VAR resource = C0STRA6H END
+LPF ALTER_EFFECT INT_VAR match_savebonus = 0 savebonus = (0 - 7) END
+COPY_EXISTING ~C0STRA6A.SPL~ ~OVERRIDE/C0STRA6I.SPL~
+LPF ALTER_EFFECT INT_VAR match_opcode = 324 parameter1 = 24 STR_VAR resource = C0STRA6I END
+LPF ALTER_EFFECT INT_VAR match_savebonus = 0 savebonus = (0 - 8) END
+COPY_EXISTING ~C0STRA6A.SPL~ ~OVERRIDE/C0STRA6J.SPL~
+LPF ALTER_EFFECT INT_VAR match_opcode = 324 parameter1 = 25 STR_VAR resource = C0STRA6J END
+LPF ALTER_EFFECT INT_VAR match_savebonus = 0 savebonus = (0 - 9) END
+
+COPY_EXISTING ~C0STRH1.SPL~ OVERRIDE
+SAY NAME1 ~Peerless Strategy~
+SAY UNIDENTIFIED_DESC ~Peerless Strategy
+Once learned, this ability improves the effects of Battle Tactics, increasing the minimum damage modifier to +8 and granting all allies a +1 bonus to casting speed. Additionally, allies with backstab modifiers are able to backstab targets from any direction while under the effect of Battle Tactics.~
+
+COPY_EXISTING ~C0STRH2.SPL~ OVERRIDE
+SAY NAME1 ~Tactical Acumen~
+SAY UNIDENTIFIED_DESC ~Tactical Acumen
+Using this ability, the strategist maximizes their efficiency in forming and executing field tactics, gaining Aura Cleansing for the next two rounds. However, after the duration has expired, the strategist is unable to attack, cast spells, use items or abilities, or use Battle Tactics for another two rounds.~

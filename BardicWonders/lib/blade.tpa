@@ -36,8 +36,8 @@ REPLACE_TEXTUALLY ~AP_SPCL920~ ~*~
 REPLACE_TEXTUALLY ~GA_SPCL921~ ~*~
 REPLACE_TEXTUALLY ~ABILITY       ICON        STRREF    MIN_LEV   MAX_LEVEL  NUM_ALLOWED  PREREQUISITE EXCLUDED_BY   ALIGNMENT_RESTRICT~
 ~ABILITY       ICON        STRREF    MIN_LEV   MAX_LEVEL  NUM_ALLOWED  PREREQUISITE EXCLUDED_BY   ALIGNMENT_RESTRICT
-X1      GA_C0BLDH1     *          *         1         99         1            *            *             *
-X2      GA_C0BLDH2     *          *         1         99         1            *            *             *~
+X1      AP_C0BLDH1     *          *         1         99         1            *            *             *
+X2      AP_C0BLDH2     *          *         1         99         1            *            *             *~
 
 APPEND ~splprot.2da~ ~C0HTSTR 36 -1 1~ UNLESS ~C0HTSTR~
 COPY_EXISTING ~splprot.2da~ ~override~

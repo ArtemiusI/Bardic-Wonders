@@ -6,8 +6,7 @@ REPLACE_TEXTUALLY ~GA_SPCL921~ ~*~
 REPLACE_TEXTUALLY ~ABILITY       ICON        STRREF    MIN_LEV   MAX_LEVEL  NUM_ALLOWED  PREREQUISITE EXCLUDED_BY   ALIGNMENT_RESTRICT~
 ~ABILITY       ICON        STRREF    MIN_LEV   MAX_LEVEL  NUM_ALLOWED  PREREQUISITE EXCLUDED_BY   ALIGNMENT_RESTRICT
 X1      AP_C0ABETT5     *          *         1         99         1            *            *             *
-X2      AP_C0ABETHL     *          *         1         99         1            AP_C0ABETT5            *             *
-X3      GA_SPCL915      *          *         1         99         1            *            *             *~
+X2      AP_C0ABETHL     *          *         1         99         1            AP_C0ABETT5            *             *~
 
 ACTION_IF NOT MOD_IS_INSTALLED ~RR/SETUP-RR.TP2~ ~0~ BEGIN
 ADD_KIT ~C0ABETT~
@@ -36,7 +35,7 @@ ADD_KIT ~C0ABETT~
  // HLA table to use; see LUABBR.2da
  ~C0ABET~
  // list of starting equipment for PCs starting in ToB. Appended column-wise to 25STWEAP.2da
- ~CHAN16 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
+ ~CHAN12 * * BAG30 RING06 RING34 CLCK02 BOOT01 AMUL19 BRAC16 BELT10 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 DAGG12 SW1H28 STAF08~
  // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da
   SAY ~abettor of mask~
   SAY ~Abettor of Mask~
@@ -159,6 +158,6 @@ COPY ~%MOD_FOLDER%/abettor/c0abethl.spl~ ~override~
 SAY NAME1 ~Symphony of the Dark Children~
 SAY NAME2 ~Symphony of the Dark Children~
 SAY UNIDENTIFIED_DESC ~Symphony of the Dark Children
-This song is a powerful aid to both the Abettor and to <PRO_HISHER> allies. In addition to all existing effects, the song now provides +50% to all thieving skills, +6 to Luck, +4 to Armor Class (+8 vs. missile weapons) with an additional +2 vs. good-aligned creatures, +4 to all saving throws, immunity to backstab and a 20% chance for all party members to turn invisible for two rounds. The Abettor also has a 5% chance to stop time for one round, but <PRO_HESHE> is unable to take any action for the duration.
+This song is a powerful aid to both the Abettor and to <PRO_HISHER> allies. In addition to all existing effects, the song now provides +70% to all thieving skills, +6 to Luck, +4 to Armor Class (+8 vs. missile weapons) with an additional +2 vs. good-aligned creatures, +4 to all saving throws, immunity to backstab and a 20% chance for all party members to turn invisible for two rounds. The Abettor also has a 5% chance to stop time for one round, but <PRO_HESHE> is unable to take any action for the duration.
 
 This ability replaces the current Bard Song.~
