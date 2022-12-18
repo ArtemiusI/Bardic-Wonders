@@ -47,18 +47,133 @@ ACTION_FOR_EACH description IN
           END
 		END
 //inspiration
-        PATCH_IF (
-				("%row_name%" STRING_EQUAL_CASE "BLADE") OR
-				("%row_name%" STRING_EQUAL_CASE "JESTER") OR
-				("%row_name%" STRING_EQUAL_CASE "SKALD") OR
-				("%row_name%" STRING_EQUAL_CASE "C0ABETT") OR
-				("%row_name%" STRING_EQUAL_CASE "C0DANCE") OR
-				("%row_name%" STRING_EQUAL_CASE "C0SDRUM") OR
-				("%row_name%" STRING_EQUAL_CASE "C0TRB") OR
-				("%row_name%" STRING_EQUAL_CASE "C0BDD") OR
-				("%row_name%" STRING_EQUAL_CASE "C0DEATHSINGER") OR
-				("%row_name%" STRING_EQUAL_CASE "C0_STRATEGIST")
-														 ) BEGIN
+        PATCH_IF "%row_name%" STRING_EQUAL_CASE "BLADE" BEGIN
+          READ_2DA_ENTRY index 4 col_count inspiration_desc
+          SPRINT old_inspiration ~Disadvantages:~
+          SPRINT new_inspiration ~Disadvantages:
+– May not use Inspirations.~
+          GET_STRREF %inspiration_desc% inspiration_text
+          INNER_PATCH_SAVE inspiration_text ~%inspiration_text%~ BEGIN
+            REPLACE_TEXTUALLY ~%old_inspiration%~ ~%new_inspiration%~
+          END
+          INNER_ACTION BEGIN
+            STRING_SET_EVALUATE ~%inspiration_desc%~ ~%inspiration_text%~
+          END
+		END
+//inspiration
+        PATCH_IF "%row_name%" STRING_EQUAL_CASE "JESTER" BEGIN
+          READ_2DA_ENTRY index 4 col_count inspiration_desc
+          SPRINT old_inspiration ~Disadvantages:~
+          SPRINT new_inspiration ~Disadvantages:
+– May not use Inspirations.~
+          GET_STRREF %inspiration_desc% inspiration_text
+          INNER_PATCH_SAVE inspiration_text ~%inspiration_text%~ BEGIN
+            REPLACE_TEXTUALLY ~%old_inspiration%~ ~%new_inspiration%~
+          END
+          INNER_ACTION BEGIN
+            STRING_SET_EVALUATE ~%inspiration_desc%~ ~%inspiration_text%~
+          END
+		END
+//inspiration
+        PATCH_IF "%row_name%" STRING_EQUAL_CASE "SKALD" BEGIN
+          READ_2DA_ENTRY index 4 col_count inspiration_desc
+          SPRINT old_inspiration ~Disadvantages:~
+          SPRINT new_inspiration ~Disadvantages:
+– May not use Inspirations.~
+          GET_STRREF %inspiration_desc% inspiration_text
+          INNER_PATCH_SAVE inspiration_text ~%inspiration_text%~ BEGIN
+            REPLACE_TEXTUALLY ~%old_inspiration%~ ~%new_inspiration%~
+          END
+          INNER_ACTION BEGIN
+            STRING_SET_EVALUATE ~%inspiration_desc%~ ~%inspiration_text%~
+          END
+		END
+//inspiration
+        PATCH_IF "%row_name%" STRING_EQUAL_CASE "C0ABETT" BEGIN
+          READ_2DA_ENTRY index 4 col_count inspiration_desc
+          SPRINT old_inspiration ~Disadvantages:~
+          SPRINT new_inspiration ~Disadvantages:
+– May not use Inspirations.~
+          GET_STRREF %inspiration_desc% inspiration_text
+          INNER_PATCH_SAVE inspiration_text ~%inspiration_text%~ BEGIN
+            REPLACE_TEXTUALLY ~%old_inspiration%~ ~%new_inspiration%~
+          END
+          INNER_ACTION BEGIN
+            STRING_SET_EVALUATE ~%inspiration_desc%~ ~%inspiration_text%~
+          END
+		END
+//inspiration
+        PATCH_IF "%row_name%" STRING_EQUAL_CASE "C0DANCE" BEGIN
+          READ_2DA_ENTRY index 4 col_count inspiration_desc
+          SPRINT old_inspiration ~Disadvantages:~
+          SPRINT new_inspiration ~Disadvantages:
+– May not use Inspirations.~
+          GET_STRREF %inspiration_desc% inspiration_text
+          INNER_PATCH_SAVE inspiration_text ~%inspiration_text%~ BEGIN
+            REPLACE_TEXTUALLY ~%old_inspiration%~ ~%new_inspiration%~
+          END
+          INNER_ACTION BEGIN
+            STRING_SET_EVALUATE ~%inspiration_desc%~ ~%inspiration_text%~
+          END
+		END
+//inspiration
+        PATCH_IF "%row_name%" STRING_EQUAL_CASE "C0SDRUM" BEGIN
+          READ_2DA_ENTRY index 4 col_count inspiration_desc
+          SPRINT old_inspiration ~Disadvantages:~
+          SPRINT new_inspiration ~Disadvantages:
+– May not use Inspirations.~
+          GET_STRREF %inspiration_desc% inspiration_text
+          INNER_PATCH_SAVE inspiration_text ~%inspiration_text%~ BEGIN
+            REPLACE_TEXTUALLY ~%old_inspiration%~ ~%new_inspiration%~
+          END
+          INNER_ACTION BEGIN
+            STRING_SET_EVALUATE ~%inspiration_desc%~ ~%inspiration_text%~
+          END
+		END
+//inspiration
+        PATCH_IF "%row_name%" STRING_EQUAL_CASE "C0TRB" BEGIN
+          READ_2DA_ENTRY index 4 col_count inspiration_desc
+          SPRINT old_inspiration ~Disadvantages:~
+          SPRINT new_inspiration ~Disadvantages:
+– May not use Inspirations.~
+          GET_STRREF %inspiration_desc% inspiration_text
+          INNER_PATCH_SAVE inspiration_text ~%inspiration_text%~ BEGIN
+            REPLACE_TEXTUALLY ~%old_inspiration%~ ~%new_inspiration%~
+          END
+          INNER_ACTION BEGIN
+            STRING_SET_EVALUATE ~%inspiration_desc%~ ~%inspiration_text%~
+          END
+		END
+//inspiration
+        PATCH_IF "%row_name%" STRING_EQUAL_CASE "C0BDD" BEGIN
+          READ_2DA_ENTRY index 4 col_count inspiration_desc
+          SPRINT old_inspiration ~Disadvantages:~
+          SPRINT new_inspiration ~Disadvantages:
+– May not use Inspirations.~
+          GET_STRREF %inspiration_desc% inspiration_text
+          INNER_PATCH_SAVE inspiration_text ~%inspiration_text%~ BEGIN
+            REPLACE_TEXTUALLY ~%old_inspiration%~ ~%new_inspiration%~
+          END
+          INNER_ACTION BEGIN
+            STRING_SET_EVALUATE ~%inspiration_desc%~ ~%inspiration_text%~
+          END
+		END
+//inspiration
+        PATCH_IF "%row_name%" STRING_EQUAL_CASE "C0DEATHSINGER" BEGIN
+          READ_2DA_ENTRY index 4 col_count inspiration_desc
+          SPRINT old_inspiration ~Disadvantages:~
+          SPRINT new_inspiration ~Disadvantages:
+– May not use Inspirations.~
+          GET_STRREF %inspiration_desc% inspiration_text
+          INNER_PATCH_SAVE inspiration_text ~%inspiration_text%~ BEGIN
+            REPLACE_TEXTUALLY ~%old_inspiration%~ ~%new_inspiration%~
+          END
+          INNER_ACTION BEGIN
+            STRING_SET_EVALUATE ~%inspiration_desc%~ ~%inspiration_text%~
+          END
+		END
+//inspiration
+        PATCH_IF "%row_name%" STRING_EQUAL_CASE "C0_STRATEGIST" BEGIN
           READ_2DA_ENTRY index 4 col_count inspiration_desc
           SPRINT old_inspiration ~Disadvantages:~
           SPRINT new_inspiration ~Disadvantages:
@@ -109,17 +224,17 @@ COPY_EXISTING C0BDI00.SPL OVERRIDE
 SAY NAME1 ~Bardic Inspiration~
 SAY UNIDENTIFIED_DESC ~The bard's presence inspires their companions, providing various benefits that persist so long as they are within visual range of the bard. Only one inspiration may be active at any given time.
 
-Inspire Courage (1st level): Allies gain +1 to hit and damage rolls and increased morale. Bonuses to hit and damage increase to +2 at 8th level, +3 at 15th level and +4 at 22nd level.
+Inspire Courage (1st level): Allies gain +1 to hit rolls and increased morale. Bonuses to hit increase to +2 at 8th level, +3 at 15th level and +4 at 22nd level.
 
 Inspire Competence (3rd level): Allies gain +10 to Lore and Thieving Skills. Bonuses increase to +20 at 10th level and +30 at 17th level.
 
-Inspire Defense (6th level): Allies gain +2 to Armor Class. Bonuses increase to +3 at 10th level, +4 at 15th level and +5 at 20th level.
+Inspire Defense (6th level): Allies gain +2 to Armor Class. Bonuses increase to +3 at 14th level, +4 at 22nd level.
 
 Inspire Regeneration (10th level): Allies regenerate for 1 hit point per round. Regeneration increases to 2 hit points at 17th level and 3 hit points at 24th level.
 
 Inspire Toughness (12th level): Allies gain +2 to all Saving Throws. Bonuses increase to +3 at 17th level and +4 at 24th level.
 
-Inspire Alacrity (20th level): Allies gain half an extra attack per round and +1 to casting speed. Bonuses increase to one extra attack per round and +2 to casting speed at 40th level.~
+Inspire Alacrity (20th level): Allies gain +1 to casting speed. Bonuses increases to +2 to casting speed at 40th level.~
 
 COPY_EXISTING C0BDI01.SPL OVERRIDE
 SAY NAME1 ~Inspire Courage~
@@ -191,11 +306,11 @@ COPY_EXISTING C0BDS00.SPL OVERRIDE
 SAY NAME1 ~Dark Inspiration~
 SAY UNIDENTIFIED_DESC ~The Nightsinger's presence inspires their companions, providing various benefits that persist so long as they are within visual range of the Nightsinger. Only one inspiration may be active at any given time.
 
-Inspire Wrath (1st level): Allies gain a +4 bonus to their minimum damage roll modifier. Bonuses increase to +6 at 8th level, +8 at 15th level and +10 at 22nd level.
+Inspire Wrath (1st level): Allies gain a +2 bonus to their minimum damage roll modifier. Bonuses increase to +3 at 8th level, +4 at 15th level and +5 at 22nd level.
 
-Inspire Ambition (3rd level): Allies gain +2 to Casting Level and +10% to Spell Duration. Bonuses increase to +4 and +20% respectively at 10th level and +8 and +30% respectively at 17th level.
+Inspire Ambition (3rd level): Allies gain +1 to Casting Level and +10% to Spell Duration. Bonuses increase to +2 and +20% respectively at 10th level and +3 and +30% respectively at 17th level.
 
-Inspire Preservation (6th level): Allies gain +3% Magic Resistance. Bonuses increase to +6% at 10th level, +9% at 15th level and +12% at 20th level.
+Inspire Preservation (6th level): Allies gain +2% Magic Resistance. Bonuses increase to +4% at 10th level, +6% at 15th level and +8% at 20th level.
 
 Inspire Voracity (10th level): Allies' attacks drain targets for 1 hit point in magic damage. Damage increases to 2 hit points at 17th level and 3 hit points at 24th level.
 

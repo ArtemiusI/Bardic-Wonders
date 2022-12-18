@@ -26,15 +26,16 @@ COPY ~%MOD_FOLDER%/items~ ~override~
 
 COPY ~%MOD_FOLDER%/items/c0bwam1.bam~ ~override~
 COPY ~%MOD_FOLDER%/items/c0bwam1.itm~ ~override~
-SAY NAME1 ~Silence~
-SAY NAME2 ~Silence~
+SAY NAME1 ~The Silence~
+SAY NAME2 ~The Silence~
 SAY DESC ~Legends once spoke of a skilled bard who had lost his singing voice who took up the way of the sword. Whether this amulet was responsible for his change or whether it took on some of his identity after his passing, but one thing is known – wearers of this strange amulet will gain great skill at arms, but at a significant cost.
 
 STATISTICS:
 
 Equipped abilities:
 – May only be removed with a Remove Curse spell
-– Elegy of Lost Tongues: The wearer gains a +2 bonus to THAC0, damage and Armor Class as well as an extra attack per round, but loses the ability to cast arcane spells
+– THAC0: +1 bonus
+– Elegy of Lost Tongues: If the wearer is a bard, they lose the ability to cast spells and use their bard song, but gain an additional +2 bonus to THAC0, Damage and Armor Class, as well as one bonus attack per round.
 
 Weight: 1~
 
@@ -65,6 +66,7 @@ SAY DESC ~Despite being made of metal chain, this suit of mail is light and quie
 STATISTICS:
 
 Equipped abilities:
+– Casting Speed: +1 (Bards)
 – Spellcasting is not disabled
 
 Armor Class: 3 (1 vs. slashing, 5 vs. crushing)
@@ -82,7 +84,7 @@ This powerful shortbow requires neither arrow nor string, for it fires waves of 
 STATISTICS:
 
 Equipped abilities:
-– 3 attacks per round
+– 3 attacks per round (Bards)
 – Glissando: 1% chance per hit to set attacks per round to 10 and deal maximum damage per hit for the next round
 
 Combat abilities:
