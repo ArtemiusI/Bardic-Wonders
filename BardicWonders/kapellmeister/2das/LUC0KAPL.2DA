@@ -1,0 +1,27 @@
+2DA V1.0
+*
+        ABILITY       ICON        STRREF    MIN_LEV   MAX_LEVEL  NUM_ALLOWED  PREREQUISITE EXCLUDED_BY   ALIGNMENT_RESTRICT
+1       AP_C0KM#H1     *          *         1         99         1            *            *             *
+2       AP_C0KM#H2     *          *         1         99         1            AP_C0KM#H1   *             *
+3       GA_C0KM#H3     *          *         1         99         5            *            *             *
+4       GA_SPCL913     *          *         1         99         16           *            *             *
+5       GA_SPCL914     *          *         1         99         16           GA_SPCL913   *             *
+6       AP_SPCL915     *          *         1         99         1            *            *             *
+7       GA_SPCL917     *          *         1         99         16           *            *             *
+8       GA_SPCL918     *          *         1         99         16           *            *             *
+9       GA_SPCL919     *          *         1         99         16           *            *             *
+10      AP_C0KM#H4     *          *         1         99         1            *            *             *
+11      GA_SPCL921     *          *         1         99         1            *            *             *
+12         *           *          *         *         *          *            *            *             *
+13         *           *          *         *         *          *            *            *             *
+14         *           *          *         *         *          *            *            *             *
+15         *           *          *         *         *          *            *            *             *
+16         *           *          *         *         *          *            *            *             *
+17         *           *          *         *         *          *            *            *             *
+18         *           *          *         *         *          *            *            *             *
+19         *           *          *         *         *          *            *            *             *
+20         *           *          *         *         *          *            *            *             *
+21         *           *          *         *         *          *            *            *             *
+22         *           *          *         *         *          *            *            *             *
+23         *           *          *         *         *          *            *            *             *
+24         *           *          *         *         *          *            *            *             *

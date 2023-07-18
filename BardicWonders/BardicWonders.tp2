@@ -50,6 +50,10 @@ BEGIN ~Bardic Wonders: Strategist Kit~
 GROUP ~Kits~
 INCLUDE ~%MOD_FOLDER%/LIB/strategist.tpa~
 
+BEGIN ~Bardic Wonders: Kapellmeister Kit~
+GROUP ~Kits~
+INCLUDE ~%MOD_FOLDER%/LIB/kapellmeister.tpa~
+
 BEGIN ~Bardic Wonders: Items~
 GROUP ~Tweaks & Additions~
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ ~This component must be played on BG:EE or BG2:EE.~
