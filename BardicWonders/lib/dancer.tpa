@@ -5,38 +5,36 @@ COPY ~%MOD_FOLDER%/dancer~ ~override~
 COPY_EXISTING ~LUBA0.2DA~ ~OVERRIDE/LUC0DANC.2DA~
   REPLACE_TEXTUALLY ~AP_SPCL920~ ~AP_C0DANCHL~
 
-ACTION_IF NOT MOD_IS_INSTALLED ~RR/SETUP-RR.TP2~ ~0~ BEGIN
-ADD_KIT ~C0DANCE~
- // appended to CLASWEAP.2da
- ~C0DANCE		1           1           1           1           1           1           1           1~
- // appended column-wise to WEAPPROF.2da
- ~C0DANCE		1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
- // appended to ABCLASRQ.2da
- ~C0DANCE				0      15	0	9	0	15~
- // appended to ABCLSMOD.2da
- ~C0DANCE				0	0	0	0	0	0~
- // appended to ABDCDSRQ.2da
- ~C0DANCE                		0       0       0       0       0       0~
- // appended to ABDCSCRQ.2da
- ~C0DANCE                 	0       0       0       0       0		0~
- // appended to ALIGNMNT.2da
- ~C0DANCE                  	0       1       0       1       1	1       0       1       0~
- // appended to DUALCLAS.2da
- ~C0DANCE                  	0       0       0       0       0       0~
- // path to your CLAB-style 2da file 
- ~%MOD_FOLDER%/dancer/C0DANCE.2da~
- // PC races and classes allowed to use this kit, from KITTABLE.2da
- ~K_B_H K_B_E K_B_HE K_B_HL K_B_G K_B_D K_B_HO~
- // usability flags, added to the end of the KITLIST.2da entry
- ~0x10000000     5~
- // HLA table to use; see LUABBR.2da
- ~C0DANC~
- // list of starting equipment for PCs starting in ToB. Appended column-wise to 25STWEAP.2da
- ~* * * BAG30 RING06 RING34 CLCK02 BOOT01 AMUL19 BRAC16 BELT10 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 DAGG12 SW1H28 STAF08~
- // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da
-  SAY ~dancer~
-  SAY ~Dancer~
-  SAY ~DANCER: The dancer is an entertainer, an acrobat and a surprisingly dangerous combatant when drawn to battle, emphasizing speed and agility to confuse and unnerve <PRO_HISHER> opponents while inspiring allies to fight with increased confidence.
+LAF ADD_KIT_EX
+  INT_VAR
+    // Mage	= 1
+	// Fighter = 2
+	// Cleric = 3
+	// Thief = 4
+	// Bard = 5
+	// Paladin = 6
+	// Fighter/Mage = 7
+	// Fighter/Cleric = 8
+	// Fighter/Thief = 9
+	// Fighter/Mage/Thief = 10
+	// Druid = 11
+	// Ranger = 12
+	// Mage/Thief = 13
+	// Cleric/Mage = 14
+	// Cleric/Thief = 15
+	// Fighter/Druid = 16
+	// Fighter/Mage/Cleric = 17
+	// Cleric/Ranger = 18
+	// Sorcerer = 19
+	// Monk = 20
+	// Shaman = 21
+    kit_class     = 5
+	
+    mixed         = RESOLVE_STR_REF(~Dancer~)
+	
+    lower         = RESOLVE_STR_REF(~dancer~)
+	
+    help          = RESOLVE_STR_REF(~DANCER: The dancer is an entertainer, an acrobat and a surprisingly dangerous combatant when drawn to battle, emphasizing speed and agility to confuse and unnerve <PRO_HISHER> opponents while inspiring allies to fight with increased confidence.
 
 ADVANTAGES:
 – May place 3 slots in Two-Weapon Style.
@@ -58,47 +56,101 @@ DISADVANTAGES:
 – May not wear any armor.
 – May not use shields.
 – May memorize one less spell per level.
-– Only has one-half normal Lore value.~
-
-LAF fl#add_kit_ee
+– Only has one-half normal Lore value.~)
+	
+    briefdesc     = RESOLVE_STR_REF(~DANCER: The dancer is an entertainer, an acrobat and a surprisingly dangerous combatant when drawn to battle, emphasizing speed and agility to confuse and unnerve <PRO_HISHER> opponents while inspiring allies to fight with increased confidence.~)
+	
+	// fallen = 0
+	
   STR_VAR
-    kit_name = C0DANCE
-	clascolr = ~110 87 174 168 102~
-END
+    kit_name      = ~C0DANCE~
+	
+    unusable      = ~0x10000000~
+    // clasweap      = ~1 1 1 1 1 1 1 1~
+	//                                       T   S           F   Q             S S
+	//                                       W   C           L   U             W I
+	//                               B L S   O   I   W       A   A             O N
+	//                               A O H   H   M   A       I   R C   S       R G
+	//               L S           M S N O   A   I   R     H L   T R L H     2 D L 2
+	//               _ _       S   I T G R   N K T D H     A M   E O O O     H A E W
+	//               S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E
+	//               W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A
+	//               O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P
+	//               R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O
+	//               D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N
+    weapprof      = ~1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 3~
+	
+    abclasrq      = ~0 15 0 9 0 15~
+	
+    // abclsmod      = ~0 0 0 0 0 0~
+	
+    // abdcdsrq      = ~0 0 0 = 0 =~
+	
+    // abdcscrq      = ~15 0 0 0 0 0~
+	
+	//               L L L N N N C C C
+	//               G N E G N E G N E
+    // alignmnt      = ~0 0 0 0 1 1 0 1 1~
+	
+    // dualclas      = ~0 1 1 1 1 0~
+	
+    luabbr        = ~C0DANC~
+	
+    // stweap        = ~CHAN09 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
+	
+    clab_path     = ~override/C0DANCE.2da~
+	
+    // kittable      = ~K_F_H K_F_E K_F_HE~
+	
+	// base_class = 
+	
+	// clab_base_f = 
+	
+	// clab_base_p = 
+	
+	// clab_base_d = 
+	
+	// clab_base_r = 
+	
+	// clab_base_m = 
+	
+	// clab_base_t = 
+	
+    // clsrcreq      = ~1 1 1 1 1 1 1~
+	
+    // clswpbon      = ~1 0 2~
+	
+    // hpclass       = ~HPPRS~
+	
+    // numwslot      = ~4~
+	
+    clascolr = ~110 87 174 168 102~
+	
+	// clasiskl = ~0 0 0 0 0 0 0~
+	
+	// clasthac = ~0~
+	
+	// thiefscl = ~0 0 0 0 0 0 0 0~
+	
+	// backstab = ~1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2~
+	
+	// sneakatt = ~1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 5 5 5 5 5 5 5 5 6~
+	
+	// crippstr = ~0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4~
+	
+	// thiefskl = ~0 0~
+	
+	// traplimt = ~6~
+	
+    // bdstweap      = ~CHAN04 SHLD04 HELM01 * RING06 * * * * BRAC09 BELT02 AROW02,40 BULL02,40 BOLT02,40 POTN08,5 POTN17,3 POTN12,1 * SW1H05 HAMM02~
+  RET
+    kit_id
 END
 
 ACTION_IF MOD_IS_INSTALLED ~RR/SETUP-RR.TP2~ ~0~ BEGIN
-ADD_KIT ~C0DANCE~
- // appended to CLASWEAP.2da
- ~C0DANCE		1           1           1           1           1           1           1           1~
- // appended column-wise to WEAPPROF.2da
- ~C0DANCE		1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
- // appended to ABCLASRQ.2da
- ~C0DANCE				0      15	0	9	0	15~
- // appended to ABCLSMOD.2da
- ~C0DANCE				0	0	0	0	0	0~
- // appended to ABDCDSRQ.2da
- ~C0DANCE                		0       0       0       0       0       0~
- // appended to ABDCSCRQ.2da
- ~C0DANCE                 	0       0       0       0       0		0~
- // appended to ALIGNMNT.2da
- ~C0DANCE                  	0       1       0       1       1	1       0       1       0~
- // appended to DUALCLAS.2da
- ~C0DANCE                  	0       0       0       0       0       0~
- // path to your CLAB-style 2da file 
- ~%MOD_FOLDER%/dancer/C0DANCE.2da~
- // PC races and classes allowed to use this kit, from KITTABLE.2da
- ~K_B_H K_B_E K_B_HE K_B_HL K_B_G K_B_D K_B_HO~
- // usability flags, added to the end of the KITLIST.2da entry
- ~0x10000000     5~
- // HLA table to use; see LUABBR.2da
- ~C0DANC~
- // list of starting equipment for PCs starting in ToB. Appended column-wise to 25STWEAP.2da
- ~* * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
- // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da
-  SAY ~dancer~
-  SAY ~Dancer~
-  SAY ~DANCER: The dancer is an entertainer, an acrobat and a surprisingly dangerous combatant when drawn to battle, emphasizing speed and agility to confuse and unnerve <PRO_HISHER> opponents while inspiring allies to fight with increased confidence.
+
+LAF ~GET_KIT_STRREF~ STR_VAR kit_name = ~C0DANCE~ RET kit_strref END
+STRING_SET_EVALUATE kit_strref ~DANCER: The dancer is an entertainer, an acrobat and a surprisingly dangerous combatant when drawn to battle, emphasizing speed and agility to confuse and unnerve <PRO_HISHER> opponents while inspiring allies to fight with increased confidence.
 
 ADVANTAGES:
 – Gains 3 points in Two-Weapon Style at 1st level.
@@ -122,11 +174,32 @@ DISADVANTAGES:
 – May memorize one less spell per level.
 – Only has one-half normal Lore value.~
 
-LAF fl#add_kit_ee
-  STR_VAR
-    kit_name = C0DANCE
-	clascolr = ~110 87 174 168 102~
-END
+// 2 WEAPON STYLE
+ACTION_CLEAR_ARRAY weapprof_cols_blade
+        
+COPY_EXISTING ~weapprof.2da~  ~override~
+  COUNT_2DA_COLS col_count
+  SET col_check = col_count - 1
+  FOR (column = 0; column < col_check; ++column) BEGIN
+    READ_2DA_ENTRY 0 column col_check name
+    PATCH_IF (("C0DANCE" STRING_COMPARE_CASE "%name%" = 0)) BEGIN
+      SET column += 1 // row with names has an empty entry for the first column
+      DEFINE_ASSOCIATIVE_ARRAY weapprof_cols_blade BEGIN ~%column%~ => ~%column%~ END
+    END
+  END
+  PATCH_PHP_EACH weapprof_cols_blade AS column => foo BEGIN
+    FOR (row = 8; row < 32; ++row) BEGIN
+      READ_2DA_ENTRY row column col_count stars
+      PATCH_IF (stars < 5) BEGIN
+        SET_2DA_ENTRY 31 column col_count 0
+      END
+    END
+  END
+  PRETTY_PRINT_2DA
+  BUT_ONLY
+  
+COPY ~%MOD_FOLDER%/Dancer/RR~ ~OVERRIDE~
+
 END
 
 COPY ~%MOD_FOLDER%/dancer/c0dancso.spl~ ~override~

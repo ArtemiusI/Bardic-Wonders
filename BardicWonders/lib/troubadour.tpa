@@ -4,38 +4,36 @@ COPY ~%MOD_FOLDER%/troubadour~ ~override~
 COPY_EXISTING ~LUBA0.2DA~ ~OVERRIDE/LUC0TRB.2DA~
   REPLACE_TEXTUALLY ~AP_SPCL920~ ~AP_C0TRBHL~
 
-ACTION_IF NOT MOD_IS_INSTALLED ~RR/SETUP-RR.TP2~ ~0~ BEGIN
-ADD_KIT ~C0TRB~
- // appended to CLASWEAP.2da
- ~C0TRB		1           1           1           1           1           1           1           1~
- // appended column-wise to WEAPPROF.2da
- ~C0TRB		0 1 0 0 1 0 0 1 0 1 1 0 0 1 1 1 0 1 0 0 0 0 1 1 0 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~    
- // appended to ABCLASRQ.2da
- ~C0TRB				0      12	0	13	0	15~
- // appended to ABCLSMOD.2da
- ~C0TRB				0	0	0	0	0	0~
- // appended to ABDCDSRQ.2da
- ~C0TRB                		0       0       0       0       0       0~
- // appended to ABDCSCRQ.2da
- ~C0TRB                 	0       0       0       0       0		0~
- // appended to ALIGNMNT.2da
- ~C0TRB                  	0       0       0       1       1	0       1       1       0~
- // appended to DUALCLAS.2da
- ~C0TRB                  	0       0       0       0       0       0~
- // path to your CLAB-style 2da file 
- ~%MOD_FOLDER%/troubadour/C0TRB.2da~
- // PC races and classes allowed to use this kit, from KITTABLE.2da
- ~K_B_H K_B_E K_B_HE K_B_HL K_B_G K_B_D K_B_HO~
- // usability flags, added to the end of the KITLIST.2da entry
- ~0x00010000     5~
- // HLA table to use; see LUABBR.2da
- ~C0TRB~
- // list of starting equipment for PCs starting in ToB. Appended column-wise to 25STWEAP.2da
- ~CHAN12 * * BAG30 RING06 RING34 CLCK02 BOOT01 AMUL19 BRAC16 BELT10 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 DAGG12 SW1H28 STAF08~
- // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da
-  SAY ~Troubadour~
-  SAY ~Troubadour~
-  SAY ~TROUBADOUR: Troubadours are musicians that specialize in lyric poetry. Their songs are often of chivalry and courtly love. In adventuring, troubadour bards are valuable due to their proficiency in healing spells, including songs of rejuvenation that protect their comrades. Women that choose the profession of the troubadour are usually known as trobairitz.
+LAF ADD_KIT_EX
+  INT_VAR
+    // Mage	= 1
+	// Fighter = 2
+	// Cleric = 3
+	// Thief = 4
+	// Bard = 5
+	// Paladin = 6
+	// Fighter/Mage = 7
+	// Fighter/Cleric = 8
+	// Fighter/Thief = 9
+	// Fighter/Mage/Thief = 10
+	// Druid = 11
+	// Ranger = 12
+	// Mage/Thief = 13
+	// Cleric/Mage = 14
+	// Cleric/Thief = 15
+	// Fighter/Druid = 16
+	// Fighter/Mage/Cleric = 17
+	// Cleric/Ranger = 18
+	// Sorcerer = 19
+	// Monk = 20
+	// Shaman = 21
+    kit_class     = 5
+	
+    mixed         = RESOLVE_STR_REF(~Troubadour~)
+	
+    lower         = RESOLVE_STR_REF(~troubadour~)
+	
+    help          = RESOLVE_STR_REF(~TROUBADOUR: Troubadours are musicians that specialize in lyric poetry. Their songs are often of chivalry and courtly love. In adventuring, troubadour bards are valuable due to their proficiency in healing spells, including songs of rejuvenation that protect their comrades. Women that choose the profession of the troubadour are usually known as trobairitz.
 
 Advantages:
 – May cast spells while wearing armor.
@@ -65,86 +63,125 @@ Disadvantages:
 – May not wear armor heavier than studded leather.
 – May only be proficient in weapons usable by thieves.
 – Only has one-half Pick Pockets percentage.
-– May only be of Neutral Good, Chaotic Good, True Neutral or Chaotic Neutral alignment.~
-
-LAF fl#add_kit_ee
+– May only be of Neutral Good, Chaotic Good, True Neutral or Chaotic Neutral alignment.~)
+	
+    briefdesc     = RESOLVE_STR_REF(~ABETTOR OF MASK: Contrary to popular belief, the trickster god Mask's favor extends past those who walk the path of stealthy arts and trickery. The Abettor is a faithful Maskarran, a deceptive agent of the Lord of Shadows whose gall is tested through tasks that typical bards would balk at due to their dark natures.~)
+	
+	// fallen = 0
+	
   STR_VAR
-    kit_name = C0TRB
-	clascolr = ~28 138 91 98 100~
+    kit_name      = ~C0TRB~
+	
+    unusable      = ~0x00010000~
+    // clasweap      = ~1 1 1 1 1 1 1 1~
+	//                                       T   S           F   Q             S S
+	//                                       W   C           L   U             W I
+	//                               B L S   O   I   W       A   A             O N
+	//                               A O H   H   M   A       I   R C   S       R G
+	//               L S           M S N O   A   I   R     H L   T R L H     2 D L 2
+	//               _ _       S   I T G R   N K T D H     A M   E O O O     H A E W
+	//               S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E
+	//               W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A
+	//               O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P
+	//               R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O
+	//               D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N
+    weapprof      = ~0 1 0 0 1 0 0 1 0 1 1 0 0 1 1 1 0 1 0 0 0 0 1 1 0 1 1 1 1 1 1 1~
+	
+    //abclasrq      = ~0 15 0 14 0 0~
+	
+    // abclsmod      = ~0 0 0 0 0 0~
+	
+    // abdcdsrq      = ~0 0 0 = 0 =~
+	
+    // abdcscrq      = ~15 0 0 0 0 0~
+	
+	//               L L L N N N C C C
+	//               G N E G N E G N E
+    alignmnt      = ~0 0 0 1 1 0 1 1 0~
+	
+    // dualclas      = ~0 1 1 1 1 0~
+	
+    luabbr        = ~C0TRB~
+	
+    // stweap        = ~CHAN09 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
+	
+    clab_path     = ~override/C0TRB.2da~
+	
+    // kittable      = ~K_F_H K_F_E K_F_HE~
+	
+	// base_class = 
+	
+	// clab_base_f = 
+	
+	// clab_base_p = 
+	
+	// clab_base_d = 
+	
+	// clab_base_r = 
+	
+	// clab_base_m = 
+	
+	// clab_base_t = 
+	
+    // clsrcreq      = ~1 1 1 1 1 1 1~
+	
+    // clswpbon      = ~1 0 2~
+	
+    // hpclass       = ~HPPRS~
+	
+    // numwslot      = ~4~
+	
+    clascolr = ~28 138 91 98 100~
+	
+	// clasiskl = ~0 0 0 0 0 0 0~
+	
+	// clasthac = ~0~
+	
 	thiefscl = ~50 0 0 0 0 0 0 0~
-END
+	
+	// backstab = ~1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2~
+	
+	//sneakatt = ~1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 5 5 5 5 5 5 5 5 6~
+	
+	// crippstr = ~0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4~
+	
+	// thiefskl = ~0 0~
+	
+	// traplimt = ~6~
+	
+    // bdstweap      = ~CHAN04 SHLD04 HELM01 * RING06 * * * * BRAC09 BELT02 AROW02,40 BULL02,40 BOLT02,40 POTN08,5 POTN17,3 POTN12,1 * SW1H05 HAMM02~
+  RET
+    kit_id
 END
 
 ACTION_IF MOD_IS_INSTALLED ~RR/SETUP-RR.TP2~ ~0~ BEGIN
-ADD_KIT ~C0TRB~
- // appended to CLASWEAP.2da
- ~C0TRB		1           1           1           1           1           1           1           1~
- // appended column-wise to WEAPPROF.2da
- ~C0TRB		0 1 0 0 1 0 0 1 0 1 1 0 0 1 1 1 0 1 0 0 0 0 1 1 0 1 1 1 1 1 1 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~    
- // appended to ABCLASRQ.2da
- ~C0TRB				0      12	0	13	0	15~
- // appended to ABCLSMOD.2da
- ~C0TRB				0	0	0	0	0	0~
- // appended to ABDCDSRQ.2da
- ~C0TRB                		0       0       0       0       0       0~
- // appended to ABDCSCRQ.2da
- ~C0TRB                 	0       0       0       0       0		0~
- // appended to ALIGNMNT.2da
- ~C0TRB                  	0       0       0       1       1	0       1       1       0~
- // appended to DUALCLAS.2da
- ~C0TRB                  	0       0       0       0       0       0~
- // path to your CLAB-style 2da file 
- ~%MOD_FOLDER%/troubadour/C0TRB.2da~
- // PC races and classes allowed to use this kit, from KITTABLE.2da
- ~K_B_H K_B_E K_B_HE K_B_HL K_B_G K_B_D K_B_HO~
- // usability flags, added to the end of the KITLIST.2da entry
- ~0x00010000     5~
- // HLA table to use; see LUABBR.2da
- ~C0TRB~
- // list of starting equipment for PCs starting in ToB. Appended column-wise to 25STWEAP.2da
- ~LEAT07 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
- // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da
-  SAY ~Troubadour~
-  SAY ~Troubadour~
-  SAY ~TROUBADOUR: Troubadours are musicians that specialize in lyric poetry. Their songs are often of chivalry and courtly love. In adventuring, troubadour bards are valuable due to their proficiency in healing spells, including songs of rejuvenation that protect their comrades. Women that choose the profession of the troubadour are usually known as trobairitz.
 
-Advantages:
-– May cast spells while wearing armor.
-– The troubadour's Bard Song, "Song of Healing", gradually heals <PRO_HISHER> allies and provides them with resistance to any attempts to impair their movement, magical or otherwise.
-
-1st level: allies regenerate 1 hit point per round and are immune to slows.
-9th level: allies regenerate 2 hit points per round and are immune to all movement-impairing effects.
-18th level: allies regenerate 3 hit points per round and are immune to all mind-affecting and movement-impairing effects.
-
-– Gains the following priest spells in their spellbook:
-  1st level: Cure Light Wounds
-  2nd level: Aid
-  3rd level: Cure Medium Wounds
-  4th level: Cure Serious Wounds
-  5th level: Mass Cure
-  6th level: Heal
-
-– 10th level: May use the Voice of Peace ability once per day.
-
-VOICE OF PEACE: Chanting a soft melody, the troubadour soothes <PRO_HISHER> allies' spirits and renews their confidence, healing them for 1d6 (+1 per level) hit points. All allies affected also gain 10% physical resistance and immunity to berserk effects for 1 turn. However, allied barbarians and berserkers will find themselves unable to call upon their rage while the aura of calm is in effect.
-
-– 14th level: May use the Sacred Breath ability once per day.
-
-SACRED BREATH: This ability functions the same way as the 5th level priest spell Raise Dead, restoring the target to life.
-
-Disadvantages:
-– May not wear armor heavier than studded leather.
-– May only be proficient in weapons usable by thieves.
-– Only has one-half Pick Pockets percentage.
-– May only be of Neutral Good, Chaotic Good, True Neutral or Chaotic Neutral alignment.~
-
-LAF fl#add_kit_ee
-  STR_VAR
-    kit_name = C0TRB
-	clascolr = ~28 138 91 98 100~
-	thiefscl = ~50 0 0 0 0 0 0 0~
+// 2 WEAPON STYLE
+ACTION_CLEAR_ARRAY weapprof_cols_blade
+        
+COPY_EXISTING ~weapprof.2da~  ~override~
+  COUNT_2DA_COLS col_count
+  SET col_check = col_count - 1
+  FOR (column = 0; column < col_check; ++column) BEGIN
+    READ_2DA_ENTRY 0 column col_check name
+    PATCH_IF (("C0TRB" STRING_COMPARE_CASE "%name%" = 0)) BEGIN
+      SET column += 1 // row with names has an empty entry for the first column
+      DEFINE_ASSOCIATIVE_ARRAY weapprof_cols_blade BEGIN ~%column%~ => ~%column%~ END
+    END
+  END
+  PATCH_PHP_EACH weapprof_cols_blade AS column => foo BEGIN
+    FOR (row = 8; row < 32; ++row) BEGIN
+      READ_2DA_ENTRY row column col_count stars
+      PATCH_IF (stars < 5) BEGIN
+        SET_2DA_ENTRY 31 column col_count 5
+      END
+    END
+  END
+  PRETTY_PRINT_2DA
+  BUT_ONLY
+  
 END
-END
+
 /*
 LAF ALTER_SCRIPT_BLOCK
       STR_VAR script=AR0900

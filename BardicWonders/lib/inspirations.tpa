@@ -316,7 +316,7 @@ Inspire Voracity (10th level): Allies' attacks drain targets for 1 hit point in 
 
 Inspire Audacity (12th level): Allies gain +1 to Backstab and Critical Hit Modifiers.
 
-Inspire Dominance (20th level): Allies gain a +20% bonus to damage dealt from all sources. Bonuses increase to +40% at 40th level.~
+Inspire Dominance (20th level): Allies gain a +10% bonus to damage dealt from all sources. Bonuses increase to +20% at 40th level.~
 
 COPY_EXISTING C0BDS00I.BAM ~OVERRIDE/C0BDS0IA.BAM~
 COPY_EXISTING C0BDS00I.BAM ~OVERRIDE/C0BDS0IB.BAM~

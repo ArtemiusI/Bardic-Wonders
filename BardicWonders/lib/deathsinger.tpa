@@ -3,38 +3,36 @@ COPY ~%MOD_FOLDER%/deathsinger~ ~override~
 COPY_EXISTING ~LUBA0.2DA~ ~OVERRIDE/LUC0DEAT.2DA~
   REPLACE_TEXTUALLY ~AP_SPCL920~ ~AP_C0DESPHL~
 
-ACTION_IF NOT MOD_IS_INSTALLED ~RR/SETUP-RR.TP2~ ~0~ BEGIN
-ADD_KIT ~C0DEATHSINGER~
- // appended to CLASWEAP.2da
- ~C0DEATHSINGER		1           1           1           1           1           1           1           1~
- // appended column-wise to WEAPPROF.2da
- ~C0DEATHSINGER		1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
- // appended to ABCLASRQ.2da
- ~C0DEATHSINGER				0      12	0	13	0	13~
- // appended to ABCLSMOD.2da
- ~C0DEATHSINGER				0	0	0	0	0	-2~
- // appended to ABDCDSRQ.2da
- ~C0DEATHSINGER                		0       0       0       0       0       0~
- // appended to ABDCSCRQ.2da
- ~C0DEATHSINGER                 	0       0       0       0       0		0~
- // appended to ALIGNMNT.2da
- ~C0DEATHSINGER                  	0       1       1       0       1		1       0       1       1~
- // appended to DUALCLAS.2da
- ~C0DEATHSINGER                  	0       0       0       0       0       0~
- // path to your CLAB-style 2da file 
- ~%MOD_FOLDER%/deathsinger/C0DEATHS.2da~
- // PC races and classes allowed to use this kit, from KITTABLE.2da
- ~K_B_H K_B_E K_B_HE K_B_HL K_B_G K_B_D K_B_HO~
- // usability flags, added to the end of the KITLIST.2da entry
- ~0x00004000     5~
- // HLA table to use; see LUABBR.2da
- ~C0DEAT~
- // list of starting equipment for PCs starting in ToB. Appended column-wise to 25STWEAP.2da
- ~CHAN12 * * BAG30 RING06 RING34 CLCK02 BOOT01 AMUL19 BRAC16 BELT10 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 DAGG12 SW1H28 STAF08~
- // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da
-  SAY ~deathsinger~
-  SAY ~Deathsinger~
-  SAY ~DEATHSINGER: A morbid class of bards, deathsingers take pleasure in singing tales of the macabre, and their magical songs are capable of raising the dead from their graves.
+LAF ADD_KIT_EX
+  INT_VAR
+    // Mage	= 1
+	// Fighter = 2
+	// Cleric = 3
+	// Thief = 4
+	// Bard = 5
+	// Paladin = 6
+	// Fighter/Mage = 7
+	// Fighter/Cleric = 8
+	// Fighter/Thief = 9
+	// Fighter/Mage/Thief = 10
+	// Druid = 11
+	// Ranger = 12
+	// Mage/Thief = 13
+	// Cleric/Mage = 14
+	// Cleric/Thief = 15
+	// Fighter/Druid = 16
+	// Fighter/Mage/Cleric = 17
+	// Cleric/Ranger = 18
+	// Sorcerer = 19
+	// Monk = 20
+	// Shaman = 21
+    kit_class     = 5
+	
+    mixed         = RESOLVE_STR_REF(~Deathsinger~)
+	
+    lower         = RESOLVE_STR_REF(~deathsinger~)
+	
+    help          = RESOLVE_STR_REF(~DEATHSINGER: A morbid class of bards, deathsingers take pleasure in singing tales of the macabre, and their magical songs are capable of raising the dead from their graves.
 
 Advantages:
 – The Deathsinger's Bard Song, "Call of the Grave", does not assist allies. Instead, the deathsinger may summon undead creatures under <PRO_HISHER> control. While singing, the Deathsinger takes a -4 penalty to Armor Class. Each round while the Deathsinger sings, there is a 35% base chance plus 2% for each level of the Deathsinger that a skeleton will answer the call, up to a maximum of 75% at level 20. Any summoned skeletons will be destroyed if the Deathsinger stops singing. The strength and maximum amount of skeletons summoned increases with level.
@@ -52,77 +50,97 @@ Advantages:
    6th level: Destruction
 
 Disadvantages:
-– Incurs a -2 penalty to Charisma.
+– Incurs a -4 penalty to Charisma.
 – May not be good-aligned.
-– Only has one-quarter Pick Pockets percentage.~
-
-LAF fl#add_kit_ee
+– Only has one-quarter Pick Pockets percentage.~)
+	
+    briefdesc     = RESOLVE_STR_REF(~DEATHSINGER: A morbid class of bards, deathsingers take pleasure in singing tales of the macabre, and their magical songs are capable of raising the dead from their graves.~)
+	
+	// fallen = 0
+	
   STR_VAR
-    kit_name = C0DEATHSINGER
-	clascolr = ~0 65 66 136 182~
+    kit_name      = ~C0_DEATHSINGER~
+	
+    unusable      = ~0x00000000~
+    // clasweap      = ~1 1 1 1 1 1 1 1~
+	//                                       T   S           F   Q             S S
+	//                                       W   C           L   U             W I
+	//                               B L S   O   I   W       A   A             O N
+	//                               A O H   H   M   A       I   R C   S       R G
+	//               L S           M S N O   A   I   R     H L   T R L H     2 D L 2
+	//               _ _       S   I T G R   N K T D H     A M   E O O O     H A E W
+	//               S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E
+	//               W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A
+	//               O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P
+	//               R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O
+	//               D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N
+    // weapprof      = ~1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 3~
+	
+    abclasrq      = ~0 12 0 13 0 12~
+	
+    abclsmod      = ~0 0 0 0 0 -4~
+	
+    // abdcdsrq      = ~0 0 0 = 0 =~
+	
+    // abdcscrq      = ~15 0 0 0 0 0~
+	
+	//               L L L N N N C C C
+	//               G N E G N E G N E
+    alignmnt      = ~0 1 1 0 1 1 0 1 1~
+	
+    // dualclas      = ~0 1 1 1 1 0~
+	
+    luabbr        = ~C0DEAT~
+	
+    // stweap        = ~CHAN09 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
+	
+    clab_path     = ~override/C0DEATHS.2da~
+	
+    // kittable      = ~K_F_H K_F_E K_F_HE~
+	
+	// base_class = 
+	
+	// clab_base_f = 
+	
+	// clab_base_p = 
+	
+	// clab_base_d = 
+	
+	// clab_base_r = 
+	
+	// clab_base_m = 
+	
+	// clab_base_t = 
+	
+    // clsrcreq      = ~1 1 1 1 1 1 1~
+	
+    // clswpbon      = ~1 0 2~
+	
+    // hpclass       = ~HPPRS~
+	
+    // numwslot      = ~4~
+	
+    clascolr = ~0 65 66 136 182~
+	
+	// clasiskl = ~0 0 0 0 0 0 0~
+	
+	// clasthac = ~0~
+	
 	thiefscl = ~25 0 0 0 0 0 0 0~
-END
-END
-
-ACTION_IF MOD_IS_INSTALLED ~RR/SETUP-RR.TP2~ ~0~ BEGIN
-ADD_KIT ~C0DEATHSINGER~
- // appended to CLASWEAP.2da
- ~C0DEATHSINGER		1           1           1           1           1           1           1           1~
- // appended column-wise to WEAPPROF.2da
- ~C0DEATHSINGER		1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
- // appended to ABCLASRQ.2da
- ~C0DEATHSINGER				0      12	0	13	0	13~
- // appended to ABCLSMOD.2da
- ~C0DEATHSINGER				0	0	0	0	0	-2~
- // appended to ABDCDSRQ.2da
- ~C0DEATHSINGER                		0       0       0       0       0       0~
- // appended to ABDCSCRQ.2da
- ~C0DEATHSINGER                 	0       0       0       0       0		0~
- // appended to ALIGNMNT.2da
- ~C0DEATHSINGER                  	0       1       1       0       1		1       0       1       1~
- // appended to DUALCLAS.2da
- ~C0DEATHSINGER                  	0       0       0       0       0       0~
- // path to your CLAB-style 2da file 
- ~%MOD_FOLDER%/deathsinger/C0DEATHS.2da~
- // PC races and classes allowed to use this kit, from KITTABLE.2da
- ~K_B_H K_B_E K_B_HE K_B_HL K_B_G K_B_D K_B_HO~
- // usability flags, added to the end of the KITLIST.2da entry
- ~0x00004000     5~
- // HLA table to use; see LUABBR.2da
- ~C0DEAT~
- // list of starting equipment for PCs starting in ToB. Appended column-wise to 25STWEAP.2da
- ~CHAN16 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
- // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da
-  SAY ~deathsinger~
-  SAY ~Deathsinger~
-  SAY ~DEATHSINGER: A morbid class of bards, deathsingers take pleasure in singing tales of the macabre, and their magical songs are capable of raising the dead from their graves.
-
-Advantages:
-– The Deathsinger's Bard Song, "Call of the Grave", does not assist allies. Instead, the deathsinger may summon undead creatures under <PRO_HISHER> control. While singing, the Deathsinger takes a -4 penalty to Armor Class. Each round while the Deathsinger sings, there is a 35% base chance plus 2% for each level of the Deathsinger that a skeleton will answer the call, up to a maximum of 75% at level 20. Any summoned skeletons will be destroyed if the Deathsinger stops singing. The strength and maximum amount of skeletons summoned increases with level.
-   1st – 5th level: Summons up to two skeletons with 3 HD.
-   6th – 11th level: Summons up to three skeletons with up to 5 HD.
-   12th – 17th level: Summons up to four skeletons with up to 7 HD.
-   18th level: Summons up to five skeletons with up to 9 HD.
-
-– Gains the following spells as mage spells:
-   1st level: Doom
-   2nd level: Death Armor
-   3rd level: Bestow Curse
-   4th level: Cloak of Fear
-   5th level: Slay Living
-   6th level: Destruction
-
-Disadvantages:
-– Incurs a -2 penalty to Charisma.
-– May not be good-aligned.
-– Only has one-quarter Pick Pockets percentage.~
-
-LAF fl#add_kit_ee
-  STR_VAR
-    kit_name = C0DEATHSINGER
-	clascolr = ~0 65 66 136 182~
-	thiefscl = ~25 0 0 0 0 0 0 0~
-END
+	
+	// backstab = ~1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2~
+	
+	// sneakatt = ~1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 5 5 5 5 5 5 5 5 6~
+	
+	// crippstr = ~0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4~
+	
+	// thiefskl = ~0 0~
+	
+	// traplimt = ~6~
+	
+    // bdstweap      = ~CHAN04 SHLD04 HELM01 * RING06 * * * * BRAC09 BELT02 AROW02,40 BULL02,40 BOLT02,40 POTN08,5 POTN17,3 POTN12,1 * SW1H05 HAMM02~
+  RET
+    kit_id
 END
 
 COPY_EXISTING ~SKELSU01.CRE~ ~override/C0DESUM1.CRE~

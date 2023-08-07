@@ -387,3 +387,29 @@ ACTION_IF FILE_EXISTS_IN_GAME ~tem2304.sto~ THEN BEGIN
 COPY_EXISTING ~tem2304.sto~ ~override~
 ADD_STORE_ITEM ~c0bring2~ #0 #0 #0 ~IDENTIFIED~ #1
 END
+/*
+COPY ~%MOD_FOLDER%/items/c0bswd1.itm~ ~override~
+SAY NAME1 ~Long Sword~
+SAY NAME2 ~Cold Moon "Han-po" +3~
+SAY DESC ~"Gujian: Han-po"—Ancient Blade: Cold Moon
+
+STATISTICS:
+
+Combat abilities:
+– Moonlight: Each successful hit applies a non-cumulative -2 penalty to Save vs. Spells for 2 rounds
+– Execution: Deal an additional 4 unmitigated slashing damage to targets that are blinded, slowed, held, entangled or stunned
+
+Equipped abilities:
+– 1/2 bonus attack per round
+
+THAC0: +3, strikes as a +3 weapon
+Damage: 1d8+1, +4 vs. undead
+Damage type: Slashing
+Speed Factor: 2
+Proficiency Type: Long Sword
+Type: One-handed
+Requires:
+ 5 Strength
+
+Weight: 2~
+*/

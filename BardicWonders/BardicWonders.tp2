@@ -2,7 +2,7 @@ BACKUP ~BardicWonders/backup~
 AUTHOR ~Artemius_I~
 AUTO_TRA ~%MOD_FOLDER%/translations/%s~
 ALWAYS
-  INCLUDE ~%MOD_FOLDER%/lib/fl#add_kit_ee.tpa~
+  INCLUDE ~%MOD_FOLDER%/lib/a7#add_kit_ex.tpa~
   INCLUDE ~%MOD_FOLDER%/lib/kit_strref.tpa~
   INCLUDE ~%MOD_FOLDER%/lib/alter_script.tpa~
   INCLUDE ~%MOD_FOLDER%/lib/functions.tph~

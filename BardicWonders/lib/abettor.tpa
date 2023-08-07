@@ -8,38 +8,36 @@ REPLACE_TEXTUALLY ~ABILITY       ICON        STRREF    MIN_LEV   MAX_LEVEL  NUM_
 X1      AP_C0ABETT5     *          *         1         99         1            *            *             *
 X2      AP_C0ABETHL     *          *         1         99         1            AP_C0ABETT5            *             *~
 
-ACTION_IF NOT MOD_IS_INSTALLED ~RR/SETUP-RR.TP2~ ~0~ BEGIN
-ADD_KIT ~C0ABETT~
- // appended to CLASWEAP.2da
- ~C0ABETT		1           1           1           1           1           1           1           1~
- // appended column-wise to WEAPPROF.2da
- ~C0ABETT		0 1 0 0 1 0 0 1 0 1 1 0 0 1 1 1 0 1 0 0 0 0 1 1 0 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
- // appended to ABCLASRQ.2da
- ~C0ABETT				0      12	0	13	0	15~
- // appended to ABCLSMOD.2da
- ~C0ABETT				0	0	0	0	0	0~
- // appended to ABDCDSRQ.2da
- ~C0ABETT                		0       0       0       0       0       0~
- // appended to ABDCSCRQ.2da
- ~C0ABETT                 	0       0       0       0       0		0~
- // appended to ALIGNMNT.2da
- ~C0ABETT                  	0       0       0       0       1	1       0       1       1~
- // appended to DUALCLAS.2da
- ~C0ABETT                  	0       0       0       0       0       0~
- // path to your CLAB-style 2da file 
- ~%MOD_FOLDER%/abettor/C0ABETTO.2da~
- // PC races and classes allowed to use this kit, from KITTABLE.2da
- ~K_B_H K_B_E K_B_HE K_B_HL K_B_G K_B_D K_B_HO~
- // usability flags, added to the end of the KITLIST.2da entry
- ~0x00004000     5~
- // HLA table to use; see LUABBR.2da
- ~C0ABET~
- // list of starting equipment for PCs starting in ToB. Appended column-wise to 25STWEAP.2da
- ~CHAN12 * * BAG30 RING06 RING34 CLCK02 BOOT01 AMUL19 BRAC16 BELT10 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 DAGG12 SW1H28 STAF08~
- // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da
-  SAY ~abettor of mask~
-  SAY ~Abettor of Mask~
-  SAY ~ABETTOR OF MASK: Contrary to popular belief, the trickster god Mask's favor extends past those who walk the path of stealthy arts and trickery. The Abettor is a faithful Maskarran, a deceptive agent of the Lord of Shadows whose gall is tested through tasks that typical bards would balk at due to their dark natures.
+LAF ADD_KIT_EX
+  INT_VAR
+    // Mage	= 1
+	// Fighter = 2
+	// Cleric = 3
+	// Thief = 4
+	// Bard = 5
+	// Paladin = 6
+	// Fighter/Mage = 7
+	// Fighter/Cleric = 8
+	// Fighter/Thief = 9
+	// Fighter/Mage/Thief = 10
+	// Druid = 11
+	// Ranger = 12
+	// Mage/Thief = 13
+	// Cleric/Mage = 14
+	// Cleric/Thief = 15
+	// Fighter/Druid = 16
+	// Fighter/Mage/Cleric = 17
+	// Cleric/Ranger = 18
+	// Sorcerer = 19
+	// Monk = 20
+	// Shaman = 21
+    kit_class     = 5
+	
+    mixed         = RESOLVE_STR_REF(~Abettor of Mask~)
+	
+    lower         = RESOLVE_STR_REF(~abettor of Mask~)
+	
+    help          = RESOLVE_STR_REF(~ABETTOR OF MASK: Contrary to popular belief, the trickster god Mask's favor extends past those who walk the path of stealthy arts and trickery. The Abettor is a faithful Maskarran, a deceptive agent of the Lord of Shadows whose gall is tested through tasks that typical bards would balk at due to their dark natures.
 
 ADVANTAGES:
 
@@ -63,80 +61,123 @@ DISADVANTAGES:
 – Must be of True Neutral, Chaotic Neutral, Neutral Evil or Chaotic Evil alignment.
 – Only has one-half normal Lore value.
 – May not learn the Magic Flute high level ability.
-– May only be proficient in weapons usable by thieves.~
-
-LAF fl#add_kit_ee
+– May only be proficient in weapons usable by thieves.~)
+	
+    briefdesc     = RESOLVE_STR_REF(~ABETTOR OF MASK: Contrary to popular belief, the trickster god Mask's favor extends past those who walk the path of stealthy arts and trickery. The Abettor is a faithful Maskarran, a deceptive agent of the Lord of Shadows whose gall is tested through tasks that typical bards would balk at due to their dark natures.~)
+	
+	// fallen = 0
+	
   STR_VAR
-    kit_name = C0ABETT
-	clascolr = ~27 185 183 83 21~
+    kit_name      = ~C0ABETT~
+	
+    unusable      = ~0x00004000~
+    // clasweap      = ~1 1 1 1 1 1 1 1~
+	//                                       T   S           F   Q             S S
+	//                                       W   C           L   U             W I
+	//                               B L S   O   I   W       A   A             O N
+	//                               A O H   H   M   A       I   R C   S       R G
+	//               L S           M S N O   A   I   R     H L   T R L H     2 D L 2
+	//               _ _       S   I T G R   N K T D H     A M   E O O O     H A E W
+	//               S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E
+	//               W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A
+	//               O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P
+	//               R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O
+	//               D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N
+    weapprof      = ~0 1 0 0 1 0 0 1 0 1 1 0 0 1 1 1 0 1 0 0 0 0 1 1 0 1 1 1 1 1 1 1~
+	
+    //abclasrq      = ~0 15 0 14 0 0~
+	
+    // abclsmod      = ~0 0 0 0 0 0~
+	
+    // abdcdsrq      = ~0 0 0 = 0 =~
+	
+    // abdcscrq      = ~15 0 0 0 0 0~
+	
+	//               L L L N N N C C C
+	//               G N E G N E G N E
+    alignmnt      = ~0 0 0 0 1 1 0 1 1~
+	
+    // dualclas      = ~0 1 1 1 1 0~
+	
+    luabbr        = ~C0ABET~
+	
+    // stweap        = ~CHAN09 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
+	
+    clab_path     = ~override/C0ABETTO.2da~
+	
+    // kittable      = ~K_F_H K_F_E K_F_HE~
+	
+	// base_class = 
+	
+	// clab_base_f = 
+	
+	// clab_base_p = 
+	
+	// clab_base_d = 
+	
+	// clab_base_r = 
+	
+	// clab_base_m = 
+	
+	// clab_base_t = 
+	
+    // clsrcreq      = ~1 1 1 1 1 1 1~
+	
+    // clswpbon      = ~1 0 2~
+	
+    // hpclass       = ~HPPRS~
+	
+    // numwslot      = ~4~
+	
+    clascolr = ~27 185 183 83 21~
+	
+	// clasiskl = ~0 0 0 0 0 0 0~
+	
+	// clasthac = ~0~
+	
+	// thiefscl = ~0 0 0 0 0 0 0 0~
+	
+	backstab = ~1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2~
+	
+	sneakatt = ~1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 5 5 5 5 5 5 5 5 6~
+	
+	crippstr = ~0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4~
+	
+	// thiefskl = ~0 0~
+	
+	// traplimt = ~6~
+	
+    // bdstweap      = ~CHAN04 SHLD04 HELM01 * RING06 * * * * BRAC09 BELT02 AROW02,40 BULL02,40 BOLT02,40 POTN08,5 POTN17,3 POTN12,1 * SW1H05 HAMM02~
+  RET
+    kit_id
 END
-END
-APPEND ~backstab.2da~ ~C0ABETT 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2~
-APPEND ~sneakatt.2da~ ~C0ABETT 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 5 5 5 5 5 5 5 5 6~
-APPEND ~crippstr.2da~ ~C0ABETT 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4~
 
 ACTION_IF MOD_IS_INSTALLED ~RR/SETUP-RR.TP2~ ~0~ BEGIN
-ADD_KIT ~C0ABETT~
- // appended to CLASWEAP.2da
- ~C0ABETT		1           1           1           1           1           1           1           1~
- // appended column-wise to WEAPPROF.2da
- ~C0ABETT		0 1 0 0 1 0 0 1 0 1 1 0 0 1 1 1 0 1 0 0 0 0 1 1 0 1 1 1 1 1 1 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
- // appended to ABCLASRQ.2da
- ~C0ABETT				0      12	0	13	0	15~
- // appended to ABCLSMOD.2da
- ~C0ABETT				0	0	0	0	0	0~
- // appended to ABDCDSRQ.2da
- ~C0ABETT                		0       0       0       0       0       0~
- // appended to ABDCSCRQ.2da
- ~C0ABETT                 	0       0       0       0       0		0~
- // appended to ALIGNMNT.2da
- ~C0ABETT                  	0       0       0       0       1	1       0       1       1~
- // appended to DUALCLAS.2da
- ~C0ABETT                  	0       0       0       0       0       0~
- // path to your CLAB-style 2da file 
- ~%MOD_FOLDER%/abettor/C0ABETTO.2da~
- // PC races and classes allowed to use this kit, from KITTABLE.2da
- ~K_B_H K_B_E K_B_HE K_B_HL K_B_G K_B_D K_B_HO~
- // usability flags, added to the end of the KITLIST.2da entry
- ~0x00004000     5~
- // HLA table to use; see LUABBR.2da
- ~C0ABET~
- // list of starting equipment for PCs starting in ToB. Appended column-wise to 25STWEAP.2da
- ~CHAN16 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
- // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da
-  SAY ~abettor of mask~
-  SAY ~Abettor of Mask~
-  SAY ~ABETTOR OF MASK: Contrary to popular belief, the trickster god Mask's favor extends past those who walk the path of stealthy arts and trickery. The Abettor is a faithful Maskarran, a deceptive agent of the Lord of Shadows whose gall is tested through tasks that typical bards would balk at due to their dark natures.
 
-ADVANTAGES:
-
-– Receives a +5% bonus to Pick Pockets per level.
-– Gains a backstab multiplier of x2.
-– The Abettor's song, "One's Loss, Another's Gain", provides thieving and stealth bonuses to the party. The song grants +15% to all thieving skills, increasing by 5% per rank and grants the following effects:
-	3rd level: Party members passively detect traps
-	6th level: Party members gain Blur (+3 to AC, +1 to all saving throws)
-	9th level: The singer has a 50% chance to gain Improved Invisibility for one round
-	12th level: Party members gain Non-Detection
-	15th level: The singer has a 100% chance to gain Improved Invisibility for one round
-
-– From 10th level onwards, the Abettor passively has a 1% chance upon taking damage to turn invisible for one turn.
-– From 12th level onwards, gains one use of Shadowstep.
-
-SHADOWSTEP: The character steps into the Shadow Plane and may move for 7 seconds while others are frozen in time. The caster cannot attack or cast spells while in the Shadow Plane.
-
-– May learn the Assassination high level ability upon reaching 24th level.
-
-DISADVANTAGES:
-– Must be of True Neutral, Chaotic Neutral, Neutral Evil or Chaotic Evil alignment.
-– Only has one-half normal Lore value.
-– May not learn the Magic Flute high level ability.
-– May only be proficient in weapons usable by thieves.~
-
-LAF fl#add_kit_ee
-  STR_VAR
-    kit_name = C0ABETT
-	clascolr = ~27 185 183 83 21~
-END
+// 2 WEAPON STYLE
+ACTION_CLEAR_ARRAY weapprof_cols_blade
+        
+COPY_EXISTING ~weapprof.2da~  ~override~
+  COUNT_2DA_COLS col_count
+  SET col_check = col_count - 1
+  FOR (column = 0; column < col_check; ++column) BEGIN
+    READ_2DA_ENTRY 0 column col_check name
+    PATCH_IF (("C0ABETT" STRING_COMPARE_CASE "%name%" = 0)) BEGIN
+      SET column += 1 // row with names has an empty entry for the first column
+      DEFINE_ASSOCIATIVE_ARRAY weapprof_cols_blade BEGIN ~%column%~ => ~%column%~ END
+    END
+  END
+  PATCH_PHP_EACH weapprof_cols_blade AS column => foo BEGIN
+    FOR (row = 8; row < 32; ++row) BEGIN
+      READ_2DA_ENTRY row column col_count stars
+      PATCH_IF (stars < 5) BEGIN
+        SET_2DA_ENTRY 31 column col_count 5
+      END
+    END
+  END
+  PRETTY_PRINT_2DA
+  BUT_ONLY
+  
 END
 
 COPY ~%MOD_FOLDER%/abettor/c0abetso.spl~ ~override~

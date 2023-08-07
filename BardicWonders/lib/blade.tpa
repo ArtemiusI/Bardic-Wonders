@@ -7,7 +7,7 @@ STRING_SET_EVALUATE kit_strref ~BLADE: Blades are master artisans with bladed we
 Advantages:
 – Blade Dancer: The blade uses their Charisma modifier, if higher, for melee bonuses to hit instead of Strength.
 – May achieve Grand Mastery (five slots) in any bladed weapon.
-– May achieve Mastery (three slots) in Two-Weapon Style.
+– Gains Mastery in Two-Weapon Style at 1st level.
 – Instead of a regular Bard Song, the blade may perform a Weapons Display, performing a deadly dance with their weapons to intimidate their foes while inspiring their allies. This reduces the morale of all nearby foes by 2 while granting a +1 bonus to hit to all allies within visual range. The display has no effect on non-sentient creatures such as golems or undead.
 – May use the Offensive Spin and Defensive Spin abilities once per day. Gains one use each at level 1 and an additional use each every 4 levels thereafter. Using either spin will remove the effects of the other, if ongoing.
 
@@ -132,11 +132,34 @@ COPY_EXISTING ~weapprof.2da~  ~override~
         SET_2DA_ENTRY 13 column col_count 5
         SET_2DA_ENTRY 14 column col_count 5
         SET_2DA_ENTRY 15 column col_count 5
+        SET_2DA_ENTRY 31 column col_count 0
       END
     END
   END
   PRETTY_PRINT_2DA
   BUT_ONLY
+
+// ICONS
+
+DEFINE_ACTION_FUNCTION cd_new_portrait_icon
+  INT_VAR string = 0
+  STR_VAR bam_file = "****"
+  RET     icon
+  BEGIN
+
+  COPY_EXISTING ~statdesc.2da~ ~override~
+    COUNT_2DA_ROWS 3 count
+    READ_2DA_ENTRY (count - 1) 0 3 icon
+    SET icon += 1
+
+  APPEND ~statdesc.2da~ ~%icon% %string% %bam_file%~ UNLESS ~%bam_file%~
+
+END
+
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Weapons Display~) STR_VAR bam_file = c0bldsoi RET c0bldsoi = icon END
+
+COPY_EXISTING ~C0BLDSO.SPL~ OVERRIDE
+LPF ALTER_EFFECT INT_VAR match_opcode = 142 parameter2 = c0bldsoi END
 
 COPY_EXISTING ~SPCL521.SPL~ OVERRIDE
 SAY NAME1 ~Offensive Spin~
