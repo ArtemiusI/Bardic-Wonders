@@ -39,6 +39,12 @@ Equipped abilities:
 
 Weight: 1~
 
+ACTION_IF FILE_EXISTS_IN_GAME ~C0WL000.SPL~ THEN BEGIN
+COPY_EXISTING ~C0BWAM1.ITM~ ~OVERRIDE~
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 timing = 2 parameter1 = (IDS_OF_SYMBOL (~kit~ ~C0WLOCK~)) parameter2 = 9 power = 0 special = RESOLVE_STR_REF (~Warlock~) END
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 318 target = 1 timing = 2 parameter1 = (IDS_OF_SYMBOL (~kit~ ~C0WLOCK~)) parameter2 = 109 STR_VAR resource = C0BWAM1A END
+END
+
 COPY ~%MOD_FOLDER%/items/c0bwar1.bam~ ~override~
 COPY ~%MOD_FOLDER%/items/c0bwar1.itm~ ~override~
 SAY NAME1 ~Armor of the Grey Fox +3~
@@ -57,6 +63,11 @@ Requires:
 
 Weight: 4~
 
+ACTION_IF FILE_EXISTS_IN_GAME ~C0WL000.SPL~ THEN BEGIN
+COPY_EXISTING ~C0BWAR1.ITM~ ~OVERRIDE~
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 timing = 2 parameter1 = (IDS_OF_SYMBOL (~kit~ ~C0WLOCK~)) parameter2 = 9 power = 0 special = RESOLVE_STR_REF (~Warlock~) END
+END
+
 COPY ~%MOD_FOLDER%/items/c0bwar2.bam~ ~override~
 COPY ~%MOD_FOLDER%/items/c0bwar2.itm~ ~override~
 SAY NAME1 ~Whispering Links +2~
@@ -73,6 +84,11 @@ Armor Class: 3 (1 vs. slashing, 5 vs. crushing)
 Requires:
  5 Strength~
  
+ACTION_IF FILE_EXISTS_IN_GAME ~C0WL000.SPL~ THEN BEGIN
+COPY_EXISTING ~C0BWAR2.ITM~ ~OVERRIDE~
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 318 target = 1 timing = 2 parameter1 = (IDS_OF_SYMBOL (~kit~ ~C0WLOCK~)) parameter2 = 109 STR_VAR resource = C0BWAR2A END
+END
+
 COPY ~%MOD_FOLDER%/items/c0bwbo1.bam~ ~override~
 COPY ~%MOD_FOLDER%/items/c0bwbo1.itm~ ~override~
 SAY NAME1 ~Lament +5~
@@ -100,6 +116,11 @@ Requires:
 
 Weight: 2~
 
+ACTION_IF FILE_EXISTS_IN_GAME ~C0WL000.SPL~ THEN BEGIN
+COPY_EXISTING ~C0BWBO1.ITM~ ~OVERRIDE~
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 timing = 2 parameter1 = (IDS_OF_SYMBOL (~kit~ ~C0WLOCK~)) parameter2 = 9 power = 0 special = RESOLVE_STR_REF (~Warlock~) END
+END
+
 COPY ~%MOD_FOLDER%/items/c0bwbo1.spl~ ~override~
 SAY NAME1 ~Glissando!~
 SAY NAME2 ~Glissando!~
@@ -120,6 +141,11 @@ Equipped abilities:
 
 Weight: 2~
 
+ACTION_IF FILE_EXISTS_IN_GAME ~C0WL000.SPL~ THEN BEGIN
+COPY_EXISTING ~C0BWBT1.ITM~ ~OVERRIDE~
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 318 target = 1 timing = 2 parameter1 = (IDS_OF_SYMBOL (~kit~ ~C0WLOCK~)) parameter2 = 109 STR_VAR resource = C0BWBT1A END
+END
+
 COPY ~%MOD_FOLDER%/items/c0bwcl1.bam~ ~override~
 COPY ~%MOD_FOLDER%/items/c0bwcl1.itm~ ~override~
 SAY NAME1 ~Cloak of the Wild Singer~
@@ -135,6 +161,11 @@ Equipped abilities:
 – Improved Chaos Shield
 
 Weight: 3~
+
+ACTION_IF FILE_EXISTS_IN_GAME ~C0WL000.SPL~ THEN BEGIN
+COPY_EXISTING ~C0BWCL1.ITM~ ~OVERRIDE~
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 timing = 2 parameter1 = (IDS_OF_SYMBOL (~kit~ ~C0WLOCK~)) parameter2 = 9 power = 0 special = RESOLVE_STR_REF (~Warlock~) END
+END
 
 COPY ~%MOD_FOLDER%/items/c0bwha1.bam~ ~override~
 COPY ~%MOD_FOLDER%/items/c0bwha1a.spl~ ~override~
@@ -181,6 +212,11 @@ Special Abilities:
 
 Weight: 3~
 
+ACTION_IF FILE_EXISTS_IN_GAME ~C0WL000.SPL~ THEN BEGIN
+COPY_EXISTING ~C0BWMI1.ITM~ ~OVERRIDE~
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 timing = 2 parameter1 = (IDS_OF_SYMBOL (~kit~ ~C0WLOCK~)) parameter2 = 9 power = 0 special = RESOLVE_STR_REF (~Warlock~) END
+END
+
 COPY ~%MOD_FOLDER%/items/c0bwmi2.bam~ ~override~
 COPY ~%MOD_FOLDER%/items/c0bwmi2.itm~ ~override~
 SAY NAME1 ~Haven Lute~
@@ -193,6 +229,11 @@ Special Abilities:
 – Casts Otiluke's Resilient Sphere 3x/day (self only, no save)
 
 Weight: 3~
+
+ACTION_IF FILE_EXISTS_IN_GAME ~C0WL000.SPL~ THEN BEGIN
+COPY_EXISTING ~C0BWMI2.ITM~ ~OVERRIDE~
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 timing = 2 parameter1 = (IDS_OF_SYMBOL (~kit~ ~C0WLOCK~)) parameter2 = 9 power = 0 special = RESOLVE_STR_REF (~Warlock~) END
+END
 
 COPY ~%MOD_FOLDER%/items/c0bwsh1.bam~ ~override~
 COPY ~%MOD_FOLDER%/items/c0bwsh1a.eff~ ~override~
@@ -214,6 +255,11 @@ Requires:
  4 Strength
 
 Weight: 2~
+
+ACTION_IF FILE_EXISTS_IN_GAME ~C0WL000.SPL~ THEN BEGIN
+COPY_EXISTING ~C0BWSH1.ITM~ ~OVERRIDE~
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 timing = 2 parameter1 = (IDS_OF_SYMBOL (~kit~ ~C0WLOCK~)) parameter2 = 9 power = 0 special = RESOLVE_STR_REF (~Warlock~) END
+END
 
 COPY ~%MOD_FOLDER%/items/c0bwsw1.bam~ ~override~
 COPY ~%MOD_FOLDER%/items/c0bwsw1a.eff~ ~override~
@@ -241,6 +287,11 @@ Requires:
 
 Weight: 2~
 
+ACTION_IF FILE_EXISTS_IN_GAME ~C0WL000.SPL~ THEN BEGIN
+COPY_EXISTING ~C0BWSW1.ITM~ ~OVERRIDE~
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 318 target = 1 timing = 2 parameter1 = (IDS_OF_SYMBOL (~kit~ ~C0WLOCK~)) parameter2 = 109 STR_VAR resource = C0BWSW1A END
+END
+
 COPY ~%MOD_FOLDER%/items/c0bwsw2.bam~ ~override~
 COPY ~%MOD_FOLDER%/items/c0bwsw2.itm~ ~override~
 SAY NAME1 ~Dirge +5~
@@ -264,6 +315,11 @@ Requires:
  6 Strength
 
 Weight: 2~
+
+ACTION_IF FILE_EXISTS_IN_GAME ~C0WL000.SPL~ THEN BEGIN
+COPY_EXISTING ~C0BWSW2.ITM~ ~OVERRIDE~
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 timing = 2 parameter1 = (IDS_OF_SYMBOL (~kit~ ~C0WLOCK~)) parameter2 = 9 power = 0 special = RESOLVE_STR_REF (~Warlock~) END
+END
 
 COPY ~%MOD_FOLDER%/items/c0bwsw2.spl~ ~override~
 SAY NAME1 ~Crescendo!~
@@ -309,6 +365,11 @@ Requires:
 
 Weight: 7~
  
+ACTION_IF FILE_EXISTS_IN_GAME ~C0WL000.SPL~ THEN BEGIN
+COPY_EXISTING ~C0BCHAN1.ITM~ ~OVERRIDE~
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 timing = 2 parameter1 = (IDS_OF_SYMBOL (~kit~ ~C0WLOCK~)) parameter2 = 9 power = 0 special = RESOLVE_STR_REF (~Warlock~) END
+END
+
 ACTION_IF FILE_EXISTS_IN_GAME ~ar3601.are~ THEN BEGIN
 COPY_EXISTING ~ar3601.are~ ~override~
 LPF ADD_AREA_ITEM INT_VAR container_to_add_to = 1 STR_VAR item_to_add = c0bchan1 END
@@ -328,6 +389,11 @@ Equipped abilities:
 
 Weight: 0~
  
+ACTION_IF FILE_EXISTS_IN_GAME ~C0WL000.SPL~ THEN BEGIN
+COPY_EXISTING ~C0BHELM1.ITM~ ~OVERRIDE~
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 timing = 2 parameter1 = (IDS_OF_SYMBOL (~kit~ ~C0WLOCK~)) parameter2 = 9 power = 0 special = RESOLVE_STR_REF (~Warlock~) END
+END
+
 COPY ~%MOD_FOLDER%/items/c0bbelt1.itm~ ~override~
 SAY NAME1 ~Belt~
 SAY NAME2 ~Belt of Profane Poise~
@@ -342,6 +408,11 @@ Equipped abilities:
 
 Weight: 1~
  
+ACTION_IF FILE_EXISTS_IN_GAME ~C0WL000.SPL~ THEN BEGIN
+COPY_EXISTING ~C0BBELT1.ITM~ ~OVERRIDE~
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 timing = 2 parameter1 = (IDS_OF_SYMBOL (~kit~ ~C0WLOCK~)) parameter2 = 9 power = 0 special = RESOLVE_STR_REF (~Warlock~) END
+END
+
 ACTION_IF FILE_EXISTS_IN_GAME ~nimbul.cre~ THEN BEGIN
 COPY_EXISTING ~nimbul.cre~ ~override~
 ADD_CRE_ITEM ~c0bbelt1~ #0 #0 #0 ~NONE~ ~belt~
@@ -361,6 +432,11 @@ Equipped abilities:
 
 Weight: 0~
  
+ACTION_IF FILE_EXISTS_IN_GAME ~C0WL000.SPL~ THEN BEGIN
+COPY_EXISTING ~C0BRING1.ITM~ ~OVERRIDE~
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 timing = 2 parameter1 = (IDS_OF_SYMBOL (~kit~ ~C0WLOCK~)) parameter2 = 9 power = 0 special = RESOLVE_STR_REF (~Warlock~) END
+END
+
 ACTION_IF FILE_EXISTS_IN_GAME ~ar0514.are~ THEN BEGIN
 COPY_EXISTING ~ar0514.are~ ~override~
 LPF ADD_AREA_ITEM INT_VAR container_to_add_to = 36 STR_VAR item_to_add = c0bring1 END
@@ -383,27 +459,48 @@ Requires:
 
 Weight: 0~
 
+ACTION_IF FILE_EXISTS_IN_GAME ~C0WL000.SPL~ THEN BEGIN
+COPY_EXISTING ~C0BRING2.ITM~ ~OVERRIDE~
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 timing = 2 parameter1 = (IDS_OF_SYMBOL (~kit~ ~C0WLOCK~)) parameter2 = 9 power = 0 special = RESOLVE_STR_REF (~Warlock~) END
+END
+
 ACTION_IF FILE_EXISTS_IN_GAME ~tem2304.sto~ THEN BEGIN
 COPY_EXISTING ~tem2304.sto~ ~override~
 ADD_STORE_ITEM ~c0bring2~ #0 #0 #0 ~IDENTIFIED~ #1
 END
 /*
+// STATUS EFFECT
+APPEND ~splprot.2da~ ~C0_PHYS_DIS_1 0x111 0xd5021 8~ UNLESS ~C0_PHYS_DIS_1 0x111 0xd5021 8~
+COPY_EXISTING ~splprot.2da~ ~override~ 
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 0 ~stat~ // read column value
+	  PATCH_IF ~%stat%~ STRING_EQUAL_CASE ~C0_PHYS_DIS_1~ BEGIN
+	    SET C0_PHYS_DIS_1 = %row%
+	  END
+	END
+
 COPY ~%MOD_FOLDER%/items/c0bswd1.itm~ ~override~
+LPF ALTER_EFFECT INT_VAR match_opcode = 326 match_parameter2 = 138 parameter2 = C0_PHYS_DIS_1 END
 SAY NAME1 ~Long Sword~
 SAY NAME2 ~Cold Moon "Han-po" +3~
 SAY DESC ~"Gujian: Han-po"—Ancient Blade: Cold Moon
+This cold iron blade hails from the distant eastern empire of Shou Lung. It was the companion of the warrior-poet Xuan Lu, a renowned hero who fought injustices, exorcised demons and laid restless spirits to rest. After he passed away from old age, his sword was passed to his eldest son Xuan Jie, also a master poet but with a vice for drinking, who eventually sold it to a wandering trader to pay off his tavern debts. The sword then found its way to Faerûn, where it has traded hands between various bards and artists. One of Xuan Lu's poems, roughly translated, is etched onto the blade.
+
+"Beyond the city walls, a meter of snow, reflecting moonlight; an illusion of the divine."
 
 STATISTICS:
 
 Combat abilities:
 – Moonlight: Each successful hit applies a non-cumulative -2 penalty to Save vs. Spells for 2 rounds
-– Execution: Deal an additional 4 unmitigated slashing damage to targets that are blinded, slowed, held, entangled or stunned
+– Execution: Deal an additional 4 unmitigated slashing damage to targets that are held, asleep, silenced, poisoned, diseased, slowed or blinded
 
 Equipped abilities:
 – 1/2 bonus attack per round
 
 THAC0: +3, strikes as a +3 weapon
-Damage: 1d8+1, +4 vs. undead
+Damage: 1d8+1, +4 vs. extraplanar creatures and undead
 Damage type: Slashing
 Speed Factor: 2
 Proficiency Type: Long Sword

@@ -1,0 +1,92 @@
+// NIGHTSINGER - DARK INSPIRATIONS
+
+ACTION_IF FILE_EXISTS_IN_GAME ~C0SABARD.2DA~ BEGIN
+COPY ~BardicWonders/inspirations/nightsinger~ OVERRIDE
+COPY_EXISTING ~C0SABARD.2DA~ OVERRIDE
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = GA_C0BDS00 END // Inspirations
+
+COPY_EXISTING C0BDS00.SPL OVERRIDE
+SAY NAME1 ~Dark Inspiration~
+SAY UNIDENTIFIED_DESC ~The Nightsinger's presence inspires their companions, providing various benefits that persist so long as they are within visual range of the Nightsinger. Only one inspiration may be active at any given time.
+
+Inspire Wrath (1st level): Allies gain a +2 bonus to minimum damage rolls, but a -1 penalty to Armor Class. Bonuses and penalties increase to +3/-1 at 8th level, +4/-2 at 15th level and +5/-2 at 22nd level.
+
+Inspire Ambition (3rd level): Allies gain +1 to Casting Level and +10% to Spell Duration. Bonuses increase to +2 and +20% respectively at 10th level and +3 and +30% respectively at 17th level.
+
+Inspire Preservation (6th level): Allies gain +2% Magic Resistance. Bonuses increase to +4% at 10th level, +6% at 15th level and +8% at 20th level.
+
+Inspire Voracity (10th level): Allies' attacks drain targets for 1 hit point in magic damage. Damage increases to 2 hit points at 17th level and 3 hit points at 24th level.
+
+Inspire Audacity (12th level): Allies gain +1 to Backstab and Critical Hit Modifiers.
+
+Inspire Dominance (20th level): Allies gain a +10% bonus to damage dealt from all sources. Bonuses increase to +20% at 40th level.~
+
+COPY_EXISTING C0BDS00I.BAM ~OVERRIDE/C0BDS0IA.BAM~
+COPY_EXISTING C0BDS00I.BAM ~OVERRIDE/C0BDS0IB.BAM~
+COPY_EXISTING C0BDS00I.BAM ~OVERRIDE/C0BDS0IC.BAM~
+COPY_EXISTING C0BDS00I.BAM ~OVERRIDE/C0BDS0ID.BAM~
+COPY_EXISTING C0BDS00I.BAM ~OVERRIDE/C0BDS0IE.BAM~
+COPY_EXISTING C0BDS00I.BAM ~OVERRIDE/C0BDS0IF.BAM~
+
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Inspire Wrath~) STR_VAR bam_file = C0BDS0IA RET C0BDS0IA = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Inspire Ambition~) STR_VAR bam_file = C0BDS0IB RET C0BDS0IB = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Inspire Preservation~) STR_VAR bam_file = C0BDS0IC RET C0BDS0IC = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Inspire Voracity~) STR_VAR bam_file = C0BDS0ID RET C0BDS0ID = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Inspire Audacity~) STR_VAR bam_file = C0BDS0IE RET C0BDS0IE = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Inspire Dominance~) STR_VAR bam_file = C0BDS0IF RET C0BDS0IF = icon END
+
+COPY_EXISTING C0BDS01.SPL OVERRIDE
+SAY NAME1 ~Inspire Wrath~
+      LPF ADD_SPELL_EFFECT
+      INT_VAR
+	    opcode = 142
+	    target = 2
+		timing = 9
+        parameter2 = C0BDS0IA
+      END
+COPY_EXISTING C0BDS02.SPL OVERRIDE
+SAY NAME1 ~Inspire Ambition~
+      LPF ADD_SPELL_EFFECT
+      INT_VAR
+	    opcode = 142
+	    target = 2
+		timing = 9
+        parameter2 = C0BDS0IB
+      END
+COPY_EXISTING C0BDS03.SPL OVERRIDE
+SAY NAME1 ~Inspire Preservation~
+      LPF ADD_SPELL_EFFECT
+      INT_VAR
+	    opcode = 142
+	    target = 2
+		timing = 9
+        parameter2 = C0BDS0IC
+      END
+COPY_EXISTING C0BDS04.SPL OVERRIDE
+SAY NAME1 ~Inspire Voracity~
+      LPF ADD_SPELL_EFFECT
+      INT_VAR
+	    opcode = 142
+	    target = 2
+		timing = 9
+        parameter2 = C0BDS0ID
+      END
+COPY_EXISTING C0BDS05.SPL OVERRIDE
+SAY NAME1 ~Inspire Audacity~
+      LPF ADD_SPELL_EFFECT
+      INT_VAR
+	    opcode = 142
+	    target = 2
+		timing = 9
+        parameter2 = C0BDS0IE
+      END
+COPY_EXISTING C0BDS06.SPL OVERRIDE
+SAY NAME1 ~Inspire Dominance~
+      LPF ADD_SPELL_EFFECT
+      INT_VAR
+	    opcode = 142
+	    target = 2
+		timing = 9
+        parameter2 = C0BDS0IF
+      END
+END
