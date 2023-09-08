@@ -35,11 +35,11 @@ LAF ADD_KIT_EX
 
 Advantages:
 – May cast two additional spells per level.
-– The Kapellmeister's Bard Song, "Symphonie", bolsters the memory and concentration of allied mages, enhancing their Intelligence and Casting Level as well as granting a chance to restore their spells. 
-  1st level: +1 to Intelligence and Arcane Casting Level, 15% chance to restore one arcane spell of up to 3rd level each round.
-  10th level: +2 to Intelligence and Arcane Casting Level, 15% chance to restore one arcane spell of up to 5th level each round.
-  15th level: +2 to Intelligence and Arcane Casting Level, +1 to Casting Speed, 30% chance to restore one arcane spell of up to 5th level each round
-  20th level: +3 to Intelligence and Arcane Casting Level, +1 to Casting Speed, 30% chance to restore one arcane spell of up to 8th level each round
+– The Kapellmeister's Bard Song, "Symphonie", bolsters the memory and concentration of allied mages, enhancing their Intelligence and Casting Level as well as granting a chance to restore their spells. Lower level spells have a higher chance of being restored than high level spells.
+  1st level: +1 to Intelligence and Arcane Casting Level, 10% chance to restore one arcane spell of up to 4th level each round.
+  10th level: +2 to Intelligence and Arcane Casting Level, +1 to Casting Speed, 15% chance to restore one arcane spell of up to 6th level each round.
+  15th level: +2 to Intelligence and Arcane Casting Level, +2 to Casting Speed, 15% chance to restore one arcane spell of up to 6th level each round
+  20th level: +3 to Intelligence and Arcane Casting Level, +2 to Casting Speed, 25% chance to restore one arcane spell of up to 8th level each round
 
 – 3rd level: Gains the Magical Cadence passive effect.
 
