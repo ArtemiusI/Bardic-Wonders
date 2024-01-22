@@ -1,5 +1,7 @@
 ADD_PROJECTILE ~%MOD_FOLDER%/bardsong/c0bardso.PRO~ ~C0 Bardsong~
 
+COPY ~%MOD_FOLDER%/bardsong/c0bardsx.spl~ OVERRIDE
+  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Bard Song Ready~) END
 COPY ~%MOD_FOLDER%/bardsong/c0brdef1.bam~ OVERRIDE
 COPY ~%MOD_FOLDER%/bardsong/c0brdef1.vvc~ OVERRIDE
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.wav~ OVERRIDE
@@ -8,7 +10,7 @@ COPY ~%MOD_FOLDER%/bardsong/c0singin.eff~ OVERRIDE
 WRITE_SHORT 0x1c bard_singing
 COPY ~%MOD_FOLDER%/bardsong/c0singi2.eff~ OVERRIDE
 COPY ~%MOD_FOLDER%/bardsong/c0singi2.spl~ OVERRIDE
-  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Stopped Singing Bard Song~) END
+COPY ~%MOD_FOLDER%/bardsong/c0singi2.spl~ OVERRIDE
 
 // BARD
 
@@ -17,7 +19,6 @@ COPY_EXISTING ~FJBARDB.SPL~ ~OVERRIDE/FJBARDB3.SPL~
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = FJBARDB resource = FJBARDB3 END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/FJBARDB.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Stopped Singing Bard Song~) END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = FJBARDB END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/FJBARDB.EFF~
 WRITE_ASCII 0x30 FJBARDB3
@@ -28,7 +29,6 @@ COPY_EXISTING ~SPCL920A.SPL~ ~OVERRIDE/SPCL920B.SPL~
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = SPCL920A resource = SPCL920B END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/SPCL920A.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Stopped Singing Bard Song~) END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = SPCL920A END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/SPCL920A.EFF~
 WRITE_ASCII 0x30 SPCL920B
@@ -41,7 +41,6 @@ COPY_EXISTING ~FJBLADEB.SPL~ ~OVERRIDE/FJBLADB3.SPL~
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = FJBLADEB resource = FJBLADB3 END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/FJBLADEB.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Stopped Singing Bard Song~) END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = FJBLADEB END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/FJBLADEB.EFF~
 WRITE_ASCII 0x30 FJBLADB3
@@ -52,7 +51,6 @@ COPY_EXISTING ~C0BLDSO.SPL~ ~OVERRIDE/C0BLDSO3.SPL~
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = C0BLDSO resource = C0BLDSO3 END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0BLDSO.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Stopped Singing Bard Song~) END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0BLDSO END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0BLDSO.EFF~
 WRITE_ASCII 0x30 C0BLDSO3
@@ -65,7 +63,6 @@ COPY_EXISTING ~SPCL751A.SPL~ ~OVERRIDE/SPCL751B.SPL~
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = SPCL751A resource = SPCL751B END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/SPCL751A.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Stopped Singing Bard Song~) END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = SPCL751A END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/SPCL751A.EFF~
 WRITE_ASCII 0x30 SPCL751B
@@ -76,7 +73,6 @@ COPY_EXISTING ~C0JES03A.SPL~ ~OVERRIDE/C0JES03B.SPL~
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = C0JES03A resource = C0JES03B END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0JES03A.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Stopped Singing Bard Song~) END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0JES03A END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0JES03A.EFF~
 WRITE_ASCII 0x30 C0JES03B
@@ -89,7 +85,6 @@ COPY_EXISTING ~SPCL542A.SPL~ ~OVERRIDE/SPCL542B.SPL~
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = SPCL542A resource = SPCL542B END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/SPCL542A.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Stopped Singing Bard Song~) END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = SPCL542A END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/SPCL542A.EFF~
 WRITE_ASCII 0x30 SPCL542B
@@ -100,7 +95,6 @@ COPY_EXISTING ~C0SKD02A.SPL~ ~OVERRIDE/C0SKD02B.SPL~
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = C0SKD02A resource = C0SKD02B END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0SKD02A.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Stopped Singing Bard Song~) END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0SKD02A END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0SKD02A.EFF~
 WRITE_ASCII 0x30 C0SKD02B
@@ -115,7 +109,6 @@ COPY_EXISTING ~X3RHLAS.SPL~ ~OVERRIDE/X3RHLAS2.SPL~
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = X3RHLAS resource = X3RHLAS2 END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/X3RPKIT2.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Stopped Singing Bard Song~) END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = X3RPKIT2 END
   WRITE_ASCIIT 0x10 X3FLUTE
 COPY_EXISTING ~c0singi2.SPL~ ~OVERRIDE~
@@ -124,7 +117,6 @@ COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/X3RPKIT2.EFF~
 WRITE_ASCII 0x30 X3RPKIT5
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/X3RHLAS.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Stopped Singing Bard Song~) END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = X3RHLAS END
   WRITE_ASCIIT 0x10 X3FLUTE
 COPY_EXISTING ~c0singi2.SPL~ ~OVERRIDE~
@@ -142,7 +134,6 @@ COPY_EXISTING ~C0SASON2.SPL~ ~OVERRIDE/C0SASON4.SPL~
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = C0SASON2 resource = C0SASON4 END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0SASONG.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Stopped Singing Bard Song~) END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0SASONG END
 COPY_EXISTING ~c0singi2.SPL~ ~OVERRIDE~
   LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = C0SASONG END
@@ -150,7 +141,6 @@ COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0SASONG.EFF~
 WRITE_ASCII 0x30 C0SASON3
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0SASON2.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Stopped Singing Bard Song~) END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0SASON2 END
 COPY_EXISTING ~c0singi2.SPL~ ~OVERRIDE~
   LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = C0SASON2 END
@@ -167,13 +157,11 @@ COPY_EXISTING ~C0ABETS2.SPL~ ~OVERRIDE/C0ABETS4.SPL~
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = C0ABETS2 resource = C0ABETS4 END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0ABETSO.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Stopped Singing Bard Song~) END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0ABETSO END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0ABETSO.EFF~
 WRITE_ASCII 0x30 C0ABETS3
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0ABETS2.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Stopped Singing Bard Song~) END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0ABETS2 END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0ABETS2.EFF~
 WRITE_ASCII 0x30 C0ABETS4
@@ -188,13 +176,11 @@ COPY_EXISTING ~C0BDD#S2.SPL~ ~OVERRIDE/C0BDD#S4.SPL~
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = C0BDD#S2 resource = C0BDD#S4 END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0BDD#SO.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Stopped Singing Bard Song~) END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0BDD#SO END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0BDD#SO.EFF~
 WRITE_ASCII 0x30 C0BDD#S3
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0BDD#S2.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Stopped Singing Bard Song~) END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0BDD#S2 END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0BDD#S2.EFF~
 WRITE_ASCII 0x30 C0BDD#S4
@@ -209,13 +195,11 @@ COPY_EXISTING ~C0SDRUS2.SPL~ ~OVERRIDE/C0SDRUS4.SPL~
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = C0SDRUS2 resource = C0SDRUS4 END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0SDRUSO.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Stopped Singing Bard Song~) END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0SDRUSO END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0SDRUSO.EFF~
 WRITE_ASCII 0x30 C0SDRUS3
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0SDRUS2.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Stopped Singing Bard Song~) END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0SDRUS2 END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0SDRUS2.EFF~
 WRITE_ASCII 0x30 C0SDRUS4
@@ -230,13 +214,11 @@ COPY_EXISTING ~C0TRBSO2.SPL~ ~OVERRIDE/C0TRBSO4.SPL~
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = C0TRBSO2 resource = C0TRBSO4 END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0TRBSO.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Stopped Singing Bard Song~) END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0TRBSO END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0TRBSO.EFF~
 WRITE_ASCII 0x30 C0TRBSO3
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0TRBSO2.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Stopped Singing Bard Song~) END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0TRBSO2 END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0TRBSO2.EFF~
 WRITE_ASCII 0x30 C0TRBSO4
@@ -258,7 +240,7 @@ COPY_EXISTING ~enginest.2da~ ~override~
   
 OUTER_SPRINT old_bard_song ~– May use Bard Song ability.~ //old text
 
-OUTER_SPRINT new_bard_song ~The Bard's Song may be used an unlimited number of times, and lasts for 3 rounds + 1 round per 3 levels gained. The Bard Song has a cooldown of five rounds before it may be used again.~ //new text
+OUTER_SPRINT new_bard_song ~The Bard's Song may be used an unlimited number of times, and lasts for 6 rounds + 1 round per 5 levels gained. The Bard Song has a cooldown of 1 turn before it may be used again.~ //new text
 
 // Set the strref for the specific game first
 ACTION_IF GAME_IS ~bgee~ BEGIN
@@ -277,3 +259,11 @@ OUTER_PATCH_SAVE bard_description_song ~%bard_description_song%~ BEGIN
 END
 
 STRING_SET_EVALUATE ~%bard_strref_song%~ ~%bard_description_song%~
+
+COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all spell files
+LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 99 match_parameter2 = 2 match_parameter1 = 200 parameter1 = 110 END
+LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 99 match_parameter2 = 2 match_parameter1 = 300 parameter1 = 120 END
+LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 99 match_parameter2 = 2 match_parameter1 = 400 parameter1 = 130 END
+LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 99 match_parameter2 = 2 match_parameter1 = 500 parameter1 = 140 END
+LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 99 match_parameter2 = 2 match_parameter1 = 600 parameter1 = 150 END
+BUT_ONLY
