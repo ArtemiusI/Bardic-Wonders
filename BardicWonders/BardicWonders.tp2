@@ -70,3 +70,32 @@ INCLUDE ~%MOD_FOLDER%/LIB/armored_casting.tpa~
 BEGIN ~Bardic Wonders: Bard Song Mechanics Tweak~
 GROUP ~Tweaks & Additions~
 INCLUDE ~%MOD_FOLDER%/LIB/bardsongtweaks.tpa~
+
+BEGIN ~Bardic Wonders: Item Restriction Tweaks~
+GROUP ~Tweaks & Additions~
+
+COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
+  PATCH_IF (SOURCE_SIZE > 0x71) BEGIN // avoid crashing on empty items
+    READ_BYTE    0x1E bard //reads the byte containing the bard usability flag
+    READ_BYTE    0x20 mage //reads the byte containing the mage usability flag
+    PATCH_IF ((mage BAND 0b00000100) = 0b00000000) BEGIN // if it is usable by mages
+        WRITE_BYTE    0x1E (bard BAND 0b10111111)  // makes usable by bards
+      END
+    END
+BUT_ONLY
+
+COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
+  PATCH_IF (SOURCE_SIZE > 0x71) BEGIN // avoid crashing on empty items
+    READ_BYTE    0x1E bard //reads the byte containing the bard/cleric usability flag
+    PATCH_IF ((bard BAND 0b10000000) = 0b00000000) BEGIN // if it is usable by clerics
+      READ_SHORT    0x1C type //reads the byte containing item type
+      PATCH_IF (type = 11) BEGIN // if it is a scroll
+        WRITE_BYTE    0x1E (bard BAND 0b10111111)  // makes usable by bards
+      END
+    END
+  END
+BUT_ONLY
+
+BEGIN ~Bardic Wonders: Bard Song Overhead Visual Effect~
+GROUP ~Tweaks & Additions~
+INCLUDE ~%MOD_FOLDER%/LIB/bardsongvisual.tpa~

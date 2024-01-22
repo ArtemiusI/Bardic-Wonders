@@ -1,5 +1,7 @@
 COPY ~%MOD_FOLDER%/Inspirations~ ~OVERRIDE~
 
+ADD_PROJECTILE ~%MOD_FOLDER%/inspirations/c0bdipr.PRO~ ~C0 Inspiration~
+
 ACTION_IF FILE_EXISTS_IN_GAME ~CLABBA01.2DA~ BEGIN
 COPY_EXISTING ~CLABBA01.2DA~ OVERRIDE
   LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = GA_C0BDI00 END // Inspirations
@@ -245,6 +247,18 @@ SAY NAME1 ~Inspire Courage~
 		timing = 9
         parameter2 = C0BDI0IA
       END
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+		parameter1 = RESOLVE_STR_REF (~Inspiring Courage~)
+      END
+	  
+COPY_EXISTING ~C0BDI01a.spl~ ~override~
+  LPF ALTER_SPELL_HEADER
+	INT_VAR
+		projectile = c0bdipr
+END
+
 COPY_EXISTING C0BDI02.SPL OVERRIDE
 SAY NAME1 ~Inspire Competence~
       LPF ADD_SPELL_EFFECT
@@ -254,6 +268,18 @@ SAY NAME1 ~Inspire Competence~
 		timing = 9
         parameter2 = C0BDI0IB
       END
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+		parameter1 = RESOLVE_STR_REF (~Inspiring Competence~)
+      END
+	  
+COPY_EXISTING ~C0BDI02a.spl~ ~override~
+  LPF ALTER_SPELL_HEADER
+	INT_VAR
+		projectile = c0bdipr
+END
+
 COPY_EXISTING C0BDI03.SPL OVERRIDE
 SAY NAME1 ~Inspire Defense~
       LPF ADD_SPELL_EFFECT
@@ -263,6 +289,18 @@ SAY NAME1 ~Inspire Defense~
 		timing = 9
         parameter2 = C0BDI0IC
       END
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+		parameter1 = RESOLVE_STR_REF (~Inspiring Defense~)
+      END
+	  
+COPY_EXISTING ~C0BDI03a.spl~ ~override~
+  LPF ALTER_SPELL_HEADER
+	INT_VAR
+		projectile = c0bdipr
+END
+
 COPY_EXISTING C0BDI04.SPL OVERRIDE
 SAY NAME1 ~Inspire Regeneration~
       LPF ADD_SPELL_EFFECT
@@ -272,6 +310,18 @@ SAY NAME1 ~Inspire Regeneration~
 		timing = 9
         parameter2 = C0BDI0ID
       END
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+		parameter1 = RESOLVE_STR_REF (~Inspiring Regeneration~)
+      END
+	  
+COPY_EXISTING ~C0BDI04a.spl~ ~override~
+  LPF ALTER_SPELL_HEADER
+	INT_VAR
+		projectile = c0bdipr
+END
+
 COPY_EXISTING C0BDI05.SPL OVERRIDE
 SAY NAME1 ~Inspire Toughness~
       LPF ADD_SPELL_EFFECT
@@ -281,6 +331,18 @@ SAY NAME1 ~Inspire Toughness~
 		timing = 9
         parameter2 = C0BDI0IE
       END
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+		parameter1 = RESOLVE_STR_REF (~Inspiring Toughness~)
+      END
+	  
+COPY_EXISTING ~C0BDI05a.spl~ ~override~
+  LPF ALTER_SPELL_HEADER
+	INT_VAR
+		projectile = c0bdipr
+END
+
 COPY_EXISTING C0BDI06.SPL OVERRIDE
 SAY NAME1 ~Inspire Alacrity~
       LPF ADD_SPELL_EFFECT
@@ -290,6 +352,18 @@ SAY NAME1 ~Inspire Alacrity~
 		timing = 9
         parameter2 = C0BDI0IF
       END
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+		parameter1 = RESOLVE_STR_REF (~Inspiring Alacrity~)
+      END
+	  
+COPY_EXISTING ~C0BDI06a.spl~ ~override~
+  LPF ALTER_SPELL_HEADER
+	INT_VAR
+		projectile = c0bdipr
+END
+
 	  
 OUTER_SPRINT old_bard ~– May use Bard Song ability.~ //old text
 

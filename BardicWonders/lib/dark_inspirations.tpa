@@ -44,6 +44,18 @@ SAY NAME1 ~Inspire Wrath~
 		timing = 9
         parameter2 = C0BDS0IA
       END
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+		parameter1 = RESOLVE_STR_REF (~Inspiring Wrath~)
+      END
+	  
+COPY_EXISTING ~C0BDS01a.spl~ ~override~
+  LPF ALTER_SPELL_HEADER
+	INT_VAR
+		projectile = c0bdipr
+END
+
 COPY_EXISTING C0BDS02.SPL OVERRIDE
 SAY NAME1 ~Inspire Ambition~
       LPF ADD_SPELL_EFFECT
@@ -53,6 +65,18 @@ SAY NAME1 ~Inspire Ambition~
 		timing = 9
         parameter2 = C0BDS0IB
       END
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+		parameter1 = RESOLVE_STR_REF (~Inspiring Ambition~)
+      END
+	  
+COPY_EXISTING ~C0BDS02a.spl~ ~override~
+  LPF ALTER_SPELL_HEADER
+	INT_VAR
+		projectile = c0bdipr
+END
+
 COPY_EXISTING C0BDS03.SPL OVERRIDE
 SAY NAME1 ~Inspire Preservation~
       LPF ADD_SPELL_EFFECT
@@ -62,6 +86,18 @@ SAY NAME1 ~Inspire Preservation~
 		timing = 9
         parameter2 = C0BDS0IC
       END
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+		parameter1 = RESOLVE_STR_REF (~Inspiring Preservation~)
+      END
+	  
+COPY_EXISTING ~C0BDS03a.spl~ ~override~
+  LPF ALTER_SPELL_HEADER
+	INT_VAR
+		projectile = c0bdipr
+END
+
 COPY_EXISTING C0BDS04.SPL OVERRIDE
 SAY NAME1 ~Inspire Voracity~
       LPF ADD_SPELL_EFFECT
@@ -71,6 +107,18 @@ SAY NAME1 ~Inspire Voracity~
 		timing = 9
         parameter2 = C0BDS0ID
       END
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+		parameter1 = RESOLVE_STR_REF (~Inspiring Voracity~)
+      END
+	  
+COPY_EXISTING ~C0BDS04a.spl~ ~override~
+  LPF ALTER_SPELL_HEADER
+	INT_VAR
+		projectile = c0bdipr
+END
+
 COPY_EXISTING C0BDS05.SPL OVERRIDE
 SAY NAME1 ~Inspire Audacity~
       LPF ADD_SPELL_EFFECT
@@ -80,6 +128,18 @@ SAY NAME1 ~Inspire Audacity~
 		timing = 9
         parameter2 = C0BDS0IE
       END
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+		parameter1 = RESOLVE_STR_REF (~Inspiring Audacity~)
+      END
+	  
+COPY_EXISTING ~C0BDS05a.spl~ ~override~
+  LPF ALTER_SPELL_HEADER
+	INT_VAR
+		projectile = c0bdipr
+END
+
 COPY_EXISTING C0BDS06.SPL OVERRIDE
 SAY NAME1 ~Inspire Dominance~
       LPF ADD_SPELL_EFFECT
@@ -89,4 +149,16 @@ SAY NAME1 ~Inspire Dominance~
 		timing = 9
         parameter2 = C0BDS0IF
       END
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+		parameter1 = RESOLVE_STR_REF (~Inspiring Dominance~)
+      END
+	  
+COPY_EXISTING ~C0BDS06a.spl~ ~override~
+  LPF ALTER_SPELL_HEADER
+	INT_VAR
+		projectile = c0bdipr
+END
+
 END
