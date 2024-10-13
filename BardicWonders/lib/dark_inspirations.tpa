@@ -15,7 +15,7 @@ Inspire Ambition (3rd level): Allies gain +1 to Casting Level and +10% to Spell 
 
 Inspire Preservation (6th level): Allies gain +2% Magic Resistance. Bonuses increase to +4% at 10th level, +6% at 15th level and +8% at 20th level.
 
-Inspire Voracity (10th level): Allies' attacks drain targets for 1 hit point in magic damage. Damage increases to 2 hit points at 17th level and 3 hit points at 24th level.
+Inspire Voracity (10th level): Allies' attacks drain targets for 1 hit point. Drain amount increases to 2 hit points at 17th level and 3 hit points at 24th level.
 
 Inspire Audacity (12th level): Allies gain +1 to Backstab and Critical Hit Modifiers.
 
@@ -118,6 +118,45 @@ COPY_EXISTING ~C0BDS04a.spl~ ~override~
 	INT_VAR
 		projectile = c0bdipr
 END
+
+COPY_EXISTING ~C0BDS04B.spl~ ~override~
+  LPF ALTER_EFFECT
+  INT_VAR
+    header = 0
+    match_opcode = 139
+    parameter1 = RESOLVE_STR_REF (~^0xFFC76777Drained 1 Hit Point^-~)
+END
+  LPF ALTER_EFFECT
+  INT_VAR
+    header = 1
+    match_opcode = 139
+    parameter1 = RESOLVE_STR_REF (~^0xFFC76777Drained 2 Hit Points^-~)
+END
+  LPF ALTER_EFFECT
+  INT_VAR
+    header = 2
+    match_opcode = 139
+    parameter1 = RESOLVE_STR_REF (~^0xFFC76777Drained 3 Hit Points^-~)
+END
+
+// CURRENT HP CHECK
+APPEND ~splprot.2da~ ~C0CURHP 0 -1 0~ UNLESS ~C0CURHP 0 -1 0~
+COPY_EXISTING ~splprot.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 0 ~stat~ // read column value
+	  PATCH_IF ~%stat%~ STRING_EQUAL_CASE ~C0CURHP~ BEGIN
+	    SET C0CURHP = %row%
+	  END
+	END
+	
+COPY_EXISTING ~C0BDS04C.spl~ ~override~
+	LPF ALTER_EFFECT
+		INT_VAR
+			match_opcode = 326
+			parameter2 = C0CURHP
+	END
 
 COPY_EXISTING C0BDS05.SPL OVERRIDE
 SAY NAME1 ~Inspire Audacity~

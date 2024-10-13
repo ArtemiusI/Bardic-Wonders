@@ -1,4 +1,4 @@
-BACKUP ~BardicWonders/backup~
+BACKUP ~weidu_external/backup/BardicWonders~
 AUTHOR ~Artemius_I~
 AUTO_TRA ~%MOD_FOLDER%/translations/%s~
 ALWAYS

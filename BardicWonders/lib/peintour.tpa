@@ -1,0 +1,158 @@
+COPY ~%MOD_FOLDER%/Arcane Pictor/2das~ ~override~
+COPY ~%MOD_FOLDER%/Arcane Pictor/spells~ ~override~
+/*
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~C0A_A01.SPL~ BEGIN
+INCLUDE ~%MOD_FOLDER%/LIB/ANALYZE.TPA~
+END
+*/
+ADD_KIT ~C0_ARCANE PICTOR~
+
+ // appended to CLASWEAP.2da
+ ~C0_ARCANE PICTOR		1           1           1           1           1           1           1           1~
+
+ // appended column-wise to WEAPPROF.2da
+//11                   		                 		T   S           F   Q             S S
+//10                  	                 			W   C           L   U             W I
+//9                   	     			    B L S   O   I   W       A   A             O N
+//8                  	      				A O H   H   M   A       I   R C   S       R G
+//7         				L S           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6         				_ _       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5         				S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4         				W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3         				O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2        					R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1      	  				D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+ ~C0_ARCANE PICTOR			1 1 1 1 1 1 1 1 0 1 1 0 0 1 1 1 0 0 0 0 0 0 1 1 0 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+    
+ // appended to ABCLASRQ.2da
+ ~C0_ARCANE PICTOR				0	16	0	13	0	15~
+
+ // appended to ABCLSMOD.2da
+ ~C0_ARCANE PICTOR				0	0	0	0	0	0~
+
+ // appended to ABDCDSRQ.2da
+ ~C0_ARCANE PICTOR				0	0	0	0	0	0~
+
+ // appended to ABDCSCRQ.2da
+ ~C0_ARCANE PICTOR				0	0	0	0	0	0~
+
+ // appended to ALIGNMNT.2da
+ ~C0_ARCANE PICTOR				0	0	0	1	1	1	1	1	1~
+
+ // appended to DUALCLAS.2da
+ ~C0_ARCANE PICTOR				0	0	0	0	0	0~
+
+ // path to your CLAB-style 2da file 
+ ~override/C0PAINT.2da~
+
+ // PC races and classes allowed to use this kit, from KITTABLE.2da
+ ~K_B_H K_B_E K_B_HE K_B_HL K_B_G K_B_D K_B_HO~
+
+ // usability flags, added to the end of the KITLIST.2da entry
+ ~0x00004000     5~
+
+ // HLA table to use; see LUABBR.2da
+ ~C0PAINT~
+
+ // list of starting equipment for PCs starting in ToB. Appended column-wise to 25STWEAP.2da
+ ~CHAN12 * * BAG30 RING06 RING34 CLCK02 BOOT01 AMUL19 BRAC16 BELT10 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 DAGG12 SW1H28 STAF08~
+
+ // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da
+  SAY ~arcane pictor~
+  SAY ~Arcane Pictor~
+  SAY ~ARCANE PICTOR: Bards who specialize in physical art rather than music are trained as arcane pictors, using their skill with brush and magic to craft masterworks of color and form, so lifelike that they could—and will—spring from the canvas at command. They are well-practiced in using and recognizing enchantment and illusion spells.
+
+Advantages:
+– +2 to Saving Throws vs. Spells of the Enchantment and Illusion schools.
+– The Arcane Pictor's Bard Song has a 10% (+1% per level gained up to a maximum of 30%) chance per round to dispel illusions.
+– May cast Color Spray once per day. Gains additional uses at 10th and 15th level.
+– 4th level: May use the Enhance Colors ability once per day.
+
+ENHANCE COLORS: Using this spell, the Arcane Pictor saturates the colors of a targeted creature, reducing their Armor Class by 2 points and afflicting them with a 20% chance to miscast magic for 1 turn.
+
+– 7th level: May use the Painted Beast ability once per day.
+
+PAINTED BEAST: The arcane pictor brings a painting of a creature to life for 5 rounds. The creature is randomly chosen within a selection which improves with level, with greatly increased stats but 30% of the maximum hit points compared to their real counterparts. After a painted beast is either slain or unsummoned, it bursts into a spray of paint, applying Enhance Colors onto all nearby enemies. The creatures that may be summoned are as follows:
+  7th-9th level: Gibberling, Gnoll, Ettercap, Winter Wolf, Gray Ooze, Wyvern
+  10th-12th level: Ettercap, Winter Wolf, Gray Ooze, Wyvern, Ankheg
+  13th-16th level: Winter Wolf, Mustard Jelly, Wyvern, Ankheg, Werewolf
+  17th level+: Greater Winter Wolf, Greater Wyvern, Greater Ankheg, Greater Werewolf
+  
+– 8th level: Enhance Colors now reduces an additional one point of Armor Class and affects all enemies within a 15-ft. radius from the target.
+– 10th level: Enhance Colors now removes invisibility from all targets and prevents them from turning invisible for the duration.
+– 11th level: May use the Create Bestial Brush ability once per day.
+
+CREATE BESTIAL BRUSH: The arcane pictor creates a magical brush which may be used by anyone with 13 or higher Charisma. The brush has three charges and allows the user to create a Painted Beast. However, the creation of the brush fatigues the arcane pictor, reducing their THAC0 by 2 points for eight hours. The brush loses its enchantment in 24 hours after creation.
+
+– 12th level: Enhance Colors now removes all illusionary effects from all targets.
+– 14th level: Enhance Colors miscast chance increased to 50%.
+– 16th level: May cast Prismatic Spray once per day. Gains an additional use at 22nd level.
+
+Disadvantages:
+– Bard Song does not improve with level.
+– May only be proficient in weapons usable by Thieves.~
+
+LAF fl#add_kit_ee
+  STR_VAR
+    kit_name = C0_ARCANE PICTOR
+	clascolr = ~24 25 190 21 83~ // METAL MINOR MAJOR LEATHER ARMOR
+	thiefscl = ~100 0 0 0 0 0 0 0~
+END
+
+COPY ~%MOD_FOLDER%/Arcane Pictor/spells/C0PN#01.spl~ ~override~
+SAY NAME1 ~Color Spray~
+SAY UNIDENTIFIED_DESC ~Color Spray
+(Alteration)
+
+Level: 1
+Range: 12 ft.
+Duration: Instant
+Casting Time: 1
+Area of Effect: 29-ft. cone with 90-deg. arc
+Saving Throw: Special
+
+This spell creates a vivid, fan-shaped spray of clashing colors to spring forth from the caster's hand. Creatures within the area are affected in order of increasing distance from the wizard. All creatures in the area above the level of the caster or ones that have greater than 6 Hit Dice must make a Save vs. Spell. The spell's effects depend on the caster—creatures with Hit Dice/levels fewer than or equal to the caster are knocked unconscious (do not awaken when struck) for 5 rounds, those with Hit Dice/levels one or two greater than the wizard are blinded for 3 rounds, and any other creatures are stunned for 1 round.
+
+Blind creatures are unaffected by the color spray.~
+
+COPY ~%MOD_FOLDER%/Arcane Pictor/spells/C0PN#02.spl~ ~override~
+SAY NAME1 ~Enhance Colors~
+SAY UNIDENTIFIED_DESC ~Enhance Colors
+Using this spell, the Arcane Pictor saturates the colors of a targeted creature, reducing their Armor Class by 2 points and afflicting them with a 20% chance to miscast magic for 1 turn.
+
+From 8th level onwards, Enhance Colors now reduces an additional one point of Armor Class and affects all enemies within a 15-ft. radius from the target.
+
+From 10th level onwards, Enhance Colors now removes invisibility from all targets and prevents them from turning invisible for the duration.
+
+From 12th level onwards, Enhance Colors now removes all illusionary effects from all targets.
+
+From 14th level onwards, Enhance Colors miscast chance increased to 50%.~
+
+COPY ~%MOD_FOLDER%/Arcane Pictor/spells/C0PN#03.spl~ ~override~
+SAY NAME1 ~Painted Beast~
+SAY UNIDENTIFIED_DESC ~Painted Beast
+The arcane pictor brings a painting of a creature to life for 5 rounds. The creature is randomly chosen within a selection which improves with level, with greatly increased stats but 30% of the maximum hit points compared to their real counterparts. After a painted beast is either slain or unsummoned, it bursts into a spray of paint, applying Enhance Colors onto all nearby enemies. The creatures that may be summoned are as follows:
+  7th-9th level: Gibberling, Gnoll, Ettercap, Winter Wolf, Gray Ooze, Wyvern
+  10th-12th level: Ettercap, Winter Wolf, Gray Ooze, Wyvern, Ankheg
+  13th-16th level: Winter Wolf, Mustard Jelly, Wyvern, Ankheg, Werewolf
+  17th level+: Greater Winter Wolf, Greater Wyvern, Greater Ankheg, Greater Werewolf~
+
+COPY ~%MOD_FOLDER%/Arcane Pictor/spells/C0PN#04.spl~ ~override~
+SAY NAME1 ~Create Bestial Brush~
+SAY UNIDENTIFIED_DESC ~Create Bestial Brush
+The arcane pictor creates a magical brush which may be used by anyone with 13 or higher Charisma. The brush has three charges and allows the user to create a Painted Beast. However, the creation of the brush fatigues the arcane pictor, reducing their THAC0 by 2 points for eight hours. The brush loses its enchantment in 24 hours after creation.~
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SPWI714.SPL~ THEN BEGIN
+COPY_EXISTING ~SPWI714.spl~ ~override/C0PN#05.spl~
+WRITE_SHORT 0x1C 4
+WRITE_LONG 0x34 1
+END
+
+COPY ~%MOD_FOLDER%/Arcane Pictor/spells/C0PN#H1.spl~ ~override~
+SAY NAME1 ~Virtuoso~
+SAY UNIDENTIFIED_DESC ~The arcane pictor permanently gains a +2 bonus to ranged THAC0 and +1 to Casting Speed.~
+
+COPY ~%MOD_FOLDER%/Arcane Pictor/spells/C0PN#H2.spl~ ~override~
+SAY NAME1 ~Brush of Mythology~
+SAY UNIDENTIFIED_DESC ~Brush of Mythology
+The arcane pictor creates an empowered brush which creates more powerful Painted Beasts: Djinni, Efreeti, Greater Werewolf, Shambling Mound, Beholder~
