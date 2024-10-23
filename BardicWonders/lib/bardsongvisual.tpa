@@ -1,5 +1,10 @@
 COPY ~%MOD_FOLDER%/bam~ ~override~
 
+ACTION_IF FILE_EXISTS_IN_GAME ~#bonecir.spl~ THEN BEGIN
+COPY_EXISTING ~#bonecir.spl~ ~override~
+	WRITE_BYTE 0x3 0x20
+END
+
 COPY_EXISTING_REGEXP GLOB ~.*\.spl~ ~override~ //copies all spell files
 LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 142 match_parameter2 = 40 timing = 10 opcode = 215 target = 1 parameter2 = 1 STR_VAR resource = C0BSNGEF END
 BUT_ONLY
