@@ -32,12 +32,10 @@ COPY_EXISTING ~luabbr.2da~ ~override~
 	END
 	
 COPY_EXISTING ~LUBA0.2DA~ ~OVERRIDE/LUBA1.2DA~
-REPLACE_TEXTUALLY ~AP_SPCL920~ ~*~
-REPLACE_TEXTUALLY ~GA_SPCL921~ ~*~
-REPLACE_TEXTUALLY ~ABILITY       ICON        STRREF    MIN_LEV   MAX_LEVEL  NUM_ALLOWED  PREREQUISITE EXCLUDED_BY   ALIGNMENT_RESTRICT~
-~ABILITY       ICON        STRREF    MIN_LEV   MAX_LEVEL  NUM_ALLOWED  PREREQUISITE EXCLUDED_BY   ALIGNMENT_RESTRICT
-X1      AP_C0BLDH1     *          *         1         99         1            *            *             *
-X2      AP_C0BLDH2     *          *         1         99         1            *            *             *~
+LPF patch_remove_hla STR_VAR remove_ability = ~AP_SPCL920~ END
+LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL921~ END
+LPF patch_add_hla STR_VAR ability = ~AP_C0BLDH1~ num_allowed = 1 END	
+LPF patch_add_hla STR_VAR ability = ~AP_C0BLDH2~ num_allowed = 1 END	
 
 APPEND ~splprot.2da~ ~C0HTSTR 36 -1 1~ UNLESS ~C0HTSTR~
 COPY_EXISTING ~splprot.2da~ ~override~

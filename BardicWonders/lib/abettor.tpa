@@ -1,12 +1,10 @@
 COPY ~%MOD_FOLDER%/abettor~ ~override~
 
-COPY_EXISTING ~LUBA0.2DA~ ~OVERRIDE/LUC0ABET.2DA~
-REPLACE_TEXTUALLY ~AP_SPCL920~ ~*~
-REPLACE_TEXTUALLY ~GA_SPCL921~ ~*~
-REPLACE_TEXTUALLY ~ABILITY       ICON        STRREF    MIN_LEV   MAX_LEVEL  NUM_ALLOWED  PREREQUISITE EXCLUDED_BY   ALIGNMENT_RESTRICT~
-~ABILITY       ICON        STRREF    MIN_LEV   MAX_LEVEL  NUM_ALLOWED  PREREQUISITE EXCLUDED_BY   ALIGNMENT_RESTRICT
-X1      AP_C0ABETT5     *          *         1         99         1            *            *             *
-X2      AP_C0ABETHL     *          *         1         99         1            AP_C0ABETT5            *             *~
+COPY_EXISTING ~LUBA0.2DA~ ~OVERRIDE/LUBA1.2DA~
+LPF patch_remove_hla STR_VAR remove_ability = ~AP_SPCL920~ END
+LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL921~ END
+LPF patch_add_hla STR_VAR ability = ~AP_C0ABETT5~ num_allowed = 1 END	
+LPF patch_add_hla STR_VAR ability = ~AP_C0ABETHL~ num_allowed = 1 prerequisite = ~AP_C0ABETT5~ END	
 
 LAF ADD_KIT_EX
   INT_VAR
