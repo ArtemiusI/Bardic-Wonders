@@ -1,11 +1,13 @@
 BACKUP ~weidu_external/backup/BardicWonders~
-AUTHOR ~Artemius_I~
+AUTHOR ~The Artisan (artisans-corner.com)~
 AUTO_TRA ~%MOD_FOLDER%/translations/%s~
 ALWAYS
   INCLUDE ~%MOD_FOLDER%/lib/a7#add_kit_ex.tpa~
   INCLUDE ~%MOD_FOLDER%/lib/kit_strref.tpa~
   INCLUDE ~%MOD_FOLDER%/lib/alter_script.tpa~
   INCLUDE ~%MOD_FOLDER%/lib/functions.tph~
+  INCLUDE ~%MOD_FOLDER%/lib/hla_actions.tpa~
+  INCLUDE ~%MOD_FOLDER%/lib/more_hla.tpa~
 END
 LANGUAGE ~English~
          ~English~
@@ -99,3 +101,7 @@ BUT_ONLY
 BEGIN ~Bardic Wonders: Bard Song Overhead Visual Effect~
 GROUP ~Tweaks & Additions~
 INCLUDE ~%MOD_FOLDER%/LIB/bardsongvisual.tpa~
+
+BEGIN ~Bardic Wonders: High Level Abilities~
+GROUP ~Tweaks & Additions~
+INCLUDE ~%MOD_FOLDER%/LIB/hlas.tpa~

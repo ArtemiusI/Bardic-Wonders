@@ -1,0 +1,162 @@
+COPY ~%MOD_FOLDER%/hlas~ ~override~
+
+COPY_EXISTING ~C0BWHL1.SPL~ ~OVERRIDE~
+SAY NAME1 ~Unchained Voice~
+SAY UNIDENTIFIED_DESC ~Unchained Voice
+The bard's mastery of their voice is without peer and cannot be stifled by any means. Upon learning this permanent ability, the bard gains a +1 bonus to casting speed and immunity to silence effects.
+
+Requires: Prestissimo~
+
+COPY_EXISTING ~C0BWHL2.SPL~ ~OVERRIDE~
+SAY NAME1 ~Resonating Weapon~
+SAY UNIDENTIFIED_DESC ~Resonating Weapon
+The bard imbues the weapons of themselves and all allies with in a 20-ft. radius of them with the power of sound. For the next 5 rounds, all attacks made by affected allies cause all enemies within 10-ft. of the initial target to emanate a harmful wave of sound in a 5-ft. radius, dealing 2d6 magic damage and having a 20% chance to stun them for 1 round on a failed Saving Throw vs. Death at -5. Multiple sound waves that overlap may affect the same target, applying their effects consecutively.~
+
+ADD_PROJECTILE ~override/c0bwhl2r.PRO~ ~C0 Resonating Weapon AoE~
+ADD_PROJECTILE ~override/c0bwhl2p.PRO~ ~C0 Resonating Weapon Wave~
+
+COPY_EXISTING ~C0BWHL2a.SPL~ ~OVERRIDE~
+	LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bwhl2r END
+COPY_EXISTING ~C0BWHL2b.SPL~ ~OVERRIDE~
+	LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bwhl2p END
+
+COPY_EXISTING ~C0BWHL3.SPL~ ~OVERRIDE~
+SAY NAME1 ~Song of Freedom~
+SAY UNIDENTIFIED_DESC ~Song of Freedom
+Upon using this ability, the bard removes all charm, confusion, fear, feeblemind, hold, sleep, berserk, stun effects from allies in a 25-ft. radius around them and provides immunity to such effects for 1 turn.
+
+Removes effects of Song of Heroism and Legionnaire's March.
+
+This ability may be selected three times.~
+
+COPY_EXISTING ~C0BWHL4.SPL~ ~OVERRIDE~
+SAY NAME1 ~Legionnaire's March~
+SAY UNIDENTIFIED_DESC ~Legionnaire's March
+Upon using this ability, the bard empowers all allies in a 25-ft. radius around them, setting their base THAC0 to 0 and base attacks per round to the equal of a fighter's of the same level, and +4 to damage for 1 turn.
+
+Removes effects of Song of Freedom and Song of Heroism.
+
+This ability may be selected three times.~
+
+ACTION_IF FILE_EXISTS_IN_GAME ~c0bardsx.spl~ THEN BEGIN
+COPY_EXISTING ~C0BWHL3.SPL~ ~OVERRIDE~
+WRITE_BYTE 0x1c 5
+COPY_EXISTING ~C0BWHL4.SPL~ ~OVERRIDE~
+WRITE_BYTE 0x1c 5
+COPY_EXISTING ~C0BWHL5.SPL~ ~OVERRIDE~
+WRITE_BYTE 0x1c 5
+COPY_EXISTING ~C0BWHL8.SPL~ ~OVERRIDE~
+LPF ALTER_EFFECT INT_VAR match_opcode = 99 parameter1 = 130 END
+END
+
+
+COPY_EXISTING ~C0BWHL5.SPL~ ~OVERRIDE~
+SAY NAME1 ~Song of Heroism~
+SAY UNIDENTIFIED_DESC ~Song of Heroism
+Upon using this ability, the bard grants temporary hit points equal to +4 per level of the bard and a +6 bonus to Armor Class and Saving Throws for 1 turn to all allies in a 25-ft. radius around them.
+
+Removes effects of Song of Heroism and Legionnaire's March.
+
+This ability may be selected three times.~
+
+COPY_EXISTING ~C0BWHL6.SPL~ ~OVERRIDE~
+SAY NAME1 ~Hymn of Requiem~
+SAY UNIDENTIFIED_DESC ~Hymn of Requiem
+Upon using this ability, the bard instantly deals 60 unmitigated magic damage to enemies and heals 60 hit points to allies within a 25-ft. range of the bard. This song ignores all spell protections and magic resistance.
+
+This ability may be selected once.~
+
+COPY_EXISTING ~C0BWHL7.SPL~ ~OVERRIDE~
+SAY NAME1 ~Prestissimo~
+SAY UNIDENTIFIED_DESC ~Prestissimo
+The bard chants incantations with the ease and fluidity of song or verse. Upon learning this permanent ability, any spell cast by the bard with a base casting time of 5 or higher has it reduced to 4.~
+
+COPY_EXISTING ~C0BWHL8.SPL~ ~OVERRIDE~
+SAY NAME1 ~Lingering Song~
+SAY UNIDENTIFIED_DESC ~Lingering Song
+With this permanent skill, the effects of the bard's song remain on all targets for an additional 4 rounds after they stop singing.~
+
+ACTION_IF FILE_EXISTS_IN_GAME ~c0bardsx.spl~ THEN BEGIN
+COPY_EXISTING ~C0BWHL3.SPL~ ~OVERRIDE~
+WRITE_BYTE 0x1c 5
+COPY_EXISTING ~C0BWHL4.SPL~ ~OVERRIDE~
+WRITE_BYTE 0x1c 5
+COPY_EXISTING ~C0BWHL5.SPL~ ~OVERRIDE~
+WRITE_BYTE 0x1c 5
+COPY_EXISTING ~C0BWHL8.SPL~ ~OVERRIDE~
+LPF ALTER_EFFECT INT_VAR match_opcode = 99 parameter1 = 140 END
+END
+
+LAF SIMPLE_REPLACE_HLA
+INT_VAR
+  class = 5
+STR_VAR 
+    ability = GA_C0BWHL3       // New ability being added
+    remove_ability = GA_SPCL910
+    num_allowed = 3
+  END
+
+LAF SIMPLE_REPLACE_HLA
+INT_VAR
+  class = 5
+STR_VAR 
+    ability = GA_C0BWHL4       // New ability being added
+    remove_ability = GA_SPCL911
+    num_allowed = 3
+  END
+
+LAF SIMPLE_REPLACE_HLA
+INT_VAR
+  class = 5
+  num_allowed = 3
+STR_VAR 
+    ability = GA_C0BWHL5       // New ability being added
+    remove_ability = GA_SPCL912
+    num_allowed = 3
+  END
+  
+LAF SIMPLE_REPLACE_HLA
+INT_VAR
+  class = 5
+STR_VAR 
+    ability = AP_C0BWHL7       // New ability being added
+    remove_ability = GA_SPCL913
+    num_allowed = 1
+  END
+
+LAF SIMPLE_REPLACE_HLA
+INT_VAR
+  class = 5
+STR_VAR 
+    ability = AP_C0BWHL1       // New ability being added
+    remove_ability = GA_SPCL914
+    num_allowed = 1
+	prerequisite = GA_C0BWHL7
+  END
+
+LAF SIMPLE_REPLACE_HLA
+INT_VAR
+  class = 5
+STR_VAR 
+    ability = GA_C0BWHL2       // New ability being added
+    remove_ability = GA_SPCL917
+    num_allowed = 16
+  END
+
+LAF SIMPLE_REPLACE_HLA
+INT_VAR
+  class = 5
+STR_VAR 
+    ability = GA_C0BWHL6       // New ability being added
+    remove_ability = GA_SPCL921
+    num_allowed = 1
+  END
+
+LAF SIMPLE_REPLACE_HLA
+INT_VAR
+  class = 5
+STR_VAR 
+    ability = AP_C0BWHL8       // New ability being added
+    remove_ability = ~*~
+    num_allowed = 1
+  END

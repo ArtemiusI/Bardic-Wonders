@@ -1,0 +1,203 @@
+///////////////////////////////////////////////////////////////////////////////////////
+//   Created by morpheus562 and subtledoctor and shamelessly merged by grammarsalad  //
+///////////////////////////////////////////////////////////////////////////////////////
+DEFINE_ACTION_FUNCTION DESTRUCTO_REMOVE_HLA
+  INT_VAR
+    class = 2       // Class ID to add HLAs to
+    min_lev = 1     // Min Lev to receive HLA
+    max_lev = 99    // Max Level to receive HLA
+    num_allowed = 1 // Number of times the ability can be taken
+  STR_VAR
+    ability = ""       // New ability being added 
+    prerequisite = "*" // Ability is required first
+    excluded_by = "*"  // Excluded by field
+    alignment = "*"    // Alignment requirements
+    remove_ability = ~*~  //ability to be removed
+  BEGIN
+
+  // Find class in class.ids
+  COPY_EXISTING ~CLASS.IDS~ ~override~
+  COUNT_2DA_ROWS 2 rows
+  PATCH_IF (%class% > 0) AND (%class% < rows) BEGIN
+    READ_2DA_ENTRY class 1 2 class_name
+  END ELSE BEGIN
+    PATCH_PRINT ~The selected class number, %class%, is out of bounds.~
+  END
+
+  // Find class in luabbr.2da
+  COPY_EXISTING ~LUABBR.2DA~ ~override~
+  COUNT_2DA_ROWS 2 rows
+  FOR (index = 1; index < rows; ++index) BEGIN
+    READ_2DA_ENTRY index 0 2 row_name
+    PATCH_IF ~%row_name%~ STRING_EQUAL_CASE ~%class_name%~ BEGIN
+      READ_2DA_ENTRY index 1 2 classlu
+    END
+  END
+
+  // remove the new HLA from the correct class luxxx.2da file
+  ACTION_IF FILE_EXISTS_IN_GAME ~lu%classlu%.2da~ BEGIN
+    COPY_EXISTING ~lu%classlu%.2da~ ~override~
+      COUNT_2DA_COLS cols // amount of columns
+      COUNT_2DA_ROWS cols rows // amount of rows
+          READ_2DA_ENTRIES_NOW file cols // read all file into memory
+          SET num_deleted = 0
+          FOR (i = 0; i < file; ++i) BEGIN // iterate over rows
+            READ_2DA_ENTRY_FORMER file i 1 col_value // read column value
+            PATCH_IF (~%col_value%~ STRING_EQUAL_CASE ~%remove_ability%~) BEGIN // match .spl to be removed
+              REMOVE_2DA_ROW (i - num_deleted) cols // kill the row
+              SET num_deleted += 1
+            END
+          END
+       PRETTY_PRINT_2DA
+    BUT_ONLY
+  END
+
+  // REMOVE HLAS From KITS -----------------------------------------------------//
+  // Find kits in kitlist
+  COPY_EXISTING ~KITLIST.2DA~ ~override~
+  READ_2DA_ENTRIES_NOW ~kits~ 10
+  FOR (row = 3; row < kits; row += 1) BEGIN
+  READ_2DA_ENTRY_FORMER ~kits~ row 5 kit_clab
+  READ_2DA_ENTRY_FORMER ~kits~ row 1 kit_label
+  READ_2DA_ENTRY_FORMER ~kits~ row 8 kit_class
+
+  PATCH_IF (%kit_class% = %class%) BEGIN
+    // Add HLAs to all Class Kits
+    INNER_ACTION BEGIN
+    COPY_EXISTING ~LUABBR.2DA~ ~override~
+    COUNT_2DA_ROWS 2 rows
+    FOR (index = 1; index < rows; ++index) BEGIN
+      READ_2DA_ENTRY index 0 2 row_name
+      PATCH_IF ~%row_name%~ STRING_EQUAL_CASE ~%kit_label%~ BEGIN
+        READ_2DA_ENTRY index 1 2 kitlu
+        PATCH_IF FILE_EXISTS_IN_GAME ~lu%kitlu%.2da~ BEGIN
+          INNER_ACTION BEGIN
+          COPY_EXISTING ~lu%kitlu%.2da~ ~override~
+          COUNT_2DA_COLS cols // amount of columns
+          COUNT_2DA_ROWS cols rows // amount of rows
+          READ_2DA_ENTRIES_NOW file cols // read all file into memory
+          SET num_deleted = 0
+          FOR (i = 0; i < file; ++i) BEGIN // iterate over rows
+              READ_2DA_ENTRY_FORMER file i 1 col_value // read column value
+                  PATCH_IF (~%col_value%~ STRING_EQUAL_CASE ~%remove_ability%~) BEGIN // match .spl to be removed
+                    REMOVE_2DA_ROW (i - num_deleted) cols // kill the row
+                    SET num_deleted += 1
+                  END
+          END
+          PRETTY_PRINT_2DA
+          END
+        END
+      END
+    END
+    END
+  END
+  END
+END
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+//  Created by morpheus562 and Subtledoctor and shamelessly altered by grammarsalad  //
+///////////////////////////////////////////////////////////////////////////////////////
+DEFINE_ACTION_FUNCTION SIMPLE_REPLACE_HLA
+  INT_VAR
+    class = 2       // Class ID to add HLAs to
+    min_lev = 1     // Min Lev to receive HLA
+    max_lev = 99    // Max Level to receive HLA
+    num_allowed = 1 // Number of times the ability can be taken
+  STR_VAR
+    ability = ""       // New ability being added
+    remove_ability = ~*~
+    2da_row = ~1~
+    icon = ~*~
+    strref = ~*~
+    min_lev = ~1~
+    max_level = ~99~
+    num_allowed = ~1~
+    prerequisite = ~*~
+    excluded_by = ~*~
+    alignment_restrict = ~*~
+  BEGIN
+
+  // Find class in class.ids
+  COPY_EXISTING ~CLASS.IDS~ ~override~
+  COUNT_2DA_ROWS 2 rows
+  PATCH_IF (%class% > 0) AND (%class% < rows) BEGIN
+    READ_2DA_ENTRY class 1 2 class_name
+  END ELSE BEGIN
+    PATCH_PRINT ~The selected class number, %class%, is out of bounds.~
+  END
+
+  // Find class in luabbr.2da
+  COPY_EXISTING ~LUABBR.2DA~ ~override~
+  COUNT_2DA_ROWS 2 rows
+  FOR (index = 1; index < rows; ++index) BEGIN
+    READ_2DA_ENTRY index 0 2 row_name
+    PATCH_IF ~%row_name%~ STRING_EQUAL_CASE ~%class_name%~ BEGIN
+      READ_2DA_ENTRY index 1 2 classlu
+    END
+  END
+
+  // remove the new HLA from the correct class luxxx.2da file
+  ACTION_IF FILE_EXISTS_IN_GAME ~lu%classlu%.2da~ BEGIN
+    COPY_EXISTING ~lu%classlu%.2da~ ~override~
+         LPF patch_replace_hla STR_VAR remove_ability = EVAL ~%remove_ability%~
+                                       ability = EVAL ~%ability%~
+                                       num_allowed = EVAL ~%num_allowed%~
+                                       2da_row = EVAL ~%2da_row%~
+                                       icon = EVAL ~%icon%~
+                                       strref = EVAL ~%strref%~
+                                       min_lev = EVAL ~%min_lev%~
+                                       max_level = EVAL ~%max_level%~
+                                       prerequisite = EVAL ~%prerequisite%~
+                                       excluded_by = EVAL ~%excluded_by%~
+                                       alignment_restrict = EVAL ~%alignment_restrict%~
+         END
+       PRETTY_PRINT_2DA
+    BUT_ONLY
+  END
+
+  // REMOVE HLAS From KITS -----------------------------------------------------//
+  // Find kits in kitlist
+  COPY_EXISTING ~KITLIST.2DA~ ~override~
+  READ_2DA_ENTRIES_NOW ~kits~ 10
+  FOR (row = 3; row < kits; row += 1) BEGIN
+  READ_2DA_ENTRY_FORMER ~kits~ row 5 kit_clab
+  READ_2DA_ENTRY_FORMER ~kits~ row 1 kit_label
+  READ_2DA_ENTRY_FORMER ~kits~ row 8 kit_class
+
+  PATCH_IF (%kit_class% = %class%) BEGIN
+    // Add HLAs to all Class Kits
+    INNER_ACTION BEGIN
+    COPY_EXISTING ~LUABBR.2DA~ ~override~
+    COUNT_2DA_ROWS 2 rows
+    FOR (index = 1; index < rows; ++index) BEGIN
+      READ_2DA_ENTRY index 0 2 row_name
+      PATCH_IF ~%row_name%~ STRING_EQUAL_CASE ~%kit_label%~ BEGIN
+        READ_2DA_ENTRY index 1 2 kitlu
+        PATCH_IF FILE_EXISTS_IN_GAME ~lu%kitlu%.2da~ BEGIN
+          INNER_ACTION BEGIN
+          COPY_EXISTING ~lu%kitlu%.2da~ ~override~
+         LPF patch_replace_hla STR_VAR remove_ability = EVAL ~%remove_ability%~
+                                       ability = EVAL ~%ability%~
+                                       num_allowed = EVAL ~%num_allowed%~
+                                       2da_row = EVAL ~%2da_row%~
+                                       icon = EVAL ~%icon%~
+                                       strref = EVAL ~%strref%~
+                                       min_lev = EVAL ~%min_lev%~
+                                       max_level = EVAL ~%max_level%~
+                                       prerequisite = EVAL ~%prerequisite%~
+                                       excluded_by = EVAL ~%excluded_by%~
+                                       alignment_restrict = EVAL ~%alignment_restrict%~
+         END
+          PRETTY_PRINT_2DA
+          BUT_ONLY
+          END
+        END
+      END
+    END
+    END
+  END
+  END
+END
