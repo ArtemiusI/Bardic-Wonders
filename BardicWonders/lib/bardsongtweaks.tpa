@@ -45,6 +45,24 @@ COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/SPCL920A.EFF~
 WRITE_ASCII 0x30 SPCL920B
 END
 
+OUTER_SPRINT kit_name TRUECLASS
+
+OUTER_SPRINT bard_song spcl920A
+
+OUTER_SPRINT hla_song fjbardb
+
+ACTION_IF FILE_EXISTS_IN_GAME ~baldur.bcs~ THEN BEGIN
+EXTEND_TOP ~baldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~bdbaldur.bcs~ THEN BEGIN
+EXTEND_TOP ~bdbaldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~baldur25.bcs~ THEN BEGIN
+EXTEND_TOP ~baldur25.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
 // BLADE
 
 ACTION_IF FILE_EXISTS_IN_GAME ~FJBLADEB.SPL~ THEN BEGIN
@@ -65,6 +83,28 @@ COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0BLDSO.SPL~
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0BLDSO END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0BLDSO.EFF~
 WRITE_ASCII 0x30 C0BLDSO3
+END
+
+OUTER_SPRINT kit_name BLADE
+
+ACTION_IF !FILE_EXISTS_IN_GAME ~C0BLDSO.SPL~ THEN BEGIN
+OUTER_SPRINT bard_song FJBLADEB
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~C0BLDSO.SPL~ THEN BEGIN
+OUTER_SPRINT bard_song C0BLDSO
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~baldur.bcs~ THEN BEGIN
+EXTEND_TOP ~baldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~bdbaldur.bcs~ THEN BEGIN
+EXTEND_TOP ~bdbaldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~baldur25.bcs~ THEN BEGIN
+EXTEND_TOP ~baldur25.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
 END
 
 // JESTER
@@ -89,6 +129,26 @@ COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0JES03A.EFF~
 WRITE_ASCII 0x30 C0JES03B
 END
 
+OUTER_SPRINT kit_name JESTER
+
+OUTER_SPRINT bard_song SPCL751A
+
+ACTION_IF FILE_EXISTS_IN_GAME ~C0JES03A.SPL~ THEN BEGIN
+OUTER_SPRINT hla_song C0JES03A
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~baldur.bcs~ THEN BEGIN
+EXTEND_TOP ~baldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~bdbaldur.bcs~ THEN BEGIN
+EXTEND_TOP ~bdbaldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~baldur25.bcs~ THEN BEGIN
+EXTEND_TOP ~baldur25.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
 // SKALD
 
 ACTION_IF FILE_EXISTS_IN_GAME ~SPCL542A.SPL~ THEN BEGIN
@@ -109,6 +169,26 @@ COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0SKD02A.SPL~
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0SKD02A END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0SKD02A.EFF~
 WRITE_ASCII 0x30 C0SKD02B
+END
+
+OUTER_SPRINT kit_name SKALD
+
+OUTER_SPRINT bard_song SPCL542A
+
+ACTION_IF FILE_EXISTS_IN_GAME ~C0SKD02A.SPL~ THEN BEGIN
+OUTER_SPRINT hla_song C0SKD02A
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~baldur.bcs~ THEN BEGIN
+EXTEND_TOP ~baldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~bdbaldur.bcs~ THEN BEGIN
+EXTEND_TOP ~bdbaldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~baldur25.bcs~ THEN BEGIN
+EXTEND_TOP ~baldur25.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
 END
 
 // Lorekeeper
@@ -136,6 +216,24 @@ COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/X3RHLAS.EFF~
 WRITE_ASCII 0x30 X3RHLAS2
 END
 
+OUTER_SPRINT kit_name X3Bard
+
+OUTER_SPRINT bard_song X3RPKIT2
+
+OUTER_SPRINT hla_song X3RHLAS
+
+ACTION_IF FILE_EXISTS_IN_GAME ~baldur.bcs~ THEN BEGIN
+EXTEND_TOP ~baldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~bdbaldur.bcs~ THEN BEGIN
+EXTEND_TOP ~bdbaldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~baldur25.bcs~ THEN BEGIN
+EXTEND_TOP ~baldur25.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
 // NIGHTSINGER
 
 ACTION_IF FILE_EXISTS_IN_GAME ~C0SASONG.SPL~ THEN BEGIN
@@ -159,6 +257,24 @@ COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0SASON2.EFF~
 WRITE_ASCII 0x30 C0SASON4
 END
 
+OUTER_SPRINT kit_name C0SABARD
+
+OUTER_SPRINT bard_song C0SASONG
+
+OUTER_SPRINT hla_song C0SASON2
+
+ACTION_IF FILE_EXISTS_IN_GAME ~baldur.bcs~ THEN BEGIN
+EXTEND_TOP ~baldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~bdbaldur.bcs~ THEN BEGIN
+EXTEND_TOP ~bdbaldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~baldur25.bcs~ THEN BEGIN
+EXTEND_TOP ~baldur25.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
 // ABETTOR
 
 ACTION_IF FILE_EXISTS_IN_GAME ~C0ABETSO.SPL~ THEN BEGIN
@@ -176,6 +292,24 @@ COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0ABETS2.SPL~
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0ABETS2 END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0ABETS2.EFF~
 WRITE_ASCII 0x30 C0ABETS4
+END
+
+OUTER_SPRINT kit_name C0ABETT
+
+OUTER_SPRINT bard_song C0ABETSO
+
+OUTER_SPRINT hla_song C0ABETS2
+
+ACTION_IF FILE_EXISTS_IN_GAME ~baldur.bcs~ THEN BEGIN
+EXTEND_TOP ~baldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~bdbaldur.bcs~ THEN BEGIN
+EXTEND_TOP ~bdbaldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~baldur25.bcs~ THEN BEGIN
+EXTEND_TOP ~baldur25.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
 END
 
 // DARKBLOOM
@@ -197,6 +331,24 @@ COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0BDD#S2.EFF~
 WRITE_ASCII 0x30 C0BDD#S4
 END
 
+OUTER_SPRINT kit_name C0BDD
+
+OUTER_SPRINT bard_song C0BDD#SO
+
+OUTER_SPRINT hla_song C0BDD#S2
+
+ACTION_IF FILE_EXISTS_IN_GAME ~baldur.bcs~ THEN BEGIN
+EXTEND_TOP ~baldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~bdbaldur.bcs~ THEN BEGIN
+EXTEND_TOP ~bdbaldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~baldur25.bcs~ THEN BEGIN
+EXTEND_TOP ~baldur25.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
 // STORM DRUMMER
 
 ACTION_IF FILE_EXISTS_IN_GAME ~C0SDRUSO.SPL~ THEN BEGIN
@@ -216,6 +368,24 @@ COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0SDRUS2.EFF~
 WRITE_ASCII 0x30 C0SDRUS4
 END
 
+OUTER_SPRINT kit_name C0SDRUM
+
+OUTER_SPRINT bard_song C0SDRUSO
+
+OUTER_SPRINT hla_song C0SDRUS2
+
+ACTION_IF FILE_EXISTS_IN_GAME ~baldur.bcs~ THEN BEGIN
+EXTEND_TOP ~baldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~bdbaldur.bcs~ THEN BEGIN
+EXTEND_TOP ~bdbaldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~baldur25.bcs~ THEN BEGIN
+EXTEND_TOP ~baldur25.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
 // TROUBADOUR
 
 ACTION_IF FILE_EXISTS_IN_GAME ~C0TRBSO.SPL~ THEN BEGIN
@@ -233,6 +403,24 @@ COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0TRBSO2.SPL~
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0TRBSO2 END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0TRBSO2.EFF~
 WRITE_ASCII 0x30 C0TRBSO4
+END
+
+OUTER_SPRINT kit_name C0TRB
+
+OUTER_SPRINT bard_song C0TRBSO
+
+OUTER_SPRINT hla_song C0TRBSO2
+
+ACTION_IF FILE_EXISTS_IN_GAME ~baldur.bcs~ THEN BEGIN
+EXTEND_TOP ~baldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~bdbaldur.bcs~ THEN BEGIN
+EXTEND_TOP ~bdbaldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~baldur25.bcs~ THEN BEGIN
+EXTEND_TOP ~baldur25.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
 END
 
 COPY_EXISTING ~enginest.2da~ ~override~
