@@ -394,6 +394,11 @@ COPY_EXISTING ~C0BHELM1.ITM~ ~OVERRIDE~
   LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 timing = 2 parameter1 = (IDS_OF_SYMBOL (~kit~ ~C0WLOCK~)) parameter2 = 9 power = 0 special = RESOLVE_STR_REF (~Warlock~) END
 END
 
+ACTION_IF FILE_EXISTS_IN_GAME ~stoblack.sto~ THEN BEGIN
+COPY_EXISTING ~stoblack.sto~ ~override~
+ADD_STORE_ITEM ~c0bhelm1~ #0 #0 #0 ~IDENTIFIED~ #1
+END
+
 COPY ~%MOD_FOLDER%/items/c0bbelt1.itm~ ~override~
 SAY NAME1 ~Belt~
 SAY NAME2 ~Belt of Profane Poise~
