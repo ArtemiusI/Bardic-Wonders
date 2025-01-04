@@ -13,20 +13,13 @@ Inspire Wrath (1st level): Allies gain a +2 bonus to minimum damage rolls, but a
 
 Inspire Ambition (3rd level): Allies gain +1 to Casting Level and +10% to Spell Duration. Bonuses increase to +2 and +20% respectively at 10th level and +3 and +30% respectively at 17th level.
 
-Inspire Preservation (6th level): Allies gain +2% Magic Resistance. Bonuses increase to +4% at 10th level, +6% at 15th level and +8% at 20th level.
+Inspire Preservation (6th level): Allies gain +2% Magic Resistance. Bonuses increase to +5% at 10th level, +7% at 15th level and +10% at 20th level.
 
 Inspire Voracity (10th level): Allies' attacks drain targets for 1 hit point. Drain amount increases to 2 hit points at 17th level and 3 hit points at 24th level.
 
 Inspire Audacity (12th level): Allies gain +1 to Backstab and Critical Hit Modifiers.
 
-Inspire Dominance (20th level): Allies gain a +10% bonus to damage dealt from all sources. Bonuses increase to +20% at 40th level.~
-
-COPY_EXISTING C0BDS00I.BAM ~OVERRIDE/C0BDS0IA.BAM~
-COPY_EXISTING C0BDS00I.BAM ~OVERRIDE/C0BDS0IB.BAM~
-COPY_EXISTING C0BDS00I.BAM ~OVERRIDE/C0BDS0IC.BAM~
-COPY_EXISTING C0BDS00I.BAM ~OVERRIDE/C0BDS0ID.BAM~
-COPY_EXISTING C0BDS00I.BAM ~OVERRIDE/C0BDS0IE.BAM~
-COPY_EXISTING C0BDS00I.BAM ~OVERRIDE/C0BDS0IF.BAM~
+Inspire Dominance (20th level): Allies gain a +15% bonus to damage dealt from all sources.~
 
 LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Inspire Wrath~) STR_VAR bam_file = C0BDS0IA RET C0BDS0IA = icon END
 LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Inspire Ambition~) STR_VAR bam_file = C0BDS0IB RET C0BDS0IB = icon END
@@ -37,13 +30,6 @@ LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Inspire Dominance~) S
 
 COPY_EXISTING C0BDS01.SPL OVERRIDE
 SAY NAME1 ~Inspire Wrath~
-      LPF ADD_SPELL_EFFECT
-      INT_VAR
-	    opcode = 142
-	    target = 2
-		timing = 9
-        parameter2 = C0BDS0IA
-      END
       LPF ALTER_EFFECT
       INT_VAR
 	    match_opcode = 139
@@ -56,15 +42,15 @@ COPY_EXISTING ~C0BDS01a.spl~ ~override~
 		projectile = c0bdipr
 END
 
+COPY_EXISTING ~C0BDS01b.spl~ ~override~
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 142
+        parameter2 = C0BDS0IA
+      END
+
 COPY_EXISTING C0BDS02.SPL OVERRIDE
 SAY NAME1 ~Inspire Ambition~
-      LPF ADD_SPELL_EFFECT
-      INT_VAR
-	    opcode = 142
-	    target = 2
-		timing = 9
-        parameter2 = C0BDS0IB
-      END
       LPF ALTER_EFFECT
       INT_VAR
 	    match_opcode = 139
@@ -77,15 +63,15 @@ COPY_EXISTING ~C0BDS02a.spl~ ~override~
 		projectile = c0bdipr
 END
 
+COPY_EXISTING ~C0BDS02b.spl~ ~override~
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 142
+        parameter2 = C0BDS0IB
+      END
+
 COPY_EXISTING C0BDS03.SPL OVERRIDE
 SAY NAME1 ~Inspire Preservation~
-      LPF ADD_SPELL_EFFECT
-      INT_VAR
-	    opcode = 142
-	    target = 2
-		timing = 9
-        parameter2 = C0BDS0IC
-      END
       LPF ALTER_EFFECT
       INT_VAR
 	    match_opcode = 139
@@ -98,15 +84,15 @@ COPY_EXISTING ~C0BDS03a.spl~ ~override~
 		projectile = c0bdipr
 END
 
+COPY_EXISTING ~C0BDS03b.spl~ ~override~
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 142
+        parameter2 = C0BDS0IC
+      END
+
 COPY_EXISTING C0BDS04.SPL OVERRIDE
 SAY NAME1 ~Inspire Voracity~
-      LPF ADD_SPELL_EFFECT
-      INT_VAR
-	    opcode = 142
-	    target = 2
-		timing = 9
-        parameter2 = C0BDS0ID
-      END
       LPF ALTER_EFFECT
       INT_VAR
 	    match_opcode = 139
@@ -158,15 +144,15 @@ COPY_EXISTING ~C0BDS04C.spl~ ~override~
 			parameter2 = C0CURHP
 	END
 
+COPY_EXISTING ~C0BDS04E.spl~ ~override~
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 142
+        parameter2 = C0BDS0ID
+      END
+
 COPY_EXISTING C0BDS05.SPL OVERRIDE
 SAY NAME1 ~Inspire Audacity~
-      LPF ADD_SPELL_EFFECT
-      INT_VAR
-	    opcode = 142
-	    target = 2
-		timing = 9
-        parameter2 = C0BDS0IE
-      END
       LPF ALTER_EFFECT
       INT_VAR
 	    match_opcode = 139
@@ -179,15 +165,15 @@ COPY_EXISTING ~C0BDS05a.spl~ ~override~
 		projectile = c0bdipr
 END
 
+COPY_EXISTING ~C0BDS05b.spl~ ~override~
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 142
+        parameter2 = C0BDS0IE
+      END
+
 COPY_EXISTING C0BDS06.SPL OVERRIDE
 SAY NAME1 ~Inspire Dominance~
-      LPF ADD_SPELL_EFFECT
-      INT_VAR
-	    opcode = 142
-	    target = 2
-		timing = 9
-        parameter2 = C0BDS0IF
-      END
       LPF ALTER_EFFECT
       INT_VAR
 	    match_opcode = 139
@@ -199,5 +185,12 @@ COPY_EXISTING ~C0BDS06a.spl~ ~override~
 	INT_VAR
 		projectile = c0bdipr
 END
+
+COPY_EXISTING ~C0BDS06b.spl~ ~override~
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 142
+        parameter2 = C0BDS0IF
+      END
 
 END

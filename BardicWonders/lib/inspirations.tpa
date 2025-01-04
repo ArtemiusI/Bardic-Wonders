@@ -208,13 +208,6 @@ ACTION_FOR_EACH description IN
     END
   END
   
-COPY_EXISTING C0BDI00I.BAM ~OVERRIDE/C0BDI0IA.BAM~
-COPY_EXISTING C0BDI00I.BAM ~OVERRIDE/C0BDI0IB.BAM~
-COPY_EXISTING C0BDI00I.BAM ~OVERRIDE/C0BDI0IC.BAM~
-COPY_EXISTING C0BDI00I.BAM ~OVERRIDE/C0BDI0ID.BAM~
-COPY_EXISTING C0BDI00I.BAM ~OVERRIDE/C0BDI0IE.BAM~
-COPY_EXISTING C0BDI00I.BAM ~OVERRIDE/C0BDI0IF.BAM~
-
 LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Inspire Courage~) STR_VAR bam_file = C0BDI0IA RET C0BDI0IA = icon END
 LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Inspire Competence~) STR_VAR bam_file = C0BDI0IB RET C0BDI0IB = icon END
 LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Inspire Defense~) STR_VAR bam_file = C0BDI0IC RET C0BDI0IC = icon END
@@ -232,7 +225,7 @@ Inspire Competence (3rd level): Allies gain +10 to Lore and Thieving Skills. Bon
 
 Inspire Defense (6th level): Allies gain +2 to Armor Class. Bonuses increase to +3 at 14th level, +4 at 22nd level.
 
-Inspire Regeneration (10th level): Allies regenerate for 1 hit point per round. Regeneration increases to 2 hit points at 17th level and 3 hit points at 24th level.
+Inspire Regeneration (10th level): Allies regenerate for 1 hit point per 2 rounds. Regeneration increases to 2 hit points at 17th level and 3 hit points at 24th level.
 
 Inspire Toughness (12th level): Allies gain +2 to all Saving Throws. Bonuses increase to +3 at 17th level and +4 at 24th level.
 
@@ -240,17 +233,10 @@ Inspire Alacrity (20th level): Allies gain +1 to casting speed. Bonuses increase
 
 COPY_EXISTING C0BDI01.SPL OVERRIDE
 SAY NAME1 ~Inspire Courage~
-      LPF ADD_SPELL_EFFECT
-      INT_VAR
-	    opcode = 142
-	    target = 2
-		timing = 9
-        parameter2 = C0BDI0IA
-      END
       LPF ALTER_EFFECT
       INT_VAR
 	    match_opcode = 139
-		parameter1 = RESOLVE_STR_REF (~Inspiring Courage~)
+		parameter1 = RESOLVE_STR_REF (~Inspiring Courage~ [ACT_01])
       END
 	  
 COPY_EXISTING ~C0BDI01a.spl~ ~override~
@@ -259,19 +245,19 @@ COPY_EXISTING ~C0BDI01a.spl~ ~override~
 		projectile = c0bdipr
 END
 
+COPY_EXISTING ~C0BDI01b.spl~ ~override~
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 142
+        parameter2 = C0BDI0IA
+      END
+
 COPY_EXISTING C0BDI02.SPL OVERRIDE
 SAY NAME1 ~Inspire Competence~
-      LPF ADD_SPELL_EFFECT
-      INT_VAR
-	    opcode = 142
-	    target = 2
-		timing = 9
-        parameter2 = C0BDI0IB
-      END
       LPF ALTER_EFFECT
       INT_VAR
 	    match_opcode = 139
-		parameter1 = RESOLVE_STR_REF (~Inspiring Competence~)
+		parameter1 = RESOLVE_STR_REF (~Inspiring Competence~ [ACT_01])
       END
 	  
 COPY_EXISTING ~C0BDI02a.spl~ ~override~
@@ -280,19 +266,19 @@ COPY_EXISTING ~C0BDI02a.spl~ ~override~
 		projectile = c0bdipr
 END
 
+COPY_EXISTING ~C0BDI02b.spl~ ~override~
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 142
+        parameter2 = C0BDI0IB
+      END
+
 COPY_EXISTING C0BDI03.SPL OVERRIDE
 SAY NAME1 ~Inspire Defense~
-      LPF ADD_SPELL_EFFECT
-      INT_VAR
-	    opcode = 142
-	    target = 2
-		timing = 9
-        parameter2 = C0BDI0IC
-      END
       LPF ALTER_EFFECT
       INT_VAR
 	    match_opcode = 139
-		parameter1 = RESOLVE_STR_REF (~Inspiring Defense~)
+		parameter1 = RESOLVE_STR_REF (~Inspiring Defense~ [ACT_01])
       END
 	  
 COPY_EXISTING ~C0BDI03a.spl~ ~override~
@@ -301,19 +287,19 @@ COPY_EXISTING ~C0BDI03a.spl~ ~override~
 		projectile = c0bdipr
 END
 
+COPY_EXISTING ~C0BDI03b.spl~ ~override~
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 142
+        parameter2 = C0BDI0IC
+      END
+
 COPY_EXISTING C0BDI04.SPL OVERRIDE
 SAY NAME1 ~Inspire Regeneration~
-      LPF ADD_SPELL_EFFECT
-      INT_VAR
-	    opcode = 142
-	    target = 2
-		timing = 9
-        parameter2 = C0BDI0ID
-      END
       LPF ALTER_EFFECT
       INT_VAR
 	    match_opcode = 139
-		parameter1 = RESOLVE_STR_REF (~Inspiring Regeneration~)
+		parameter1 = RESOLVE_STR_REF (~Inspiring Regeneration~ [ACT_01])
       END
 	  
 COPY_EXISTING ~C0BDI04a.spl~ ~override~
@@ -322,19 +308,19 @@ COPY_EXISTING ~C0BDI04a.spl~ ~override~
 		projectile = c0bdipr
 END
 
+COPY_EXISTING ~C0BDI04b.spl~ ~override~
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 142
+        parameter2 = C0BDI0ID
+      END
+
 COPY_EXISTING C0BDI05.SPL OVERRIDE
 SAY NAME1 ~Inspire Toughness~
-      LPF ADD_SPELL_EFFECT
-      INT_VAR
-	    opcode = 142
-	    target = 2
-		timing = 9
-        parameter2 = C0BDI0IE
-      END
       LPF ALTER_EFFECT
       INT_VAR
 	    match_opcode = 139
-		parameter1 = RESOLVE_STR_REF (~Inspiring Toughness~)
+		parameter1 = RESOLVE_STR_REF (~Inspiring Toughness~ [ACT_01])
       END
 	  
 COPY_EXISTING ~C0BDI05a.spl~ ~override~
@@ -343,19 +329,19 @@ COPY_EXISTING ~C0BDI05a.spl~ ~override~
 		projectile = c0bdipr
 END
 
+COPY_EXISTING ~C0BDI05b.spl~ ~override~
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 142
+        parameter2 = C0BDI0IE
+      END
+
 COPY_EXISTING C0BDI06.SPL OVERRIDE
 SAY NAME1 ~Inspire Alacrity~
-      LPF ADD_SPELL_EFFECT
-      INT_VAR
-	    opcode = 142
-	    target = 2
-		timing = 9
-        parameter2 = C0BDI0IF
-      END
       LPF ALTER_EFFECT
       INT_VAR
 	    match_opcode = 139
-		parameter1 = RESOLVE_STR_REF (~Inspiring Alacrity~)
+		parameter1 = RESOLVE_STR_REF (~Inspiring Alacrity~ [ACT_01])
       END
 	  
 COPY_EXISTING ~C0BDI06a.spl~ ~override~
@@ -363,6 +349,13 @@ COPY_EXISTING ~C0BDI06a.spl~ ~override~
 	INT_VAR
 		projectile = c0bdipr
 END
+
+COPY_EXISTING ~C0BDI06b.spl~ ~override~
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 142
+        parameter2 = C0BDI0IF
+      END
 
 	  
 OUTER_SPRINT old_bard ~– May use Bard Song ability.~ //old text
