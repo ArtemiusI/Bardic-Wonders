@@ -41,8 +41,101 @@ COPY_EXISTING ~SPCL920A.SPL~ ~OVERRIDE/SPCL920B.SPL~
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/SPCL920A.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = SPCL920A END
+COPY_EXISTING ~c0singi2.SPL~ ~OVERRIDE~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = SPCL920A END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/SPCL920A.EFF~
 WRITE_ASCII 0x30 SPCL920B
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~#BARD1.SPL~ THEN BEGIN
+COPY_EXISTING ~#BARD-1.SPL~ ~OVERRIDE~
+COPY_EXISTING ~#BARD1.SPL~ ~OVERRIDE~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 309 target = 2 parameter1 = 1 timing = 1 STR_VAR resource = C0IWSONG END
+COPY_EXISTING ~SPCL120.SPL~ ~OVERRIDE/SPCL120C.SPL~
+  LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = SPCL120 resource = SPCL120C END
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 272 STR_VAR special = 0 END
+COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/SPCL120.SPL~
+  LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
+  LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = SPCL120 END
+COPY_EXISTING ~c0singi2.SPL~ ~OVERRIDE~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = SPCL120 END
+COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/SPCL120.EFF~
+WRITE_ASCII 0x30 SPCL120C
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~#BARD2.SPL~ THEN BEGIN
+COPY_EXISTING ~#BARD2.SPL~ ~OVERRIDE~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 309 target = 2 parameter1 = 2 timing = 1 STR_VAR resource = C0IWSONG END
+COPY_EXISTING ~SPCL115.SPL~ ~OVERRIDE/SPCL115C.SPL~
+  LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = SPCL115 resource = SPCL115C END
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 272 STR_VAR special = 0 END
+COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/SPCL115.SPL~
+  LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
+  LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = SPCL115 END
+COPY_EXISTING ~c0singi2.SPL~ ~OVERRIDE~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = SPCL115 END
+COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/SPCL115.EFF~
+WRITE_ASCII 0x30 SPCL115C
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~#BARD3.SPL~ THEN BEGIN
+COPY_EXISTING ~#BARD3.SPL~ ~OVERRIDE~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 309 target = 2 parameter1 = 3 timing = 1 STR_VAR resource = C0IWSONG END
+COPY_EXISTING ~SPCL116.SPL~ ~OVERRIDE/SPCL116C.SPL~
+  LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = SPCL116 resource = SPCL116C END
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 272 STR_VAR special = 0 END
+COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/SPCL116.SPL~
+  LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
+  LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = SPCL116 END
+COPY_EXISTING ~c0singi2.SPL~ ~OVERRIDE~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = SPCL116 END
+COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/SPCL116.EFF~
+WRITE_ASCII 0x30 SPCL116C
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~#BARD4.SPL~ THEN BEGIN
+COPY_EXISTING ~#BARD4.SPL~ ~OVERRIDE~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 309 target = 2 parameter1 = 4 timing = 1 STR_VAR resource = C0IWSONG END
+COPY_EXISTING ~SPCL117.SPL~ ~OVERRIDE/SPCL117C.SPL~
+  LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = SPCL117 resource = SPCL117C END
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 272 STR_VAR special = 0 END
+COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/SPCL117.SPL~
+  LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
+  LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = SPCL117 END
+COPY_EXISTING ~c0singi2.SPL~ ~OVERRIDE~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = SPCL117 END
+COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/SPCL117.EFF~
+WRITE_ASCII 0x30 SPCL117C
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~#BARD5.SPL~ THEN BEGIN
+COPY_EXISTING ~#BARD5.SPL~ ~OVERRIDE~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 309 target = 2 parameter1 = 5 timing = 1 STR_VAR resource = C0IWSONG END
+COPY_EXISTING ~SPCL118.SPL~ ~OVERRIDE/SPCL118C.SPL~
+  LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = SPCL118 resource = SPCL118C END
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 272 STR_VAR special = 0 END
+COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/SPCL118.SPL~
+  LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
+  LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = SPCL118 END
+COPY_EXISTING ~c0singi2.SPL~ ~OVERRIDE~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = SPCL118 END
+COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/SPCL118.EFF~
+WRITE_ASCII 0x30 SPCL118C
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~#BARD6.SPL~ THEN BEGIN
+COPY_EXISTING ~#BARD6.SPL~ ~OVERRIDE~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 309 target = 2 parameter1 = 6 timing = 1 STR_VAR resource = C0IWSONG END
+COPY_EXISTING ~SPCL119.SPL~ ~OVERRIDE/SPCL119C.SPL~
+  LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = SPCL119 resource = SPCL119C END
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 272 STR_VAR special = 0 END
+COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/SPCL119.SPL~
+  LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
+  LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = SPCL119 END
+COPY_EXISTING ~c0singi2.SPL~ ~OVERRIDE~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = SPCL119 END
+COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/SPCL119.EFF~
+WRITE_ASCII 0x30 SPCL119C
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~SPCL920A.SPL~ THEN BEGIN
@@ -52,9 +145,9 @@ END
 
 OUTER_SPRINT kit_name TRUECLASS
 
-OUTER_SPRINT bard_song spcl920A
+OUTER_SPRINT bard_song fjbardb
 
-OUTER_SPRINT hla_song fjbardb
+OUTER_SPRINT hla_song spcl920A
 
 ACTION_IF FILE_EXISTS_IN_GAME ~baldur.bcs~ THEN BEGIN
 EXTEND_TOP ~baldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
@@ -66,6 +159,10 @@ END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~baldur25.bcs~ THEN BEGIN
 EXTEND_TOP ~baldur25.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
+ACTION_IF GAME_IS ~IWDEE~ THEN BEGIN
+EXTEND_TOP ~baldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur-iwd.baf~ EVAL
 END
 
 // BLADE
@@ -76,6 +173,8 @@ COPY_EXISTING ~FJBLADEB.SPL~ ~OVERRIDE/FJBLADB3.SPL~
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/FJBLADEB.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = FJBLADEB END
+COPY_EXISTING ~c0singi2.SPL~ ~OVERRIDE~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = FJBLADEB END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/FJBLADEB.EFF~
 WRITE_ASCII 0x30 FJBLADB3
 END
@@ -86,30 +185,10 @@ COPY_EXISTING ~C0BLDSO.SPL~ ~OVERRIDE/C0BLDSO3.SPL~
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0BLDSO.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0BLDSO END
+COPY_EXISTING ~c0singi2.SPL~ ~OVERRIDE~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = C0BLDSO END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0BLDSO.EFF~
 WRITE_ASCII 0x30 C0BLDSO3
-END
-
-OUTER_SPRINT kit_name BLADE
-
-ACTION_IF !FILE_EXISTS_IN_GAME ~C0BLDSO.SPL~ THEN BEGIN
-OUTER_SPRINT bard_song FJBLADEB
-END
-
-ACTION_IF FILE_EXISTS_IN_GAME ~C0BLDSO.SPL~ THEN BEGIN
-OUTER_SPRINT bard_song C0BLDSO
-END
-
-ACTION_IF FILE_EXISTS_IN_GAME ~baldur.bcs~ THEN BEGIN
-EXTEND_TOP ~baldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
-END
-
-ACTION_IF FILE_EXISTS_IN_GAME ~bdbaldur.bcs~ THEN BEGIN
-EXTEND_TOP ~bdbaldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
-END
-
-ACTION_IF FILE_EXISTS_IN_GAME ~baldur25.bcs~ THEN BEGIN
-EXTEND_TOP ~baldur25.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
 END
 
 // JESTER
@@ -120,6 +199,8 @@ COPY_EXISTING ~SPCL751A.SPL~ ~OVERRIDE/SPCL751B.SPL~
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/SPCL751A.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = SPCL751A END
+COPY_EXISTING ~c0singi2.SPL~ ~OVERRIDE~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = SPCL751A END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/SPCL751A.EFF~
 WRITE_ASCII 0x30 SPCL751B
 END
@@ -130,6 +211,8 @@ COPY_EXISTING ~C0JES03A.SPL~ ~OVERRIDE/C0JES03B.SPL~
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0JES03A.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0JES03A END
+COPY_EXISTING ~c0singi2.SPL~ ~OVERRIDE~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = C0JES03A END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0JES03A.EFF~
 WRITE_ASCII 0x30 C0JES03B
 END
@@ -167,6 +250,8 @@ COPY_EXISTING ~SPCL542A.SPL~ ~OVERRIDE/SPCL542B.SPL~
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/SPCL542A.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = SPCL542A END
+COPY_EXISTING ~c0singi2.SPL~ ~OVERRIDE~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = SPCL542A END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/SPCL542A.EFF~
 WRITE_ASCII 0x30 SPCL542B
 END
@@ -177,6 +262,8 @@ COPY_EXISTING ~C0SKD02A.SPL~ ~OVERRIDE/C0SKD02B.SPL~
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0SKD02A.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0SKD02A END
+COPY_EXISTING ~c0singi2.SPL~ ~OVERRIDE~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = C0SKD02A END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0SKD02A.EFF~
 WRITE_ASCII 0x30 C0SKD02B
 END
@@ -315,6 +402,9 @@ WRITE_ASCII 0x30 C0ABETS3
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0ABETS2.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0ABETS2 END
+COPY_EXISTING ~c0singi2.SPL~ ~OVERRIDE~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = C0ABETSO END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = C0ABETS2 END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0ABETS2.EFF~
 WRITE_ASCII 0x30 C0ABETS4
 
@@ -357,6 +447,9 @@ WRITE_ASCII 0x30 C0BDD#S3
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0BDD#S2.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0BDD#S2 END
+COPY_EXISTING ~c0singi2.SPL~ ~OVERRIDE~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = C0BDD#SO END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = C0BDD#S2 END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0BDD#S2.EFF~
 WRITE_ASCII 0x30 C0BDD#S4
 
@@ -399,6 +492,9 @@ WRITE_ASCII 0x30 C0SDRUS3
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0SDRUS2.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0SDRUS2 END
+COPY_EXISTING ~c0singi2.SPL~ ~OVERRIDE~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = C0SDRUS END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = C0SDRUS2 END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0SDRUS2.EFF~
 WRITE_ASCII 0x30 C0SDRUS4
 
@@ -441,6 +537,9 @@ WRITE_ASCII 0x30 C0TRBSO3
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0TRBSO2.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0TRBSO2 END
+COPY_EXISTING ~c0singi2.SPL~ ~OVERRIDE~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = C0TRBSO END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = C0TRBSO2 END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0TRBSO2.EFF~
 WRITE_ASCII 0x30 C0TRBSO4
 
