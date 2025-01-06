@@ -13,7 +13,7 @@ END
 IF
     TriggerOverride(Player1,ModalState(BATTLESONG))
     Class(Player1,BARD_ALL)
-    Kit(Player1,%kitname%)
+    Kit(Player1,%kit_name%)
     TriggerOverride(Player1,Global("C0IWSONG","LOCALS",0))
     TriggerOverride(Player1,Global("C0BWHLAB","LOCALS",1))
 THEN
@@ -38,7 +38,7 @@ END
 IF
     TriggerOverride(Player2,ModalState(BATTLESONG))
     Class(Player2,BARD_ALL)
-    Kit(Player2,%kitname%)
+    Kit(Player2,%kit_name%)
     TriggerOverride(Player2,Global("C0IWSONG","LOCALS",0))
     TriggerOverride(Player2,Global("C0BWHLAB","LOCALS",1))
 THEN
@@ -63,7 +63,7 @@ END
 IF
     TriggerOverride(Player3,ModalState(BATTLESONG))
     Class(Player3,BARD_ALL)
-    Kit(Player3,%kitname%)
+    Kit(Player3,%kit_name%)
     TriggerOverride(Player3,Global("C0IWSONG","LOCALS",0))
     TriggerOverride(Player3,Global("C0BWHLAB","LOCALS",1))
 THEN
@@ -88,7 +88,7 @@ END
 IF
     TriggerOverride(Player4,ModalState(BATTLESONG))
     Class(Player4,BARD_ALL)
-    Kit(Player4,%kitname%)
+    Kit(Player4,%kit_name%)
     TriggerOverride(Player4,Global("C0IWSONG","LOCALS",0))
     TriggerOverride(Player4,Global("C0BWHLAB","LOCALS",1))
 THEN
@@ -113,7 +113,7 @@ END
 IF
     TriggerOverride(Player5,ModalState(BATTLESONG))
     Class(Player5,BARD_ALL)
-    Kit(Player5,%kitname%)
+    Kit(Player5,%kit_name%)
     TriggerOverride(Player5,Global("C0IWSONG","LOCALS",0))
     TriggerOverride(Player5,Global("C0BWHLAB","LOCALS",1))
 THEN
@@ -138,7 +138,7 @@ END
 IF
     TriggerOverride(Player6,ModalState(BATTLESONG))
     Class(Player6,BARD_ALL)
-    Kit(Player6,%kitname%)
+    Kit(Player6,%kit_name%)
     TriggerOverride(Player6,Global("C0IWSONG","LOCALS",0))
     TriggerOverride(Player6,Global("C0BWHLAB","LOCALS",1))
 THEN
