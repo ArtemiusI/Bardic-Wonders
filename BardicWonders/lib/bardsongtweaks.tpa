@@ -7,7 +7,7 @@ COPY ~%MOD_FOLDER%/bardsong/c0brdef1.vvc~ OVERRIDE
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.wav~ OVERRIDE
 OUTER_SET bard_singing = RESOLVE_STR_REF (~Singing Bard Song~)
 COPY ~%MOD_FOLDER%/bardsong/c0singin.eff~ OVERRIDE
-WRITE_SHORT 0x1c bard_singing
+WRITE_LONG 0x1c bard_singing
 COPY ~%MOD_FOLDER%/bardsong/c0singi2.eff~ OVERRIDE
 COPY ~%MOD_FOLDER%/bardsong/c0singi2.spl~ OVERRIDE
 COPY ~%MOD_FOLDER%/bardsong/c0singi2.spl~ OVERRIDE
