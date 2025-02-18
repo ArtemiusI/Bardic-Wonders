@@ -1,6 +1,10 @@
 COPY ~%MOD_FOLDER%/strategist/2das~ ~override~
 COPY ~%MOD_FOLDER%/strategist/spells~ ~override~
 
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~C0A_A01.SPL~ BEGIN
+INCLUDE ~%MOD_FOLDER%/LIB/ANALYZE.TPA~
+END
+
 LAF ADD_KIT_EX
   INT_VAR
     // Mage	= 1
