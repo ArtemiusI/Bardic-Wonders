@@ -188,7 +188,7 @@ COPY ~%MOD_FOLDER%/darkbloom/BGEE/#BLESS.VVC~ ~override~
 ADD_PROJECTILE ~%MOD_FOLDER%/darkbloom/BGEE/IDPRO237.PRO~ ~Thorn Spray~
 COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR112.SPL~ ~override/C0BDDS1.spl~
 WRITE_SHORT 0x1C 1
-WRITE_LONG 0x34 2
+WRITE_LONG 0x34 1
 READ_LONG 0x64 "abil_off"
 READ_SHORT 0x68 "abil_num"
 SET "delta" = 0
