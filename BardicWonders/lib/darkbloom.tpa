@@ -187,6 +187,8 @@ COPY ~%MOD_FOLDER%/darkbloom/BGEE/AREA1X.BAM~ ~override~
 COPY ~%MOD_FOLDER%/darkbloom/BGEE/#BLESS.VVC~ ~override~
 ADD_PROJECTILE ~%MOD_FOLDER%/darkbloom/BGEE/IDPRO237.PRO~ ~Thorn Spray~
 COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR112.SPL~ ~override/C0BDDS1.spl~
+WRITE_SHORT 0x1C 1
+WRITE_LONG 0x34 2
 READ_LONG 0x64 "abil_off"
 READ_SHORT 0x68 "abil_num"
 SET "delta" = 0
@@ -224,6 +226,8 @@ COPY ~%MOD_FOLDER%/darkbloom/BGEE/BCLAW.ITM~ ~override~
 COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR219B.BAM~ ~override~
 COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR219C.BAM~ ~override~
 COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR219.spl~ ~override/C0BDDS2.spl~
+WRITE_SHORT 0x1C 1
+WRITE_LONG 0x34 2
 SAY NAME1 ~Beast Claw~
 SAY UNIDENTIFIED_DESC ~Beast Claw
 (Alteration)
@@ -251,6 +255,8 @@ COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR326B.BAM~ ~override~
 COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR326C.BAM~ ~override~
 ADD_PROJECTILE ~%MOD_FOLDER%/darkbloom/BGEE/IDMOLD.PRO~ ~Thorn Spray~
 COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR326B.spl~ ~override~
+WRITE_SHORT 0x1C 1
+WRITE_LONG 0x34 2
 READ_LONG 0x64 "abil_off"
 READ_SHORT 0x68 "abil_num"
 SET "delta" = 0
@@ -297,6 +303,8 @@ COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR427C.BAM~ ~override~
 COPY ~%MOD_FOLDER%/darkbloom/BGEE/tsprayt.BAM~ ~override~
 ADD_PROJECTILE ~%MOD_FOLDER%/darkbloom/BGEE/idpro303.PRO~ ~Thorn Spray~
 COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR427.spl~ ~override/C0BDDS4.spl~
+WRITE_SHORT 0x1C 1
+WRITE_LONG 0x34 2
 READ_LONG 0x64 "abil_off"
 READ_SHORT 0x68 "abil_num"
 SET "delta" = 0
@@ -336,6 +344,8 @@ COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR736B.BAM~ ~override~
 COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR736C.BAM~ ~override~
 ADD_PROJECTILE ~%MOD_FOLDER%/darkbloom/BGEE/idpro307.PRO~ ~Mist of Eldath~
 COPY ~%MOD_FOLDER%/darkbloom/BGEE/SPPR736.spl~ ~override/C0BDDS7.spl~
+WRITE_SHORT 0x1C 1
+WRITE_LONG 0x34 2
 READ_LONG 0x64 "abil_off"
 READ_SHORT 0x68 "abil_num"
 SET "delta" = 0
