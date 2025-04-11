@@ -1,8 +1,9 @@
 //////////// TROUBADOUR
 COPY ~%MOD_FOLDER%/troubadour~ ~override~
 
-COPY_EXISTING ~LUBA0.2DA~ ~OVERRIDE/LUC0TRB.2DA~
-  REPLACE_TEXTUALLY ~AP_SPCL920~ ~AP_C0TRBHL~
+COPY_EXISTING ~LUBA0.2da~ ~override/LUC0TRB.2DA~
+LPF patch_remove_hla STR_VAR remove_ability = ~AP_SPCL920~ END
+LPF patch_add_hla STR_VAR ability = ~AP_C0TRBHL~ num_allowed = 1 END	
 
 LAF ADD_KIT_EX
   INT_VAR
