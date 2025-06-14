@@ -138,7 +138,7 @@ STR_VAR
     ability = AP_C0BWHL1       // New ability being added
     remove_ability = GA_SPCL914
     num_allowed = 1
-	prerequisite = GA_C0BWHL7
+	prerequisite = AP_C0BWHL7
   END
 
 LAF SIMPLE_REPLACE_HLA
