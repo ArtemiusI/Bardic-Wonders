@@ -1,0 +1,107 @@
+BACKUP ~weidu_external/backup/BardicWonders~
+AUTHOR ~The Artisan (artisans-corner.com)~
+AUTO_TRA ~%MOD_FOLDER%/translations/%s~
+ALWAYS
+  INCLUDE ~%MOD_FOLDER%/lib/a7#add_kit_ex.tpa~
+  INCLUDE ~%MOD_FOLDER%/lib/kit_strref.tpa~
+  INCLUDE ~%MOD_FOLDER%/lib/alter_script.tpa~
+  INCLUDE ~%MOD_FOLDER%/lib/functions.tph~
+  INCLUDE ~%MOD_FOLDER%/lib/hla_actions.tpa~
+  INCLUDE ~%MOD_FOLDER%/lib/more_hla.tpa~
+END
+LANGUAGE ~English~
+         ~English~
+
+BEGIN ~Bardic Wonders: Blade Overhaul~
+GROUP ~Kits~
+INCLUDE ~%MOD_FOLDER%/LIB/blade.tpa~
+
+BEGIN ~Bardic Wonders: Jester Overhaul~
+GROUP ~Kits~
+INCLUDE ~%MOD_FOLDER%/LIB/jester.tpa~
+
+BEGIN ~Bardic Wonders: Skald Overhaul~
+GROUP ~Kits~
+INCLUDE ~%MOD_FOLDER%/LIB/skald.tpa~
+
+BEGIN ~Bardic Wonders: Abettor of Mask Kit~
+GROUP ~Kits~
+INCLUDE ~%MOD_FOLDER%/LIB/abettor.tpa~
+
+BEGIN ~Bardic Wonders: Dancer Kit~
+GROUP ~Kits~
+INCLUDE ~%MOD_FOLDER%/LIB/dancer.tpa~
+
+BEGIN ~Bardic Wonders: Darkbloom Bard Kit~
+GROUP ~Kits~
+INCLUDE ~%MOD_FOLDER%/LIB/darkbloom.tpa~
+
+BEGIN ~Bardic Wonders: Storm Drummer Kit~
+GROUP ~Kits~
+INCLUDE ~%MOD_FOLDER%/LIB/stormdrummer.tpa~
+
+BEGIN ~Bardic Wonders: Troubadour Kit~
+GROUP ~Kits~
+INCLUDE ~%MOD_FOLDER%/LIB/troubadour.tpa~
+
+BEGIN ~Bardic Wonders: Deathsinger Kit~
+GROUP ~Kits~
+INCLUDE ~%MOD_FOLDER%/LIB/deathsinger.tpa~
+
+BEGIN ~Bardic Wonders: Strategist Kit~
+GROUP ~Kits~
+INCLUDE ~%MOD_FOLDER%/LIB/strategist.tpa~
+
+BEGIN ~Bardic Wonders: Kapellmeister Kit~
+GROUP ~Kits~
+INCLUDE ~%MOD_FOLDER%/LIB/kapellmeister.tpa~
+
+BEGIN ~Bardic Wonders: Items~
+GROUP ~Tweaks & Additions~
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ ~This component must be played on BG:EE or BG2:EE.~
+INCLUDE ~%MOD_FOLDER%/LIB/itempack.tpa~
+
+BEGIN ~Bardic Wonders: Inspirations~
+GROUP ~Tweaks & Additions~
+INCLUDE ~%MOD_FOLDER%/LIB/inspirations.tpa~
+
+BEGIN ~Bardic Wonders: Armored Casting for Bards~
+GROUP ~Tweaks & Additions~
+INCLUDE ~%MOD_FOLDER%/LIB/armored_casting.tpa~
+
+BEGIN ~Bardic Wonders: Bard Song Mechanics Tweak~
+GROUP ~Tweaks & Additions~
+INCLUDE ~%MOD_FOLDER%/LIB/bardsongtweaks.tpa~
+
+BEGIN ~Bardic Wonders: Item Restriction Tweaks~
+GROUP ~Tweaks & Additions~
+
+COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
+  PATCH_IF (SOURCE_SIZE > 0x71) BEGIN // avoid crashing on empty items
+    READ_BYTE    0x1E bard //reads the byte containing the bard usability flag
+    READ_BYTE    0x20 mage //reads the byte containing the mage usability flag
+    PATCH_IF ((mage BAND 0b00000100) = 0b00000000) BEGIN // if it is usable by mages
+        WRITE_BYTE    0x1E (bard BAND 0b10111111)  // makes usable by bards
+      END
+    END
+BUT_ONLY
+
+COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
+  PATCH_IF (SOURCE_SIZE > 0x71) BEGIN // avoid crashing on empty items
+    READ_BYTE    0x1E bard //reads the byte containing the bard/cleric usability flag
+    PATCH_IF ((bard BAND 0b10000000) = 0b00000000) BEGIN // if it is usable by clerics
+      READ_SHORT    0x1C type //reads the byte containing item type
+      PATCH_IF (type = 11) BEGIN // if it is a scroll
+        WRITE_BYTE    0x1E (bard BAND 0b10111111)  // makes usable by bards
+      END
+    END
+  END
+BUT_ONLY
+
+BEGIN ~Bardic Wonders: Bard Song Overhead Visual Effect~
+GROUP ~Tweaks & Additions~
+INCLUDE ~%MOD_FOLDER%/LIB/bardsongvisual.tpa~
+
+BEGIN ~Bardic Wonders: High Level Abilities~
+GROUP ~Tweaks & Additions~
+INCLUDE ~%MOD_FOLDER%/LIB/hlas.tpa~
