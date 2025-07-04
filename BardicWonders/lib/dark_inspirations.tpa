@@ -39,7 +39,7 @@ SAY NAME1 ~Inspire Wrath~
 COPY_EXISTING ~C0BDS01a.spl~ ~override~
   LPF ALTER_SPELL_HEADER
 	INT_VAR
-		projectile = c0bdipr
+		projectile = IDS_OF_SYMBOL (~PROJECTL~ ~C0BDIPR~)
 END
 
 COPY_EXISTING ~C0BDS01b.spl~ ~override~
@@ -60,7 +60,7 @@ SAY NAME1 ~Inspire Ambition~
 COPY_EXISTING ~C0BDS02a.spl~ ~override~
   LPF ALTER_SPELL_HEADER
 	INT_VAR
-		projectile = c0bdipr
+		projectile = IDS_OF_SYMBOL (~PROJECTL~ ~C0BDIPR~)
 END
 
 COPY_EXISTING ~C0BDS02b.spl~ ~override~
@@ -81,7 +81,7 @@ SAY NAME1 ~Inspire Preservation~
 COPY_EXISTING ~C0BDS03a.spl~ ~override~
   LPF ALTER_SPELL_HEADER
 	INT_VAR
-		projectile = c0bdipr
+		projectile = IDS_OF_SYMBOL (~PROJECTL~ ~C0BDIPR~)
 END
 
 COPY_EXISTING ~C0BDS03b.spl~ ~override~
@@ -102,7 +102,7 @@ SAY NAME1 ~Inspire Voracity~
 COPY_EXISTING ~C0BDS04a.spl~ ~override~
   LPF ALTER_SPELL_HEADER
 	INT_VAR
-		projectile = c0bdipr
+		projectile = IDS_OF_SYMBOL (~PROJECTL~ ~C0BDIPR~)
 END
 
 COPY_EXISTING ~C0BDS04B.spl~ ~override~
@@ -162,7 +162,7 @@ SAY NAME1 ~Inspire Audacity~
 COPY_EXISTING ~C0BDS05a.spl~ ~override~
   LPF ALTER_SPELL_HEADER
 	INT_VAR
-		projectile = c0bdipr
+		projectile = IDS_OF_SYMBOL (~PROJECTL~ ~C0BDIPR~)
 END
 
 COPY_EXISTING ~C0BDS05b.spl~ ~override~
@@ -183,7 +183,7 @@ SAY NAME1 ~Inspire Dominance~
 COPY_EXISTING ~C0BDS06a.spl~ ~override~
   LPF ALTER_SPELL_HEADER
 	INT_VAR
-		projectile = c0bdipr
+		projectile = IDS_OF_SYMBOL (~PROJECTL~ ~C0BDIPR~)
 END
 
 COPY_EXISTING ~C0BDS06b.spl~ ~override~
