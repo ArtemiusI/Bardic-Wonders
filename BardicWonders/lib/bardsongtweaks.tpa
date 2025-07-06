@@ -476,6 +476,51 @@ EXTEND_TOP ~baldur25.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
 END
 END
 
+// KAPELLMEISTER
+
+ACTION_IF FILE_EXISTS_IN_GAME ~C0KM#SO.SPL~ THEN BEGIN
+COPY_EXISTING ~C0KM#SO.SPL~ ~OVERRIDE/C0KM#SOA.SPL~
+  LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = C0KM#SO resource = C0KM#SOA END
+COPY_EXISTING ~C0KM#SOH.SPL~ ~OVERRIDE/C0KM#SOB.SPL~
+  LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = C0KM#SOH resource = C0KM#SOB END
+COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0KM#SO.SPL~
+  LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
+  LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0KM#SO END
+COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0KM#SO.EFF~
+WRITE_ASCII 0x30 C0KM#SOA
+COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0KM#SOH.SPL~
+  LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
+  LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0KM#SOH END
+COPY_EXISTING ~c0singi2.SPL~ ~OVERRIDE~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = C0KM#SO END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = C0KM#SOH END
+COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0KM#SOH.EFF~
+WRITE_ASCII 0x30 C0KM#SOB
+
+ACTION_IF FILE_EXISTS_IN_GAME ~C0KM#H4.SPL~ THEN BEGIN
+COPY_EXISTING ~C0KM#H4.SPL~ ~OVERRIDE~
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 309 target = 2 parameter1 = 1 timing = 1 STR_VAR resource = C0BWHLAB END
+END
+
+OUTER_SPRINT kit_name C0_KAPELLMEISTER
+
+OUTER_SPRINT bard_song C0KM#SO
+
+OUTER_SPRINT hla_song C0KM#SOH
+
+ACTION_IF FILE_EXISTS_IN_GAME ~baldur.bcs~ THEN BEGIN
+EXTEND_TOP ~baldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~bdbaldur.bcs~ THEN BEGIN
+EXTEND_TOP ~bdbaldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~baldur25.bcs~ THEN BEGIN
+EXTEND_TOP ~baldur25.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+END
+END
+
 // STORM DRUMMER
 
 ACTION_IF FILE_EXISTS_IN_GAME ~C0SDRUSO.SPL~ THEN BEGIN
@@ -492,7 +537,7 @@ COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/C0SDRUS2.SPL~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
   LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = C0SDRUS2 END
 COPY_EXISTING ~c0singi2.SPL~ ~OVERRIDE~
-  LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = C0SDRUS END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = C0SDRUSO END
   LPF CLONE_EFFECT INT_VAR match_opcode = 321 silent = 1 STR_VAR match_resource = fjbardb resource = C0SDRUS2 END
 COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/C0SDRUS2.EFF~
 WRITE_ASCII 0x30 C0SDRUS4
