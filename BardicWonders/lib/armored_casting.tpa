@@ -53,7 +53,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
 				parameter2 = 109
 				timing = 2
 			STR_VAR
-				resource = C0ARCAS1
+				resource = C0ARCAS2
 		END
       END
       END
