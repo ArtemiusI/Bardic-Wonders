@@ -73,7 +73,7 @@ BEGIN ~Bardic Wonders: Bard Song Mechanics Tweak~
 GROUP ~Tweaks & Additions~
 INCLUDE ~%MOD_FOLDER%/LIB/bardsongtweaks.tpa~
 
-BEGIN ~Bardic Wonders: Item Restriction Tweaks~
+BEGIN ~Bardic Wonders: Item Restriction Tweaks (bards may use mage items and priest scrolls)~
 GROUP ~Tweaks & Additions~
 
 COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
