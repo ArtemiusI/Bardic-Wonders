@@ -24,7 +24,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
 				opcode = 318
 				target = 1
 				parameter1 = IDS_OF_SYMBOL (~CLASS~ ~BARD~)
-				parameter2 = 105
+				parameter2 = 5
 				timing = 2
 			STR_VAR
 				resource = C0ARCAS1
@@ -47,10 +47,10 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
 		LPF ADD_ITEM_EQEFFECT
 			INT_VAR
 				silent = 1
-				opcode = 318
+				opcode = 177
 				target = 1
 				parameter1 = IDS_OF_SYMBOL (~KIT~ ~SKALD~)
-				parameter2 = 109
+				parameter2 = 9
 				timing = 2
 			STR_VAR
 				resource = C0ARCAS2
