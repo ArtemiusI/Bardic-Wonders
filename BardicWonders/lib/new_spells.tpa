@@ -1,0 +1,478 @@
+COPY ~%MOD_FOLDER%/NEW_SPELLS/BAM~ ~OVERRIDE~
+COPY ~%MOD_FOLDER%/NEW_SPELLS/ITM~ ~OVERRIDE~
+COPY ~%MOD_FOLDER%/NEW_SPELLS/SPL~ ~OVERRIDE~
+
+OUTER_SPRINT C0BW101_NAME1 ~Balagarn's Iron Horn~
+OUTER_SPRINT C0BW101_DESC ~Balagarn's Iron Horn
+(Alteration)
+
+Level: 1
+Range: 0
+Duration: Instant
+Casting Time: 1
+Area of Effect: 10-ft. cone with 120-deg. arc
+Saving Throw: Neg.
+
+With this spell, the bard raises both hands and creates a powerful, resonant vibration which shakes all creatures in a 10-ft. cone from their palms, dealing 1d4 crushing + 1 magical damage per level (maximum of 5 damage) to all targets and knocking them off their feet for one round if a Saving Throw vs. Breath is failed. From 7th level, targets must save at a -1 penalty, increasing to -2 at 13th level and -3 at 18th level.~
+
+OUTER_SPRINT C0BW102_NAME1 ~Courage~
+OUTER_SPRINT C0BW102_DESC ~Courage
+(Abjuration)
+
+Level: 1
+Range: Touch
+Duration: 1 round + 1 round per level
+Casting Time: 1
+Area of Effect: 1 creature
+Saving Throw: None
+
+Using this spell, the bard bolsters the courage of the targeted ally, granting them a non-cumulative +1 bonus to THAC0 and damage. The target is also purged of all fear and morale failure effects, and is immune to such effects for the duration.~
+
+OUTER_SPRINT C0BW103_NAME1 ~Mischance~
+OUTER_SPRINT C0BW103_DESC ~Mischance
+(Enchantment/Charm)
+
+Level: 1
+Range: Visual range of the caster
+Duration: 4 rounds
+Casting Time: 1
+Area of Effect: 1 person
+Saving Throw: None
+
+The bard afflicts an unfortunate target with a malicious hex, causing all sorts of misfortune to befall them. For the next four rounds, the target's Saving Throws and morale are reduced by 2 points, they cannot critically hit on any roll, and their critical miss modifier is increased by one (a roll of 2, for example, would result in a critical miss). From 16th level, the critical miss modifier is further increased to two.~
+
+OUTER_SPRINT C0BW201_NAME1 ~Cleansing Aria~
+OUTER_SPRINT C0BW201_DESC ~Cleansing Aria
+(Conjuration)
+
+Level: 2
+Range: Visual range of the caster
+Duration: Instant
+Casting Time: 1
+Area of Effect: Special
+Saving Throw: None
+
+The bard chants a magical tune to soothe the target, restoring their hit points by 1d8 points and curing most ailments or diseases that afflict them, as well as the effects of blindness, deafness, and feeblemind. From 9th and 13th levels, an additional target may be chosen respectively—the same target may also be chosen multiple times for additional healing.~
+
+OUTER_SPRINT C0BW202_NAME1 ~Heroism~
+OUTER_SPRINT C0BW202_DESC ~Heroism
+(Enchantment/Charm)
+
+Level: 2
+Range: Visual range of the caster
+Duration: 2 hours
+Casting Time: 2
+Area of Effect: Special
+Saving Throw: None
+
+For the next two hours, the targeted creature is blessed with an enchantment which increases their competence, granting them a +10% bonus to their Hit Points, and setting their THAC0 to 90% of their base.~
+
+OUTER_SPRINT C0BW203_NAME1 ~Sound Burst~
+OUTER_SPRINT C0BW203_DESC ~Sound Burst
+(Invocation/Evocation)
+
+Level: 2
+Range: Visual range of the caster
+Duration: 2 hours
+Casting Time: 2
+Area of Effect: Special
+Saving Throw: Neg.
+
+An ear-splitting sound erupts from a targeted location of the bard's choosing, dealing 1d4 crushing and 2d4 magic damage to all creatures within a 10-ft. radius and stunning them for two rounds on a failed Saving Throw vs. Death. Due to the special nature of this spell, the sound emitted is natural rather than magical and is thus not affected by Magic Resistance.~
+
+OUTER_SPRINT C0BW301_NAME1 ~Crushing Despair~
+OUTER_SPRINT C0BW301_DESC ~Crushing Despair
+(Enchantment/Charm)
+
+Level: 3
+Range: Visual range of the caster
+Duration: 1 turn
+Casting Time: 2
+Area of Effect: 25-ft. cone with 60-deg. arc
+Saving Throw: None
+
+An invisible cone of energy induces great despair and sadness upon unfortunate targets within the area of effect, penalizing their THAC0, damage, Saving Throws, Morale and Armor Class by two points for the next turn. This spell only affects the caster's enemies.~
+
+OUTER_SPRINT C0BW302_NAME1 ~Battleluck~
+OUTER_SPRINT C0BW302_DESC ~Battleluck
+(Enchantment/Charm)
+
+Level: 3
+Range: Visual range of the caster
+Duration: 1 hour
+Casting Time: 2
+Area of Effect: 1 person
+Saving Throw: None
+
+The targeted creature is blessed with fortune in battle. For the next hour, their attacks will never critically miss, even on a roll of 1, and their critical hit modifier is increased by 1. From 14th level onwards, their critical hit modifier is further increased to 2.~
+
+DEFINE_ACTION_FUNCTION cd_new_portrait_icon
+  INT_VAR string = 0
+  STR_VAR bam_file = "****"
+  RET     icon
+  BEGIN
+
+  COPY_EXISTING ~statdesc.2da~ ~override~
+    COUNT_2DA_ROWS 3 count
+    READ_2DA_ENTRY (count - 1) 0 3 icon
+    SET icon += 1
+
+  APPEND ~statdesc.2da~ ~%icon% %string% %bam_file%~ UNLESS ~%bam_file%~
+
+END
+
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Battleluck~) STR_VAR bam_file = C0BW302I RET C0BW302I = icon END
+
+ADD_PROJECTILE ~%MOD_FOLDER%/new_spells/pro/C0BW101P.PRO~ ~C0 Crushing Despair~
+
+COPY_EXISTING C0BW101.SPL OVERRIDE
+  LPF ALTER_SPELL_HEADER INT_VAR projectile = C0BW101P END
+SAY NAME1 ~%C0BW101_NAME1%~
+SAY UNIDENTIFIED_DESC ~%C0BW101_DESC%~
+
+COPY_EXISTING C0BW102.SPL OVERRIDE
+  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Resist Fear~) END
+SAY NAME1 ~%C0BW102_NAME1%~
+SAY UNIDENTIFIED_DESC ~%C0BW102_DESC%~
+
+COPY_EXISTING C0BW103.SPL OVERRIDE
+  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Misfortune~) END
+SAY NAME1 ~%C0BW103_NAME1%~
+SAY UNIDENTIFIED_DESC ~%C0BW103_DESC%~
+
+COPY_EXISTING C0BW201.SPL OVERRIDE
+SAY NAME1 ~%C0BW201_NAME1%~
+SAY UNIDENTIFIED_DESC ~%C0BW201_DESC%~
+
+COPY_EXISTING C0BW201A.SPL OVERRIDE
+  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Disease Cured~) END
+
+COPY_EXISTING C0BW202.SPL OVERRIDE
+  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Heroism~) END
+SAY NAME1 ~%C0BW202_NAME1%~
+SAY UNIDENTIFIED_DESC ~%C0BW202_DESC%~
+
+ADD_PROJECTILE ~%MOD_FOLDER%/new_spells/pro/C0BW203P.PRO~ ~C0 Sound Burst~
+
+COPY_EXISTING C0BW203.SPL OVERRIDE
+  LPF ALTER_SPELL_HEADER INT_VAR projectile = C0BW203P END
+SAY NAME1 ~%C0BW203_NAME1%~
+SAY UNIDENTIFIED_DESC ~%C0BW203_DESC%~
+
+ADD_PROJECTILE ~%MOD_FOLDER%/new_spells/pro/C0BW301P.PRO~ ~C0 Crushing Despair~
+
+COPY_EXISTING C0BW301.SPL OVERRIDE
+  LPF ALTER_SPELL_HEADER INT_VAR projectile = C0BW301P END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Despair~) END
+SAY NAME1 ~%C0BW301_NAME1%~
+SAY UNIDENTIFIED_DESC ~%C0BW301_DESC%~
+
+COPY_EXISTING C0BW302.SPL OVERRIDE
+  LPF ALTER_EFFECT INT_VAR match_opcode = 142 parameter2 = C0BW302I END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Critical Hit Modifier Increased~) END
+SAY NAME1 ~%C0BW302_NAME1%~
+SAY UNIDENTIFIED_DESC ~%C0BW302_DESC%~
+
+// SCROLLS
+
+COPY_EXISTING ~C0BW101A.ITM~ ~OVERRIDE~
+WRITE_LONG 0x34 150
+WRITE_ASCII 0x3a ~C0BW101A~
+LPF ALTER_EFFECT INT_VAR match_opcode = 146 target = 1 opcode = 148 END
+LPF ALTER_ITEM_HEADER INT_VAR header = 1 target = 4 range = 5 END
+LPF ALTER_ITEM_HEADER STR_VAR icon = C0BW101A END
+SAY NAME1 ~Scroll~
+SAY NAME2 ~%C0BW101_NAME1%~
+SAY DESC ~%C0BW101_DESC%~
+
+COPY_EXISTING ~%MOD_FOLDER%/new_spells/itm/C0BW101A.ITM~ ~OVERRIDE/C0BW102A.ITM~
+WRITE_LONG 0x34 150
+WRITE_ASCII 0x3a ~C0BW102A~
+LPF ALTER_EFFECT STR_VAR match_resource = C0BW101 resource = C0BW102 END
+LPF ALTER_ITEM_HEADER STR_VAR icon = C0BW102A END
+SAY NAME1 ~Scroll~
+SAY NAME2 ~%C0BW102_NAME1%~
+SAY DESC ~%C0BW102_DESC%~
+
+COPY_EXISTING ~%MOD_FOLDER%/new_spells/itm/C0BW101A.ITM~ ~OVERRIDE/C0BW103A.ITM~
+WRITE_LONG 0x34 150
+WRITE_ASCII 0x3a ~C0BW103A~
+LPF ALTER_EFFECT STR_VAR match_resource = C0BW101 resource = C0BW103 END
+LPF ALTER_ITEM_HEADER STR_VAR icon = C0BW103A END
+SAY NAME1 ~Scroll~
+SAY NAME2 ~%C0BW103_NAME1%~
+SAY DESC ~%C0BW103_DESC%~
+
+COPY_EXISTING ~%MOD_FOLDER%/new_spells/itm/C0BW101A.ITM~ ~OVERRIDE/C0BW201A.ITM~
+WRITE_LONG 0x34 300
+WRITE_ASCII 0x3a ~C0BW201A~
+LPF ALTER_EFFECT STR_VAR match_resource = C0BW101 resource = C0BW201 END
+LPF ALTER_ITEM_HEADER STR_VAR icon = C0BW201A END
+SAY NAME1 ~Scroll~
+SAY NAME2 ~%C0BW201_NAME1%~
+SAY DESC ~%C0BW201_DESC%~
+
+COPY_EXISTING ~%MOD_FOLDER%/new_spells/itm/C0BW101A.ITM~ ~OVERRIDE/C0BW202A.ITM~
+WRITE_LONG 0x34 300
+WRITE_ASCII 0x3a ~C0BW202A~
+LPF ALTER_EFFECT STR_VAR match_resource = C0BW101 resource = C0BW202 END
+LPF ALTER_ITEM_HEADER STR_VAR icon = C0BW202A END
+SAY NAME1 ~Scroll~
+SAY NAME2 ~%C0BW202_NAME1%~
+SAY DESC ~%C0BW202_DESC%~
+
+COPY_EXISTING ~%MOD_FOLDER%/new_spells/itm/C0BW101A.ITM~ ~OVERRIDE/C0BW203A.ITM~
+WRITE_LONG 0x34 300
+WRITE_ASCII 0x3a ~C0BW203A~
+LPF ALTER_EFFECT STR_VAR match_resource = C0BW101 resource = C0BW203 END
+LPF ALTER_EFFECT INT_VAR match_opcode = 146 target = 1 opcode = 148 END
+LPF ALTER_ITEM_HEADER INT_VAR header = 1 target = 4 range = 40 END
+LPF ALTER_ITEM_HEADER STR_VAR icon = C0BW203A END
+SAY NAME1 ~Scroll~
+SAY NAME2 ~%C0BW203_NAME1%~
+SAY DESC ~%C0BW203_DESC%~
+
+COPY_EXISTING ~%MOD_FOLDER%/new_spells/itm/C0BW101A.ITM~ ~OVERRIDE/C0BW301A.ITM~
+WRITE_LONG 0x34 500
+WRITE_ASCII 0x3a ~C0BW301A~
+LPF ALTER_EFFECT STR_VAR match_resource = C0BW101 resource = C0BW301 END
+LPF ALTER_EFFECT INT_VAR match_opcode = 146 target = 1 opcode = 148 END
+LPF ALTER_ITEM_HEADER INT_VAR header = 1 target = 4 range = 25 END
+LPF ALTER_ITEM_HEADER STR_VAR icon = C0BW301A END
+SAY NAME1 ~Scroll~
+SAY NAME2 ~%C0BW301_NAME1%~
+SAY DESC ~%C0BW301_DESC%~
+
+COPY_EXISTING ~%MOD_FOLDER%/new_spells/itm/C0BW101A.ITM~ ~OVERRIDE/C0BW302A.ITM~
+WRITE_LONG 0x34 500
+WRITE_ASCII 0x3a ~C0BW302A~
+LPF ALTER_EFFECT STR_VAR match_resource = C0BW101 resource = C0BW302 END
+LPF ALTER_ITEM_HEADER STR_VAR icon = C0BW302A END
+SAY NAME1 ~Scroll~
+SAY NAME2 ~%C0BW302_NAME1%~
+SAY DESC ~%C0BW302_DESC%~
+
+COPY_EXISTING ~SPPR402.SPL~ ~OVERRIDE/C0BW401.SPL~
+WRITE_SHORT 0x1C 1
+WRITE_LONG 0x34 4
+COPY_EXISTING ~SPPR404.SPL~ ~OVERRIDE/C0BW402.SPL~
+WRITE_SHORT 0x1C 1
+WRITE_LONG 0x34 4
+COPY_EXISTING ~SPPR508.SPL~ ~OVERRIDE/C0BW501.SPL~
+WRITE_SHORT 0x1C 1
+WRITE_LONG 0x34 5
+
+COPY_EXISTING ~SCRL58.itm~ ~override~ //copies all item files
+LPF ADD_ITEM_HEADER INT_VAR insert_point=1 END
+LPF ADD_ITEM_EFFECT INT_VAR header = 2 opcode = 147 parameter1 = 1 STR_VAR resource = C0BW401 END
+LPF ADD_ITEM_HEADER END
+    READ_BYTE    0x1E bard //reads the byte containing the bard/cleric usability flag
+    PATCH_IF ((bard BAND 0b10000000) = 0b00000000) BEGIN // if it is usable by clerics
+      READ_SHORT    0x1C type //reads the byte containing item type
+      PATCH_IF (type = 11) BEGIN // if it is a scroll
+        WRITE_BYTE    0x1E (bard BAND 0b10111111)  // makes usable by bards
+      END
+    END
+BUT_ONLY
+
+COPY_EXISTING ~SCRL59.itm~ ~override~ //copies all item files
+LPF ADD_ITEM_HEADER INT_VAR insert_point=1 END
+LPF ADD_ITEM_EFFECT INT_VAR header = 2 opcode = 147 parameter1 = 1 STR_VAR resource = C0BW402 END
+    READ_BYTE    0x1E bard //reads the byte containing the bard/cleric usability flag
+    PATCH_IF ((bard BAND 0b10000000) = 0b00000000) BEGIN // if it is usable by clerics
+      READ_SHORT    0x1C type //reads the byte containing item type
+      PATCH_IF (type = 11) BEGIN // if it is a scroll
+        WRITE_BYTE    0x1E (bard BAND 0b10111111)  // makes usable by bards
+      END
+    END
+BUT_ONLY
+
+COPY_EXISTING ~SCRL5F.itm~ ~override~ //copies all item files
+LPF ADD_ITEM_HEADER INT_VAR insert_point=1 END
+LPF ADD_ITEM_EFFECT INT_VAR header = 2 opcode = 147 parameter1 = 1 STR_VAR resource = C0BW501 END
+    READ_BYTE    0x1E bard //reads the byte containing the bard/cleric usability flag
+    PATCH_IF ((bard BAND 0b10000000) = 0b00000000) BEGIN // if it is usable by clerics
+      READ_SHORT    0x1C type //reads the byte containing item type
+      PATCH_IF (type = 11) BEGIN // if it is a scroll
+        WRITE_BYTE    0x1E (bard BAND 0b10111111)  // makes usable by bards
+      END
+    END
+BUT_ONLY
+
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW101~ class_include=~{'BARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW102~ class_include=~{'BARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW103~ class_include=~{'BARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW201~ class_include=~{'BARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW202~ class_include=~{'BARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW203~ class_include=~{'BARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW301~ class_include=~{'BARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW302~ class_include=~{'BARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW401~ scroll = ~SCRL58~ class_include=~{'BARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW402~ scroll = ~SCRL59~ class_include=~{'BARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW501~ scroll = ~SCRL5F~ class_include=~{'BARD', }~ END
+
+
+ACTION_IF FILE_EXISTS_IN_GAME ~silke.cre~ THEN BEGIN
+COPY_EXISTING ~silke.cre~ ~override~
+ADD_CRE_ITEM ~C0BW101A~ #0 #0 #0 ~NONE~ ~inv~
+ADD_CRE_ITEM ~C0BW201A~ #0 #0 #0 ~NONE~ ~inv~
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~GARRICK.cre~ THEN BEGIN
+COPY_EXISTING ~GARRICK.cre~ ~override~
+ADD_CRE_ITEM ~C0BW102A~ #0 #0 #0 ~NONE~ ~inv~
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~ELDOTH.cre~ THEN BEGIN
+COPY_EXISTING ~GARRICK.cre~ ~override~
+ADD_CRE_ITEM ~C0BW103A~ #0 #0 #0 ~NONE~ ~inv~
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~nimbul.cre~ THEN BEGIN
+COPY_EXISTING ~nimbul.cre~ ~override~
+ADD_CRE_ITEM ~C0BW103A~ #0 #0 #0 ~NONE~ ~inv~
+ADD_CRE_ITEM ~C0BW201A~ #0 #0 #0 ~NONE~ ~inv~
+ADD_CRE_ITEM ~C0BW203A~ #0 #0 #0 ~NONE~ ~inv~
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~ELDOTH.cre~ THEN BEGIN
+COPY_EXISTING ~GARRICK.cre~ ~override~
+ADD_CRE_ITEM ~C0BW103A~ #0 #0 #0 ~NONE~ ~inv~
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~HIGHHEDG.sto~ THEN BEGIN
+COPY_EXISTING ~HIGHHEDG.sto~ ~override~
+ADD_STORE_ITEM ~C0BW101A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW102A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW103A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW201A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW202A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW203A~ #0 #0 #0 ~IDENTIFIED~ #2
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~STO0703.sto~ THEN BEGIN
+COPY_EXISTING ~STO0703.sto~ ~override~
+ADD_STORE_ITEM ~C0BW101A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW102A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW103A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW201A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW202A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW203A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW301A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW302A~ #0 #0 #0 ~IDENTIFIED~ #1
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~BDSORCSC.sto~ THEN BEGIN
+COPY_EXISTING ~BDSORCSC.sto~ ~override~
+ADD_STORE_ITEM ~C0BW101A~ #0 #0 #0 ~IDENTIFIED~ #6
+ADD_STORE_ITEM ~C0BW102A~ #0 #0 #0 ~IDENTIFIED~ #6
+ADD_STORE_ITEM ~C0BW103A~ #0 #0 #0 ~IDENTIFIED~ #6
+ADD_STORE_ITEM ~C0BW201A~ #0 #0 #0 ~IDENTIFIED~ #6
+ADD_STORE_ITEM ~C0BW202A~ #0 #0 #0 ~IDENTIFIED~ #6
+ADD_STORE_ITEM ~C0BW203A~ #0 #0 #0 ~IDENTIFIED~ #6
+ADD_STORE_ITEM ~C0BW301A~ #0 #0 #0 ~IDENTIFIED~ #6
+ADD_STORE_ITEM ~C0BW302A~ #0 #0 #0 ~IDENTIFIED~ #6
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~RIBALD.sto~ THEN BEGIN
+COPY_EXISTING ~RIBALD.sto~ ~override~
+ADD_STORE_ITEM ~C0BW101A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW102A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW103A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW201A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW202A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW203A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW301A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW302A~ #0 #0 #0 ~IDENTIFIED~ #2
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~25SPELL.sto~ THEN BEGIN
+COPY_EXISTING ~25SPELL.sto~ ~override~
+ADD_STORE_ITEM ~C0BW101A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW102A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW103A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW201A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW202A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW203A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW301A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW302A~ #0 #0 #0 ~IDENTIFIED~ #2
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~25SPELL2.sto~ THEN BEGIN
+COPY_EXISTING ~25SPELL2.sto~ ~override~
+ADD_STORE_ITEM ~C0BW101A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW102A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW103A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW201A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW202A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW203A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW301A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW302A~ #0 #0 #0 ~IDENTIFIED~ #2
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~KUORK0.sto~ THEN BEGIN
+COPY_EXISTING ~KUORK0.sto~ ~override~
+ADD_STORE_ITEM ~C0BW101A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW102A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW103A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW201A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW202A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW203A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW301A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW302A~ #0 #0 #0 ~IDENTIFIED~ #2
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~KIERAN2.sto~ THEN BEGIN
+COPY_EXISTING ~KIERAN2.sto~ ~override~
+ADD_STORE_ITEM ~C0BW101A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW102A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW103A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW201A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW202A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW203A~ #0 #0 #0 ~IDENTIFIED~ #3
+ADD_STORE_ITEM ~C0BW301A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW302A~ #0 #0 #0 ~IDENTIFIED~ #2
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SALVANAS.cre~ THEN BEGIN
+COPY_EXISTING ~SALVANAS.cre~ ~override~
+ADD_CRE_ITEM ~C0BW103A~ #0 #0 #0 ~NONE~ ~inv~
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~PBHUNT01.cre~ THEN BEGIN
+COPY_EXISTING ~PBHUNT01.cre~ ~override~
+ADD_CRE_ITEM ~C0BW302A~ #0 #0 #0 ~NONE~ ~inv~
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~JADERMIN.cre~ THEN BEGIN
+COPY_EXISTING ~PBHUNT01.cre~ ~override~
+ADD_CRE_ITEM ~C0BW101A~ #0 #0 #0 ~NONE~ ~inv~
+ADD_CRE_ITEM ~C0BW102A~ #0 #0 #0 ~NONE~ ~inv~
+ADD_CRE_ITEM ~C0BW202A~ #0 #0 #0 ~NONE~ ~inv~
+ADD_CRE_ITEM ~C0BW203A~ #0 #0 #0 ~NONE~ ~inv~
+END
+
+COPY_EXISTING_REGEXP GLOB ~.+\.CRE~ ~override~
+      READ_ASCII DEATHVAR "dv" (32) NULL
+      PATCH_IF (~%dv%~ STR_EQ ~HAERDALIS~) BEGIN
+      ADD_KNOWN_SPELL ~C0BW101~ #0 ~WIZARD~
+      ADD_KNOWN_SPELL ~C0BW102~ #0 ~WIZARD~
+      ADD_KNOWN_SPELL ~C0BW202~ #1 ~WIZARD~
+      ADD_KNOWN_SPELL ~C0BW203~ #1 ~WIZARD~
+      ADD_KNOWN_SPELL ~C0BW302~ #2 ~WIZARD~
+      	// do things here
+      END
+      BUT_ONLY
+	  
+COPY_EXISTING_REGEXP GLOB ~.+\.CRE~ ~override~
+      READ_ASCII DEATHVAR "dv" (32) NULL
+      PATCH_IF (~%dv%~ STR_EQ ~VOGHILN~) BEGIN
+      ADD_KNOWN_SPELL ~C0BW101~ #0 ~WIZARD~
+      ADD_KNOWN_SPELL ~C0BW102~ #0 ~WIZARD~
+      ADD_KNOWN_SPELL ~C0BW202~ #1 ~WIZARD~
+      ADD_KNOWN_SPELL ~C0BW203~ #1 ~WIZARD~
+      ADD_KNOWN_SPELL ~C0BW302~ #2 ~WIZARD~
+      	// do things here
+      END
+      BUT_ONLY
+	  

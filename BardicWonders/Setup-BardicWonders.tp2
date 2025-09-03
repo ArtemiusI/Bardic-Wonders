@@ -8,72 +8,74 @@ ALWAYS
   INCLUDE ~%MOD_FOLDER%/lib/functions.tph~
   INCLUDE ~%MOD_FOLDER%/lib/hla_actions.tpa~
   INCLUDE ~%MOD_FOLDER%/lib/more_hla.tpa~
+  INCLUDE ~%MOD_FOLDER%/lib/macros.tpa~
+  INCLUDE ~%MOD_FOLDER%/lib/ClassSpellTool.tpa~
 END
 LANGUAGE ~English~
          ~English~
 
-BEGIN ~Bardic Wonders: Blade Overhaul~
+BEGIN ~Bardic Wonders: Blade Overhaul~ DESIGNATED 1001
 GROUP ~Kits~
 INCLUDE ~%MOD_FOLDER%/LIB/blade.tpa~
 
-BEGIN ~Bardic Wonders: Jester Overhaul~
+BEGIN ~Bardic Wonders: Jester Overhaul~ DESIGNATED 1002
 GROUP ~Kits~
 INCLUDE ~%MOD_FOLDER%/LIB/jester.tpa~
 
-BEGIN ~Bardic Wonders: Skald Overhaul~
+BEGIN ~Bardic Wonders: Skald Overhaul~ DESIGNATED 1003
 GROUP ~Kits~
 INCLUDE ~%MOD_FOLDER%/LIB/skald.tpa~
 
-BEGIN ~Bardic Wonders: Abettor of Mask Kit~
+BEGIN ~Bardic Wonders: Abettor of Mask Kit~ DESIGNATED 1004
 GROUP ~Kits~
 INCLUDE ~%MOD_FOLDER%/LIB/abettor.tpa~
 
-BEGIN ~Bardic Wonders: Dancer Kit~
+BEGIN ~Bardic Wonders: Dancer Kit~ DESIGNATED 1005
 GROUP ~Kits~
 INCLUDE ~%MOD_FOLDER%/LIB/dancer.tpa~
 
-BEGIN ~Bardic Wonders: Darkbloom Bard Kit~
+BEGIN ~Bardic Wonders: Darkbloom Bard Kit~ DESIGNATED 1006
 GROUP ~Kits~
 INCLUDE ~%MOD_FOLDER%/LIB/darkbloom.tpa~
 
-BEGIN ~Bardic Wonders: Storm Drummer Kit~
+BEGIN ~Bardic Wonders: Storm Drummer Kit~ DESIGNATED 1007
 GROUP ~Kits~
 INCLUDE ~%MOD_FOLDER%/LIB/stormdrummer.tpa~
 
-BEGIN ~Bardic Wonders: Troubadour Kit~
+BEGIN ~Bardic Wonders: Troubadour Kit~ DESIGNATED 1008
 GROUP ~Kits~
 INCLUDE ~%MOD_FOLDER%/LIB/troubadour.tpa~
 
-BEGIN ~Bardic Wonders: Deathsinger Kit~
+BEGIN ~Bardic Wonders: Deathsinger Kit~ DESIGNATED 1009
 GROUP ~Kits~
 INCLUDE ~%MOD_FOLDER%/LIB/deathsinger.tpa~
 
-BEGIN ~Bardic Wonders: Strategist Kit~
+BEGIN ~Bardic Wonders: Strategist Kit~ DESIGNATED 1010
 GROUP ~Kits~
 INCLUDE ~%MOD_FOLDER%/LIB/strategist.tpa~
 
-BEGIN ~Bardic Wonders: Kapellmeister Kit~
+BEGIN ~Bardic Wonders: Kapellmeister Kit~ DESIGNATED 1011
 GROUP ~Kits~
 INCLUDE ~%MOD_FOLDER%/LIB/kapellmeister.tpa~
 
-BEGIN ~Bardic Wonders: Items~
+BEGIN ~Bardic Wonders: Items~ DESIGNATED 2001
 GROUP ~Tweaks & Additions~
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ ~This component must be played on BG:EE or BG2:EE.~
 INCLUDE ~%MOD_FOLDER%/LIB/itempack.tpa~
 
-BEGIN ~Bardic Wonders: Inspirations~
+BEGIN ~Bardic Wonders: Inspirations~ DESIGNATED 2002
 GROUP ~Tweaks & Additions~
 INCLUDE ~%MOD_FOLDER%/LIB/inspirations.tpa~
 
-BEGIN ~Bardic Wonders: Armored Casting for Bards~
+BEGIN ~Bardic Wonders: Armored Casting for Bards~ DESIGNATED 2003
 GROUP ~Tweaks & Additions~
 INCLUDE ~%MOD_FOLDER%/LIB/armored_casting.tpa~
 
-BEGIN ~Bardic Wonders: Bard Song Mechanics Tweak~
+BEGIN ~Bardic Wonders: Bard Song Mechanics Tweak~ DESIGNATED 2004
 GROUP ~Tweaks & Additions~
 INCLUDE ~%MOD_FOLDER%/LIB/bardsongtweaks.tpa~
 
-BEGIN ~Bardic Wonders: Item Restriction Tweaks (bards may use mage items and priest scrolls)~
+BEGIN ~Bardic Wonders: Item Restriction Tweaks (bards may use mage items and priest scrolls)~ DESIGNATED 2005
 GROUP ~Tweaks & Additions~
 
 COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
@@ -98,10 +100,14 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
   END
 BUT_ONLY
 
-BEGIN ~Bardic Wonders: Bard Song Overhead Visual Effect~
+BEGIN ~Bardic Wonders: Bard Song Overhead Visual Effect~ DESIGNATED 2006
 GROUP ~Tweaks & Additions~
 INCLUDE ~%MOD_FOLDER%/LIB/bardsongvisual.tpa~
 
-BEGIN ~Bardic Wonders: High Level Abilities~
+BEGIN ~Bardic Wonders: High Level Abilities~ DESIGNATED 2007
 GROUP ~Tweaks & Additions~
 INCLUDE ~%MOD_FOLDER%/LIB/hlas.tpa~
+
+BEGIN ~Bardic Wonders: New Bard Spells~ DESIGNATED 2008
+GROUP ~Tweaks & Additions~
+INCLUDE ~%MOD_FOLDER%/LIB/new_spells.tpa~
