@@ -69,7 +69,7 @@ For the next two hours, the targeted creature is blessed with an enchantment whi
 
 OUTER_SPRINT C0BW203_NAME1 ~Sound Burst~
 OUTER_SPRINT C0BW203_DESC ~Sound Burst
-(Invocation/Evocation)
+(Evocation)
 
 Level: 2
 Range: Visual range of the caster
@@ -105,6 +105,45 @@ Area of Effect: 1 person
 Saving Throw: None
 
 The targeted creature is blessed with fortune in battle. For the next hour, their attacks will never critically miss, even on a roll of 1, and their critical hit modifier is increased by 1. From 14th level onwards, their critical hit modifier is further increased to 2.~
+
+OUTER_SPRINT C0BW403_NAME1 ~Heroic Cry~
+OUTER_SPRINT C0BW403_DESC ~Heroic Cry
+(Enchantment/Charm)
+
+Level: 4
+Range: Visual range of the caster
+Duration: 1 turn
+Casting Time: 2
+Area of Effect: 15-ft. radius
+Saving Throw: Neg.
+
+The bard lets out a powerful shout, granting them a +2 bonus to THAC0 and damage. All enemies within a 15-ft. radius of the bard must also make a Saving Throw vs. Death at -2 or suffer a -2 penalty to Armor Class and a -4 penalty to morale rolls.~
+
+OUTER_SPRINT C0BW502_NAME1 ~Greater Heroism~
+OUTER_SPRINT C0BW502_DESC ~Greater Heroism
+(Enchantment/Charm)
+
+Level: 5
+Range: Visual range of the caster
+Duration: 2 hours
+Casting Time: 2
+Area of Effect: 1 creature
+Saving Throw: None
+
+This is a more powerful version of the Heroism spell. For the next two hours, the targeted creature is blessed with an enchantment which increases their competence, granting them a +25% bonus to their Hit Points, setting their THAC0 to 60% of their base, and gaining a +4 bonus to all their Saving Throws. This spell and Heroism are non-cumulative with each other, and the more recently applied spell will remove the effects of the other.~
+
+OUTER_SPRINT C0BW601_NAME1 ~Dirge~
+OUTER_SPRINT C0BW601_DESC ~Dirge
+(Evocation)
+
+Level: 6
+Range: 30 ft.
+Duration: 8 rounds
+Casting Time: 8
+Area of Effect: 10-ft. radius
+Saving Throw: None
+
+The bard sings a powerful song which draws upon the energies of death and destruction. For the next eight rounds, all enemies within the affected area have their maximum Hit Points and damage dealt from all sources reduced by 20%, and their movement rate is halved. If a creature leaves the area of effect, their attributes are restored.~
 
 DEFINE_ACTION_FUNCTION cd_new_portrait_icon
   INT_VAR string = 0
@@ -172,6 +211,23 @@ COPY_EXISTING C0BW302.SPL OVERRIDE
   LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Critical Hit Modifier Increased~) END
 SAY NAME1 ~%C0BW302_NAME1%~
 SAY UNIDENTIFIED_DESC ~%C0BW302_DESC%~
+
+COPY_EXISTING C0BW403.SPL OVERRIDE
+  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Frightened~) END
+SAY NAME1 ~%C0BW403_NAME1%~
+SAY UNIDENTIFIED_DESC ~%C0BW403_DESC%~
+
+COPY_EXISTING C0BW502.SPL OVERRIDE
+  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Heroism~) END
+SAY NAME1 ~%C0BW502_NAME1%~
+SAY UNIDENTIFIED_DESC ~%C0BW502_DESC%~
+
+ADD_PROJECTILE ~%MOD_FOLDER%/new_spells/pro/C0BW601P.PRO~ ~C0 Dirge~
+
+COPY_EXISTING C0BW601.SPL OVERRIDE
+  LPF ALTER_SPELL_HEADER INT_VAR projectile = C0BW601P END
+SAY NAME1 ~%C0BW601_NAME1%~
+SAY UNIDENTIFIED_DESC ~%C0BW601_DESC%~
 
 // SCROLLS
 
@@ -252,6 +308,36 @@ SAY NAME1 ~Scroll~
 SAY NAME2 ~%C0BW302_NAME1%~
 SAY DESC ~%C0BW302_DESC%~
 
+COPY_EXISTING ~%MOD_FOLDER%/new_spells/itm/C0BW101A.ITM~ ~OVERRIDE/C0BW403A.ITM~
+WRITE_LONG 0x34 900
+WRITE_ASCII 0x3a ~C0BW403A~
+LPF ALTER_EFFECT STR_VAR match_resource = C0BW101 resource = C0BW403 END
+LPF ALTER_ITEM_HEADER INT_VAR header = 1 target = 5 END
+LPF ALTER_ITEM_HEADER STR_VAR icon = C0BW403A END
+SAY NAME1 ~Scroll~
+SAY NAME2 ~%C0BW403_NAME1%~
+SAY DESC ~%C0BW403_DESC%~
+
+COPY_EXISTING ~%MOD_FOLDER%/new_spells/itm/C0BW101A.ITM~ ~OVERRIDE/C0BW502A.ITM~
+WRITE_LONG 0x34 1500
+WRITE_ASCII 0x3a ~C0BW502A~
+LPF ALTER_EFFECT STR_VAR match_resource = C0BW101 resource = C0BW502 END
+LPF ALTER_ITEM_HEADER STR_VAR icon = C0BW502A END
+SAY NAME1 ~Scroll~
+SAY NAME2 ~%C0BW502_NAME1%~
+SAY DESC ~%C0BW502_DESC%~
+
+COPY_EXISTING ~%MOD_FOLDER%/new_spells/itm/C0BW101A.ITM~ ~OVERRIDE/C0BW601A.ITM~
+WRITE_LONG 0x34 5000
+WRITE_ASCII 0x3a ~C0BW601A~
+LPF ALTER_EFFECT STR_VAR match_resource = C0BW101 resource = C0BW601 END
+LPF ALTER_EFFECT INT_VAR match_opcode = 146 target = 1 opcode = 148 END
+LPF ALTER_ITEM_HEADER INT_VAR header = 1 target = 4 range = 25 END
+LPF ALTER_ITEM_HEADER STR_VAR icon = C0BW601A END
+SAY NAME1 ~Scroll~
+SAY NAME2 ~%C0BW601_NAME1%~
+SAY DESC ~%C0BW601_DESC%~
+
 COPY_EXISTING ~SPPR403.SPL~ ~OVERRIDE/C0BW401.SPL~
 WRITE_SHORT 0x1C 1
 WRITE_LONG 0x34 4
@@ -321,7 +407,10 @@ LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW301~ class_include=~{'BARD', }~ END
 LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW302~ class_include=~{'BARD', }~ END
 LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW401~ scroll = ~SCRL58~ class_include=~{'BARD', }~ END
 LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW402~ scroll = ~SCRL59~ class_include=~{'BARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW403~ class_include=~{'BARD', }~ END
 LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW501~ scroll = ~SCRL5F~ class_include=~{'BARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW502~ class_include=~{'BARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW601~ class_include=~{'BARD', }~ END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~silke.cre~ THEN BEGIN
 COPY_EXISTING ~silke.cre~ ~override~
@@ -371,6 +460,8 @@ ADD_STORE_ITEM ~C0BW202A~ #0 #0 #0 ~IDENTIFIED~ #2
 ADD_STORE_ITEM ~C0BW203A~ #0 #0 #0 ~IDENTIFIED~ #2
 ADD_STORE_ITEM ~C0BW301A~ #0 #0 #0 ~IDENTIFIED~ #2
 ADD_STORE_ITEM ~C0BW302A~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~C0BW403A~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~C0BW502A~ #0 #0 #0 ~IDENTIFIED~ #1
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~BDSORCSC.sto~ THEN BEGIN
@@ -383,6 +474,8 @@ ADD_STORE_ITEM ~C0BW202A~ #0 #0 #0 ~IDENTIFIED~ #6
 ADD_STORE_ITEM ~C0BW203A~ #0 #0 #0 ~IDENTIFIED~ #6
 ADD_STORE_ITEM ~C0BW301A~ #0 #0 #0 ~IDENTIFIED~ #6
 ADD_STORE_ITEM ~C0BW302A~ #0 #0 #0 ~IDENTIFIED~ #6
+ADD_STORE_ITEM ~C0BW403A~ #0 #0 #0 ~IDENTIFIED~ #6
+ADD_STORE_ITEM ~C0BW502A~ #0 #0 #0 ~IDENTIFIED~ #6
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~RIBALD.sto~ THEN BEGIN
@@ -398,6 +491,9 @@ ADD_STORE_ITEM ~C0BW302A~ #0 #0 #0 ~IDENTIFIED~ #2
 ADD_STORE_ITEM ~SCRL58~ #0 #0 #0 ~IDENTIFIED~ #2
 ADD_STORE_ITEM ~SCRL59~ #0 #0 #0 ~IDENTIFIED~ #2
 ADD_STORE_ITEM ~SCRL5F~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW403A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW502A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW601A~ #0 #0 #0 ~IDENTIFIED~ #2
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~25SPELL.sto~ THEN BEGIN
@@ -413,6 +509,9 @@ ADD_STORE_ITEM ~C0BW302A~ #0 #0 #0 ~IDENTIFIED~ #2
 ADD_STORE_ITEM ~SCRL58~ #0 #0 #0 ~IDENTIFIED~ #2
 ADD_STORE_ITEM ~SCRL59~ #0 #0 #0 ~IDENTIFIED~ #2
 ADD_STORE_ITEM ~SCRL5F~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW403A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW502A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW601A~ #0 #0 #0 ~IDENTIFIED~ #2
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~25SPELL2.sto~ THEN BEGIN
@@ -428,6 +527,9 @@ ADD_STORE_ITEM ~C0BW302A~ #0 #0 #0 ~IDENTIFIED~ #2
 ADD_STORE_ITEM ~SCRL58~ #0 #0 #0 ~IDENTIFIED~ #2
 ADD_STORE_ITEM ~SCRL59~ #0 #0 #0 ~IDENTIFIED~ #2
 ADD_STORE_ITEM ~SCRL5F~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW403A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW502A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW601A~ #0 #0 #0 ~IDENTIFIED~ #2
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~KUORK0.sto~ THEN BEGIN
@@ -443,6 +545,9 @@ ADD_STORE_ITEM ~C0BW302A~ #0 #0 #0 ~IDENTIFIED~ #2
 ADD_STORE_ITEM ~SCRL58~ #0 #0 #0 ~IDENTIFIED~ #2
 ADD_STORE_ITEM ~SCRL59~ #0 #0 #0 ~IDENTIFIED~ #2
 ADD_STORE_ITEM ~SCRL5F~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW403A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW502A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW601A~ #0 #0 #0 ~IDENTIFIED~ #2
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~KIERAN2.sto~ THEN BEGIN
@@ -458,6 +563,9 @@ ADD_STORE_ITEM ~C0BW302A~ #0 #0 #0 ~IDENTIFIED~ #2
 ADD_STORE_ITEM ~SCRL58~ #0 #0 #0 ~IDENTIFIED~ #2
 ADD_STORE_ITEM ~SCRL59~ #0 #0 #0 ~IDENTIFIED~ #2
 ADD_STORE_ITEM ~SCRL5F~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW403A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW502A~ #0 #0 #0 ~IDENTIFIED~ #2
+ADD_STORE_ITEM ~C0BW601A~ #0 #0 #0 ~IDENTIFIED~ #2
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~SALVANAS.cre~ THEN BEGIN
