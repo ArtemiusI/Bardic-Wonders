@@ -1,0 +1,21 @@
+OUTER_SPRINT kit_name TRUECLASS
+
+OUTER_SPRINT bard_song fjbardb
+
+OUTER_SPRINT hla_song spcl920A
+
+ACTION_IF FILE_EXISTS_IN_GAME ~baldur.bcs~ THEN BEGIN
+EXTEND_TOP ~baldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur_magebard.baf~ EVAL
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~bdbaldur.bcs~ THEN BEGIN
+EXTEND_TOP ~bdbaldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur_magebard.baf~ EVAL
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~baldur25.bcs~ THEN BEGIN
+EXTEND_TOP ~baldur25.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur_magebard.baf~ EVAL
+END
+
+ACTION_IF GAME_IS ~IWDEE~ THEN BEGIN
+EXTEND_TOP ~baldur.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur-iwd_magebard.baf~ EVAL
+END

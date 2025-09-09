@@ -10,6 +10,7 @@ ALWAYS
   INCLUDE ~%MOD_FOLDER%/lib/more_hla.tpa~
   INCLUDE ~%MOD_FOLDER%/lib/macros.tpa~
   INCLUDE ~%MOD_FOLDER%/lib/ClassSpellTool.tpa~
+  INCLUDE ~%MOD_FOLDER%/lib/replace_multiline.tpa~
 END
 LANGUAGE ~English~
          ~English~
@@ -111,3 +112,7 @@ INCLUDE ~%MOD_FOLDER%/LIB/hlas.tpa~
 BEGIN ~Bardic Wonders: New Bard Spells~ DESIGNATED 2008
 GROUP ~Tweaks & Additions~
 INCLUDE ~%MOD_FOLDER%/LIB/new_spells.tpa~
+
+BEGIN ~Bardic Wonders: Mage/Bard and Fighter/Mage/Bard multi-class (EEex, under thief multis)~ DESIGNATED 2009
+GROUP ~Tweaks & Additions~
+INCLUDE ~%MOD_FOLDER%/LIB/mage_bard.tpa~

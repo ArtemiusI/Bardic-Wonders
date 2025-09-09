@@ -1,0 +1,161 @@
+IF
+    TriggerOverride(Player1,ModalState(BATTLESONG))
+    OR(2)
+    Kit(Player1,C0_MAGE_BARD)
+    Kit(Player1,C0_FIGHTER_MAGE_BARD)
+    TriggerOverride(Player1,Global("C0IWSONG","LOCALS",0))
+    !TriggerOverride(Player1,Global("C0BWHLAB","LOCALS",1))
+THEN
+  RESPONSE #100
+    ActionOverride(Player1,ForceSpellRES("%bard_song%",Myself))
+    Continue()
+END
+
+IF
+    TriggerOverride(Player1,ModalState(BATTLESONG))
+    OR(2)
+    Kit(Player1,C0_MAGE_BARD)
+    Kit(Player1,C0_FIGHTER_MAGE_BARD)
+    TriggerOverride(Player1,Global("C0IWSONG","LOCALS",0))
+    TriggerOverride(Player1,Global("C0BWHLAB","LOCALS",1))
+THEN
+  RESPONSE #100
+    ActionOverride(Player1,ForceSpellRES("%hla_song%",Myself))
+    Continue()
+END
+
+
+IF
+    TriggerOverride(Player2,ModalState(BATTLESONG))
+    OR(2)
+    Kit(Player2,C0_MAGE_BARD)
+    Kit(Player2,C0_FIGHTER_MAGE_BARD)
+    TriggerOverride(Player2,Global("C0IWSONG","LOCALS",0))
+    !TriggerOverride(Player2,Global("C0BWHLAB","LOCALS",1))
+THEN
+  RESPONSE #100
+    ActionOverride(Player2,ForceSpellRES("%bard_song%",Myself))
+    Continue()
+END
+
+IF
+    TriggerOverride(Player2,ModalState(BATTLESONG))
+    OR(2)
+    Kit(Player2,C0_MAGE_BARD)
+    Kit(Player2,C0_FIGHTER_MAGE_BARD)
+    TriggerOverride(Player2,Global("C0IWSONG","LOCALS",0))
+    TriggerOverride(Player2,Global("C0BWHLAB","LOCALS",1))
+THEN
+  RESPONSE #100
+    ActionOverride(Player2,ForceSpellRES("%hla_song%",Myself))
+    Continue()
+END
+
+
+IF
+    TriggerOverride(Player3,ModalState(BATTLESONG))
+    OR(2)
+    Kit(Player3,C0_MAGE_BARD)
+    Kit(Player3,C0_FIGHTER_MAGE_BARD)
+    TriggerOverride(Player3,Global("C0IWSONG","LOCALS",0))
+    !TriggerOverride(Player3,Global("C0BWHLAB","LOCALS",1))
+THEN
+  RESPONSE #100
+    ActionOverride(Player3,ForceSpellRES("%bard_song%",Myself))
+    Continue()
+END
+
+IF
+    TriggerOverride(Player3,ModalState(BATTLESONG))
+    OR(2)
+    Kit(Player3,C0_MAGE_BARD)
+    Kit(Player3,C0_FIGHTER_MAGE_BARD)
+    TriggerOverride(Player3,Global("C0IWSONG","LOCALS",0))
+    TriggerOverride(Player3,Global("C0BWHLAB","LOCALS",1))
+THEN
+  RESPONSE #100
+    ActionOverride(Player3,ForceSpellRES("%hla_song%",Myself))
+    Continue()
+END
+
+
+IF
+    TriggerOverride(Player4,ModalState(BATTLESONG))
+    OR(2)
+    Kit(Player4,C0_MAGE_BARD)
+    Kit(Player4,C0_FIGHTER_MAGE_BARD)
+    TriggerOverride(Player4,Global("C0IWSONG","LOCALS",0))
+    !TriggerOverride(Player4,Global("C0BWHLAB","LOCALS",1))
+THEN
+  RESPONSE #100
+    ActionOverride(Player4,ForceSpellRES("%bard_song%",Myself))
+    Continue()
+END
+
+IF
+    TriggerOverride(Player4,ModalState(BATTLESONG))
+    OR(2)
+    Kit(Player4,C0_MAGE_BARD)
+    Kit(Player4,C0_FIGHTER_MAGE_BARD)
+    TriggerOverride(Player4,Global("C0IWSONG","LOCALS",0))
+    TriggerOverride(Player4,Global("C0BWHLAB","LOCALS",1))
+THEN
+  RESPONSE #100
+    ActionOverride(Player4,ForceSpellRES("%hla_song%",Myself))
+    Continue()
+END
+
+
+IF
+    TriggerOverride(Player5,ModalState(BATTLESONG))
+    OR(2)
+    Kit(Player5,C0_MAGE_BARD)
+    Kit(Player5,C0_FIGHTER_MAGE_BARD)
+    TriggerOverride(Player5,Global("C0IWSONG","LOCALS",0))
+    !TriggerOverride(Player5,Global("C0BWHLAB","LOCALS",1))
+THEN
+  RESPONSE #100
+    ActionOverride(Player5,ForceSpellRES("%bard_song%",Myself))
+    Continue()
+END
+
+IF
+    TriggerOverride(Player5,ModalState(BATTLESONG))
+    OR(2)
+    Kit(Player5,C0_MAGE_BARD)
+    Kit(Player5,C0_FIGHTER_MAGE_BARD)
+    TriggerOverride(Player5,Global("C0IWSONG","LOCALS",0))
+    TriggerOverride(Player5,Global("C0BWHLAB","LOCALS",1))
+THEN
+  RESPONSE #100
+    ActionOverride(Player5,ForceSpellRES("%hla_song%",Myself))
+    Continue()
+END
+
+
+IF
+    TriggerOverride(Player6,ModalState(BATTLESONG))
+    OR(2)
+    Kit(Player6,C0_MAGE_BARD)
+    Kit(Player6,C0_FIGHTER_MAGE_BARD)
+    TriggerOverride(Player6,Global("C0IWSONG","LOCALS",0))
+    !TriggerOverride(Player6,Global("C0BWHLAB","LOCALS",1))
+THEN
+  RESPONSE #100
+    ActionOverride(Player6,ForceSpellRES("%bard_song%",Myself))
+    Continue()
+END
+
+IF
+    TriggerOverride(Player6,ModalState(BATTLESONG))
+    OR(2)
+    Kit(Player6,C0_MAGE_BARD)
+    Kit(Player6,C0_FIGHTER_MAGE_BARD)
+    TriggerOverride(Player6,Global("C0IWSONG","LOCALS",0))
+    TriggerOverride(Player6,Global("C0BWHLAB","LOCALS",1))
+THEN
+  RESPONSE #100
+    ActionOverride(Player6,ForceSpellRES("%hla_song%",Myself))
+    Continue()
+END
+
