@@ -428,6 +428,7 @@ LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL911~ END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL912~ END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL913~ END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL914~ END
+LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL916~ END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL917~ END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL921~ END
 LPF patch_add_hla STR_VAR ability = ~GA_C0BWHL3~ num_allowed = 3 END	
@@ -445,6 +446,7 @@ LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL911~ END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL912~ END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL913~ END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL914~ END
+LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL916~ END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL917~ END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL921~ END
 LPF patch_add_hla STR_VAR ability = ~GA_C0BWHL3~ num_allowed = 3 END	
@@ -455,6 +457,16 @@ LPF patch_add_hla STR_VAR ability = ~AP_C0BWHL1~ num_allowed = 1 prerequisite = 
 LPF patch_add_hla STR_VAR ability = ~GA_C0BWHL2~ num_allowed = 16 END	
 LPF patch_add_hla STR_VAR ability = ~GA_C0BWHL6~ num_allowed = 1 END	
 LPF patch_add_hla STR_VAR ability = ~AP_C0BWHL8~ num_allowed = 1 END	
+
+ACTION_IF FILE_EXISTS_IN_GAME ~C0ARCAS1.EFF~ THEN BEGIN
+
+COPY_EXISTING ~LUC0MGBD.2da~ ~override~
+LPF patch_add_hla STR_VAR ability = ~AP_C0BWHL9~ num_allowed = 1 END	
+
+COPY_EXISTING ~LUC0FMBD.2da~ ~override~
+LPF patch_add_hla STR_VAR ability = ~AP_C0BWHL9~ num_allowed = 1 END	
+
+END
 
   END
 
