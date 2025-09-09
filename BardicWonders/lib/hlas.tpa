@@ -68,7 +68,7 @@ This ability may be selected once.~
 COPY_EXISTING ~C0BWHL7.SPL~ ~OVERRIDE~
 SAY NAME1 ~Prestissimo~
 SAY UNIDENTIFIED_DESC ~Prestissimo
-The bard chants incantations with the ease and fluidity of song or verse. Upon learning this permanent ability, any spell cast by the bard with a base casting time of 5 or higher has it reduced to 4.~
+The bard chants incantations with the ease and fluidity of song or verse. Upon learning this permanent ability, the bard's casting speed is permanently increased by 1.~
 
 COPY_EXISTING ~C0BWHL8.SPL~ ~OVERRIDE~
 SAY NAME1 ~Lingering Song~
