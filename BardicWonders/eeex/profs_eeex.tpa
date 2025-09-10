@@ -1,3 +1,6 @@
+
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~C0PR#CL.SPL~ BEGIN
+
 ///////////////////////////////////////////////////////////////////////////
 // Append to SPLPROT.2DA                                                 //
 ///////////////////////////////////////////////////////////////////////////
@@ -733,7 +736,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
       READ_BYTE    0x21 row4
       READ_SHORT    0x1C type //reads the byte containing item type
       READ_SHORT    0x31 proficiency 
-      PATCH_IF (proficiency = 89) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b00110000) = 0b00000000) AND ((row4 BAND 0b00000000) = 0b00000000)
+      PATCH_IF (proficiency = 89) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b00110000) = 0b00000000) AND ((row4 BAND 0b00000000) = 0b00000000) AND !(((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b11111111) = 0b00000000) AND ((row3 BAND 0b01111111) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000))
                                       ) BEGIN // bastard sword
         WRITE_BYTE    0x1E (row1 BAND 0b00111111) 
         WRITE_BYTE    0x1F (row2 BAND 0b00000000)
@@ -742,7 +745,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
         LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter2 = C0_PROFICIENCYBASTARDSWORD END
         LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 parameter1 = 0 parameter2 = C0_PROFICIENCYBASTARDSWORD timing = 2 power = 3 END
       END
-      PATCH_IF (proficiency = 90) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b01110000) = 0b00000000) AND ((row4 BAND 0b00100000) = 0b00000000)
+      PATCH_IF (proficiency = 90) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b01110000) = 0b00000000) AND ((row4 BAND 0b00100000) = 0b00000000) AND !(((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b11111111) = 0b00000000) AND ((row3 BAND 0b01111111) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000))
                                       ) BEGIN // longsword
         WRITE_BYTE    0x1E (row1 BAND 0b00111111) 
         WRITE_BYTE    0x1F (row2 BAND 0b00000000)
@@ -751,7 +754,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
         LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter2 = C0_PROFICIENCYLONGSWORD END
         LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 parameter1 = 0 parameter2 = C0_PROFICIENCYLONGSWORD timing = 2 power = 3 END
       END
-      PATCH_IF (proficiency = 91) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b01110000) = 0b00000000) AND ((row4 BAND 0b00100000) = 0b00000000)
+      PATCH_IF (proficiency = 91) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b01110000) = 0b00000000) AND ((row4 BAND 0b00100000) = 0b00000000) AND !(((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b11111111) = 0b00000000) AND ((row3 BAND 0b01111111) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000))
                                       ) BEGIN // short sword
         WRITE_BYTE    0x1E (row1 BAND 0b00111111) 
         WRITE_BYTE    0x1F (row2 BAND 0b00000000)
@@ -760,7 +763,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
         LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter2 = C0_PROFICIENCYSHORTSWORD END
         LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 parameter1 = 0 parameter2 = C0_PROFICIENCYSHORTSWORD timing = 2 power = 3 END
       END
-      PATCH_IF (proficiency = 92) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b00110000) = 0b00000000) AND ((row4 BAND 0b00000000) = 0b00000000)
+      PATCH_IF (proficiency = 92) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b00110000) = 0b00000000) AND ((row4 BAND 0b00000000) = 0b00000000) AND !(((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b11111111) = 0b00000000) AND ((row3 BAND 0b01111111) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000))
                                         ) BEGIN // axe
         WRITE_BYTE    0x1E (row1 BAND 0b00111111) 
         WRITE_BYTE    0x1F (row2 BAND 0b00000000)
@@ -769,7 +772,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
         LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter2 = C0_PROFICIENCYAXE END
         LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 parameter1 = 0 parameter2 = C0_PROFICIENCYAXE timing = 2 power = 3 END
       END
-      PATCH_IF (proficiency = 93) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b00110000) = 0b00000000) AND ((row4 BAND 0b00000000) = 0b00000000)
+      PATCH_IF (proficiency = 93) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b00110000) = 0b00000000) AND ((row4 BAND 0b00000000) = 0b00000000) AND !(((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b11111111) = 0b00000000) AND ((row3 BAND 0b01111111) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000))
                                         ) BEGIN // two handed sword
         WRITE_BYTE    0x1E (row1 BAND 0b00111111) 
         WRITE_BYTE    0x1F (row2 BAND 0b00000000)
@@ -778,7 +781,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
         LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter2 = C0_PROFICIENCYTWOHANDEDSWORD END
         LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 parameter1 = 0 parameter2 = C0_PROFICIENCYTWOHANDEDSWORD timing = 2 power = 3 END
       END
-      PATCH_IF (proficiency = 94) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b01110000) = 0b00000000) AND ((row4 BAND 0b00100000) = 0b00000000)
+      PATCH_IF (proficiency = 94) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b01110000) = 0b00000000) AND ((row4 BAND 0b00100000) = 0b00000000) AND !(((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b11111111) = 0b00000000) AND ((row3 BAND 0b01111111) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000))
                                         ) BEGIN // katana
         WRITE_BYTE    0x1E (row1 BAND 0b00111111) 
         WRITE_BYTE    0x1F (row2 BAND 0b00000000)
@@ -787,7 +790,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
         LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter2 = C0_PROFICIENCYKATANA END
         LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 parameter1 = 0 parameter2 = C0_PROFICIENCYKATANA timing = 2 power = 3 END
       END
-      PATCH_IF (proficiency = 95) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b01110000) = 0b00000000) AND ((row4 BAND 0b00100000) = 0b00000000)
+      PATCH_IF (proficiency = 95) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b01110000) = 0b00000000) AND ((row4 BAND 0b00100000) = 0b00000000) AND !(((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b11111111) = 0b00000000) AND ((row3 BAND 0b01111111) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000))
                                         ) BEGIN // scimitar
         WRITE_BYTE    0x1E (row1 BAND 0b00111111) 
         WRITE_BYTE    0x1F (row2 BAND 0b00000000)
@@ -796,7 +799,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
         LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter2 = C0_PROFICIENCYSCIMITARWAKISASHININJATO END
         LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 parameter1 = 0 parameter2 = C0_PROFICIENCYSCIMITARWAKISASHININJATO timing = 2 power = 3 END
       END
-      PATCH_IF (proficiency = 96) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b01110100) = 0b00000000) AND ((row4 BAND 0b00100000) = 0b00000000)
+      PATCH_IF (proficiency = 96) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b01110100) = 0b00000000) AND ((row4 BAND 0b00100000) = 0b00000000) AND !(((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b11111111) = 0b00000000) AND ((row3 BAND 0b01111111) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000))
                                         ) BEGIN // dagger
         WRITE_BYTE    0x1E (row1 BAND 0b00111111) 
         WRITE_BYTE    0x1F (row2 BAND 0b00000000)
@@ -805,7 +808,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
         LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter2 = C0_PROFICIENCYDAGGER END
         LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 parameter1 = 0 parameter2 = C0_PROFICIENCYDAGGER timing = 2 power = 3 END
       END
-      PATCH_IF (proficiency = 97) AND (((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b00110000) = 0b00000000) AND ((row4 BAND 0b00000000) = 0b00000000)
+      PATCH_IF (proficiency = 97) AND (((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b00110000) = 0b00000000) AND ((row4 BAND 0b00000000) = 0b00000000) AND !(((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b11111111) = 0b00000000) AND ((row3 BAND 0b01111111) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000))
                                         ) BEGIN // warhammer
         WRITE_BYTE    0x1E (row1 BAND 0b00111111) 
         WRITE_BYTE    0x1F (row2 BAND 0b00000000)
@@ -814,7 +817,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
         LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter2 = C0_PROFICIENCYWARHAMMER END
         LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 parameter1 = 0 parameter2 = C0_PROFICIENCYWARHAMMER timing = 2 power = 3 END
       END
-      PATCH_IF (proficiency = 98) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b00110000) = 0b00000000) AND ((row4 BAND 0b01000000) = 0b00000000)
+      PATCH_IF (proficiency = 98) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b00110000) = 0b00000000) AND ((row4 BAND 0b01000000) = 0b00000000) AND !(((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b11111111) = 0b00000000) AND ((row3 BAND 0b01111111) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000))
                                         ) BEGIN // spear
         WRITE_BYTE    0x1E (row1 BAND 0b00111111) 
         WRITE_BYTE    0x1F (row2 BAND 0b00000000)
@@ -823,7 +826,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
         LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter2 = C0_PROFICIENCYSPEAR END
         LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 parameter1 = 0 parameter2 = C0_PROFICIENCYSPEAR timing = 2 power = 3 END
       END
-      PATCH_IF (proficiency = 99) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b00110000) = 0b00000000) AND ((row4 BAND 0b00000000) = 0b00000000)
+      PATCH_IF (proficiency = 99) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b00110000) = 0b00000000) AND ((row4 BAND 0b00000000) = 0b00000000) AND !(((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b11111111) = 0b00000000) AND ((row3 BAND 0b01111111) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000))
                                         ) BEGIN // halberd
         WRITE_BYTE    0x1E (row1 BAND 0b00111111) 
         WRITE_BYTE    0x1F (row2 BAND 0b00000000)
@@ -832,7 +835,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
         LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter2 = C0_PROFICIENCYHALBERD END
         LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 parameter1 = 0 parameter2 = C0_PROFICIENCYHALBERD timing = 2 power = 3 END
       END
-      PATCH_IF (proficiency = 100) AND (((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b00110000) = 0b00000000) AND ((row4 BAND 0b00000000) = 0b00000000)
+      PATCH_IF (proficiency = 100) AND (((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b00110000) = 0b00000000) AND ((row4 BAND 0b00000000) = 0b00000000) AND !(((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b11111111) = 0b00000000) AND ((row3 BAND 0b01111111) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000))
                                         ) BEGIN // flail
         WRITE_BYTE    0x1E (row1 BAND 0b00111111) 
         WRITE_BYTE    0x1F (row2 BAND 0b00000000)
@@ -841,7 +844,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
         LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter2 = C0_PROFICIENCYFLAILMORNINGSTAR END
         LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 parameter1 = 0 parameter2 = C0_PROFICIENCYFLAILMORNINGSTAR timing = 2 power = 3 END
       END
-      PATCH_IF (proficiency = 101) AND (((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b00110000) = 0b00000000) AND ((row4 BAND 0b00000000) = 0b00000000)
+      PATCH_IF (proficiency = 101) AND (((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b00110000) = 0b00000000) AND ((row4 BAND 0b00000000) = 0b00000000) AND !(((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b11111111) = 0b00000000) AND ((row3 BAND 0b01111111) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000))
                                         ) BEGIN // mace
         WRITE_BYTE    0x1E (row1 BAND 0b00111111) 
         WRITE_BYTE    0x1F (row2 BAND 0b00000000)
@@ -850,7 +853,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
         LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter2 = C0_PROFICIENCYMACE END
         LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 parameter1 = 0 parameter2 = C0_PROFICIENCYMACE timing = 2 power = 3 END
       END
-      PATCH_IF (proficiency = 102) AND (((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b01110100) = 0b00000000) AND ((row4 BAND 0b01000000) = 0b00000000)
+      PATCH_IF (proficiency = 102) AND (((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b01110100) = 0b00000000) AND ((row4 BAND 0b01000000) = 0b00000000) AND !(((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b11111111) = 0b00000000) AND ((row3 BAND 0b01111111) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000))
                                         ) BEGIN // staff
         WRITE_BYTE    0x1E (row1 BAND 0b00111111) 
         WRITE_BYTE    0x1F (row2 BAND 0b00000000)
@@ -859,7 +862,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
         LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter2 = C0_PROFICIENCYQUARTERSTAFF END
         LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 parameter1 = 0 parameter2 = C0_PROFICIENCYQUARTERSTAFF timing = 2 power = 3 END
       END
-      PATCH_IF (proficiency = 103) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b00110000) = 0b00000000) AND ((row4 BAND 0b00000000) = 0b00000000)
+      PATCH_IF (proficiency = 103) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b00110000) = 0b00000000) AND ((row4 BAND 0b00000000) = 0b00000000) AND !(((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b11111111) = 0b00000000) AND ((row3 BAND 0b01111111) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000))
                                         ) BEGIN // crossbow
         WRITE_BYTE    0x1E (row1 BAND 0b00111111) 
         WRITE_BYTE    0x1F (row2 BAND 0b00000000)
@@ -868,7 +871,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
         LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter2 = C0_PROFICIENCYCROSSBOW END
         LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 parameter1 = 0 parameter2 = C0_PROFICIENCYCROSSBOW timing = 2 power = 3 END
       END
-      PATCH_IF (proficiency = 104) AND (((row1 BAND 0b00000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b00110000) = 0b00000000) AND ((row4 BAND 0b00000000) = 0b00000000)
+      PATCH_IF (proficiency = 104) AND (((row1 BAND 0b00000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b00110000) = 0b00000000) AND ((row4 BAND 0b00000000) = 0b00000000) AND !(((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b11111111) = 0b00000000) AND ((row3 BAND 0b01111111) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000))
                                         ) BEGIN // longbow
         WRITE_BYTE    0x1E (row1 BAND 0b00111111) 
         WRITE_BYTE    0x1F (row2 BAND 0b00000000)
@@ -877,7 +880,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
         LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter2 = C0_PROFICIENCYLONGBOW END
         LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 parameter1 = 0 parameter2 = C0_PROFICIENCYLONGBOW timing = 2 power = 3 END
       END
-      PATCH_IF (proficiency = 105) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b01110000) = 0b00000000) AND ((row4 BAND 0b00000000) = 0b00000000)
+      PATCH_IF (proficiency = 105) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b01110000) = 0b00000000) AND ((row4 BAND 0b00000000) = 0b00000000) AND !(((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b11111111) = 0b00000000) AND ((row3 BAND 0b01111111) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000))
                                         ) BEGIN // shortbow
         WRITE_BYTE    0x1E (row1 BAND 0b00111111) 
         WRITE_BYTE    0x1F (row2 BAND 0b00000000)
@@ -886,7 +889,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
         LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter2 = C0_PROFICIENCYSHORTBOW END
         LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 parameter1 = 0 parameter2 = C0_PROFICIENCYSHORTBOW timing = 2 power = 3 END
       END
-      PATCH_IF (proficiency = 106) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b01110100) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000)
+      PATCH_IF (proficiency = 106) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b01110100) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000) AND !(((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b11111111) = 0b00000000) AND ((row3 BAND 0b01111111) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000))
                                         ) BEGIN // dart
         WRITE_BYTE    0x1E (row1 BAND 0b00111111) 
         WRITE_BYTE    0x1F (row2 BAND 0b00000000)
@@ -895,7 +898,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
         LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter2 = C0_PROFICIENCYDART END
         LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 parameter1 = 0 parameter2 = C0_PROFICIENCYDART timing = 2 power = 3 END
       END
-      PATCH_IF (proficiency = 107) AND (((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b01110100) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000)
+      PATCH_IF (proficiency = 107) AND (((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b01110100) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000) AND !(((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b11111111) = 0b00000000) AND ((row3 BAND 0b01111111) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000))
                                         ) BEGIN // sling
         WRITE_BYTE    0x1E (row1 BAND 0b00111111) 
         WRITE_BYTE    0x1F (row2 BAND 0b00000000)
@@ -904,7 +907,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
         LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter2 = C0_PROFICIENCYSLING END
         LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 parameter1 = 0 parameter2 = C0_PROFICIENCYSLING timing = 2 power = 3 END
       END
-      PATCH_IF (proficiency = 115) AND (((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b01110000) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000)
+      PATCH_IF (proficiency = 115) AND (((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b01110000) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000) AND !(((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b11111111) = 0b00000000) AND ((row3 BAND 0b01111111) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000))
                                         ) BEGIN // club
         WRITE_BYTE    0x1E (row1 BAND 0b00111111) 
         WRITE_BYTE    0x1F (row2 BAND 0b00000000)
@@ -939,3 +942,5 @@ COPY_EXISTING ~CHARBASE1.CRE~ ~OVERRIDE~
 
 COPY_EXISTING ~CHARBASE1.CRE~ ~weidu_external/backup/ArtisansKitpack/temp/CHARBASE.CRE~
 COPY_EXISTING ~weidu_external/backup/ArtisansKitpack/temp~ ~OVERRIDE~
+
+END

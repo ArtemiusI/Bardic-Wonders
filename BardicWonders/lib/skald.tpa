@@ -28,6 +28,8 @@ Advantages:
  15th level: +3 bonus to hit and damage rolls, Armor Class, +10% to all resistances, immunity to fear.
  20th level: +3 bonus to hit and damage rolls, Armor Class, +10% to all resistances, immunity to fear, stun, and confusion. 
  
+– 8th level: Combat Casting: The Mystic Fire is skilled at casting spells in the midst of combat. If there is an enemy within 5-ft. of the Mystic Fire, they gain an increased casting speed of 2.
+
 – 12th level: Gains Heroic Inspiration.
 
 HEROIC INSPIRATION: When the skald's maximum hit points falls below 50%, all allies (except the skald) within visual range gain an additional +1 bonus to hit, damage and saving throws.
@@ -147,3 +149,16 @@ SAY UNIDENTIFIED_DESC ~Warsong of the Undying
 This is a powerful aid to both the Skald and to <PRO_HISHER> allies. The song gives the Skald <PRO_HIMHER>self a 10-point bonus to <PRO_HISHER> Armor Class and a 25% bonus to physical resistances. The song also gives <PRO_HISHER> allies a +5 bonus to hit and damage rolls, Armor Class, +15% to all resistances, immunity to fear, stun, and confusion, and Haste while the song is active.
 
 This ability replaces the current Bard Song.~
+
+INCLUDE ~%MOD_FOLDER%/effects/combat_casting.tpa~
+
+COPY_EXISTING ~CLABBA04.2DA~ OVERRIDE
+  // Borrowed from Rogue Rebalancing
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 8 f_MaxLevel = 8 STR_VAR f_Entry = AP_C0EKCC END // COMBAT CASTING
+  PRETTY_PRINT_2DA
+
+COPY_EXISTING ~C0EKCC1A.SPL~ OVERRIDE
+  LPF CLONE_EFFECT INT_VAR match_opcode = 189 opcode = 177 parameter2 = 9 parameter1 = IDS_OF_SYMBOL (~KIT~ ~SKALD~) STR_VAR resource = C0EKCC3 END
+
+COPY_EXISTING ~C0EKCC1B.SPL~ OVERRIDE
+  LPF CLONE_EFFECT INT_VAR match_opcode = 189 opcode = 177 parameter2 = 9 parameter1 = IDS_OF_SYMBOL (~KIT~ ~SKALD~) STR_VAR resource = C0EKCC3 END
