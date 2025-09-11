@@ -1,0 +1,523 @@
+LAF ADD_IDS_ENTRY INT_VAR minValue = 1 preferredValue = 200 STR_VAR idsFile = "stats.ids" identifier = "IS_BARD_CLASS" RET value END
+
+OUTER_SET mage_bard_ids = IDS_OF_SYMBOL (~KIT~ ~C0_MAGE_BARD~)
+OUTER_SET fighter_mage_bard_ids = IDS_OF_SYMBOL (~KIT~ ~C0_FIGHTER_MAGE_BARD~)
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~ 
+    READ_BYTE    0x273 class
+    READ_BYTE    0x244 kit
+	 PATCH_IF (class = 5) OR (kit = ~%mage_bard_ids%~) OR (kit = ~%fighter_mage_bard_ids%~) BEGIN
+    LPF ADD_CRE_EFFECT INT_VAR opcode = 401 target = 1 timing = 9 special = IDS_OF_SYMBOL (~STATS~ ~IS_BARD_CLASS~) parameter1 = 1 parameter2 = 1 END
+   END
+BUT_ONLY
+
+COPY_EXISTING ~QD_MCT01.SPL~ ~OVERRIDE~
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 401 target = 1 timing = 9 special = IDS_OF_SYMBOL (~STATS~ ~IS_BARD_CLASS~) parameter1 = 1 parameter2 = 1 END
+
+COPY_EXISTING ~CHARBASE.CRE~ ~OVERRIDE/CHARBASE1.CRE~
+
+COPY_EXISTING ~CHARBASE1.CRE~ ~OVERRIDE~
+   LPF ADD_CRE_EFFECT INT_VAR opcode = 326 parameter1 = 5 parameter2 = 105 target = 1 timing = 4 duration = 1 STR_VAR resource = C0PR#BA END
+
+COPY_EXISTING ~CHARBASE1.CRE~ ~weidu_external/backup/%MOD_FOLDER%/temp/CHARBASE.CRE~
+COPY ~weidu_external/backup/%MOD_FOLDER%/temp~ ~OVERRIDE~
+
+ACTION_IF FILE_EXISTS_IN_GAME ~CLABBA01.2DA~ BEGIN
+COPY_EXISTING ~CLABBA01.2DA~ OVERRIDE
+  // Borrowed from Rogue Rebalancing
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = AP_C0PR#BA END
+  PRETTY_PRINT_2DA
+END
+
+COPY_EXISTING ~KITLIST.2DA~ ~override~
+  READ_2DA_ENTRIES_NOW ~fig_kitlist~ 10
+  FOR (row = 1; row < fig_kitlist; row += 1) BEGIN
+  READ_2DA_ENTRY_FORMER ~fig_kitlist~ row 5 kit_clab
+  READ_2DA_ENTRY_FORMER ~fig_kitlist~ row 1 kit_label
+  READ_2DA_ENTRY_FORMER ~fig_kitlist~ row 8 kit_class
+  
+  PATCH_IF (%kit_class% = 5) BEGIN
+    PATCH_IF FILE_EXISTS_IN_GAME ~%kit_clab%.2da~ BEGIN
+      INNER_ACTION BEGIN
+      COPY_EXISTING ~%kit_clab%.2DA~ override
+
+        LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = AP_C0PR#BA END
+        PRETTY_PRINT_2DA
+      END
+  END
+END
+END
+
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player1,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player1,BARD_ALL)~ ~CheckStatGT(Player1,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player1,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player1,THIEF_ALL)~ ~Class(Player1,THIEF_ALL) !Kit(Player1,C0_MAGE_BARD) !Kit(Player1,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player2,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player2,BARD_ALL)~ ~CheckStatGT(Player2,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player2,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player2,THIEF_ALL)~ ~Class(Player2,THIEF_ALL) !Kit(Player2,C0_MAGE_BARD) !Kit(Player2,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player3,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player3,BARD_ALL)~ ~CheckStatGT(Player3,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player3,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player3,THIEF_ALL)~ ~Class(Player3,THIEF_ALL) !Kit(Player3,C0_MAGE_BARD) !Kit(Player3,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player4,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player4,BARD_ALL)~ ~CheckStatGT(Player4,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player4,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player4,THIEF_ALL)~ ~Class(Player4,THIEF_ALL) !Kit(Player4,C0_MAGE_BARD) !Kit(Player4,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player5,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player5,BARD_ALL)~ ~CheckStatGT(Player5,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player5,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player5,THIEF_ALL)~ ~Class(Player5,THIEF_ALL) !Kit(Player5,C0_MAGE_BARD) !Kit(Player5,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player6,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player6,BARD_ALL)~ ~CheckStatGT(Player6,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player6,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player6,THIEF_ALL)~ ~Class(Player6,THIEF_ALL) !Kit(Player6,C0_MAGE_BARD) !Kit(Player6,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(LastTalkedToBy,BARD_ALL)~ ~CheckStatGT(LastTalkedToBy,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(LastTalkedToBy,THIEF_ALL)~ ~Class(LastTalkedToBy,THIEF_ALL) !Kit(LastTalkedToBy,C0_MAGE_BARD) !Kit(LastTalkedToBy,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Myself,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Myself,BARD_ALL)~ ~CheckStatGT(Myself,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Myself,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Myself,THIEF_ALL)~ ~Class(Myself,THIEF_ALL) !Kit(Myself,C0_MAGE_BARD) !Kit(Myself,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy(Myself),BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(LastTalkedToBy(Myself),BARD_ALL)~ ~CheckStatGT(LastTalkedToBy(Myself),0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy(Myself),THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(LastTalkedToBy(Myself),THIEF_ALL)~ ~Class(LastTalkedToBy(Myself),THIEF_ALL) !Kit(LastTalkedToBy(Myself),C0_MAGE_BARD) !Kit(LastTalkedToBy(Myself),C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player1,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player1,BARD)~ ~CheckStatGT(Player1,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+            
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player2,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player2,BARD)~ ~CheckStatGT(Player2,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player3,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player3,BARD)~ ~CheckStatGT(Player3,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player4,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player4,BARD)~ ~CheckStatGT(Player4,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player5,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player5,BARD)~ ~CheckStatGT(Player5,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player6,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player6,BARD)~ ~CheckStatGT(Player6,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(LastTalkedToBy,BARD)~ ~CheckStatGT(LastTalkedToBy,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Myself,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Myself,BARD)~ ~CheckStatGT(Myself,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy(Myself),BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(LastTalkedToBy(Myself),BARD)~ ~CheckStatGT(LastTalkedToBy(Myself),0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+BUT_ONLY
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player1,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player1,BARD_ALL)~ ~CheckStatGT(Player1,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player1,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player1,THIEF_ALL)~ ~Class(Player1,THIEF_ALL) !Kit(Player1,C0_MAGE_BARD) !Kit(Player1,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player2,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player2,BARD_ALL)~ ~CheckStatGT(Player2,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player2,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player2,THIEF_ALL)~ ~Class(Player2,THIEF_ALL) !Kit(Player2,C0_MAGE_BARD) !Kit(Player2,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player3,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player3,BARD_ALL)~ ~CheckStatGT(Player3,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player3,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player3,THIEF_ALL)~ ~Class(Player3,THIEF_ALL) !Kit(Player3,C0_MAGE_BARD) !Kit(Player3,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player4,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player4,BARD_ALL)~ ~CheckStatGT(Player4,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player4,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player4,THIEF_ALL)~ ~Class(Player4,THIEF_ALL) !Kit(Player4,C0_MAGE_BARD) !Kit(Player4,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player5,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player5,BARD_ALL)~ ~CheckStatGT(Player5,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player5,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player5,THIEF_ALL)~ ~Class(Player5,THIEF_ALL) !Kit(Player5,C0_MAGE_BARD) !Kit(Player5,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player6,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player6,BARD_ALL)~ ~CheckStatGT(Player6,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player6,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player6,THIEF_ALL)~ ~Class(Player6,THIEF_ALL) !Kit(Player6,C0_MAGE_BARD) !Kit(Player6,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(LastTalkedToBy,BARD_ALL)~ ~CheckStatGT(LastTalkedToBy,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(LastTalkedToBy,THIEF_ALL)~ ~Class(LastTalkedToBy,THIEF_ALL) !Kit(LastTalkedToBy,C0_MAGE_BARD) !Kit(LastTalkedToBy,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Myself,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Myself,BARD_ALL)~ ~CheckStatGT(Myself,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Myself,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Myself,THIEF_ALL)~ ~Class(Myself,THIEF_ALL) !Kit(Myself,C0_MAGE_BARD) !Kit(Myself,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy(Myself),BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(LastTalkedToBy(Myself),BARD_ALL)~ ~CheckStatGT(LastTalkedToBy(Myself),0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy(Myself),THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(LastTalkedToBy(Myself),THIEF_ALL)~ ~Class(LastTalkedToBy(Myself),THIEF_ALL) !Kit(LastTalkedToBy(Myself),C0_MAGE_BARD) !Kit(LastTalkedToBy(Myself),C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player1,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player1,BARD)~ ~CheckStatGT(Player1,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+            
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player2,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player2,BARD)~ ~CheckStatGT(Player2,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player3,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player3,BARD)~ ~CheckStatGT(Player3,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player4,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player4,BARD)~ ~CheckStatGT(Player4,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player5,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player5,BARD)~ ~CheckStatGT(Player5,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player6,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Player6,BARD)~ ~CheckStatGT(Player6,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(LastTalkedToBy,BARD)~ ~CheckStatGT(LastTalkedToBy,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Myself,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(Myself,BARD)~ ~CheckStatGT(Myself,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy(Myself),BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
+                DECOMPILE_AND_PATCH BEGIN
+                    REFACTOR_TRIGGER ~Class(LastTalkedToBy(Myself),BARD)~ ~CheckStatGT(LastTalkedToBy(Myself),0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+            END
+
+        BUT_ONLY
+        

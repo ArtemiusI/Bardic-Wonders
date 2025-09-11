@@ -1,3 +1,5 @@
+
+/*
 EXTEND_BOTTOM RAELIS 48
 IF ~Global("PlayerHasStronghold","GLOBAL",0)
 OR(2)
@@ -10,3 +12,4 @@ IF ~OR(2)
 Kit(Player1,C0_FIGHTER_MAGE_BARD)
 Kit(Player1,C0_MAGE_BARD)~ EXTERN RAELIS 59
 END
+*/
