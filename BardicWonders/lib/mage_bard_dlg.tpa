@@ -14,6 +14,15 @@ BUT_ONLY
 COPY_EXISTING ~QD_MCT01.SPL~ ~OVERRIDE~
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 401 target = 1 timing = 9 special = IDS_OF_SYMBOL (~STATS~ ~IS_BARD_CLASS~) parameter1 = 1 parameter2 = 1 END
 
+ACTION_IF FILE_EXISTS_IN_GAME ~C0WL000.SPL~ BEGIN
+
+COPY_EXISTING ~C0WL000.SPL~ ~OVERRIDE~
+   LPF ADD_SPELL_EFFECT INT_VAR opcode = 318 parameter1 = 0 parameter2 = 0 target = 1 timing = 9 duration = 1 STR_VAR resource = C0PR#BA END
+   LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 parameter1 = 0 parameter2 = 0 target = 1 timing = 0 duration = 1 STR_VAR resource = C0PR#BA END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 401 target = 1 timing = 9 special = IDS_OF_SYMBOL (~STATS~ ~IS_BARD_CLASS~) parameter1 = 0 parameter2 = 1 END
+
+END
+
 COPY_EXISTING ~CHARBASE.CRE~ ~OVERRIDE/CHARBASE1.CRE~
 
 COPY_EXISTING ~CHARBASE1.CRE~ ~OVERRIDE~
@@ -40,11 +49,14 @@ COPY_EXISTING ~KITLIST.2DA~ ~override~
     PATCH_IF FILE_EXISTS_IN_GAME ~%kit_clab%.2da~ BEGIN
       INNER_ACTION BEGIN
       COPY_EXISTING ~%kit_clab%.2DA~ override
-
+      PATCH_IF !(
+				("%kit_label%" STRING_EQUAL_CASE "C0WLOCK")
+														 ) BEGIN
         LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = AP_C0PR#BA END
         PRETTY_PRINT_2DA
       END
   END
+END
 END
 END
 
