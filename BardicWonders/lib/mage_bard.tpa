@@ -30,7 +30,9 @@ LAF ADD_KIT_EX
 	
     lower         = RESOLVE_STR_REF(~mage / bard~)
 	
-    help          = RESOLVE_STR_REF(~MAGE/BARD: This character can use the abilities of a Mage and a Bard, though Mage spells cannot be cast while wearing armor.~)
+    help          = RESOLVE_STR_REF(~MAGE/BARD: This character can use the abilities of a Mage and a Bard, though Mage spells cannot be cast while wearing armor.
+    
+Gnomes can choose this multi-class, but become Illusionist/Bards by default. Gnomes are the only race that can combine a specialist Mage class in a multi-class.~)
 	
     briefdesc     = RESOLVE_STR_REF(~MAGE/BARD: This character can use the abilities of a Mage and a Bard, though Mage spells cannot be cast while wearing armor.~)
 	
@@ -272,9 +274,7 @@ LAF ADD_KIT_EX
 	
     lower         = RESOLVE_STR_REF(~fighter / mage / bard~)
 	
-    help          = RESOLVE_STR_REF(~FIGHTER/MAGE/BARD: This character can use the abilities of a Fighter, Mage, and Bard, though they cannot use Pick Pockets while wearing more than studded leather armor and cannot cast spells while wearing any armor. They may Specialize in, but not Master, any weapon they can use.
-    
-Gnomes can choose this multi-class, but become Fighter/Illusionist/Bards by default. Gnomes are the only race that can combine a specialist Mage class in a multi-class.~)
+    help          = RESOLVE_STR_REF(~FIGHTER/MAGE/BARD: This character can use the abilities of a Fighter, Mage, and Bard, though they cannot use Pick Pockets while wearing more than studded leather armor and cannot cast spells while wearing any armor. They may Specialize in, but not Master, any weapon they can use.~)
 	
     briefdesc     = RESOLVE_STR_REF(~FIGHTER/MAGE/BARD: This character can use the abilities of a Fighter, Mage, and Bard, though they cannot use Pick Pockets while wearing more than studded leather armor and cannot cast spells while wearing any armor. They may Specialize in, but not Master, any weapon they can use.~)
 	
