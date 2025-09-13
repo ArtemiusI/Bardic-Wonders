@@ -1,0 +1,72 @@
+COPY_EXISTING ~alignmnt.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
+	  PATCH_IF 	(~%text%~ STRING_EQUAL_CASE ~BARD~) OR
+	  			(~%text%~ STRING_EQUAL_CASE ~BLADE~) OR
+				(~%text%~ STRING_EQUAL_CASE ~JESTER~) OR
+				(~%text%~ STRING_EQUAL_CASE ~SKALD~) OR
+				(~%text%~ STRING_EQUAL_CASE ~C0DANCE~) OR
+				(~%text%~ STRING_EQUAL_CASE ~C0SDRUM~) OR
+				(~%text%~ STRING_EQUAL_CASE ~C0_KAPELLMEISTER~) OR
+				(~%text%~ STRING_EQUAL_CASE ~C0_MAGE_BARD~) OR
+				(~%text%~ STRING_EQUAL_CASE ~C0_ILLUSIONIST_BARD~) OR
+				(~%text%~ STRING_EQUAL_CASE ~C0_FIGHTER_MAGE_BARD~) OR
+				(~%text%~ STRING_EQUAL_CASE ~C0_FIGHTER_ILLUSIONIST_BARD~)
+				BEGIN
+	    SET patch_row = %row%
+		SET_2DA_ENTRY (%patch_row%) 1 cols 0
+		SET_2DA_ENTRY (%patch_row%) 2 cols 0
+		SET_2DA_ENTRY (%patch_row%) 3 cols 0
+		SET_2DA_ENTRY (%patch_row%) 6 cols 1
+		SET_2DA_ENTRY (%patch_row%) 7 cols 1
+		SET_2DA_ENTRY (%patch_row%) 8 cols 1
+		SET_2DA_ENTRY (%patch_row%) 7 cols 1
+		SET_2DA_ENTRY (%patch_row%) 8 cols 1
+		SET_2DA_ENTRY (%patch_row%) 9 cols 1
+	  END
+	END
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
+	  PATCH_IF 	(~%text%~ STRING_EQUAL_CASE ~C0_DEATHSINGER~) 
+				BEGIN
+	    SET patch_row = %row%
+		SET_2DA_ENTRY (%patch_row%) 1 cols 0
+		SET_2DA_ENTRY (%patch_row%) 2 cols 0
+		SET_2DA_ENTRY (%patch_row%) 3 cols 0
+	  END
+	END
+
+ACTION_IF MOD_IS_INSTALLED ~BardicWonders.tp2~ ~2003~ BEGIN
+ACTION_FOR_EACH description IN 
+    blclatxt  
+    clastext  
+    sodcltxt 
+  BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~%description%.2da~ BEGIN
+      COPY_EXISTING ~%description%.2DA~ ~override~
+      COUNT_2DA_COLS col_count
+      COUNT_2DA_ROWS col_count rows
+      FOR (index = 0; index < rows; ++index) BEGIN
+        READ_2DA_ENTRY index 0 col_count row_name
+//bard
+        PATCH_IF "%row_name%" STRING_EQUAL_CASE "BARD" BEGIN
+          READ_2DA_ENTRY index 4 col_count bard_desc
+          SPRINT old_bard ~– Alignment restricted to any neutral.~
+          SPRINT new_bard ~– Alignment restricted to any non-lawful. Bards are wanderers, guided by whim and intuition.~
+          GET_STRREF %bard_desc% bard_text
+          INNER_PATCH_SAVE bard_text ~%bard_text%~ BEGIN
+            REPLACE_TEXTUALLY ~%old_bard%~ ~%new_bard%~
+          END
+          INNER_ACTION BEGIN
+            STRING_SET_EVALUATE ~%bard_desc%~ ~%bard_text%~
+          END
+		END
+		
+      END
+      BUT_ONLY
+    END
+  END
+
+END

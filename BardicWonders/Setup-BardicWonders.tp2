@@ -117,6 +117,10 @@ BEGIN ~Bardic Wonders: Mage/Bard and Fighter/Mage/Bard multi-class (EEex, under 
 GROUP ~Tweaks & Additions~
 INCLUDE ~%MOD_FOLDER%/LIB/mage_bard.tpa~
 
+BEGIN ~Bardic Wonders: 3e Alignment for Bards (any non-lawful)~ DESIGNATED 2010
+GROUP ~Tweaks & Additions~
+INCLUDE ~%MOD_FOLDER%/LIB/alignment.tpa~
+
 BEGIN ~Bardic Wonders: Patch Mage/Bard and Fighter/Mage/Bard Dialogue Class Checks (install late)~ DESIGNATED 3001
 GROUP ~Patches~
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~BardicWonders/BardicWonders.tp2~ ~2009~ ~Mage/Bard and Fighter/Mage/Bard component must be installed.~
