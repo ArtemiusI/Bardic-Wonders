@@ -2,16 +2,18 @@ LAF ADD_IDS_ENTRY INT_VAR minValue = 1 preferredValue = 200 STR_VAR idsFile = "s
 
 OUTER_SET mage_bard_ids = IDS_OF_SYMBOL (~KIT~ ~C0_MAGE_BARD~)
 OUTER_SET fighter_mage_bard_ids = IDS_OF_SYMBOL (~KIT~ ~C0_FIGHTER_MAGE_BARD~)
+OUTER_SET illusionist_bard_ids = IDS_OF_SYMBOL (~KIT~ ~C0_ILLUSIONIST_BARD~)
+OUTER_SET fighter_illusionist_bard_ids = IDS_OF_SYMBOL (~KIT~ ~C0_FIGHTER_ILLUSIONIST_BARD~)
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~ 
     READ_BYTE    0x273 class
     READ_BYTE    0x244 kit
-	 PATCH_IF (class = 5) OR (kit = ~%mage_bard_ids%~) OR (kit = ~%fighter_mage_bard_ids%~) BEGIN
+	 PATCH_IF (class = 5) OR (kit = ~%mage_bard_ids%~) OR (kit = ~%fighter_mage_bard_ids%~) OR (kit = ~%illusionist_bard_ids%~) OR (kit = ~%fighter_illusionist_bard_ids%~) BEGIN
     LPF ADD_CRE_EFFECT INT_VAR opcode = 401 target = 1 timing = 9 special = IDS_OF_SYMBOL (~STATS~ ~IS_BARD_CLASS~) parameter1 = 1 parameter2 = 1 END
    END
 BUT_ONLY
 
-COPY_EXISTING ~QD_MCT01.SPL~ ~OVERRIDE~
+COPY_EXISTING ~C0PR#MB.SPL~ ~OVERRIDE~
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 401 target = 1 timing = 9 special = IDS_OF_SYMBOL (~STATS~ ~IS_BARD_CLASS~) parameter1 = 1 parameter2 = 1 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~C0WL000.SPL~ BEGIN
@@ -72,7 +74,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
             END
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player1,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
-                    REFACTOR_TRIGGER ~Class(Player1,THIEF_ALL)~ ~Class(Player1,THIEF_ALL) !Kit(Player1,C0_MAGE_BARD) !Kit(Player1,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                    REFACTOR_TRIGGER ~Class(Player1,THIEF_ALL)~ ~Class(Player1,THIEF_ALL) !Kit(Player1,C0_MAGE_BARD) !Kit(Player1,C0_FIGHTER_MAGE_BARD) !Kit(Player1,C0_ILLUSIONIST_BARD) !Kit(Player1,C0_FIGHTER_ILLUSIONIST_BARD)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
                     //Recommended by refactor trigger to fix whitespace
@@ -89,7 +91,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
             END
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player2,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
-                    REFACTOR_TRIGGER ~Class(Player2,THIEF_ALL)~ ~Class(Player2,THIEF_ALL) !Kit(Player2,C0_MAGE_BARD) !Kit(Player2,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                    REFACTOR_TRIGGER ~Class(Player2,THIEF_ALL)~ ~Class(Player2,THIEF_ALL) !Kit(Player2,C0_MAGE_BARD) !Kit(Player2,C0_FIGHTER_MAGE_BARD) !Kit(Player2,C0_ILLUSIONIST_BARD) !Kit(Player2,C0_FIGHTER_ILLUSIONIST_BARD)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
                     //Recommended by refactor trigger to fix whitespace
@@ -106,7 +108,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
             END
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player3,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
-                    REFACTOR_TRIGGER ~Class(Player3,THIEF_ALL)~ ~Class(Player3,THIEF_ALL) !Kit(Player3,C0_MAGE_BARD) !Kit(Player3,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                    REFACTOR_TRIGGER ~Class(Player3,THIEF_ALL)~ ~Class(Player3,THIEF_ALL) !Kit(Player3,C0_MAGE_BARD) !Kit(Player3,C0_FIGHTER_MAGE_BARD) !Kit(Player3,C0_ILLUSIONIST_BARD) !Kit(Player3,C0_FIGHTER_ILLUSIONIST_BARD)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
                     //Recommended by refactor trigger to fix whitespace
@@ -123,7 +125,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
             END
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player4,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
-                    REFACTOR_TRIGGER ~Class(Player4,THIEF_ALL)~ ~Class(Player4,THIEF_ALL) !Kit(Player4,C0_MAGE_BARD) !Kit(Player4,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                    REFACTOR_TRIGGER ~Class(Player4,THIEF_ALL)~ ~Class(Player4,THIEF_ALL) !Kit(Player4,C0_MAGE_BARD) !Kit(Player4,C0_FIGHTER_MAGE_BARD) !Kit(Player4,C0_ILLUSIONIST_BARD) !Kit(Player4,C0_FIGHTER_ILLUSIONIST_BARD)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
                     //Recommended by refactor trigger to fix whitespace
@@ -140,7 +142,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
             END
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player5,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
-                    REFACTOR_TRIGGER ~Class(Player5,THIEF_ALL)~ ~Class(Player5,THIEF_ALL) !Kit(Player5,C0_MAGE_BARD) !Kit(Player5,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                    REFACTOR_TRIGGER ~Class(Player5,THIEF_ALL)~ ~Class(Player5,THIEF_ALL) !Kit(Player5,C0_MAGE_BARD) !Kit(Player5,C0_FIGHTER_MAGE_BARD) !Kit(Player5,C0_ILLUSIONIST_BARD) !Kit(Player5,C0_FIGHTER_ILLUSIONIST_BARD)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
                     //Recommended by refactor trigger to fix whitespace
@@ -157,7 +159,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
             END
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player6,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
-                    REFACTOR_TRIGGER ~Class(Player6,THIEF_ALL)~ ~Class(Player6,THIEF_ALL) !Kit(Player6,C0_MAGE_BARD) !Kit(Player6,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                    REFACTOR_TRIGGER ~Class(Player6,THIEF_ALL)~ ~Class(Player6,THIEF_ALL) !Kit(Player6,C0_MAGE_BARD) !Kit(Player6,C0_FIGHTER_MAGE_BARD) !Kit(Player6,C0_ILLUSIONIST_BARD) !Kit(Player6,C0_FIGHTER_ILLUSIONIST_BARD)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
                     //Recommended by refactor trigger to fix whitespace
@@ -174,7 +176,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
             END
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
-                    REFACTOR_TRIGGER ~Class(LastTalkedToBy,THIEF_ALL)~ ~Class(LastTalkedToBy,THIEF_ALL) !Kit(LastTalkedToBy,C0_MAGE_BARD) !Kit(LastTalkedToBy,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                    REFACTOR_TRIGGER ~Class(LastTalkedToBy,THIEF_ALL)~ ~Class(LastTalkedToBy,THIEF_ALL) !Kit(LastTalkedToBy,C0_MAGE_BARD) !Kit(LastTalkedToBy,C0_FIGHTER_MAGE_BARD) !Kit(LastTalkedToBy,C0_ILLUSIONIST_BARD) !Kit(LastTalkedToBy,C0_FIGHTER_ILLUSIONIST_BARD)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
                     //Recommended by refactor trigger to fix whitespace
@@ -191,7 +193,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
             END
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Myself,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
-                    REFACTOR_TRIGGER ~Class(Myself,THIEF_ALL)~ ~Class(Myself,THIEF_ALL) !Kit(Myself,C0_MAGE_BARD) !Kit(Myself,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                    REFACTOR_TRIGGER ~Class(Myself,THIEF_ALL)~ ~Class(Myself,THIEF_ALL) !Kit(Myself,C0_MAGE_BARD) !Kit(Myself,C0_FIGHTER_MAGE_BARD) !Kit(Myself,C0_ILLUSIONIST_BARD) !Kit(Myself,C0_FIGHTER_ILLUSIONIST_BARD)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
                     //Recommended by refactor trigger to fix whitespace
@@ -208,7 +210,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
             END
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy(Myself),THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
-                    REFACTOR_TRIGGER ~Class(LastTalkedToBy(Myself),THIEF_ALL)~ ~Class(LastTalkedToBy(Myself),THIEF_ALL) !Kit(LastTalkedToBy(Myself),C0_MAGE_BARD) !Kit(LastTalkedToBy(Myself),C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                    REFACTOR_TRIGGER ~Class(LastTalkedToBy(Myself),THIEF_ALL)~ ~Class(LastTalkedToBy(Myself),THIEF_ALL) !Kit(LastTalkedToBy(Myself),C0_MAGE_BARD) !Kit(LastTalkedToBy(Myself),C0_FIGHTER_MAGE_BARD) !Kit(LastTalkedToBy(Myself),C0_ILLUSIONIST_BARD) !Kit(LastTalkedToBy(Myself),C0_FIGHTER_ILLUSIONIST_BARD)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
                     //Recommended by refactor trigger to fix whitespace
@@ -308,7 +310,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
             END
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player1,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
-                    REFACTOR_TRIGGER ~Class(Player1,THIEF_ALL)~ ~Class(Player1,THIEF_ALL) !Kit(Player1,C0_MAGE_BARD) !Kit(Player1,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                    REFACTOR_TRIGGER ~Class(Player1,THIEF_ALL)~ ~Class(Player1,THIEF_ALL) !Kit(Player1,C0_MAGE_BARD) !Kit(Player1,C0_FIGHTER_MAGE_BARD) !Kit(Player1,C0_ILLUSIONIST_BARD) !Kit(Player1,C0_FIGHTER_ILLUSIONIST_BARD)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
                     //Recommended by refactor trigger to fix whitespace
@@ -325,7 +327,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
             END
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player2,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
-                    REFACTOR_TRIGGER ~Class(Player2,THIEF_ALL)~ ~Class(Player2,THIEF_ALL) !Kit(Player2,C0_MAGE_BARD) !Kit(Player2,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                    REFACTOR_TRIGGER ~Class(Player2,THIEF_ALL)~ ~Class(Player2,THIEF_ALL) !Kit(Player2,C0_MAGE_BARD) !Kit(Player2,C0_FIGHTER_MAGE_BARD) !Kit(Player2,C0_ILLUSIONIST_BARD) !Kit(Player2,C0_FIGHTER_ILLUSIONIST_BARD)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
                     //Recommended by refactor trigger to fix whitespace
@@ -342,7 +344,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
             END
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player3,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
-                    REFACTOR_TRIGGER ~Class(Player3,THIEF_ALL)~ ~Class(Player3,THIEF_ALL) !Kit(Player3,C0_MAGE_BARD) !Kit(Player3,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                    REFACTOR_TRIGGER ~Class(Player3,THIEF_ALL)~ ~Class(Player3,THIEF_ALL) !Kit(Player3,C0_MAGE_BARD) !Kit(Player3,C0_FIGHTER_MAGE_BARD) !Kit(Player3,C0_ILLUSIONIST_BARD) !Kit(Player3,C0_FIGHTER_ILLUSIONIST_BARD)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
                     //Recommended by refactor trigger to fix whitespace
@@ -359,7 +361,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
             END
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player4,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
-                    REFACTOR_TRIGGER ~Class(Player4,THIEF_ALL)~ ~Class(Player4,THIEF_ALL) !Kit(Player4,C0_MAGE_BARD) !Kit(Player4,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                    REFACTOR_TRIGGER ~Class(Player4,THIEF_ALL)~ ~Class(Player4,THIEF_ALL) !Kit(Player4,C0_MAGE_BARD) !Kit(Player4,C0_FIGHTER_MAGE_BARD) !Kit(Player4,C0_ILLUSIONIST_BARD) !Kit(Player4,C0_FIGHTER_ILLUSIONIST_BARD)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
                     //Recommended by refactor trigger to fix whitespace
@@ -376,7 +378,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
             END
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player5,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
-                    REFACTOR_TRIGGER ~Class(Player5,THIEF_ALL)~ ~Class(Player5,THIEF_ALL) !Kit(Player5,C0_MAGE_BARD) !Kit(Player5,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                    REFACTOR_TRIGGER ~Class(Player5,THIEF_ALL)~ ~Class(Player5,THIEF_ALL) !Kit(Player5,C0_MAGE_BARD) !Kit(Player5,C0_FIGHTER_MAGE_BARD) !Kit(Player5,C0_ILLUSIONIST_BARD) !Kit(Player5,C0_FIGHTER_ILLUSIONIST_BARD)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
                     //Recommended by refactor trigger to fix whitespace
@@ -393,7 +395,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
             END
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player6,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
-                    REFACTOR_TRIGGER ~Class(Player6,THIEF_ALL)~ ~Class(Player6,THIEF_ALL) !Kit(Player6,C0_MAGE_BARD) !Kit(Player6,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                    REFACTOR_TRIGGER ~Class(Player6,THIEF_ALL)~ ~Class(Player6,THIEF_ALL) !Kit(Player6,C0_MAGE_BARD) !Kit(Player6,C0_FIGHTER_MAGE_BARD) !Kit(Player6,C0_ILLUSIONIST_BARD) !Kit(Player6,C0_FIGHTER_ILLUSIONIST_BARD)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
                     //Recommended by refactor trigger to fix whitespace
@@ -410,7 +412,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
             END
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
-                    REFACTOR_TRIGGER ~Class(LastTalkedToBy,THIEF_ALL)~ ~Class(LastTalkedToBy,THIEF_ALL) !Kit(LastTalkedToBy,C0_MAGE_BARD) !Kit(LastTalkedToBy,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                    REFACTOR_TRIGGER ~Class(LastTalkedToBy,THIEF_ALL)~ ~Class(LastTalkedToBy,THIEF_ALL) !Kit(LastTalkedToBy,C0_MAGE_BARD) !Kit(LastTalkedToBy,C0_FIGHTER_MAGE_BARD) !Kit(LastTalkedToBy,C0_ILLUSIONIST_BARD) !Kit(LastTalkedToBy,C0_FIGHTER_ILLUSIONIST_BARD)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
                     //Recommended by refactor trigger to fix whitespace
@@ -427,7 +429,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
             END
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Myself,THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
-                    REFACTOR_TRIGGER ~Class(Myself,THIEF_ALL)~ ~Class(Myself,THIEF_ALL) !Kit(Myself,C0_MAGE_BARD) !Kit(Myself,C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                    REFACTOR_TRIGGER ~Class(Myself,THIEF_ALL)~ ~Class(Myself,THIEF_ALL) !Kit(Myself,C0_MAGE_BARD) !Kit(Myself,C0_FIGHTER_MAGE_BARD) !Kit(Myself,C0_ILLUSIONIST_BARD) !Kit(Myself,C0_FIGHTER_ILLUSIONIST_BARD)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
                     //Recommended by refactor trigger to fix whitespace
@@ -444,7 +446,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
             END
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy(Myself),THIEF_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
-                    REFACTOR_TRIGGER ~Class(LastTalkedToBy(Myself),THIEF_ALL)~ ~Class(LastTalkedToBy(Myself),THIEF_ALL) !Kit(LastTalkedToBy(Myself),C0_MAGE_BARD) !Kit(LastTalkedToBy(Myself),C0_FIGHTER_MAGE_BARD)~ //Replace trigger respecting OR and !
+                    REFACTOR_TRIGGER ~Class(LastTalkedToBy(Myself),THIEF_ALL)~ ~Class(LastTalkedToBy(Myself),THIEF_ALL) !Kit(LastTalkedToBy(Myself),C0_MAGE_BARD) !Kit(LastTalkedToBy(Myself),C0_FIGHTER_MAGE_BARD) !Kit(LastTalkedToBy(Myself),C0_ILLUSIONIST_BARD) !Kit(LastTalkedToBy(Myself),C0_FIGHTER_ILLUSIONIST_BARD)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
                     //Recommended by refactor trigger to fix whitespace
