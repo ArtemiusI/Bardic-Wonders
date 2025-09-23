@@ -823,11 +823,3 @@ ACTION_FOR_EACH description IN
   END
 
 END
-
-
-COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
- LPF CLONE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 5 match_parameter2 = 5 parameter1 = IDS_OF_SYMBOL (~KIT~ ~C0_FIGHTER_MAGE_BARD~) silent = 1 END
- LPF CLONE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 5 match_parameter2 = 5 parameter1 = IDS_OF_SYMBOL (~KIT~ ~C0_MAGE_BARD~) silent = 1 END
- LPF CLONE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 5 match_parameter2 = 5 parameter1 = IDS_OF_SYMBOL (~KIT~ ~C0_ILLUSIONIST_BARD~) silent = 1 END
- LPF CLONE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 5 match_parameter2 = 5 parameter1 = IDS_OF_SYMBOL (~KIT~ ~C0_FIGHTER_ILLUSIONIST_BARD~) silent = 1 END
-BUT_ONLY
