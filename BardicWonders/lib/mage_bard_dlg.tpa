@@ -13,6 +13,9 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
    END
 BUT_ONLY
 
+COPY ~%MOD_FOLDER%/eeex/profs/C0PR#CL.spl~ ~override/C0PR#BA.SPL~
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 401 target = 1 timing = 9 special = IDS_OF_SYMBOL (~STATS~ ~IS_BARD_CLASS~) parameter1 = 1 parameter2 = 1 END
+
 COPY_EXISTING ~C0PR#MB.SPL~ ~OVERRIDE~
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 401 target = 1 timing = 9 special = IDS_OF_SYMBOL (~STATS~ ~IS_BARD_CLASS~) parameter1 = 1 parameter2 = 1 END
 
