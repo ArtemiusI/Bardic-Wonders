@@ -115,6 +115,7 @@ INCLUDE ~%MOD_FOLDER%/LIB/new_spells.tpa~
 
 BEGIN ~Bardic Wonders: Mage/Bard and Fighter/Mage/Bard multi-class (EEex, under thief multis)~ DESIGNATED 2009
 GROUP ~Tweaks & Additions~
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~EEex_Actionbar.lua~ ~This component requires EEEx.~ //EEX required!
 INCLUDE ~%MOD_FOLDER%/LIB/mage_bard.tpa~
 
 BEGIN ~Bardic Wonders: 3e Alignment for Bards (any non-lawful)~ DESIGNATED 2010
