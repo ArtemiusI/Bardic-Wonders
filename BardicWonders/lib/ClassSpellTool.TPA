@@ -1144,7 +1144,7 @@ END
 //END
 
 END ELSE BEGIN
-	WARN ~%resref%.spl does not exist in game or in the override folder.~
+	PRINT ~%resref%.spl does not exist in game or in the override folder.~
 END
 
 END
