@@ -654,3 +654,15 @@ LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 99 match_parameter2 = 2 match
 LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 99 match_parameter2 = 2 match_parameter1 = 500 parameter1 = 140 END
 LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 99 match_parameter2 = 2 match_parameter1 = 600 parameter1 = 150 END
 BUT_ONLY
+
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
+                DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~!ModalState(BATTLESONG)~ ~!CheckSpellState(Myself,BARD_SONG)~ //Replace trigger respecting OR and !
+                END
+                DECOMPILE_AND_PATCH BEGIN
+                    //Recommended by refactor trigger to fix whitespace
+                END
+
+        BUT_ONLY
+        
