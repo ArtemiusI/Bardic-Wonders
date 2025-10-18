@@ -244,6 +244,7 @@ COPY_EXISTING ~KITLIST.2DA~ ~override~
       // Add new abilities to all Fighter kits
       COPY_EXISTING ~%kit_clab%.2DA~ override
       PATCH_IF !(
+				("%kit_label%" STRING_EQUAL_CASE "C0WLOCK") OR
 				("%kit_label%" STRING_EQUAL_CASE "C0DANCE") OR
 				("%kit_label%" STRING_EQUAL_CASE "C0_KAPELLMEISTER")
 														 ) BEGIN
@@ -283,4 +284,57 @@ END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~LUC0STRA.2DA~ THEN BEGIN
 COPY ~%MOD_FOLDER%/2da_backups/LUC0STRA.2DA~ ~OVERRIDE/LUC0STRA.2DA~
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~LUC0WL.2DA~ BEGIN
+  COPY_EXISTING ~LUC0WL.2DA~ ~OVERRIDE~
+LPF patch_remove_hla
+  STR_VAR
+    remove_ability = ~AP_C0BWHL1~
+    END
+LPF patch_remove_hla
+  STR_VAR
+    remove_ability = ~GA_C0BWHL2~
+    END
+LPF patch_remove_hla
+  STR_VAR
+    remove_ability = ~GA_C0BWHL3~
+    END
+LPF patch_remove_hla
+  STR_VAR
+    remove_ability = ~GA_C0BWHL4~
+    END
+LPF patch_remove_hla
+  STR_VAR
+    remove_ability = ~GA_C0BWHL5~
+    END
+LPF patch_remove_hla
+  STR_VAR
+    remove_ability = ~GA_C0BWHL6~
+    END
+LPF patch_remove_hla
+  STR_VAR
+    remove_ability = ~AP_C0BWHL7~
+    END
+LPF patch_remove_hla
+  STR_VAR
+    remove_ability = ~AP_C0BWHL8~
+    END
+LPF patch_remove_hla
+  STR_VAR
+    remove_ability = ~AP_C0BWHL9~
+    END
+LPF patch_remove_hla
+  STR_VAR
+    remove_ability = ~AP_C0BWHL0~
+    END
+LPF patch_remove_hla
+  STR_VAR
+    remove_ability = ~AP_C0BWHLA~
+    END
+LPF patch_remove_hla
+  STR_VAR
+    remove_ability = ~AP_C0BWHLB~
+    END
+    
 END
