@@ -282,15 +282,6 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
                 END
             END
 
-            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Myself,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
-                DECOMPILE_AND_PATCH BEGIN
-                    REPLACE_TEXTUALLY EXACT_MATCH ~Class(Myself,BARD)~ ~CheckStatGT(Myself,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
-                END
-                DECOMPILE_AND_PATCH BEGIN
-                    //Recommended by refactor trigger to fix whitespace
-                END
-            END
-
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy(Myself),BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
                     REPLACE_TEXTUALLY EXACT_MATCH ~Class(LastTalkedToBy(Myself),BARD)~ ~CheckStatGT(LastTalkedToBy(Myself),0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
@@ -512,15 +503,6 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
                     REPLACE_TEXTUALLY EXACT_MATCH ~Class(LastTalkedToBy,BARD)~ ~CheckStatGT(LastTalkedToBy,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
-                END
-                DECOMPILE_AND_PATCH BEGIN
-                    //Recommended by refactor trigger to fix whitespace
-                END
-            END
-
-            PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Myself,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
-                DECOMPILE_AND_PATCH BEGIN
-                    REPLACE_TEXTUALLY EXACT_MATCH ~Class(Myself,BARD)~ ~CheckStatGT(Myself,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
                     //Recommended by refactor trigger to fix whitespace
