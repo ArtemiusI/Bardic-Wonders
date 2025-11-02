@@ -680,14 +680,14 @@ COPY ~%MOD_FOLDER%/eeex/profs/C0PR#CL.spl~ ~override/C0PR#MB.SPL~
 
 ACTION_IF FILE_EXISTS_IN_GAME ~LUMT0.2DA~ BEGIN
 COPY_EXISTING ~LUMT0.2DA~ ~OVERRIDE/LUC0MGBD.2DA~
-LPF patch_add_hla STR_VAR ability = ~AP_SPCL920~ num_allowed = 1 min_lev = 32 END	
-LPF patch_add_hla STR_VAR ability = ~GA_SPCL921~ num_allowed = 1 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD1~ ability = ~AP_SPCL920~ num_allowed = 1 min_lev = 32 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD2~ ability = ~GA_SPCL921~ num_allowed = 1 END	
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~LUFMT.2DA~ BEGIN
 COPY_EXISTING ~LUFMT.2DA~ ~OVERRIDE/LUC0FMBD.2DA~
-LPF patch_add_hla STR_VAR ability = ~AP_SPCL920~ num_allowed = 1 min_lev = 32 END	
-LPF patch_add_hla STR_VAR ability = ~GA_SPCL921~ num_allowed = 1 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD1~ ability = ~AP_SPCL920~ num_allowed = 1 min_lev = 32 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD2~ ability = ~GA_SPCL921~ num_allowed = 1 END	
 END
 
 ACTION_IF MOD_IS_INSTALLED ~BardicWonders.tp2~ ~2007~ BEGIN
@@ -701,14 +701,14 @@ LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL914~ END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL916~ END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL917~ END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL921~ END
-LPF patch_add_hla STR_VAR ability = ~GA_C0BWHL3~ num_allowed = 3 END	
-LPF patch_add_hla STR_VAR ability = ~GA_C0BWHL4~ num_allowed = 3 END	
-LPF patch_add_hla STR_VAR ability = ~GA_C0BWHL5~ num_allowed = 3 END	
-LPF patch_add_hla STR_VAR ability = ~AP_C0BWHL7~ num_allowed = 1 END	
-LPF patch_add_hla STR_VAR ability = ~AP_C0BWHL1~ num_allowed = 1 prerequisite = AP_C0BWHL7 END	
-LPF patch_add_hla STR_VAR ability = ~GA_C0BWHL2~ num_allowed = 16 END	
-LPF patch_add_hla STR_VAR ability = ~GA_C0BWHL6~ num_allowed = 1 END	
-LPF patch_add_hla STR_VAR ability = ~AP_C0BWHL8~ num_allowed = 1 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD3~ ability = ~GA_C0BWHL3~ num_allowed = 3 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD4~ ability = ~GA_C0BWHL4~ num_allowed = 3 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD5~ ability = ~GA_C0BWHL5~ num_allowed = 3 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD6~ ability = ~AP_C0BWHL7~ num_allowed = 1 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD7~ ability = ~AP_C0BWHL1~ num_allowed = 1 prerequisite = AP_C0BWHL7 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD8~ ability = ~GA_C0BWHL2~ num_allowed = 16 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD9~ ability = ~GA_C0BWHL6~ num_allowed = 1 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD0~ ability = ~AP_C0BWHL8~ num_allowed = 1 END	
 
 COPY_EXISTING ~LUC0FMBD.2da~ ~override~
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL910~ END
@@ -719,22 +719,22 @@ LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL914~ END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL916~ END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL917~ END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL921~ END
-LPF patch_add_hla STR_VAR ability = ~GA_C0BWHL3~ num_allowed = 3 END	
-LPF patch_add_hla STR_VAR ability = ~GA_C0BWHL4~ num_allowed = 3 END	
-LPF patch_add_hla STR_VAR ability = ~GA_C0BWHL5~ num_allowed = 3 END	
-LPF patch_add_hla STR_VAR ability = ~AP_C0BWHL7~ num_allowed = 1 END	
-LPF patch_add_hla STR_VAR ability = ~AP_C0BWHL1~ num_allowed = 1 prerequisite = AP_C0BWHL7 END	
-LPF patch_add_hla STR_VAR ability = ~GA_C0BWHL2~ num_allowed = 16 END	
-LPF patch_add_hla STR_VAR ability = ~GA_C0BWHL6~ num_allowed = 1 END	
-LPF patch_add_hla STR_VAR ability = ~AP_C0BWHL8~ num_allowed = 1 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD3~ ability = ~GA_C0BWHL3~ num_allowed = 3 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD4~ ability = ~GA_C0BWHL4~ num_allowed = 3 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD5~ ability = ~GA_C0BWHL5~ num_allowed = 3 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD6~ ability = ~AP_C0BWHL7~ num_allowed = 1 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD7~ ability = ~AP_C0BWHL1~ num_allowed = 1 prerequisite = AP_C0BWHL7 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD8~ ability = ~GA_C0BWHL2~ num_allowed = 16 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD9~ ability = ~GA_C0BWHL6~ num_allowed = 1 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD0~ ability = ~AP_C0BWHL8~ num_allowed = 1 END	
 
 ACTION_IF FILE_EXISTS_IN_GAME ~C0ARCAS1.EFF~ THEN BEGIN
 
 COPY_EXISTING ~LUC0MGBD.2da~ ~override~
-LPF patch_add_hla STR_VAR ability = ~AP_C0BWHL9~ num_allowed = 1 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBDA~ ability = ~AP_C0BWHL9~ num_allowed = 1 END	
 
 COPY_EXISTING ~LUC0FMBD.2da~ ~override~
-LPF patch_add_hla STR_VAR ability = ~AP_C0BWHL9~ num_allowed = 1 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBDA~ ability = ~AP_C0BWHL9~ num_allowed = 1 END	
 
 END
 
@@ -752,17 +752,17 @@ END
 
 COPY_EXISTING ~LUC0FMBD.2da~ ~override~
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPWI920~ END
-LPF patch_add_hla STR_VAR ability = ~GA_SPWI920~ num_allowed = 1 min_lev = 32 END
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD10~ ability = ~GA_SPWI920~ num_allowed = 1 min_lev = 32 END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPWI921~ END
-LPF patch_add_hla STR_VAR ability = ~GA_SPWI921~ num_allowed = 1 min_lev = 32 END
+LPF patch_add_hla STR_VAR ability = ~C0MGBD11~ ~GA_SPWI921~ num_allowed = 1 min_lev = 32 END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPWI922~ END
-LPF patch_add_hla STR_VAR ability = ~GA_SPWI922~ num_allowed = 1 min_lev = 32 END
+LPF patch_add_hla STR_VAR ability = ~C0MGBD12~ ~GA_SPWI922~ num_allowed = 1 min_lev = 32 END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPWI923~ END
-LPF patch_add_hla STR_VAR ability = ~GA_SPWI923~ num_allowed = 1 min_lev = 32 excluded_by = ~GA_SPWI924~ alignment_restrict = ~ALL_EVIL~ END
+LPF patch_add_hla STR_VAR ability = ~C0MGBD13~ ~GA_SPWI923~ num_allowed = 1 min_lev = 32 excluded_by = ~GA_SPWI924~ alignment_restrict = ~ALL_EVIL~ END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPWI924~ END
-LPF patch_add_hla STR_VAR ability = ~GA_SPWI924~ num_allowed = 1 min_lev = 32 excluded_by = ~GA_SPWI923~ alignment_restrict = ~ALL_GOOD~ END
+LPF patch_add_hla STR_VAR ability = ~C0MGBD14~ ~GA_SPWI924~ num_allowed = 1 min_lev = 32 excluded_by = ~GA_SPWI923~ alignment_restrict = ~ALL_GOOD~ END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPWI925~ END
-LPF patch_add_hla STR_VAR ability = ~GA_SPWI925~ num_allowed = 1 min_lev = 32 END
+LPF patch_add_hla STR_VAR ability = ~C0MGBD15~ ~GA_SPWI925~ num_allowed = 1 min_lev = 32 END
 
       END
       ACTION_IF ("mage_hlas" = 2) THEN BEGIN

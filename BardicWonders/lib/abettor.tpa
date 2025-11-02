@@ -3,8 +3,8 @@ COPY ~%MOD_FOLDER%/abettor~ ~override~
 COPY_EXISTING ~LUBA0.2DA~ ~OVERRIDE/LUC0ABET.2DA~
 LPF patch_remove_hla STR_VAR remove_ability = ~AP_SPCL920~ END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL921~ END
-LPF patch_add_hla STR_VAR ability = ~AP_C0ABETT5~ num_allowed = 1 END	
-LPF patch_add_hla STR_VAR ability = ~AP_C0ABETHL~ num_allowed = 1 prerequisite = ~AP_C0ABETT5~ END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0ABET1~ ability = ~AP_C0ABETT5~ num_allowed = 1 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0ABET2~ ability = ~AP_C0ABETHL~ num_allowed = 1 prerequisite = ~AP_C0ABETT5~ END	
 
 LAF ADD_KIT_EX
   INT_VAR

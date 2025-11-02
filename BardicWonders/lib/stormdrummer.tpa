@@ -4,7 +4,7 @@ COPY ~%MOD_FOLDER%/storm~ ~override~
 
 COPY_EXISTING ~LUBA0.2da~ ~override/LUC0SDRU.2DA~
 LPF patch_remove_hla STR_VAR remove_ability = ~AP_SPCL920~ END
-LPF patch_add_hla STR_VAR ability = ~AP_C0SDRUHL~ num_allowed = 1 END	
+LPF patch_add_hla STR_VAR ~C0SDRU1~ ability = ~AP_C0SDRUHL~ num_allowed = 1 END	
 
 LAF ADD_KIT_EX
   INT_VAR

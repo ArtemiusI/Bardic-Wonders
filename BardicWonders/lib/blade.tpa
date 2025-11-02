@@ -34,8 +34,8 @@ COPY_EXISTING ~luabbr.2da~ ~override~
 COPY_EXISTING ~LUBA0.2DA~ ~OVERRIDE/LUBA1.2DA~
 LPF patch_remove_hla STR_VAR remove_ability = ~AP_SPCL920~ END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL921~ END
-LPF patch_add_hla STR_VAR ability = ~AP_C0BLDH1~ num_allowed = 1 END	
-LPF patch_add_hla STR_VAR ability = ~AP_C0BLDH2~ num_allowed = 1 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0BLADE1~ ability = ~AP_C0BLDH1~ num_allowed = 1 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0BLADE2~ ability = ~AP_C0BLDH2~ num_allowed = 1 END	
 
 APPEND ~splprot.2da~ ~C0HTSTR 36 -1 1~ UNLESS ~C0HTSTR~
 COPY_EXISTING ~splprot.2da~ ~override~
