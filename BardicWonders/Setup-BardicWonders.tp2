@@ -59,6 +59,11 @@ BEGIN ~Bardic Wonders: Kapellmeister Kit~ DESIGNATED 1011
 GROUP ~Kits~
 INCLUDE ~%MOD_FOLDER%/LIB/kapellmeister.tpa~
 
+BEGIN ~Bardic Wonders: Gallant Paladin Kit~ DESIGNATED 1012
+GROUP ~Kits~
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~EEex_Actionbar.lua~ ~This component requires EEEx.~ //EEX required!
+INCLUDE ~%MOD_FOLDER%/LIB/gallant.tpa~
+
 BEGIN ~Bardic Wonders: Items~ DESIGNATED 2001
 GROUP ~Tweaks & Additions~
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ ~This component must be played on BG:EE or BG2:EE.~
@@ -141,7 +146,7 @@ BEGIN ~Bardic Wonders: 3e Alignment for Bards (any non-lawful)~ DESIGNATED 2010
 GROUP ~Tweaks & Additions~
 INCLUDE ~%MOD_FOLDER%/LIB/alignment.tpa~
 
-BEGIN ~Bardic Wonders: Patch Mage/Bard and Fighter/Mage/Bard Dialogue Class Checks (install late)~ DESIGNATED 3001
+BEGIN ~Bardic Wonders: Patch Dialogue Class Checks for: Gallant, Mage/Bard and Fighter/Mage/Bard (install late)~ DESIGNATED 3001
 GROUP ~Patches~
-REQUIRE_PREDICATE MOD_IS_INSTALLED ~BardicWonders/BardicWonders.tp2~ ~2009~ ~Mage/Bard and Fighter/Mage/Bard component must be installed.~
+REQUIRE_PREDICATE (MOD_IS_INSTALLED ~BardicWonders/BardicWonders.tp2~ ~2009~) OR (MOD_IS_INSTALLED ~BardicWonders/BardicWonders.tp2~ ~1012~) ~Mage/Bard and Fighter/Mage/Bard component must be installed.~
 INCLUDE ~%MOD_FOLDER%/LIB/mage_bard_dlg.tpa~

@@ -1,0 +1,195 @@
+COPY ~%MOD_FOLDER%/gallant/2das~ ~override~
+COPY ~%MOD_FOLDER%/gallant/spells~ ~override~
+
+COPY_EXISTING ~CLABPA01.2DA~ ~OVERRIDE/C0GALLAN.2DA~
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = AP_C0GALL1 END
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 8 f_MaxLevel = 8 STR_VAR f_Entry = AP_C0GALL2 END
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 16 f_MaxLevel = 16 STR_VAR f_Entry = AP_C0GALL2 END
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 32 f_MaxLevel = 32 STR_VAR f_Entry = AP_C0GALL2 END
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 40 f_MaxLevel = 40 STR_VAR f_Entry = AP_C0GALL2 END
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 48 f_MaxLevel = 48 STR_VAR f_Entry = AP_C0GALL2 END
+  REPLACE_TEXTUALLY ~GA_C0PAL01~ ~****      ~
+  REPLACE_TEXTUALLY ~GA_C0PAL02~ ~****      ~
+  REPLACE_TEXTUALLY ~GA_SPCL122~ ~****      ~
+  PRETTY_PRINT_2DA
+BUT_ONLY
+
+OUTER_SPRINT kit_description ~GALLANT: Equal parts poet and chivalrous knight, the gallant is a heroic warrior with a romantic heart, as devoted to pursuing love and beauty as defeating great evil. The gallant excels at inspiring heroes and capturing the hearts of youths, making them ideal leaders.
+
+Advantages:
+– May be of any good alignment.
+– Gains a +2 to Saving Throws vs. Enchantment Spells, with a further +1 bonus for every 8th level.
+– May use Bard Song ability. While active, the Bard Song makes all nearby allies immune to fear, and increases their Luck modifier by +1, increasing to +2 at 15th level and +3 at 20th level.
+<BARDIC_SPELLS>
+<BARDIC_INSPIRATIONS>
+	
+Disadvantages:
+– May not use Turn Undead.NO_AURANO_SMITE_EVIL~
+
+ACTION_IF FILE_EXISTS_IN_GAME ~C0PAL01.SPL~ THEN BEGIN
+
+OUTER_PATCH_SAVE kit_description ~%kit_description%~ BEGIN
+  REPLACE_TEXTUALLY ~NO_AURA~ ~
+– Does not gain Divine Grace or Aura of Courage.~
+
+END
+
+END ELSE BEGIN
+
+OUTER_PATCH_SAVE kit_description ~%kit_description%~ BEGIN
+  REPLACE_TEXTUALLY ~NO_AURA~ ~~
+END
+
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~C0PAL02.SPL~ OR ~SPCL122.SPL~ THEN BEGIN
+
+OUTER_PATCH_SAVE kit_description ~%kit_description%~ BEGIN
+  REPLACE_TEXTUALLY ~NO_SMITE_EVIL~ ~
+– May not use Smite Evil.~
+
+END
+
+END ELSE BEGIN
+
+OUTER_PATCH_SAVE kit_description ~%kit_description%~ BEGIN
+  REPLACE_TEXTUALLY ~NO_SMITE_EVIL~ ~~
+END
+
+END
+
+LAF ADD_KIT_EX
+  INT_VAR
+    // Mage	= 1
+	// Fighter = 2
+	// Cleric = 3
+	// Thief = 4
+	// Bard = 5
+	// Paladin = 6
+	// Fighter/Mage = 7
+	// Fighter/Cleric = 8
+	// Fighter/Thief = 9
+	// Fighter/Mage/Thief = 10
+	// Druid = 11
+	// Ranger = 12
+	// Mage/Thief = 13
+	// Cleric/Mage = 14
+	// Cleric/Thief = 15
+	// Fighter/Druid = 16
+	// Fighter/Mage/Cleric = 17
+	// Cleric/Ranger = 18
+	// Sorcerer = 19
+	// Monk = 20
+	// Shaman = 21
+    kit_class     = 6
+	
+    mixed         = RESOLVE_STR_REF(~Gallant~)
+	
+    lower         = RESOLVE_STR_REF(~gallant~)
+	
+    help          = RESOLVE_STR_REF(~%kit_description%~)
+	
+    briefdesc     = RESOLVE_STR_REF(~GALLANT: Equal parts poet and chivalrous knight, the gallant is a heroic warrior with a romantic heart, as devoted to pursuing love and beauty as defeating great evil. The gallant excels at inspiring heroes and capturing the hearts of youths, making them ideal leaders.~)
+	
+	// fallen = 0
+	
+  STR_VAR
+    kit_name      = ~C0_GALLANT~
+	
+    unusable      = ~0x00000000~
+    // clasweap      = ~1 1 1 1 1 1 1 1~
+	//                                       T   S           F   Q             S S
+	//                                       W   C           L   U             W I
+	//                               B L S   O   I   W       A   A             O N
+	//                               A O H   H   M   A       I   R C   S       R G
+	//               L S           M S N O   A   I   R     H L   T R L H     2 D L 2
+	//               _ _       S   I T G R   N K T D H     A M   E O O O     H A E W
+	//               S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E
+	//               W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A
+	//               O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P
+	//               R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O
+	//               D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N
+    weapprof      = ~2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3~
+	
+    abclasrq      = ~12 0 9 9 13 18~
+	
+    // abclsmod      = ~0 0 0 0 0 0~
+	
+    // abdcdsrq      = ~0 0 0 = 0 =~
+	
+    // abdcscrq      = ~15 0 0 0 0 0~
+	
+	//               L L L N N N C C C
+	//               G N E G N E G N E
+    alignmnt      = ~1 0 0 1 0 0 1 0 0~
+	
+    // dualclas      = ~0 1 1 1 1 0~
+	
+    // luabbr        = ~C0GALL~
+	
+    // stweap        = ~CHAN09 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
+	
+    clab_path     = ~override/C0GALLAN.2da~
+	
+    // kittable      = ~K_F_H K_F_E K_F_HE~
+	
+	// base_class = 
+	
+	// clab_base_f = 
+	
+	// clab_base_p = 
+	
+	// clab_base_d = 
+	
+	// clab_base_r = 
+	
+	// clab_base_m = 
+	
+	// clab_base_t = 
+	
+    // clsrcreq      = ~1 1 1 1 1 1 1~
+	
+    // clswpbon      = ~1 0 2~
+	
+    // hpclass       = ~HPPRS~
+	
+    // numwslot      = ~4~
+	
+    // clascolr = ~6 195 83 21 28~
+	
+	// clasiskl = ~0 0 0 0 0 0 0~
+	
+	// clasthac = ~0~
+	
+	// thiefscl = ~50 0 0 0 0 0 0 0~
+	
+	// backstab = ~1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2~
+	
+	// sneakatt = ~1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 5 5 5 5 5 5 5 5 6~
+	
+	// crippstr = ~0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4~
+	
+	// thiefskl = ~0 0~
+	
+	// traplimt = ~6~
+	
+    // bdstweap      = ~CHAN04 SHLD04 HELM01 * RING06 * * * * BRAC09 BELT02 AROW02,40 BULL02,40 BOLT02,40 POTN08,5 POTN17,3 POTN12,1 * SW1H05 HAMM02~
+  RET
+    kit_id
+END
+
+
+OUTER_SET gallant_ids = IDS_OF_SYMBOL (~kit~ ~C0_GALLANT~)
+  
+COPY ~%MOD_FOLDER%/lua/m_c0gall.lua~      ~override~ // Lua file read by EEex, provided by Bubbs and further edited by myself
+///////////////////////////////////////////////////////////////////////////
+// Update lua file                                                       //
+///////////////////////////////////////////////////////////////////////////
+  LPF REPLACE_MULTILINE
+    INT_VAR
+    strict = 1
+    verbose = 0
+    STR_VAR
+    pattern = ~~~~~0x4000~~~~~
+    string = EVAL ~~~~~%gallant_ids%~~~~~ //"
+  END

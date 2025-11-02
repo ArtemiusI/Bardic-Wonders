@@ -338,3 +338,31 @@ LPF patch_remove_hla
     END
     
 END
+
+ACTION_IF MOD_IS_INSTALLED ~Setup-BardicWonders/BardicWonders.tp2~ ~1012~ THEN BEGIN
+  
+COPY_EXISTING ~luabbr.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
+	  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~C0_GALLANT~ BEGIN
+	    SET patch_row = %row%
+		SET_2DA_ENTRY (%patch_row%) 1 cols ~C0GALL~
+	  END
+	END
+	
+COPY_EXISTING ~LUPA0.2DA~ ~OVERRIDE/LUC0GALL.2DA~
+LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL901~ END
+LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL903~ END
+LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL907~ END
+LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL909~ END
+LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL923~ END
+LPF patch_add_hla STR_VAR 2da_row = ~C0GALL1~ ability = ~GA_C0BWHL3~ num_allowed = 3 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD4~ ability = ~GA_C0BWHL4~ num_allowed = 3 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD5~ ability = ~GA_C0BWHL5~ num_allowed = 3 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD8~ ability = ~GA_C0BWHL2~ num_allowed = 16 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD0~ ability = ~AP_C0BWHL8~ num_allowed = 1 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD0~ ability = ~AP_SPCL920~ num_allowed = 1 END
+
+END

@@ -363,3 +363,38 @@ OUTER_SPRINT old_bard ~– May use Bard Song ability.~ //old text
 OUTER_SPRINT new_bard ~– May use Bardic Inspirations. Inspirations provide various benefits that persist so long as they are within visual range of the bard.~ //new text
 
 INCLUDE ~BardicWonders\lib\dark_inspirations.tpa~
+
+ACTION_IF MOD_IS_INSTALLED ~Setup-BardicWonders/BardicWonders.tp2~ ~1012~ THEN BEGIN
+  
+ACTION_FOR_EACH description IN 
+    CLASTEXT
+  BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~%description%.2da~ BEGIN
+      COPY_EXISTING ~%description%.2DA~ ~override~
+      COUNT_2DA_COLS col_count
+      COUNT_2DA_ROWS col_count rows
+      FOR (index = 0; index < rows; ++index) BEGIN
+        READ_2DA_ENTRY index 0 col_count row_name
+
+        PATCH_IF "%row_name%" STRING_EQUAL_CASE "C0_GALLANT" BEGIN
+          READ_2DA_ENTRY index 4 col_count kit_desc
+          SPRINT old_desc ~<BARDIC_INSPIRATIONS>~
+          SPRINT new_desc ~– May use Bardic Inspirations. Inspirations provide various benefits that persist so long as they are within visual range of the bard.~
+          GET_STRREF %kit_desc% desc_text
+          INNER_PATCH_SAVE desc_text ~%desc_text%~ BEGIN
+            REPLACE_TEXTUALLY ~%old_desc%~ ~%new_desc%~
+          END
+          INNER_ACTION BEGIN
+            STRING_SET_EVALUATE ~%kit_desc%~ ~%desc_text%~
+          END
+		END
+		
+      END
+      BUT_ONLY
+    END
+  END
+  
+COPY_EXISTING ~C0GALLAN.2DA~ ~OVERRIDE~
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = GA_C0BDI00 END // Inspirations
+
+END
