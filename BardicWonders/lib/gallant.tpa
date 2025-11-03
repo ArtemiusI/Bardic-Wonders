@@ -2,6 +2,7 @@ COPY ~%MOD_FOLDER%/gallant/2das~ ~override~
 COPY ~%MOD_FOLDER%/gallant/spells~ ~override~
 
 COPY_EXISTING ~CLABPA01.2DA~ ~OVERRIDE/C0GALLAN.2DA~
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_Increment = 1 STR_VAR f_Entry = AP_C0GALL0 END
   LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = AP_C0GALL1 END
   LPF set_clab_2da_entries INT_VAR f_MinLevel = 8 f_MaxLevel = 8 STR_VAR f_Entry = AP_C0GALL2 END
   LPF set_clab_2da_entries INT_VAR f_MinLevel = 16 f_MaxLevel = 16 STR_VAR f_Entry = AP_C0GALL2 END
@@ -14,10 +15,31 @@ COPY_EXISTING ~CLABPA01.2DA~ ~OVERRIDE/C0GALLAN.2DA~
   PRETTY_PRINT_2DA
 BUT_ONLY
 
+ACTION_IF FILE_EXISTS_IN_GAME ~#BARD1.SPL~ THEN BEGIN
+
+COPY_EXISTING ~C0GALLAN.2DA~ ~OVERRIDE~
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = AP_#BARD-1 END
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = GA_#BARD1 END
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 3 f_MaxLevel = 3 STR_VAR f_Entry = GA_#BARD2 END
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 5 f_MaxLevel = 5 STR_VAR f_Entry = GA_#BARD3 END
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 7 f_MaxLevel = 7 STR_VAR f_Entry = GA_#BARD4 END
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 9 f_MaxLevel = 9 STR_VAR f_Entry = GA_#BARD5 END
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 11 f_MaxLevel = 11 STR_VAR f_Entry = GA_#BARD6 END
+  PRETTY_PRINT_2DA
+BUT_ONLY
+
+  END ELSE BEGIN
+
+COPY_EXISTING ~C0GALLAN.2DA~ ~OVERRIDE~
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = AP_FJBARD END
+
+END
+
 OUTER_SPRINT kit_description ~GALLANT: Equal parts poet and chivalrous knight, the gallant is a heroic warrior with a romantic heart, as devoted to pursuing love and beauty as defeating great evil. The gallant excels at inspiring heroes and capturing the hearts of youths, making them ideal leaders.
 
 Advantages:
 – May be of any good alignment.
+– Gains a +4 additional Lore per level.
 – Gains a +2 to Saving Throws vs. Enchantment Spells, with a further +1 bonus for every 8th level.
 – May use Bard Song ability. While active, the Bard Song makes all nearby allies immune to fear, and increases their Luck modifier by +1, increasing to +2 at 15th level and +3 at 20th level.
 <BARDIC_SPELLS>
@@ -42,7 +64,7 @@ END
 
 END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~C0PAL02.SPL~ OR ~SPCL122.SPL~ THEN BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~C0PAL02.SPL~ OR FILE_EXISTS_IN_GAME ~SPCL122.SPL~ THEN BEGIN
 
 OUTER_PATCH_SAVE kit_description ~%kit_description%~ BEGIN
   REPLACE_TEXTUALLY ~NO_SMITE_EVIL~ ~
@@ -125,7 +147,7 @@ LAF ADD_KIT_EX
 	
     // dualclas      = ~0 1 1 1 1 0~
 	
-    // luabbr        = ~C0GALL~
+  luabbr        = ~C0GALL~
 	
     // stweap        = ~CHAN09 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
 	
@@ -193,3 +215,7 @@ COPY ~%MOD_FOLDER%/lua/m_c0gall.lua~      ~override~ // Lua file read by EEex, p
     pattern = ~~~~~0x4000~~~~~
     string = EVAL ~~~~~%gallant_ids%~~~~~ //"
   END
+
+COPY_EXISTING ~LUPA0.2DA~ ~OVERRIDE/LUC0GALL.2DA~
+LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL923~ END
+LPF patch_add_hla STR_VAR 2da_row = ~C0GALL6~ ability = ~AP_SPCL920~ num_allowed = 1 END

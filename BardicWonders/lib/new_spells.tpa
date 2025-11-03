@@ -654,7 +654,6 @@ COPY_EXISTING ~C0BW601.SPL~ ~OVERRIDE/C0GA601.SPL~
 WRITE_SHORT 0X1C 2
   
 COPY_EXISTING ~C0GALLAN.2DA~ ~OVERRIDE~
-  LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = GA_C0BDI00 END // Inspirations
   LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = AP_C0GALL3 END // Inspirations
 
 ACTION_FOR_EACH description IN 

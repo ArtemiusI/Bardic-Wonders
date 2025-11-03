@@ -352,17 +352,16 @@ COPY_EXISTING ~luabbr.2da~ ~override~
 	  END
 	END
 	
-COPY_EXISTING ~LUPA0.2DA~ ~OVERRIDE/LUC0GALL.2DA~
+COPY_EXISTING ~LUC0GALL.2DA~ ~OVERRIDE~
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL901~ END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL903~ END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL907~ END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL909~ END
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL923~ END
 LPF patch_add_hla STR_VAR 2da_row = ~C0GALL1~ ability = ~GA_C0BWHL3~ num_allowed = 3 END	
-LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD4~ ability = ~GA_C0BWHL4~ num_allowed = 3 END	
-LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD5~ ability = ~GA_C0BWHL5~ num_allowed = 3 END	
-LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD8~ ability = ~GA_C0BWHL2~ num_allowed = 16 END	
-LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD0~ ability = ~AP_C0BWHL8~ num_allowed = 1 END	
-LPF patch_add_hla STR_VAR 2da_row = ~C0MGBD0~ ability = ~AP_SPCL920~ num_allowed = 1 END
+LPF patch_add_hla STR_VAR 2da_row = ~C0GALL2~ ability = ~GA_C0BWHL4~ num_allowed = 3 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0GALL3~ ability = ~GA_C0BWHL5~ num_allowed = 3 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0GALL4~ ability = ~GA_C0BWHL2~ num_allowed = 16 END	
+LPF patch_add_hla STR_VAR 2da_row = ~C0GALL5~ ability = ~AP_C0BWHL8~ num_allowed = 1 END	
 
 END
