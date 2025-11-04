@@ -40,7 +40,7 @@ COPY_EXISTING ~alignmnt.2da~ ~override~
 
 ACTION_IF MOD_IS_INSTALLED ~BardicWonders.tp2~ ~2003~ BEGIN
 ACTION_FOR_EACH description IN 
-    blclatxt  
+    bgclatxt  
     clastext  
     sodcltxt 
   BEGIN

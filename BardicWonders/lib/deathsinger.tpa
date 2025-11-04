@@ -224,7 +224,7 @@ Saving Throw: Neg.
 
 The caster touches the target creature with a hand infused with necromantic energy. The target creature must make a Save vs. Death at -2 or die instantly. A successful save still results in the target taking 10d6 points of magical damage.~
 
-COPY_EXISTING ~SPSH004.spl~ ~override/C0DESP7.spl~
+COPY_EXISTING ~C0DESP7.spl~ ~override/C0DESP7.spl~
 LPF ALTER_EFFECT
 	INT_VAR
 		match_opcode = 142
@@ -235,28 +235,28 @@ END
 LPF ALTER_EFFECT
 	INT_VAR
 		match_opcode = 139
-		match_parameter1 = RESOLVE_STR_REF (~A minor animal spirit answers your call.~)
+		match_parameter1 = 253006
 		parameter1 = RESOLVE_STR_REF (~A 3 HD skeleton answers your call.~)
 		silent = 1
 END
 LPF ALTER_EFFECT
 	INT_VAR
 		match_opcode = 139
-		match_parameter1 = RESOLVE_STR_REF (~A major animal spirit answers your call.~)
+		match_parameter1 = 253007
 		parameter1 = RESOLVE_STR_REF (~A 5 HD skeleton answers your call.~)
 		silent = 1
 END
 LPF ALTER_EFFECT
 	INT_VAR
 		match_opcode = 139
-		match_parameter1 = RESOLVE_STR_REF (~A minor nature spirit answers your call.~)
+		match_parameter1 = 253008
 		parameter1 = RESOLVE_STR_REF (~A 7 HD skeleton answers your call.~)
 		silent = 1
 END
 LPF ALTER_EFFECT
 	INT_VAR
 		match_opcode = 139
-		match_parameter1 = RESOLVE_STR_REF (~A major nature spirit answers your call.~)
+		match_parameter1 = 253009
 		parameter1 = RESOLVE_STR_REF (~A 9 HD skeleton answers your call.~)
 		silent = 1
 END

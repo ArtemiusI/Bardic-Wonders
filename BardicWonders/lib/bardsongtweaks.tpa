@@ -625,28 +625,38 @@ COPY_EXISTING ~enginest.2da~ ~override~
   PRETTY_PRINT_2DA
   BUT_ONLY
   
-OUTER_SPRINT old_bard_song ~– May use Bard Song ability.~ //old text
-
-OUTER_SPRINT new_bard_song ~The Bard's Song may be used an unlimited number of times, and lasts for 6 rounds + 1 round per 5 levels gained. The Bard Song has a cooldown of 1 turn before it may be used again.~ //new text
-
-// Set the strref for the specific game first
-ACTION_IF GAME_IS ~bgee~ BEGIN
-  OUTER_SET bard_strref_song = 9562 // BGEE strref
-END ELSE ACTION_IF GAME_IS ~bg2ee eet~ BEGIN
-  OUTER_SET bard_strref_song = 9562 // BG2EE and EET strref
-END ELSE ACTION_IF GAME_IS ~iwdee~ BEGIN
-  OUTER_SET bard_strref_song = 37236 // IWDEE strref
-END
-
-ACTION_GET_STRREF ~%bard_strref_song%~ bard_description_song
-
-OUTER_PATCH_SAVE bard_description_song ~%bard_description_song%~ BEGIN
-  REPLACE_TEXTUALLY ~%new_bard_song%~ ~~
-  REPLACE_TEXTUALLY ~%old_bard_song%~ ~%old_bard_song% %new_bard_song%~
-END
-
-STRING_SET_EVALUATE ~%bard_strref_song%~ ~%bard_description_song%~
-
+///////////////////////////////////////////////////////////////////////////
+// Update Kit Descriptions                                               //
+///////////////////////////////////////////////////////////////////////////
+ACTION_FOR_EACH description IN 
+    clastext  
+  BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~%description%.2da~ BEGIN
+      COPY_EXISTING ~%description%.2DA~ ~override~
+      COUNT_2DA_COLS col_count
+      COUNT_2DA_ROWS col_count rows
+      FOR (index = 0; index < rows; ++index) BEGIN
+        READ_2DA_ENTRY index 0 col_count row_name
+//BARD
+        PATCH_IF "%row_name%" STRING_EQUAL_CASE "BARD" BEGIN
+          READ_2DA_ENTRY index 4 col_count BARD_desc
+          SPRINT old_BARD ~– May use Bard Song ability.~
+          SPRINT new_BARD ~The Bard's Song may be used an unlimited number of times, and lasts for 6 rounds + 1 round per 5 levels gained. The Bard Song has a cooldown of 1 turn before it may be used again.~
+          GET_STRREF %BARD_desc% BARD_text
+          INNER_PATCH_SAVE BARD_text ~%BARD_text%~ BEGIN
+            REPLACE_TEXTUALLY ~%new_BARD%~ ~~
+            REPLACE_TEXTUALLY ~%old_BARD%~ ~%old_BARD% %new_BARD%~
+          END
+          INNER_ACTION BEGIN
+            STRING_SET_EVALUATE ~%BARD_desc%~ ~%BARD_text%~
+          END
+		END
+		
+      END
+      BUT_ONLY
+    END
+  END
+  
 COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all spell files
 LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 99 match_parameter2 = 2 match_parameter1 = 200 parameter1 = 110 END
 LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 99 match_parameter2 = 2 match_parameter1 = 300 parameter1 = 120 END

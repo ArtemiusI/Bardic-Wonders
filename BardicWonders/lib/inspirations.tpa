@@ -38,11 +38,12 @@ ACTION_FOR_EACH description IN
         PATCH_IF "%row_name%" STRING_EQUAL_CASE "BARD" BEGIN
           READ_2DA_ENTRY index 4 col_count bard_desc
           SPRINT old_bard ~– May use Bard Song ability.~
-          SPRINT new_bard ~– May use Bardic Inspirations. Inspirations provide various benefits that persist so long as they are within visual range of the bard.
-– May use Bard Song ability.~
+          SPRINT new_bard ~– May use Bardic Inspirations. Inspirations provide various benefits that persist so long as they are within visual range of the bard.~
           GET_STRREF %bard_desc% bard_text
           INNER_PATCH_SAVE bard_text ~%bard_text%~ BEGIN
-            REPLACE_TEXTUALLY ~%old_bard%~ ~%new_bard%~
+            REPLACE_TEXTUALLY ~%new_bard%~ ~~
+            REPLACE_TEXTUALLY ~%old_bard%~ ~%old_bard% 
+%new_bard%~
           END
           INNER_ACTION BEGIN
             STRING_SET_EVALUATE ~%bard_desc%~ ~%bard_text%~
