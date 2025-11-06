@@ -1,4 +1,3 @@
-COPY ~%MOD_FOLDER%/gallant/2das~ ~override~
 COPY ~%MOD_FOLDER%/gallant/spells~ ~override~
 
 COPY_EXISTING ~CLABPA01.2DA~ ~OVERRIDE/C0GALLAN.2DA~

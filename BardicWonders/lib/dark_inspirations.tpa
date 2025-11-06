@@ -30,6 +30,8 @@ LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Inspire Dominance~) S
 
 COPY_EXISTING C0BDS01.SPL OVERRIDE
 SAY NAME1 ~Inspire Wrath~
+SAY UNIDENTIFIED_DESC ~Inspire Wrath
+Allies gain a +2 bonus to minimum damage rolls, but a -1 penalty to Armor Class. Bonuses and penalties increase to +3/-1 at 8th level, +4/-2 at 15th level and +5/-2 at 22nd level.~
       LPF ALTER_EFFECT
       INT_VAR
 	    match_opcode = 139
@@ -51,6 +53,8 @@ COPY_EXISTING ~C0BDS01b.spl~ ~override~
 
 COPY_EXISTING C0BDS02.SPL OVERRIDE
 SAY NAME1 ~Inspire Ambition~
+SAY UNIDENTIFIED_DESC ~Inspire Ambition
+Allies gain +1 to Casting Level and +10% to Spell Duration. Bonuses increase to +2 and +20% respectively at 10th level and +3 and +30% respectively at 17th level.~
       LPF ALTER_EFFECT
       INT_VAR
 	    match_opcode = 139
@@ -72,6 +76,8 @@ COPY_EXISTING ~C0BDS02b.spl~ ~override~
 
 COPY_EXISTING C0BDS03.SPL OVERRIDE
 SAY NAME1 ~Inspire Preservation~
+SAY UNIDENTIFIED_DESC ~Inspire Preservation
+Allies gain +2% Magic Resistance. Bonuses increase to +5% at 10th level, +7% at 15th level and +10% at 20th level.~
       LPF ALTER_EFFECT
       INT_VAR
 	    match_opcode = 139
@@ -93,6 +99,8 @@ COPY_EXISTING ~C0BDS03b.spl~ ~override~
 
 COPY_EXISTING C0BDS04.SPL OVERRIDE
 SAY NAME1 ~Inspire Voracity~
+SAY UNIDENTIFIED_DESC ~Inspire Voracity
+Allies' attacks drain targets for 1 hit point. Drain amount increases to 2 hit points at 17th level and 3 hit points at 24th level.~
       LPF ALTER_EFFECT
       INT_VAR
 	    match_opcode = 139
@@ -153,6 +161,8 @@ COPY_EXISTING ~C0BDS04E.spl~ ~override~
 
 COPY_EXISTING C0BDS05.SPL OVERRIDE
 SAY NAME1 ~Inspire Audacity~
+SAY UNIDENTIFIED_DESC ~Inspire Audacity
+Allies gain +1 to Backstab and Critical Hit Modifiers.~
       LPF ALTER_EFFECT
       INT_VAR
 	    match_opcode = 139
@@ -174,6 +184,8 @@ COPY_EXISTING ~C0BDS05b.spl~ ~override~
 
 COPY_EXISTING C0BDS06.SPL OVERRIDE
 SAY NAME1 ~Inspire Dominance~
+SAY UNIDENTIFIED_DESC ~Inspire Dominance
+Allies gain a +15% bonus to damage dealt from all sources.~
       LPF ALTER_EFFECT
       INT_VAR
 	    match_opcode = 139
