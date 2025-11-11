@@ -224,11 +224,11 @@ Inspire Courage (1st level): Allies gain +1 to hit rolls and increased morale. B
 
 Inspire Competence (3rd level): Allies gain +10 to Lore and Thieving Skills. Bonuses increase to +20 at 10th level and +30 at 17th level.
 
-Inspire Defense (6th level): Allies gain +2 to Armor Class. Bonuses increase to +3 at 14th level, +4 at 22nd level.
+Inspire Defense (6th level): Allies gain +2 to Armor Class vs. all weapon types. Bonuses increase to +3 at 14th level, +4 at 22nd level.
 
-Inspire Regeneration (10th level): Allies regenerate for 1 hit point per 2 rounds. Regeneration increases to 2 hit points at 17th level and 3 hit points at 24th level.
+Inspire Regeneration (10th level): Allies regenerate for 1 hit point per 2 rounds. Regeneration increases to 2 hit points at 18th level and 3 hit points at 26th level.
 
-Inspire Toughness (12th level): Allies gain +2 to all Saving Throws. Bonuses increase to +3 at 17th level and +4 at 24th level.
+Inspire Toughness (12th level): Allies gain +2 to all Saving Throws. Bonuses increase to +3 at 21st level and +4 at 30th level.
 
 Inspire Alacrity (20th level): Allies gain +1 to casting speed. Bonuses increases to +2 to casting speed at 40th level.~
 
@@ -238,8 +238,27 @@ SAY UNIDENTIFIED_DESC ~Inspire Courage
 Allies gain +1 to hit rolls and increased morale. Bonuses to hit increase to +2 at 8th level, +3 at 15th level and +4 at 22nd level.~
       LPF ALTER_EFFECT
       INT_VAR
+      header = 0
 	    match_opcode = 139
-		parameter1 = RESOLVE_STR_REF (~Inspiring Courage~ [ACT_01])
+		parameter1 = RESOLVE_STR_REF (~Inspiring Courage—allies gain +1 to hit rolls and morale~ [ACT_01])
+      END
+      LPF ALTER_EFFECT
+      INT_VAR
+      header = 1
+	    match_opcode = 139
+		parameter1 = RESOLVE_STR_REF (~Inspiring Courage—allies gain +2 to hit rolls and morale~ [ACT_01])
+      END
+      LPF ALTER_EFFECT
+      INT_VAR
+      header = 2
+	    match_opcode = 139
+		parameter1 = RESOLVE_STR_REF (~Inspiring Courage—allies gain +3 to hit rolls and morale~ [ACT_01])
+      END
+      LPF ALTER_EFFECT
+      INT_VAR
+      header = 0
+	    match_opcode = 139
+		parameter1 = RESOLVE_STR_REF (~Inspiring Courage—allies gain +4 to hit rolls and morale~ [ACT_01])
       END
 	  
 COPY_EXISTING ~C0BDI01a.spl~ ~override~
@@ -262,7 +281,20 @@ Allies gain +10 to Lore and Thieving Skills. Bonuses increase to +20 at 10th lev
       LPF ALTER_EFFECT
       INT_VAR
 	    match_opcode = 139
-		parameter1 = RESOLVE_STR_REF (~Inspiring Competence~ [ACT_01])
+      header = 0
+		parameter1 = RESOLVE_STR_REF (~Inspiring Competence—allies gain +10 to Lore and all Thieving Skills~ [ACT_01])
+      END
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+      header = 1
+		parameter1 = RESOLVE_STR_REF (~Inspiring Competence—allies gain +20 to Lore and all Thieving Skills~ [ACT_01])
+      END
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+      header = 2
+		parameter1 = RESOLVE_STR_REF (~Inspiring Competence—allies gain +30 to Lore and all Thieving Skills~ [ACT_01])
       END
 	  
 COPY_EXISTING ~C0BDI02a.spl~ ~override~
@@ -281,11 +313,24 @@ COPY_EXISTING ~C0BDI02b.spl~ ~override~
 COPY_EXISTING C0BDI03.SPL OVERRIDE
 SAY NAME1 ~Inspire Defense~
 SAY UNIDENTIFIED_DESC ~Inspire Defense
-Allies gain +2 to Armor Class. Bonuses increase to +3 at 14th level, +4 at 22nd level.~
+Allies gain +2 to Armor Class vs. all weapon types. Bonuses increase to +3 at 14th level, +4 at 22nd level.~
       LPF ALTER_EFFECT
       INT_VAR
 	    match_opcode = 139
-		parameter1 = RESOLVE_STR_REF (~Inspiring Defense~ [ACT_01])
+      header = 0
+		parameter1 = RESOLVE_STR_REF (~Inspiring Defense—allies gain +2 to Armor Class vs. all weapons~ [ACT_01])
+      END
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+      header = 1
+		parameter1 = RESOLVE_STR_REF (~Inspiring Defense—allies gain +3 to Armor Class vs. all weapons~ [ACT_01])
+      END
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+      header = 2
+		parameter1 = RESOLVE_STR_REF (~Inspiring Defense—allies gain +4 to Armor Class vs. all weapons~ [ACT_01])
       END
 	  
 COPY_EXISTING ~C0BDI03a.spl~ ~override~
@@ -308,7 +353,20 @@ Allies regenerate for 1 hit point per 2 rounds. Regeneration increases to 2 hit 
       LPF ALTER_EFFECT
       INT_VAR
 	    match_opcode = 139
-		parameter1 = RESOLVE_STR_REF (~Inspiring Regeneration~ [ACT_01])
+      header = 0
+		parameter1 = RESOLVE_STR_REF (~Inspiring Regeneration—allies regenerate 1 hit point per 2 rounds~ [ACT_01])
+      END
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+      header = 1
+		parameter1 = RESOLVE_STR_REF (~Inspiring Regeneration—allies regenerate 2 hit points per 2 rounds~ [ACT_01])
+      END
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+      header = 2
+		parameter1 = RESOLVE_STR_REF (~Inspiring Regeneration—allies regenerate 3 hit points per 2 rounds~ [ACT_01])
       END
 	  
 COPY_EXISTING ~C0BDI04a.spl~ ~override~
@@ -327,11 +385,24 @@ COPY_EXISTING ~C0BDI04b.spl~ ~override~
 COPY_EXISTING C0BDI05.SPL OVERRIDE
 SAY NAME1 ~Inspire Toughness~
 SAY UNIDENTIFIED_DESC ~Inspire Toughness
-Allies gain +2 to all Saving Throws. Bonuses increase to +3 at 17th level and +4 at 24th level.~
+Allies gain +2 to all Saving Throws. Bonuses increase to +3 at 21st level and +4 at 30th level.~
       LPF ALTER_EFFECT
       INT_VAR
 	    match_opcode = 139
-		parameter1 = RESOLVE_STR_REF (~Inspiring Toughness~ [ACT_01])
+      header = 0
+		parameter1 = RESOLVE_STR_REF (~Inspiring Toughness—allies gain +2 to all Saving Throws~ [ACT_01])
+      END
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+      header = 1
+		parameter1 = RESOLVE_STR_REF (~Inspiring Toughness—allies gain +3 to all Saving Throws~ [ACT_01])
+      END
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+      header = 2
+		parameter1 = RESOLVE_STR_REF (~Inspiring Toughness—allies gain +4 to all Saving Throws~ [ACT_01])
       END
 	  
 COPY_EXISTING ~C0BDI05a.spl~ ~override~
@@ -354,7 +425,14 @@ Allies gain +1 to casting speed. Bonuses increases to +2 to casting speed at 40t
       LPF ALTER_EFFECT
       INT_VAR
 	    match_opcode = 139
-		parameter1 = RESOLVE_STR_REF (~Inspiring Alacrity~ [ACT_01])
+      header = 0
+		parameter1 = RESOLVE_STR_REF (~Inspiring Alacrity—allies gain +1 to spellcasting speed~ [ACT_01])
+      END
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+      header = 1
+		parameter1 = RESOLVE_STR_REF (~Inspiring Alacrity—allies gain +2 to spellcasting speed~ [ACT_01])
       END
 	  
 COPY_EXISTING ~C0BDI06a.spl~ ~override~

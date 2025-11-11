@@ -397,23 +397,23 @@ LPF ADD_ITEM_EFFECT INT_VAR header = 2 opcode = 147 parameter1 = 1 STR_VAR resou
     END
 BUT_ONLY
 
-LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW101~ class_include=~{'BARD', }~ END
-LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW102~ class_include=~{'BARD', }~ END
-LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW103~ class_include=~{'BARD', }~ END
-LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW201~ class_include=~{'BARD', }~ END
-LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW202~ class_include=~{'BARD', }~ END
-LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW203~ class_include=~{'BARD', }~ END
-LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW301~ class_include=~{'BARD', }~ END
-LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW302~ class_include=~{'BARD', }~ END
-LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW401~ scroll = ~SCRL58~ class_include=~{'BARD', }~ END
-LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW402~ scroll = ~SCRL59~ class_include=~{'BARD', }~ END
-LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW403~ class_include=~{'BARD', }~ END
-LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW501~ scroll = ~SCRL5F~ class_include=~{'BARD', }~ END
-LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW502~ class_include=~{'BARD', }~ END
-LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW601~ class_include=~{'BARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW101~ scroll = ~C0BW101A~ class_include=~{'BARD', }~ kit_include=~{'C0SABARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW102~ scroll = ~C0BW102A~ class_include=~{'BARD', }~ kit_include=~{'C0SABARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW103~ scroll = ~C0BW103A~ class_include=~{'BARD', }~ kit_include=~{'C0SABARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW201~ scroll = ~C0BW201A~ class_include=~{'BARD', }~ kit_include=~{'C0SABARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW202~ scroll = ~C0BW202A~ class_include=~{'BARD', }~ kit_include=~{'C0SABARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW203~ scroll = ~C0BW203A~ class_include=~{'BARD', }~ kit_include=~{'C0SABARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW301~ scroll = ~C0BW301A~ class_include=~{'BARD', }~ kit_include=~{'C0SABARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW302~ scroll = ~C0BW302A~ class_include=~{'BARD', }~ kit_include=~{'C0SABARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW401~ scroll = ~SCRL58~ class_include=~{'BARD', }~ kit_include=~{'C0SABARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW402~ scroll = ~SCRL59~ class_include=~{'BARD', }~ kit_include=~{'C0SABARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW403~ scroll = ~C0BW403A~ class_include=~{'BARD', }~ kit_include=~{'C0SABARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW501~ scroll = ~SCRL5F~ class_include=~{'BARD', }~ kit_include=~{'C0SABARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW502~ scroll = ~C0BW502A~ class_include=~{'BARD', }~ kit_include=~{'C0SABARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW601~ scroll = ~C0BW601A~ class_include=~{'BARD', }~ kit_include=~{'C0SABARD', }~ END
 
 ACTION_IF MOD_IS_INSTALLED ~BardicWonders.tp2~ ~2009~ THEN BEGIN
-LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW101~ kit_include=~{'C0_MAGE_BARD', 'C0_FIGHTER_MAGE_BARD', }~ END
+LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW101~ kit_include=~{'C0_MAGE_BARD', 'C0_MAGE_BARD', 'C0_FIGHTER_MAGE_BARD', }~ END
 LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW102~ kit_include=~{'C0_MAGE_BARD', 'C0_FIGHTER_MAGE_BARD', }~ END
 LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW103~ kit_include=~{'C0_MAGE_BARD', 'C0_FIGHTER_MAGE_BARD', }~ END
 LAF ADD_CLASS_SPELL STR_VAR resref=~C0BW201~ kit_include=~{'C0_MAGE_BARD', 'C0_FIGHTER_MAGE_BARD', }~ END
