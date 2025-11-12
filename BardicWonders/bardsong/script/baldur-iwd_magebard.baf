@@ -7,7 +7,7 @@ IF
     TriggerOverride(Player1,Global("C0IWSONG","LOCALS",1))
 THEN
   RESPONSE #100
-    ActionOverride(Player1,ForceSpellRES("SPCL120",Myself))
+    ActionOverride(Player1,ReallyForceSpellRES("SPCL120",Myself))
     Continue()
 END
 
@@ -20,7 +20,7 @@ IF
     TriggerOverride(Player2,Global("C0IWSONG","LOCALS",1))
 THEN
   RESPONSE #100
-    ActionOverride(Player2,ForceSpellRES("SPCL120",Myself))
+    ActionOverride(Player2,ReallyForceSpellRES("SPCL120",Myself))
     Continue()
 END
 
@@ -33,7 +33,7 @@ IF
     TriggerOverride(Player3,Global("C0IWSONG","LOCALS",1))
 THEN
   RESPONSE #100
-    ActionOverride(Player3,ForceSpellRES("SPCL120",Myself))
+    ActionOverride(Player3,ReallyForceSpellRES("SPCL120",Myself))
     Continue()
 END
 
@@ -46,7 +46,7 @@ IF
     TriggerOverride(Player4,Global("C0IWSONG","LOCALS",1))
 THEN
   RESPONSE #100
-    ActionOverride(Player4,ForceSpellRES("SPCL120",Myself))
+    ActionOverride(Player4,ReallyForceSpellRES("SPCL120",Myself))
     Continue()
 END
 
@@ -59,7 +59,7 @@ IF
     TriggerOverride(Player5,Global("C0IWSONG","LOCALS",1))
 THEN
   RESPONSE #100
-    ActionOverride(Player5,ForceSpellRES("SPCL120",Myself))
+    ActionOverride(Player5,ReallyForceSpellRES("SPCL120",Myself))
     Continue()
 END
 
@@ -72,7 +72,7 @@ IF
     TriggerOverride(Player6,Global("C0IWSONG","LOCALS",1))
 THEN
   RESPONSE #100
-    ActionOverride(Player6,ForceSpellRES("SPCL120",Myself))
+    ActionOverride(Player6,ReallyForceSpellRES("SPCL120",Myself))
     Continue()
 END
 
@@ -85,7 +85,7 @@ IF
     TriggerOverride(Player1,Global("C0IWSONG","LOCALS",2))
 THEN
   RESPONSE #100
-    ActionOverride(Player1,ForceSpellRES("SPCL115",Myself))
+    ActionOverride(Player1,ReallyForceSpellRES("SPCL115",Myself))
     Continue()
 END
 
@@ -98,7 +98,7 @@ IF
     TriggerOverride(Player2,Global("C0IWSONG","LOCALS",2))
 THEN
   RESPONSE #100
-    ActionOverride(Player2,ForceSpellRES("SPCL115",Myself))
+    ActionOverride(Player2,ReallyForceSpellRES("SPCL115",Myself))
     Continue()
 END
 
@@ -111,7 +111,7 @@ IF
     TriggerOverride(Player3,Global("C0IWSONG","LOCALS",2))
 THEN
   RESPONSE #100
-    ActionOverride(Player3,ForceSpellRES("SPCL115",Myself))
+    ActionOverride(Player3,ReallyForceSpellRES("SPCL115",Myself))
     Continue()
 END
 
@@ -124,7 +124,7 @@ IF
     TriggerOverride(Player4,Global("C0IWSONG","LOCALS",2))
 THEN
   RESPONSE #100
-    ActionOverride(Player4,ForceSpellRES("SPCL115",Myself))
+    ActionOverride(Player4,ReallyForceSpellRES("SPCL115",Myself))
     Continue()
 END
 
@@ -137,7 +137,7 @@ IF
     TriggerOverride(Player5,Global("C0IWSONG","LOCALS",2))
 THEN
   RESPONSE #100
-    ActionOverride(Player5,ForceSpellRES("SPCL115",Myself))
+    ActionOverride(Player5,ReallyForceSpellRES("SPCL115",Myself))
     Continue()
 END
 
@@ -150,7 +150,7 @@ IF
     TriggerOverride(Player6,Global("C0IWSONG","LOCALS",2))
 THEN
   RESPONSE #100
-    ActionOverride(Player6,ForceSpellRES("SPCL115",Myself))
+    ActionOverride(Player6,ReallyForceSpellRES("SPCL115",Myself))
     Continue()
 END
 
@@ -163,7 +163,7 @@ IF
     TriggerOverride(Player1,Global("C0IWSONG","LOCALS",3))
 THEN
   RESPONSE #100
-    ActionOverride(Player1,ForceSpellRES("SPCL116",Myself))
+    ActionOverride(Player1,ReallyForceSpellRES("SPCL116",Myself))
     Continue()
 END
 
@@ -176,7 +176,7 @@ IF
     TriggerOverride(Player2,Global("C0IWSONG","LOCALS",3))
 THEN
   RESPONSE #100
-    ActionOverride(Player2,ForceSpellRES("SPCL116",Myself))
+    ActionOverride(Player2,ReallyForceSpellRES("SPCL116",Myself))
     Continue()
 END
 
@@ -189,7 +189,7 @@ IF
     TriggerOverride(Player3,Global("C0IWSONG","LOCALS",3))
 THEN
   RESPONSE #100
-    ActionOverride(Player3,ForceSpellRES("SPCL116",Myself))
+    ActionOverride(Player3,ReallyForceSpellRES("SPCL116",Myself))
     Continue()
 END
 
@@ -202,7 +202,7 @@ IF
     TriggerOverride(Player4,Global("C0IWSONG","LOCALS",3))
 THEN
   RESPONSE #100
-    ActionOverride(Player4,ForceSpellRES("SPCL116",Myself))
+    ActionOverride(Player4,ReallyForceSpellRES("SPCL116",Myself))
     Continue()
 END
 
@@ -215,7 +215,7 @@ IF
     TriggerOverride(Player5,Global("C0IWSONG","LOCALS",3))
 THEN
   RESPONSE #100
-    ActionOverride(Player5,ForceSpellRES("SPCL116",Myself))
+    ActionOverride(Player5,ReallyForceSpellRES("SPCL116",Myself))
     Continue()
 END
 
@@ -228,7 +228,7 @@ IF
     TriggerOverride(Player6,Global("C0IWSONG","LOCALS",3))
 THEN
   RESPONSE #100
-    ActionOverride(Player6,ForceSpellRES("SPCL116",Myself))
+    ActionOverride(Player6,ReallyForceSpellRES("SPCL116",Myself))
     Continue()
 END
 
@@ -241,7 +241,7 @@ IF
     TriggerOverride(Player1,Global("C0IWSONG","LOCALS",4))
 THEN
   RESPONSE #100
-    ActionOverride(Player1,ForceSpellRES("SPCL117",Myself))
+    ActionOverride(Player1,ReallyForceSpellRES("SPCL117",Myself))
     Continue()
 END
 
@@ -254,7 +254,7 @@ IF
     TriggerOverride(Player2,Global("C0IWSONG","LOCALS",4))
 THEN
   RESPONSE #100
-    ActionOverride(Player2,ForceSpellRES("SPCL117",Myself))
+    ActionOverride(Player2,ReallyForceSpellRES("SPCL117",Myself))
     Continue()
 END
 
@@ -267,7 +267,7 @@ IF
     TriggerOverride(Player3,Global("C0IWSONG","LOCALS",4))
 THEN
   RESPONSE #100
-    ActionOverride(Player3,ForceSpellRES("SPCL117",Myself))
+    ActionOverride(Player3,ReallyForceSpellRES("SPCL117",Myself))
     Continue()
 END
 
@@ -280,7 +280,7 @@ IF
     TriggerOverride(Player4,Global("C0IWSONG","LOCALS",4))
 THEN
   RESPONSE #100
-    ActionOverride(Player4,ForceSpellRES("SPCL117",Myself))
+    ActionOverride(Player4,ReallyForceSpellRES("SPCL117",Myself))
     Continue()
 END
 
@@ -293,7 +293,7 @@ IF
     TriggerOverride(Player5,Global("C0IWSONG","LOCALS",4))
 THEN
   RESPONSE #100
-    ActionOverride(Player5,ForceSpellRES("SPCL117",Myself))
+    ActionOverride(Player5,ReallyForceSpellRES("SPCL117",Myself))
     Continue()
 END
 
@@ -306,7 +306,7 @@ IF
     TriggerOverride(Player6,Global("C0IWSONG","LOCALS",4))
 THEN
   RESPONSE #100
-    ActionOverride(Player6,ForceSpellRES("SPCL117",Myself))
+    ActionOverride(Player6,ReallyForceSpellRES("SPCL117",Myself))
     Continue()
 END
 
@@ -319,7 +319,7 @@ IF
     TriggerOverride(Player1,Global("C0IWSONG","LOCALS",5))
 THEN
   RESPONSE #100
-    ActionOverride(Player1,ForceSpellRES("SPCL118",Myself))
+    ActionOverride(Player1,ReallyForceSpellRES("SPCL118",Myself))
     Continue()
 END
 
@@ -332,7 +332,7 @@ IF
     TriggerOverride(Player2,Global("C0IWSONG","LOCALS",5))
 THEN
   RESPONSE #100
-    ActionOverride(Player2,ForceSpellRES("SPCL118",Myself))
+    ActionOverride(Player2,ReallyForceSpellRES("SPCL118",Myself))
     Continue()
 END
 
@@ -345,7 +345,7 @@ IF
     TriggerOverride(Player3,Global("C0IWSONG","LOCALS",5))
 THEN
   RESPONSE #100
-    ActionOverride(Player3,ForceSpellRES("SPCL118",Myself))
+    ActionOverride(Player3,ReallyForceSpellRES("SPCL118",Myself))
     Continue()
 END
 
@@ -358,7 +358,7 @@ IF
     TriggerOverride(Player4,Global("C0IWSONG","LOCALS",5))
 THEN
   RESPONSE #100
-    ActionOverride(Player4,ForceSpellRES("SPCL118",Myself))
+    ActionOverride(Player4,ReallyForceSpellRES("SPCL118",Myself))
     Continue()
 END
 
@@ -371,7 +371,7 @@ IF
     TriggerOverride(Player5,Global("C0IWSONG","LOCALS",5))
 THEN
   RESPONSE #100
-    ActionOverride(Player5,ForceSpellRES("SPCL118",Myself))
+    ActionOverride(Player5,ReallyForceSpellRES("SPCL118",Myself))
     Continue()
 END
 
@@ -384,7 +384,7 @@ IF
     TriggerOverride(Player6,Global("C0IWSONG","LOCALS",5))
 THEN
   RESPONSE #100
-    ActionOverride(Player6,ForceSpellRES("SPCL118",Myself))
+    ActionOverride(Player6,ReallyForceSpellRES("SPCL118",Myself))
     Continue()
 END
 
@@ -397,7 +397,7 @@ IF
     TriggerOverride(Player1,Global("C0IWSONG","LOCALS",6))
 THEN
   RESPONSE #100
-    ActionOverride(Player1,ForceSpellRES("SPCL119",Myself))
+    ActionOverride(Player1,ReallyForceSpellRES("SPCL119",Myself))
     Continue()
 END
 
@@ -410,7 +410,7 @@ IF
     TriggerOverride(Player2,Global("C0IWSONG","LOCALS",6))
 THEN
   RESPONSE #100
-    ActionOverride(Player2,ForceSpellRES("SPCL119",Myself))
+    ActionOverride(Player2,ReallyForceSpellRES("SPCL119",Myself))
     Continue()
 END
 
@@ -423,7 +423,7 @@ IF
     TriggerOverride(Player3,Global("C0IWSONG","LOCALS",6))
 THEN
   RESPONSE #100
-    ActionOverride(Player3,ForceSpellRES("SPCL119",Myself))
+    ActionOverride(Player3,ReallyForceSpellRES("SPCL119",Myself))
     Continue()
 END
 
@@ -436,7 +436,7 @@ IF
     TriggerOverride(Player4,Global("C0IWSONG","LOCALS",6))
 THEN
   RESPONSE #100
-    ActionOverride(Player4,ForceSpellRES("SPCL119",Myself))
+    ActionOverride(Player4,ReallyForceSpellRES("SPCL119",Myself))
     Continue()
 END
 
@@ -449,7 +449,7 @@ IF
     TriggerOverride(Player5,Global("C0IWSONG","LOCALS",6))
 THEN
   RESPONSE #100
-    ActionOverride(Player5,ForceSpellRES("SPCL119",Myself))
+    ActionOverride(Player5,ReallyForceSpellRES("SPCL119",Myself))
     Continue()
 END
 
@@ -462,6 +462,6 @@ IF
     TriggerOverride(Player6,Global("C0IWSONG","LOCALS",6))
 THEN
   RESPONSE #100
-    ActionOverride(Player6,ForceSpellRES("SPCL119",Myself))
+    ActionOverride(Player6,ReallyForceSpellRES("SPCL119",Myself))
     Continue()
 END
