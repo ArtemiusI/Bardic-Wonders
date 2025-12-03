@@ -6,5 +6,5 @@ COPY_EXISTING ~#bonecir.spl~ ~override~
 END
 
 COPY_EXISTING_REGEXP GLOB ~.*\.spl~ ~override~ //copies all spell files
-LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 142 match_parameter2 = 40 timing = 10 opcode = 215 target = 1 parameter2 = 1  STR_VAR insert = first resource = C0BSNGEF END
+LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 142 match_parameter2 = 40 timing = 10 opcode = 326 target = 1 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0BSNGEF END
 BUT_ONLY
