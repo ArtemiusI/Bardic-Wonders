@@ -147,6 +147,7 @@ LAF SIMPLE_ADD_HLA
 INT_VAR
   class = 5
 STR_VAR 
+    2da_row = C0BWHL3
     ability = GA_C0BWHL3       // New ability being added
     num_allowed = 3
   END
@@ -155,6 +156,7 @@ LAF SIMPLE_ADD_HLA
 INT_VAR
   class = 5
 STR_VAR 
+    2da_row = C0BWHL4
     ability = GA_C0BWHL4       // New ability being added
     num_allowed = 3
   END
@@ -163,6 +165,7 @@ LAF SIMPLE_ADD_HLA
 INT_VAR
   class = 5
 STR_VAR 
+    2da_row = C0BWHL5
     ability = GA_C0BWHL5       // New ability being added
     num_allowed = 3
   END
@@ -171,6 +174,7 @@ LAF SIMPLE_ADD_HLA
 INT_VAR
   class = 5
 STR_VAR 
+    2da_row = C0BWHL7
     ability = AP_C0BWHL7       // New ability being added
     num_allowed = 1
   END
@@ -179,6 +183,7 @@ LAF SIMPLE_ADD_HLA
 INT_VAR
   class = 5
 STR_VAR 
+    2da_row = C0BWHL1
     ability = AP_C0BWHL1       // New ability being added
     num_allowed = 1
 	prerequisite = AP_C0BWHL7
@@ -188,6 +193,7 @@ LAF SIMPLE_ADD_HLA
 INT_VAR
   class = 5
 STR_VAR 
+    2da_row = C0BWHL2
     ability = GA_C0BWHL2       // New ability being added
     num_allowed = 16
   END
@@ -196,6 +202,7 @@ LAF SIMPLE_ADD_HLA
 INT_VAR
   class = 5
 STR_VAR 
+    2da_row = C0BWHL6
     ability = GA_C0BWHL6       // New ability being added
     num_allowed = 1
   END
@@ -204,6 +211,7 @@ LAF SIMPLE_ADD_HLA
 INT_VAR
   class = 5
 STR_VAR 
+    2da_row = C0BWHL8
     ability = AP_C0BWHL8       // New ability being added
     num_allowed = 1
   END
@@ -262,6 +270,7 @@ LAF SIMPLE_ADD_HLA
 INT_VAR
   class = 5
 STR_VAR 
+    2da_row = C0BWHL9
     ability = AP_C0BWHL9       // New ability being added
     prerequisite = GA_C0BWHLA
     num_allowed = 1
@@ -271,6 +280,7 @@ LAF SIMPLE_ADD_HLA
 INT_VAR
   class = 5
 STR_VAR 
+    2da_row = C0BWHL0
     ability = AP_C0BWHL0       // New ability being added
     prerequisite = GA_C0BWHLB
     num_allowed = 1
