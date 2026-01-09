@@ -61,7 +61,7 @@ INCLUDE ~%MOD_FOLDER%/LIB/kapellmeister.tpa~
 
 BEGIN ~Bardic Wonders: Gallant Paladin Kit~ DESIGNATED 1012
 GROUP ~Kits~
-REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~EEex_Actionbar.lua~ ~This component requires EEEx.~ //EEX required!
+REQUIRE_PREDICATE (MOD_IS_INSTALLED ~EEEX/EEEX.TP2~ ~0~) //EEX required!
 INCLUDE ~%MOD_FOLDER%/LIB/gallant.tpa~
 
 BEGIN ~Bardic Wonders: Items~ DESIGNATED 2001
@@ -139,7 +139,7 @@ INCLUDE ~%MOD_FOLDER%/LIB/new_spells.tpa~
 
 BEGIN ~Bardic Wonders: Mage/Bard and Fighter/Mage/Bard multi-class (EEex, under thief multis)~ DESIGNATED 2009
 GROUP ~Tweaks & Additions~
-REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~EEex_Actionbar.lua~ ~This component requires EEEx.~ //EEX required!
+REQUIRE_PREDICATE (MOD_IS_INSTALLED ~EEEX/EEEX.TP2~ ~0~) //EEX required!
 INCLUDE ~%MOD_FOLDER%/LIB/mage_bard.tpa~
 
 BEGIN ~Bardic Wonders: 3e Alignment for Bards (any non-lawful)~ DESIGNATED 2010
