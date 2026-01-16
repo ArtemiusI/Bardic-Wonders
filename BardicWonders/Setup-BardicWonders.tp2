@@ -139,7 +139,7 @@ INCLUDE ~%MOD_FOLDER%/LIB/new_spells.tpa~
 
 BEGIN ~Bardic Wonders: Mage/Bard and Fighter/Mage/Bard multi-class (EEex, under thief multis)~ DESIGNATED 2009
 GROUP ~Tweaks & Additions~
-REQUIRE_PREDICATE (MOD_IS_INSTALLED ~EEEX/EEEX.TP2~ ~0~) //EEX required!
+REQUIRE_PREDICATE (MOD_IS_INSTALLED ~EEEX/EEEX.TP2~ ~0~) ~EEex must be installed.~ //EEX required!
 INCLUDE ~%MOD_FOLDER%/LIB/mage_bard.tpa~
 
 BEGIN ~Bardic Wonders: 3e Alignment for Bards (any non-lawful)~ DESIGNATED 2010
