@@ -61,7 +61,7 @@ INCLUDE ~%MOD_FOLDER%/LIB/kapellmeister.tpa~
 
 BEGIN ~Bardic Wonders: Gallant Paladin Kit~ DESIGNATED 1012
 GROUP ~Kits~
-REQUIRE_PREDICATE (MOD_IS_INSTALLED ~EEEX/EEEX.TP2~ ~0~) //EEX required!
+REQUIRE_PREDICATE (MOD_IS_INSTALLED ~EEEX/EEEX.TP2~ ~0~) ~Requires EEex.~
 INCLUDE ~%MOD_FOLDER%/LIB/gallant.tpa~
 
 BEGIN ~Bardic Wonders: Items~ DESIGNATED 2001
