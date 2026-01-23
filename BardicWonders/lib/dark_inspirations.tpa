@@ -4,6 +4,11 @@ ACTION_IF FILE_EXISTS_IN_GAME ~C0SABARD.2DA~ BEGIN
 COPY ~BardicWonders/inspirations/nightsinger~ OVERRIDE
 COPY_EXISTING ~C0SABARD.2DA~ OVERRIDE
   LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = GA_C0BDS00 END // Inspirations
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 3 f_MaxLevel = 3 STR_VAR f_Entry = AP_C0BDST1 END // Inspirations
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 6 f_MaxLevel = 6 STR_VAR f_Entry = AP_C0BDST2 END // Inspirations
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 10 f_MaxLevel = 10 STR_VAR f_Entry = AP_C0BDST3 END // Inspirations
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 12 f_MaxLevel = 12 STR_VAR f_Entry = AP_C0BDST4 END // Inspirations
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 20 f_MaxLevel = 20 STR_VAR f_Entry = AP_C0BDST5 END // Inspirations
 
 COPY_EXISTING C0BDS00.SPL OVERRIDE
 SAY NAME1 ~Dark Inspiration~
@@ -27,6 +32,41 @@ LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Inspire Preservation~
 LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Inspire Voracity~) STR_VAR bam_file = C0BDS0ID RET C0BDS0ID = icon END
 LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Inspire Audacity~) STR_VAR bam_file = C0BDS0IE RET C0BDS0IE = icon END
 LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Inspire Dominance~) STR_VAR bam_file = C0BDS0IF RET C0BDS0IF = icon END
+
+COPY_EXISTING ~C0BDIT1.SPL~ ~OVERRIDE/C0BDIS1.SPL~
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+		parameter1 = RESOLVE_STR_REF (~Gained Inspire Ambition: allies gain bonuses to Casting Level and Spell Duration~ [GAM_11])
+      END
+
+COPY_EXISTING ~C0BDIT1.SPL~ ~OVERRIDE/C0BDIS2.SPL~
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+		parameter1 = RESOLVE_STR_REF (~Gained Inspire Preservation: allies gain bonuses to Magic Resistance~ [GAM_11])
+      END
+
+COPY_EXISTING ~C0BDIT1.SPL~ ~OVERRIDE/C0BDIS3.SPL~
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+		parameter1 = RESOLVE_STR_REF (~Gained Inspire Voracity: allies' attacks drain Hit Points~ [GAM_11])
+      END
+
+COPY_EXISTING ~C0BDIT1.SPL~ ~OVERRIDE/C0BDIS4.SPL~
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+		parameter1 = RESOLVE_STR_REF (~Gained Inspire Audacity: allies gain bonuses Backstab and Critical Hit Modifiers~ [GAM_11])
+      END
+
+COPY_EXISTING ~C0BDIT1.SPL~ ~OVERRIDE/C0BDIS5.SPL~
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+		parameter1 = RESOLVE_STR_REF (~Gained Inspire Dominance: allies gain percentage bonuses to all damage~ [GAM_11])
+      END
 
 COPY_EXISTING C0BDS01.SPL OVERRIDE
 SAY NAME1 ~Inspire Wrath~

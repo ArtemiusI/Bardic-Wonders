@@ -108,7 +108,7 @@ ACTION_FOR_EACH description IN
         PATCH_IF "%row_name%" STRING_EQUAL_CASE "BARD" BEGIN
           READ_2DA_ENTRY index 4 col_count bard_desc
           SPRINT old_bard ~– May not wear armor heavier than chain mail. (Spells cannot be cast while wearing armor.)~
-          SPRINT new_bard ~– May not wear armor heavier than chain mail. (Spells may be cast while wearing armor.)~
+          SPRINT new_bard ~– May not wear armor heavier than chain mail. (Spells may be cast while wearing up to studded leather armor.)~
           GET_STRREF %bard_desc% bard_text
           INNER_PATCH_SAVE bard_text ~%bard_text%~ BEGIN
             REPLACE_TEXTUALLY ~%old_bard%~ ~%new_bard%~

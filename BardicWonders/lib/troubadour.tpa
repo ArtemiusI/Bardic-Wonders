@@ -37,7 +37,6 @@ LAF ADD_KIT_EX
     help          = RESOLVE_STR_REF(~TROUBADOUR: Troubadours are musicians that specialize in lyric poetry. Their songs are often of chivalry and courtly love. In adventuring, troubadour bards are valuable due to their proficiency in healing spells, including songs of rejuvenation that protect their comrades. Women that choose the profession of the troubadour are usually known as trobairitz.
 
 Advantages:
-– May cast spells while wearing armor.
 – The troubadour's Bard Song, "Song of Healing", gradually heals <PRO_HISHER> allies and provides them with resistance to any attempts to impair their movement, magical or otherwise.
 
 1st level: allies regenerate 1 hit point per round and are immune to slows.
@@ -73,7 +72,7 @@ Disadvantages:
   STR_VAR
     kit_name      = ~C0TRB~
 	
-    unusable      = ~0x00010000~
+    unusable      = ~0x00004000~
     // clasweap      = ~1 1 1 1 1 1 1 1~
 	//                                       T   S           F   Q             S S
 	//                                       W   C           L   U             W I
@@ -230,7 +229,6 @@ COPY ~%MOD_FOLDER%/troubadour/c0trbso2.spl~ ~override~
 	  power = 0
 	  savingthrow = 0
   END
-COPY ~%MOD_FOLDER%/troubadour/c0trbps.spl~ ~override~
 COPY ~%MOD_FOLDER%/troubadour/C0TRBINB.bam~ ~override~
 COPY ~%MOD_FOLDER%/troubadour/c0trbin.spl~ ~override~
 SAY NAME1 ~Voice of Peace~

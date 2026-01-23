@@ -5,6 +5,11 @@ ADD_PROJECTILE ~%MOD_FOLDER%/inspirations/c0bdipr.PRO~ ~C0 Inspiration~
 ACTION_IF FILE_EXISTS_IN_GAME ~CLABBA01.2DA~ BEGIN
 COPY_EXISTING ~CLABBA01.2DA~ OVERRIDE
   LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = GA_C0BDI00 END // Inspirations
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 3 f_MaxLevel = 3 STR_VAR f_Entry = AP_C0BDIT1 END // Inspirations
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 6 f_MaxLevel = 6 STR_VAR f_Entry = AP_C0BDIT2 END // Inspirations
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 10 f_MaxLevel = 10 STR_VAR f_Entry = AP_C0BDIT3 END // Inspirations
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 12 f_MaxLevel = 12 STR_VAR f_Entry = AP_C0BDIT4 END // Inspirations
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 20 f_MaxLevel = 20 STR_VAR f_Entry = AP_C0BDIT5 END // Inspirations
 END
 
 DEFINE_ACTION_FUNCTION cd_new_portrait_icon
@@ -37,13 +42,16 @@ ACTION_FOR_EACH description IN
 //bard
         PATCH_IF "%row_name%" STRING_EQUAL_CASE "BARD" BEGIN
           READ_2DA_ENTRY index 4 col_count bard_desc
-          SPRINT old_bard ~– May use Bard Song ability.~
-          SPRINT new_bard ~– May use Bardic Inspirations. Inspirations provide various benefits that persist so long as they are within visual range of the bard.~
+          SPRINT old_bard ~– May use Bard Song ability~
+          SPRINT new_bard ~– May use Bardic Inspirations.
+          
+BARDIC INSPIRATION: A bard's presence serves as an inspiration to their companions, granting them passive bonuses. Inspirations provide various benefits that persist so long as they are within visual range of the bard. The bard begins with Inspire Courage and gains different inspirations on top of stronger effects for existing ones as they grow in level.
+~
           GET_STRREF %bard_desc% bard_text
           INNER_PATCH_SAVE bard_text ~%bard_text%~ BEGIN
             REPLACE_TEXTUALLY ~%new_bard%~ ~~
-            REPLACE_TEXTUALLY ~%old_bard%~ ~%old_bard% 
-%new_bard%~
+            REPLACE_TEXTUALLY ~%old_bard%~ ~%new_bard%
+%old_bard% ~
           END
           INNER_ACTION BEGIN
             STRING_SET_EVALUATE ~%bard_desc%~ ~%bard_text%~
@@ -231,6 +239,41 @@ Inspire Regeneration (10th level): Allies regenerate for 1 hit point per 2 round
 Inspire Toughness (12th level): Allies gain +2 to all Saving Throws. Bonuses increase to +3 at 21st level and +4 at 30th level.
 
 Inspire Alacrity (20th level): Allies gain +1 to casting speed. Bonuses increases to +2 to casting speed at 40th level.~
+
+COPY_EXISTING C0BDIT1.SPL OVERRIDE
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+		parameter1 = RESOLVE_STR_REF (~Gained Inspire Competence: allies gain bonuses to Lore and all Thieving Skills~ [GAM_11])
+      END
+
+COPY_EXISTING ~C0BDIT1.SPL~ ~OVERRIDE/C0BDIT2.SPL~
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+		parameter1 = RESOLVE_STR_REF (~Gained Inspire Defense: allies gain bonuses to Armor Class~ [GAM_11])
+      END
+
+COPY_EXISTING ~C0BDIT1.SPL~ ~OVERRIDE/C0BDIT3.SPL~
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+		parameter1 = RESOLVE_STR_REF (~Gained Inspire Regeneration: allies regenerate Hit Points~ [GAM_11])
+      END
+
+COPY_EXISTING ~C0BDIT1.SPL~ ~OVERRIDE/C0BDIT4.SPL~
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+		parameter1 = RESOLVE_STR_REF (~Gained Inspire Toughness: allies gain bonuses to Saving Throws~ [GAM_11])
+      END
+
+COPY_EXISTING ~C0BDIT1.SPL~ ~OVERRIDE/C0BDIT5.SPL~
+      LPF ALTER_EFFECT
+      INT_VAR
+	    match_opcode = 139
+		parameter1 = RESOLVE_STR_REF (~Gained Inspire Alacrity: allies gain bonuses to casting speed~ [GAM_11])
+      END
 
 COPY_EXISTING C0BDI01.SPL OVERRIDE
 SAY NAME1 ~Inspire Courage~
