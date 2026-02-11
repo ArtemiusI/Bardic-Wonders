@@ -116,6 +116,7 @@ END
 COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player1,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Player1,BARD_ALL)~ ~CheckStatGT(Player1,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Player1,BARD_ALL)~ ~CheckStatGT(Player1,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -133,6 +134,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player2,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Player2,BARD_ALL)~ ~CheckStatGT(Player2,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Player2,BARD_ALL)~ ~CheckStatGT(Player2,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -150,6 +152,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player3,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Player3,BARD_ALL)~ ~CheckStatGT(Player3,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Player3,BARD_ALL)~ ~CheckStatGT(Player3,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -167,6 +170,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player4,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Player4,BARD_ALL)~ ~CheckStatGT(Player4,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Player4,BARD_ALL)~ ~CheckStatGT(Player4,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -184,6 +188,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player5,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Player5,BARD_ALL)~ ~CheckStatGT(Player5,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Player5,BARD_ALL)~ ~CheckStatGT(Player5,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -201,6 +206,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player6,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Player6,BARD_ALL)~ ~CheckStatGT(Player6,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Player6,BARD_ALL)~ ~CheckStatGT(Player6,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -218,12 +224,14 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(LastTalkedToBy,BARD_ALL)~ ~CheckStatGT(LastTalkedToBy,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(LastTalkedToBy,BARD_ALL)~ ~CheckStatGT(LastTalkedToBy,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
                     //Recommended by refactor trigger to fix whitespace
                 END
             END
+            
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy,THIEF_ALL)~) AND (mage_bard_installed = 1) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
                     REPLACE_TEXTUALLY ~^Class(LastTalkedToBy,THIEF_ALL)~ ~Class(LastTalkedToBy,THIEF_ALL) !Kit(LastTalkedToBy,C0_MAGE_BARD) !Kit(LastTalkedToBy,C0_FIGHTER_MAGE_BARD) !Kit(LastTalkedToBy,C0_ILLUSIONIST_BARD) !Kit(LastTalkedToBy,C0_FIGHTER_ILLUSIONIST_BARD)~ //Replace trigger respecting OR and !
@@ -235,6 +243,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Myself,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Myself,BARD_ALL)~ ~CheckStatGT(Myself,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Myself,BARD_ALL)~ ~CheckStatGT(Myself,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -252,6 +261,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy(Myself),BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(LastTalkedToBy(Myself),BARD_ALL)~ ~CheckStatGT(LastTalkedToBy(Myself),0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(LastTalkedToBy(Myself),BARD_ALL)~ ~CheckStatGT(LastTalkedToBy(Myself),0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -268,6 +278,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
             END
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player1,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Player1,BARD)~ ~CheckStatGT(Player1,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Player1,BARD)~ ~CheckStatGT(Player1,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -277,6 +288,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
             
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player2,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Player2,BARD)~ ~CheckStatGT(Player2,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Player2,BARD)~ ~CheckStatGT(Player2,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -286,6 +298,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player3,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Player3,BARD)~ ~CheckStatGT(Player3,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Player3,BARD)~ ~CheckStatGT(Player3,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -295,6 +308,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player4,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Player4,BARD)~ ~CheckStatGT(Player4,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Player4,BARD)~ ~CheckStatGT(Player4,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -304,6 +318,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player5,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Player5,BARD)~ ~CheckStatGT(Player5,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Player5,BARD)~ ~CheckStatGT(Player5,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -313,6 +328,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player6,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Player6,BARD)~ ~CheckStatGT(Player6,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Player6,BARD)~ ~CheckStatGT(Player6,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -322,6 +338,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(LastTalkedToBy,BARD)~ ~CheckStatGT(LastTalkedToBy,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(LastTalkedToBy,BARD)~ ~CheckStatGT(LastTalkedToBy,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -331,6 +348,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Myself,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Myself,BARD)~ ~CheckStatGT(Myself,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Myself,BARD)~ ~CheckStatGT(Myself,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -340,6 +358,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy(Myself),BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(LastTalkedToBy(Myself),BARD)~ ~CheckStatGT(LastTalkedToBy(Myself),0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(LastTalkedToBy(Myself),BARD)~ ~CheckStatGT(LastTalkedToBy(Myself),0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -352,6 +371,7 @@ BUT_ONLY
 COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player1,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Player1,BARD_ALL)~ ~CheckStatGT(Player1,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Player1,BARD_ALL)~ ~CheckStatGT(Player1,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -369,6 +389,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player2,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Player2,BARD_ALL)~ ~CheckStatGT(Player2,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Player2,BARD_ALL)~ ~CheckStatGT(Player2,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -386,6 +407,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player3,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Player3,BARD_ALL)~ ~CheckStatGT(Player3,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Player3,BARD_ALL)~ ~CheckStatGT(Player3,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -403,6 +425,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player4,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Player4,BARD_ALL)~ ~CheckStatGT(Player4,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Player4,BARD_ALL)~ ~CheckStatGT(Player4,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -420,6 +443,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player5,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Player5,BARD_ALL)~ ~CheckStatGT(Player5,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Player5,BARD_ALL)~ ~CheckStatGT(Player5,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -437,6 +461,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player6,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Player6,BARD_ALL)~ ~CheckStatGT(Player6,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Player6,BARD_ALL)~ ~CheckStatGT(Player6,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -454,12 +479,14 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(LastTalkedToBy,BARD_ALL)~ ~CheckStatGT(LastTalkedToBy,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(LastTalkedToBy,BARD_ALL)~ ~CheckStatGT(LastTalkedToBy,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
                     //Recommended by refactor trigger to fix whitespace
                 END
             END
+            
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy,THIEF_ALL)~) AND (mage_bard_installed = 1) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
                     REPLACE_TEXTUALLY ~^Class(LastTalkedToBy,THIEF_ALL)~ ~Class(LastTalkedToBy,THIEF_ALL) !Kit(LastTalkedToBy,C0_MAGE_BARD) !Kit(LastTalkedToBy,C0_FIGHTER_MAGE_BARD) !Kit(LastTalkedToBy,C0_ILLUSIONIST_BARD) !Kit(LastTalkedToBy,C0_FIGHTER_ILLUSIONIST_BARD)~ //Replace trigger respecting OR and !
@@ -471,6 +498,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Myself,BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Myself,BARD_ALL)~ ~CheckStatGT(Myself,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Myself,BARD_ALL)~ ~CheckStatGT(Myself,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -488,6 +516,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy(Myself),BARD_ALL)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(LastTalkedToBy(Myself),BARD_ALL)~ ~CheckStatGT(LastTalkedToBy(Myself),0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(LastTalkedToBy(Myself),BARD_ALL)~ ~CheckStatGT(LastTalkedToBy(Myself),0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -504,6 +533,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
             END
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player1,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Player1,BARD)~ ~CheckStatGT(Player1,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Player1,BARD)~ ~CheckStatGT(Player1,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -513,6 +543,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
             
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player2,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Player2,BARD)~ ~CheckStatGT(Player2,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Player2,BARD)~ ~CheckStatGT(Player2,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -522,6 +553,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player3,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Player3,BARD)~ ~CheckStatGT(Player3,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Player3,BARD)~ ~CheckStatGT(Player3,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -531,6 +563,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player4,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Player4,BARD)~ ~CheckStatGT(Player4,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Player4,BARD)~ ~CheckStatGT(Player4,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -540,6 +573,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player5,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Player5,BARD)~ ~CheckStatGT(Player5,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Player5,BARD)~ ~CheckStatGT(Player5,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -549,6 +583,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Player6,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Player6,BARD)~ ~CheckStatGT(Player6,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Player6,BARD)~ ~CheckStatGT(Player6,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -558,6 +593,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(LastTalkedToBy,BARD)~ ~CheckStatGT(LastTalkedToBy,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(LastTalkedToBy,BARD)~ ~CheckStatGT(LastTalkedToBy,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -567,6 +603,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(Myself,BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(Myself,BARD)~ ~CheckStatGT(Myself,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(Myself,BARD)~ ~CheckStatGT(Myself,0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
@@ -576,6 +613,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs~ ~override~ //Parse through all dlg files
 
             PATCH_IF (RESOURCE_CONTAINS ~%SOURCE_FILE%~ ~Class(LastTalkedToBy(Myself),BARD)~) BEGIN // Check if file is relevant to speed install up tremendously
                 DECOMPILE_AND_PATCH BEGIN
+                    REPLACE_TEXTUALLY ~Class(LastTalkedToBy(Myself),BARD)~ ~CheckStatGT(LastTalkedToBy(Myself),0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                     REPLACE_TEXTUALLY ~^Class(LastTalkedToBy(Myself),BARD)~ ~CheckStatGT(LastTalkedToBy(Myself),0,IS_BARD_CLASS)~ //Replace trigger respecting OR and !
                 END
                 DECOMPILE_AND_PATCH BEGIN
