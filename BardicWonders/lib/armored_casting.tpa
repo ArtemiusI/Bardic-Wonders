@@ -75,10 +75,10 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
 		LPF ADD_ITEM_EQEFFECT
 			INT_VAR
 				silent = 1
-				opcode = 177
+				opcode = 318
 				target = 1
 				parameter1 = IDS_OF_SYMBOL (~KIT~ ~SKALD~)
-				parameter2 = 9
+				parameter2 = 109
 				timing = 2
 			STR_VAR
 				resource = C0ARCAS2
