@@ -81,49 +81,17 @@ BEGIN ~Bardic Wonders: Bard Song Mechanics Tweak~ DESIGNATED 2004
 GROUP ~Tweaks & Additions~
 INCLUDE ~%MOD_FOLDER%/LIB/bardsongtweaks.tpa~
 
-BEGIN ~Bardic Wonders: Item Restriction Tweaks (bards may use mage items and priest scrolls)~ DESIGNATED 2005
+BEGIN ~Bardic Wonders: Item Restriction Tweaks—Bards may use mage items and priest scrolls~ DESIGNATED 2005
 GROUP ~Tweaks & Additions~
+INCLUDE ~%MOD_FOLDER%/LIB/mage_items.tpa~
 
-OUTER_SET C0_ELDRITCH_KNIGHT_EXISTS = 0
+BEGIN ~Bardic Wonders: Item Restriction Tweaks—Bards may use Small and Medium Shields~ DESIGNATED 2012
+GROUP ~Tweaks & Additions~
+INCLUDE ~%MOD_FOLDER%/LIB/shields.tpa~
 
-COPY_EXISTING ~splprot.2da~ ~override~
-    COUNT_2DA_COLS cols
-    READ_2DA_ENTRIES_NOW rows cols
-    FOR (row = 1; row < rows; ++row) BEGIN
-      READ_2DA_ENTRY_FORMER rows row 0 ~stat~
-
-      PATCH_IF ~%stat%~ STRING_EQUAL_CASE ~C0_ELDRITCH_KNIGHT_EQUIPMENT~ BEGIN 
-        SET C0_ELDRITCH_KNIGHT_EQUIPMENT = %row%
-        SET C0_ELDRITCH_KNIGHT_EXISTS = 1
-      END 
-
-    END
-
-
-COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
-  PATCH_IF (SOURCE_SIZE > 0x71) BEGIN // avoid crashing on empty items
-    READ_BYTE    0x1E bard //reads the byte containing the bard usability flag
-    READ_BYTE    0x20 mage //reads the byte containing the mage usability flag
-    PATCH_IF ((mage BAND 0b00000100) = 0b00000000) AND ((bard BAND 0b01000000) = 0b01000000) BEGIN // if it is usable by mages but not bards
-        WRITE_BYTE    0x1E (bard BAND 0b10111111)  // makes usable by bards
-        PATCH_IF (C0_ELDRITCH_KNIGHT_EXISTS = 1) BEGIN
-        LPF CLONE_EFFECT INT_VAR match_opcode = 319 match_parameter2 = C0_ELDRITCH_KNIGHT_EQUIPMENT parameter1 = 5 parameter2 = 5 power = 0 silent = 1 special = RESOLVE_STR_REF (~Bard~) END
-      END
-      END
-    END
-BUT_ONLY
-
-COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
-  PATCH_IF (SOURCE_SIZE > 0x71) BEGIN // avoid crashing on empty items
-    READ_BYTE    0x1E bard //reads the byte containing the bard/cleric usability flag
-    PATCH_IF ((bard BAND 0b10000000) = 0b00000000) BEGIN // if it is usable by clerics
-      READ_SHORT    0x1C type //reads the byte containing item type
-      PATCH_IF (type = 11) BEGIN // if it is a scroll
-        WRITE_BYTE    0x1E (bard BAND 0b10111111)  // makes usable by bards
-      END
-    END
-  END
-BUT_ONLY
+BEGIN ~Bardic Wonders: Item Restriction Tweaks—Bards may use Helmets~ DESIGNATED 2013
+GROUP ~Tweaks & Additions~
+INCLUDE ~%MOD_FOLDER%/LIB/helmets.tpa~
 
 BEGIN ~Bardic Wonders: Bard Song Overhead Visual Effect~ DESIGNATED 2006
 GROUP ~Tweaks & Additions~
@@ -145,6 +113,10 @@ INCLUDE ~%MOD_FOLDER%/LIB/mage_bard.tpa~
 BEGIN ~Bardic Wonders: 3e Alignment for Bards (any non-lawful)~ DESIGNATED 2010
 GROUP ~Tweaks & Additions~
 INCLUDE ~%MOD_FOLDER%/LIB/alignment.tpa~
+
+BEGIN ~Bardic Wonders: Bard Casting Level Begins from 2nd level~ DESIGNATED 2011
+GROUP ~Tweaks & Additions~
+INCLUDE ~%MOD_FOLDER%/LIB/spell_level.tpa~
 
 BEGIN ~Bardic Wonders: Patch Dialogue Class Checks for: Gallant, Mage/Bard and Fighter/Mage/Bard (install late)~ DESIGNATED 3001
 GROUP ~Patches~

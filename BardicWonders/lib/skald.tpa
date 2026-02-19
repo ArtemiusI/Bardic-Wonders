@@ -35,7 +35,7 @@ Advantages:
 HEROIC INSPIRATION: When the skald's maximum hit points falls below 50%, all allies (except the skald) within visual range gain an additional +1 bonus to hit, damage and saving throws.
 
 Disadvantages:
-– The Skald's spells are cast as though a level lower than a normal Bard of the same level.
+– Gains the ability to cast spells at 3rd level instead of 2nd level. The Skald's spells are cast as though a level lower than a normal Bard of the same level.
 – May not Pick Pockets.~
 
 COPY_EXISTING ~thiefscl.2da~ ~override~
