@@ -1,5 +1,6 @@
 
 OUTER_SET C0_ELDRITCH_KNIGHT_EXISTS = 0
+OUTER_SET WARLOCK_EXISTS = 0
 
 COPY_EXISTING ~splprot.2da~ ~override~
     COUNT_2DA_COLS cols
@@ -14,6 +15,12 @@ COPY_EXISTING ~splprot.2da~ ~override~
 
     END
 
+ACTION_IF FILE_EXISTS_IN_GAME ~C0WL000.SPL~ THEN BEGIN
+
+OUTER_SET WARLOCK_EXISTS = 1
+
+    END
+
 COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
   PATCH_IF (SOURCE_SIZE > 0x71) BEGIN // avoid crashing on empty items
     READ_BYTE    0x1E bard //reads the byte containing the bard usability flag
@@ -24,6 +31,9 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
         LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter2 = C0_ELDRITCH_KNIGHT_EQUIPMENT match_special = RESOLVE_STR_REF (~Bard~) END 
         LPF CLONE_EFFECT INT_VAR match_opcode = 319 match_parameter2 = C0_ELDRITCH_KNIGHT_EQUIPMENT parameter1 = 5 parameter2 = 5 power = 0 silent = 1 special = RESOLVE_STR_REF (~Bard~) END
       END
+        PATCH_IF (WARLOCK_EXISTS = 1) BEGIN
+        LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 timing = 2 parameter1 = (IDS_OF_SYMBOL (~kit~ ~C0WLOCK~)) parameter2 = 9 power = 0 special = RESOLVE_STR_REF (~Warlock~) END
+      END
       END
     END
 BUT_ONLY
@@ -31,10 +41,13 @@ BUT_ONLY
 COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
   PATCH_IF (SOURCE_SIZE > 0x71) BEGIN // avoid crashing on empty items
     READ_BYTE    0x1E bard //reads the byte containing the bard/cleric usability flag
-    PATCH_IF ((bard BAND 0b10000000) = 0b00000000) BEGIN // if it is usable by clerics
+    PATCH_IF ((bard BAND 0b10000000) = 0b00000000) AND ((bard BAND 0b01000000) = 0b01000000) BEGIN // if it is usable by clerics
       READ_SHORT    0x1C type //reads the byte containing item type
       PATCH_IF (type = 11) BEGIN // if it is a scroll
         WRITE_BYTE    0x1E (bard BAND 0b10111111)  // makes usable by bards
+      END
+      PATCH_IF (type = 11) AND (WARLOCK_EXISTS = 1) BEGIN // if it is a scroll
+        LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 timing = 2 parameter1 = (IDS_OF_SYMBOL (~kit~ ~C0WLOCK~)) parameter2 = 9 power = 0 special = RESOLVE_STR_REF (~Warlock~) END
       END
     END
   END

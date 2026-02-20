@@ -1,3 +1,10 @@
+
+ACTION_IF FILE_EXISTS_IN_GAME ~C0WL000.SPL~ THEN BEGIN
+
+OUTER_SET WARLOCK_EXISTS = 1
+
+    END
+
 COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
   PATCH_IF (SOURCE_SIZE > 0x71) BEGIN // avoid crashing on empty items
       READ_SHORT    0x1C type //reads the byte containing item type
@@ -8,7 +15,10 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
     PATCH_IF (((row1 BAND 0b10000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b00110000) = 0b00000000)) BEGIN
       PATCH_IF (type = 12) AND ((appearance = 12355) OR (appearance = 12868) OR (appearance = 13379) OR (appearance = 12611) OR (appearance = 13124) OR (appearance = 13123) OR (appearance = 13635) OR (appearance = 13891) OR (appearance = 14147)) BEGIN // if it is a small or medium shield in appearance
         WRITE_BYTE    0x1E (row1 BAND 0b10111111)  // makes usable by bards
-      LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter1 = 5 match_parameter2 = 5 END 
+      LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter1 = 5 match_parameter2 = 5 END
+      PATCH_IF (WARLOCK_EXISTS = 1) BEGIN
+        LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter1 = (IDS_OF_SYMBOL (~kit~ ~C0WLOCK~)) END
+      END 
       END
       END
     END
