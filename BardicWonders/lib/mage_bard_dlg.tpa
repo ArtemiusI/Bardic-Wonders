@@ -52,6 +52,18 @@ BUT_ONLY
 COPY ~%MOD_FOLDER%/eeex/profs/C0PR#CL.spl~ ~override/C0PR#BA.SPL~
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 401 target = 1 timing = 9 special = IDS_OF_SYMBOL (~STATS~ ~IS_BARD_CLASS~) parameter1 = 1 parameter2 = 1 END
 
+COPY ~%MOD_FOLDER%/mage_bard/spl/C0PR#BA1.spl~ ~override~
+    LPF ALTER_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 1 match_parameter2 = 9 parameter1 = IDS_OF_SYMBOL (~KIT~ ~C0_MAGE_BARD~) END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 2 match_parameter2 = 9 parameter1 = IDS_OF_SYMBOL (~KIT~ ~C0_FIGHTER_MAGE_BARD~) END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 3 match_parameter2 = 9 parameter1 = IDS_OF_SYMBOL (~KIT~ ~C0_ILLUSIONIST_BARD~) END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 4 match_parameter2 = 9 parameter1 = IDS_OF_SYMBOL (~KIT~ ~C0_FIGHTER_ILLUSIONIST_BARD~) END
+
+ACTION_FOR_EACH baldur_script IN baldur bdbaldur baldur25 BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~%baldur_script%.bcs~ BEGIN
+EXTEND_TOP ~%baldur_script%.bcs~ ~%MOD_FOLDER%/scripts/mage_bard_check.baf~
+END
+END
+
 ACTION_IF mage_bard_installed = 1 THEN BEGIN
 
 COPY_EXISTING ~C0PR#MB.SPL~ ~OVERRIDE~
