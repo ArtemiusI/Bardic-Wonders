@@ -2,7 +2,7 @@ COPY ~%MOD_FOLDER%/armored_casting~ ~override~
 
 ACTION_IF FILE_EXISTS_IN_GAME ~CLABBA01.2DA~ BEGIN
 COPY_EXISTING ~CLABBA01.2DA~ OVERRIDE
-  LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = AP_C0ARC00 END // Inspirations
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = AP_C0AC_00 END // Inspirations
 END
 
 COPY_EXISTING ~KITLIST.2DA~ ~override~
@@ -19,7 +19,7 @@ COPY_EXISTING ~KITLIST.2DA~ ~override~
       PATCH_IF !(
 				("%kit_label%" STRING_EQUAL_CASE "C0WLOCK")
 														 ) BEGIN
-        LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = AP_C0ARC00 END
+        LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = AP_C0AC_00 END
         PRETTY_PRINT_2DA
       END
   END
