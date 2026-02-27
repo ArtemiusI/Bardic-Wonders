@@ -8,7 +8,7 @@ COPY_EXISTING ~CLABPA01.2DA~ ~OVERRIDE/C0GALLAN.2DA~
   LPF set_clab_2da_entries INT_VAR f_MinLevel = 32 f_MaxLevel = 32 STR_VAR f_Entry = AP_C0GALL2 END
   LPF set_clab_2da_entries INT_VAR f_MinLevel = 40 f_MaxLevel = 40 STR_VAR f_Entry = AP_C0GALL2 END
   LPF set_clab_2da_entries INT_VAR f_MinLevel = 48 f_MaxLevel = 48 STR_VAR f_Entry = AP_C0GALL2 END
-  REPLACE_TEXTUALLY ~GA_C0PAL01~ ~****      ~
+  REPLACE_TEXTUALLY ~AP_C0PAL01~ ~****      ~
   REPLACE_TEXTUALLY ~GA_C0PAL02~ ~****      ~
   REPLACE_TEXTUALLY ~GA_SPCL122~ ~****      ~
   PRETTY_PRINT_2DA
