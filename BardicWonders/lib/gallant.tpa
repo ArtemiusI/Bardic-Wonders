@@ -8,6 +8,7 @@ COPY_EXISTING ~CLABPA01.2DA~ ~OVERRIDE/C0GALLAN.2DA~
   LPF set_clab_2da_entries INT_VAR f_MinLevel = 32 f_MaxLevel = 32 STR_VAR f_Entry = AP_C0GALL2 END
   LPF set_clab_2da_entries INT_VAR f_MinLevel = 40 f_MaxLevel = 40 STR_VAR f_Entry = AP_C0GALL2 END
   LPF set_clab_2da_entries INT_VAR f_MinLevel = 48 f_MaxLevel = 48 STR_VAR f_Entry = AP_C0GALL2 END
+  REPLACE_TEXTUALLY ~AP_C0PAL00~ ~****      ~
   REPLACE_TEXTUALLY ~AP_C0PAL01~ ~****      ~
   REPLACE_TEXTUALLY ~GA_C0PAL02~ ~****      ~
   REPLACE_TEXTUALLY ~GA_SPCL122~ ~****      ~
@@ -218,3 +219,90 @@ COPY ~%MOD_FOLDER%/lua/m_c0gall.lua~      ~override~ // Lua file read by EEex, p
 COPY_EXISTING ~LUPA0.2DA~ ~OVERRIDE/LUC0GALL.2DA~
 LPF patch_remove_hla STR_VAR remove_ability = ~GA_SPCL923~ END
 LPF patch_add_hla STR_VAR 2da_row = ~C0GALL6~ ability = ~AP_SPCL920~ num_allowed = 1 END
+
+LAF ADD_IDS_ENTRY INT_VAR minValue = 1 preferredValue = 200 STR_VAR idsFile = "stats.ids" identifier = "C0_MAGE_BARD_EQUIPMENT" RET value END
+
+OUTER_SET C0_MAGE_BARD_EQUIPMENT = IDS_OF_SYMBOL (~STATS~ ~C0_MAGE_BARD_EQUIPMENT~)
+
+APPEND ~splprot.2da~ ~C0_MAGE_BARD_EQUIPMENT %C0_MAGE_BARD_EQUIPMENT% 1 1~ UNLESS ~C0_MAGE_BARD_EQUIPMENT~
+COPY_EXISTING ~splprot.2da~ ~override~ 
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 0 ~stat~ // read column value
+	  PATCH_IF ~%stat%~ STRING_EQUAL_CASE ~C0_MAGE_BARD_EQUIPMENT~ BEGIN
+	    SET C0_MAGE_BARD_EQUIPMENT = %row%
+	  END
+	END
+
+COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
+  PATCH_IF (SOURCE_SIZE > 0x71) BEGIN // avoid crashing on empty items
+    READ_BYTE    0x1E row1
+    READ_BYTE    0x1F row2
+    READ_BYTE    0x20 row3
+    READ_BYTE    0x21 row4
+      READ_SHORT    0x31 proficiency 
+    PATCH_IF (proficiency = 0) AND ((row1 BAND 0b10000000) = 0b10000000) AND ((row2 BAND 0b11111111) = 0b11111111) AND ((row3 BAND 0b01110110) = 0b01110110) AND ((row4 BAND 0b01100000) = 0b01100000) BEGIN 
+        WRITE_BYTE    0x20 (row3 BAND 0b11101111)
+        LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter2 = C0_MAGE_BARD_EQUIPMENT END
+        LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 parameter1 = 0 parameter2 = C0_MAGE_BARD_EQUIPMENT timing = 2 power = 2 STR_VAR resource = C0MGBD_ END
+    END
+    PATCH_IF (proficiency = 0) AND ((row1 BAND 0b01000000) = 0b01000000) AND ((row3 BAND 0b00001001) = 0b00000000) BEGIN 
+          LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter1 = (IDS_OF_SYMBOL (~KIT~ ~C0_GALLANT~))
+	  parameter2 = 9
+	  power = 0
+      END
+    END
+    END
+BUT_ONLY
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~ 
+    READ_BYTE    0x273 class
+	 PATCH_IF (class = 6) BEGIN
+   LPF ADD_CRE_EFFECT INT_VAR opcode = 326 parameter1 = 6 parameter2 = 105 target = 1 timing = 1 STR_VAR resource = C0PR#MB1 END
+   END
+BUT_ONLY
+
+COPY_EXISTING ~CHARBASE.CRE~ ~OVERRIDE/CHARBASE1.CRE~
+
+COPY_EXISTING ~CHARBASE1.CRE~ ~OVERRIDE~
+   LPF ADD_CRE_EFFECT INT_VAR opcode = 326 parameter1 = 6 parameter2 = 105 target = 1 timing = 4 duration = 1 STR_VAR resource = C0PR#MB1 END
+
+COPY_EXISTING ~CHARBASE1.CRE~ ~weidu_external/backup/ArtisansKitpack/temp/CHARBASE.CRE~
+COPY_EXISTING ~weidu_external/backup/ArtisansKitpack/temp~ ~OVERRIDE~
+
+COPY ~%MOD_FOLDER%/eeex/profs/C0PR#CL.spl~ ~override/C0PR#MB1.SPL~
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 401 target = 1 timing = 9 special = IDS_OF_SYMBOL (~STATS~ ~C0_MAGE_BARD_EQUIPMENT~) parameter1 = 1 parameter2 = 1 END
+
+COPY ~%MOD_FOLDER%/eeex/profs/C0PR#CL.spl~ ~override/C0PR#MB.SPL~
+   LPF ADD_SPELL_EFFECT INT_VAR opcode = 318 parameter1 = 0 parameter2 = 0 target = 1 timing = 9 duration = 1 STR_VAR resource = C0PR#MB1 END
+   LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 parameter1 = 0 parameter2 = 0 target = 1 timing = 0 duration = 1 STR_VAR resource = C0PR#MB1 END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 401 target = 1 timing = 9 special = IDS_OF_SYMBOL (~STATS~ ~C0_MAGE_BARD_EQUIPMENT~) parameter1 = 0 parameter2 = 1 END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0PR#89 END// BASTARD SW
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0PR#90 END// LONG SWORD
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0PR#91 END// SHORT SWOR
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0PR#92 END// AXE
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0PR#93 END// 2H SWORD
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0PR#94 END// KATANA
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0PR#95 END // SCIMITAR
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0PR#96 END //DAGGER
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0PR#97 END // HAMMER
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0PR#115 END  // CLUB
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0PR#98 END // SPEAR
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0PR#99 END // HALBERD
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0PR#100 END  // FLAIL
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0PR#101 END // MACE
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0PR#102 END // STAFF
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0PR#103 END // XBOW
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0PR#104 END  // LBOW
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0PR#105 END // SBOW
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0PR#106 END // DART
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0PR#107 END // SLING
+
+COPY_EXISTING ~C0GALLAN.2DA~ ~OVERRIDE~
+  LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = AP_C0PR#MB END

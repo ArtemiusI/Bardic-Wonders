@@ -604,8 +604,9 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
     READ_BYTE    0x20 row3
     READ_BYTE    0x21 row4
       READ_SHORT    0x31 proficiency 
-    PATCH_IF (proficiency = 0) AND ((row1 BAND 0b10000000) = 0b10000000) AND ((row2 BAND 0b11111111) = 0b11111111) AND ((row3 BAND 0b01111111) = 0b01111111) AND ((row4 BAND 0b01100000) = 0b01100000) BEGIN 
+    PATCH_IF (proficiency = 0) AND ((row1 BAND 0b10000000) = 0b10000000) AND ((row2 BAND 0b11111111) = 0b11111111) AND ((row3 BAND 0b01101111) = 0b01101111) AND ((row4 BAND 0b01100000) = 0b01100000) BEGIN 
         WRITE_BYTE    0x20 (row3 BAND 0b11110110)
+        LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter2 = C0_MAGE_BARD_EQUIPMENT END
         LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 parameter1 = 0 parameter2 = C0_MAGE_BARD_EQUIPMENT timing = 2 power = 2 STR_VAR resource = C0MGBD_ END
     END
     PATCH_IF (proficiency = 0) AND ((row1 BAND 0b01000000) = 0b01000000) AND ((row3 BAND 0b00001001) = 0b00000000) BEGIN 
