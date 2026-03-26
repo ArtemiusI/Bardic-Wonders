@@ -65,60 +65,60 @@ REQUIRE_PREDICATE (MOD_IS_INSTALLED ~EEEX/EEEX.TP2~ ~0~) ~Requires EEex.~
 INCLUDE ~%MOD_FOLDER%/LIB/gallant.tpa~
 
 BEGIN ~Bardic Wonders: Items~ DESIGNATED 2001
-GROUP ~Tweaks & Additions~
+GROUP ~Items & Abilities~
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ ~This component must be played on BG:EE or BG2:EE.~
 INCLUDE ~%MOD_FOLDER%/LIB/itempack.tpa~
 
 BEGIN ~Bardic Wonders: Inspirations~ DESIGNATED 2002
-GROUP ~Tweaks & Additions~
+GROUP ~Items & Abilities~
 INCLUDE ~%MOD_FOLDER%/LIB/inspirations.tpa~
 
-BEGIN ~Bardic Wonders: Armored Casting for Bards~ DESIGNATED 2003
-GROUP ~Tweaks & Additions~
-INCLUDE ~%MOD_FOLDER%/LIB/armored_casting.tpa~
-
-BEGIN ~Bardic Wonders: Bard Song Mechanics Tweak~ DESIGNATED 2004
-GROUP ~Tweaks & Additions~
-INCLUDE ~%MOD_FOLDER%/LIB/bardsongtweaks.tpa~
-
-BEGIN ~Bardic Wonders: Item Restriction Tweaks—Bards may use mage items and priest scrolls~ DESIGNATED 2005
-GROUP ~Tweaks & Additions~
-INCLUDE ~%MOD_FOLDER%/LIB/mage_items.tpa~
-
-BEGIN ~Bardic Wonders: Item Restriction Tweaks—Bards may use Small and Medium Shields~ DESIGNATED 2012
-GROUP ~Tweaks & Additions~
-INCLUDE ~%MOD_FOLDER%/LIB/shields.tpa~
-
-BEGIN ~Bardic Wonders: Item Restriction Tweaks—Bards may use Helmets~ DESIGNATED 2013
-GROUP ~Tweaks & Additions~
-INCLUDE ~%MOD_FOLDER%/LIB/helmets.tpa~
-
-BEGIN ~Bardic Wonders: Bard Song Overhead Visual Effect~ DESIGNATED 2006
-GROUP ~Tweaks & Additions~
-INCLUDE ~%MOD_FOLDER%/LIB/bardsongvisual.tpa~
-
 BEGIN ~Bardic Wonders: High Level Abilities~ DESIGNATED 2007
-GROUP ~Tweaks & Additions~
+GROUP ~Items & Abilities~
 INCLUDE ~%MOD_FOLDER%/LIB/hlas.tpa~
 
 BEGIN ~Bardic Wonders: New Bard Spells~ DESIGNATED 2008
-GROUP ~Tweaks & Additions~
+GROUP ~Items & Abilities~
 INCLUDE ~%MOD_FOLDER%/LIB/new_spells.tpa~
 
+BEGIN ~Bardic Wonders: Armored Casting for Bards~ DESIGNATED 2003
+GROUP ~Tweaks & Patches~
+INCLUDE ~%MOD_FOLDER%/LIB/armored_casting.tpa~
+
+BEGIN ~Bardic Wonders: Bard Song Mechanics Tweak~ DESIGNATED 2004
+GROUP ~Tweaks & Patches~
+INCLUDE ~%MOD_FOLDER%/LIB/bardsongtweaks.tpa~
+
+BEGIN ~Bardic Wonders: Item Restriction Tweaks—Bards may use mage items and priest scrolls~ DESIGNATED 2005
+GROUP ~Tweaks & Patches~
+INCLUDE ~%MOD_FOLDER%/LIB/mage_items.tpa~
+
+BEGIN ~Bardic Wonders: Item Restriction Tweaks—Bards may use Small and Medium Shields~ DESIGNATED 2012
+GROUP ~Tweaks & Patches~
+INCLUDE ~%MOD_FOLDER%/LIB/shields.tpa~
+
+BEGIN ~Bardic Wonders: Item Restriction Tweaks—Bards may use Helmets~ DESIGNATED 2013
+GROUP ~Tweaks & Patches~
+INCLUDE ~%MOD_FOLDER%/LIB/helmets.tpa~
+
+BEGIN ~Bardic Wonders: Bard Song Overhead Visual Effect~ DESIGNATED 2006
+GROUP ~Tweaks & Patches~
+INCLUDE ~%MOD_FOLDER%/LIB/bardsongvisual.tpa~
+
 BEGIN ~Bardic Wonders: Mage/Bard and Fighter/Mage/Bard multi-class (EEex, under thief multis)~ DESIGNATED 2009
-GROUP ~Tweaks & Additions~
+GROUP ~Tweaks & Patches~
 REQUIRE_PREDICATE (MOD_IS_INSTALLED ~EEEX/EEEX.TP2~ ~0~) ~EEex must be installed.~ //EEX required!
 INCLUDE ~%MOD_FOLDER%/LIB/mage_bard.tpa~
 
 BEGIN ~Bardic Wonders: 3e Alignment for Bards (any non-lawful)~ DESIGNATED 2010
-GROUP ~Tweaks & Additions~
+GROUP ~Tweaks & Patches~
 INCLUDE ~%MOD_FOLDER%/LIB/alignment.tpa~
 
 BEGIN ~Bardic Wonders: Bard Casting Level Begins from 2nd level~ DESIGNATED 2011
-GROUP ~Tweaks & Additions~
+GROUP ~Tweaks & Patches~
 INCLUDE ~%MOD_FOLDER%/LIB/spell_level.tpa~
 
 BEGIN ~Bardic Wonders: Patch Dialogue Class Checks for: Gallant, Mage/Bard and Fighter/Mage/Bard (install late)~ DESIGNATED 3001
-GROUP ~Patches~
+GROUP ~Tweaks & Patches~
 REQUIRE_PREDICATE (MOD_IS_INSTALLED ~BardicWonders/BardicWonders.tp2~ ~2009~) OR (MOD_IS_INSTALLED ~BardicWonders/BardicWonders.tp2~ ~1012~) ~Mage/Bard and Fighter/Mage/Bard component must be installed.~
 INCLUDE ~%MOD_FOLDER%/LIB/mage_bard_dlg.tpa~

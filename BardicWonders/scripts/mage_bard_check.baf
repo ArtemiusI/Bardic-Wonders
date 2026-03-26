@@ -3,4 +3,5 @@ IF
 THEN
 RESPONSE #100
 	ApplySpellRES("C0PR#BA1",Player1)
+        Continue()
 END

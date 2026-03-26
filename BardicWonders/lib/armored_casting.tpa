@@ -16,10 +16,11 @@ COPY_EXISTING ~KITLIST.2DA~ ~override~
     PATCH_IF FILE_EXISTS_IN_GAME ~%kit_clab%.2da~ BEGIN
       INNER_ACTION BEGIN
       COPY_EXISTING ~%kit_clab%.2DA~ override
-      PATCH_IF !(
+        LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = AP_C0AC_00 END
+      PATCH_IF (
 				("%kit_label%" STRING_EQUAL_CASE "C0WLOCK")
 														 ) BEGIN
-        LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = AP_C0AC_00 END
+        LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = AP_C0SKA00 END
         PRETTY_PRINT_2DA
       END
   END
