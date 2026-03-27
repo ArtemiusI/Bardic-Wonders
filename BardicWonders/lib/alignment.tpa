@@ -38,11 +38,8 @@ COPY_EXISTING ~alignmnt.2da~ ~override~
 	  END
 	END
 
-ACTION_IF MOD_IS_INSTALLED ~BardicWonders.tp2~ ~2003~ BEGIN
 ACTION_FOR_EACH description IN 
-    bgclatxt  
     clastext  
-    sodcltxt 
   BEGIN
     ACTION_IF FILE_EXISTS_IN_GAME ~%description%.2da~ BEGIN
       COPY_EXISTING ~%description%.2DA~ ~override~
@@ -51,22 +48,20 @@ ACTION_FOR_EACH description IN
       FOR (index = 0; index < rows; ++index) BEGIN
         READ_2DA_ENTRY index 0 col_count row_name
 //bard
+
         PATCH_IF "%row_name%" STRING_EQUAL_CASE "BARD" BEGIN
-          READ_2DA_ENTRY index 4 col_count bard_desc
-          SPRINT old_bard ~– Alignment restricted to any neutral.~
-          SPRINT new_bard ~– Alignment restricted to any non-lawful. Bards are wanderers, guided by whim and intuition.~
-          GET_STRREF %bard_desc% bard_text
-          INNER_PATCH_SAVE bard_text ~%bard_text%~ BEGIN
-            REPLACE_TEXTUALLY ~%old_bard%~ ~%new_bard%~
+          READ_2DA_ENTRY index 4 col_count kit_desc
+          SPRINT old_desc ~– Alignment restricted to any neutral.~
+          SPRINT new_desc ~– Alignment restricted to any non-lawful. Bards are wanderers, guided by whim and intuition.~
+          GET_STRREF %kit_desc% desc_text
+          INNER_PATCH_SAVE desc_text ~%desc_text%~ BEGIN
+            REPLACE_TEXTUALLY ~%old_desc%~ ~%new_desc%~
           END
-          INNER_ACTION BEGIN
-            STRING_SET_EVALUATE ~%bard_desc%~ ~%bard_text%~
-          END
+          SET_2DA_ENTRY index 4 col_count RESOLVE_STR_REF (~%desc_text%~)
+            PRETTY_PRINT_2DA
 		END
 		
       END
       BUT_ONLY
     END
   END
-
-END

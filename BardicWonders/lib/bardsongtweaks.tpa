@@ -642,9 +642,10 @@ ACTION_FOR_EACH description IN
       COUNT_2DA_ROWS col_count rows
       FOR (index = 0; index < rows; ++index) BEGIN
         READ_2DA_ENTRY index 0 col_count row_name
-//BARD
+//bard
+
         PATCH_IF "%row_name%" STRING_EQUAL_CASE "BARD" BEGIN
-          READ_2DA_ENTRY index 4 col_count BARD_desc
+          READ_2DA_ENTRY index 4 col_count kit_desc
           SPRINT old_BARD_eff ~While active, the Bard Song has the following effects:
   Restore morale to its average value
   Remove Fear
@@ -654,22 +655,17 @@ ACTION_FOR_EACH description IN
   15th level: +2 Luck, immunity to fear and morale failure
   20th level: +3 Luck, immunity to fear and morale failure
 ~
-          SPRINT old_BARD ~– May use Bard Song ability~
-          SPRINT new_BARD ~– May use Bard Song ability.
-          
-REPLACE_ME_BARDSONG~
-          SPRINT old_BARD2 ~REPLACE_ME_BARDSONG~
-          SPRINT new_BARD2 ~BARD SONG: The Bard's Song may be used an unlimited number of times, and lasts for 6 rounds + 1 round per 5 levels gained. The Bard Song has a cooldown of 1 turn before it may be used again.~
-          GET_STRREF %BARD_desc% BARD_text
-          INNER_PATCH_SAVE BARD_text ~%BARD_text%~ BEGIN
-            REPLACE_TEXTUALLY ~%old_BARD2%~ ~~
-            REPLACE_TEXTUALLY ~%old_BARD%~ ~%new_BARD%~
+          SPRINT old_BARD ~– May use Bard Song ability.~
+          SPRINT new_BARD ~BARD SONG: The Bard's Song may be used an unlimited number of times, and lasts for 6 rounds + 1 round per 5 levels gained. The Bard Song has a cooldown of 1 turn before it may be used again.~
+          GET_STRREF %kit_desc% desc_text
+          INNER_PATCH_SAVE desc_text ~%desc_text%~ BEGIN
             REPLACE_TEXTUALLY ~%old_BARD_eff%~ ~%new_BARD_eff%~
-            REPLACE_TEXTUALLY ~%old_BARD2%~ ~%new_BARD2%~
+            REPLACE_TEXTUALLY ~%old_BARD%~ ~%old_BARD%
+            
+%new_BARD%~
           END
-          INNER_ACTION BEGIN
-            STRING_SET_EVALUATE ~%BARD_desc%~ ~%BARD_text%~
-          END
+          SET_2DA_ENTRY index 4 col_count RESOLVE_STR_REF (~%desc_text%~)
+            PRETTY_PRINT_2DA
 		END
 		
       END

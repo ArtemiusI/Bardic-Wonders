@@ -796,12 +796,10 @@ ACTION_FOR_EACH description IN
           SPRINT old_bard ~This character can use the abilities of a Mage and a Bard, though Mage spells cannot be cast while wearing armor.~
           SPRINT new_bard ~This character can use the abilities of a Mage and a Bard. (Spells may be cast while wearing armor.)~
           GET_STRREF %bard_desc% bard_text
-          INNER_PATCH_SAVE bard_text ~%bard_text%~ BEGIN
+          INNER_PATCH_SAVE bard_text %bard_text% BEGIN
             REPLACE_TEXTUALLY ~%old_bard%~ ~%new_bard%~
           END
-          INNER_ACTION BEGIN
-            STRING_SET_EVALUATE ~%bard_desc%~ ~%bard_text%~
-          END
+            SET_2DA_ENTRY index 4 col_count RESOLVE_STR_REF (%bard_text%)
 		END
 //bard
         PATCH_IF ("%row_name%" STRING_EQUAL_CASE "C0_FIGHTER_MAGE_BARD") OR
@@ -810,12 +808,10 @@ ACTION_FOR_EACH description IN
           SPRINT old_bard ~This character can use the abilities of a Fighter, Mage, and Bard, though they cannot use Pick Pockets while wearing more than studded leather armor and cannot cast spells while wearing any armor. They may Specialize in, but not Master, any weapon they can use.~
           SPRINT new_bard ~This character can use the abilities of a Fighter, Mage, and Bard, though they cannot use Pick Pockets or cast spells while wearing more than studded leather armor. They may Specialize in, but not Master, any weapon they can use.~
           GET_STRREF %bard_desc% bard_text
-          INNER_PATCH_SAVE bard_text ~%bard_text%~ BEGIN
+          INNER_PATCH_SAVE bard_text %bard_text% BEGIN
             REPLACE_TEXTUALLY ~%old_bard%~ ~%new_bard%~
           END
-          INNER_ACTION BEGIN
-            STRING_SET_EVALUATE ~%bard_desc%~ ~%bard_text%~
-          END
+                      SET_2DA_ENTRY index 4 col_count RESOLVE_STR_REF (%bard_text%)
 		END
 		
       END

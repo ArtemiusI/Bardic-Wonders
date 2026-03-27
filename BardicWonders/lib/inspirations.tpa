@@ -39,179 +39,39 @@ ACTION_FOR_EACH description IN
       COUNT_2DA_ROWS col_count rows
       FOR (index = 0; index < rows; ++index) BEGIN
         READ_2DA_ENTRY index 0 col_count row_name
+        READ_2DA_ENTRY index 1 col_count class_id
 //bard
+
         PATCH_IF "%row_name%" STRING_EQUAL_CASE "BARD" BEGIN
-          READ_2DA_ENTRY index 4 col_count bard_desc
-          SPRINT old_bard ~– May use Bard Song ability~
-          SPRINT new_bard ~– May use Bardic Inspirations.
-          
-BARDIC INSPIRATION: A bard's presence serves as an inspiration to their companions, granting them passive bonuses. Inspirations provide various benefits that persist so long as they are within visual range of the bard. The bard begins with Inspire Courage and gains different inspirations on top of stronger effects for existing ones as they grow in level.
-~
-          GET_STRREF %bard_desc% bard_text
-          INNER_PATCH_SAVE bard_text ~%bard_text%~ BEGIN
-            REPLACE_TEXTUALLY ~%new_bard%~ ~~
-            REPLACE_TEXTUALLY ~%old_bard%~ ~%new_bard%
-%old_bard% ~
+          READ_2DA_ENTRY index 4 col_count kit_desc
+          SPRINT old_desc ~– May use Bard Song ability~
+          SPRINT new_desc ~– May use Bardic Inspirations. Inspirations provide various benefits that persist so long as they are within visual range of the bard.~
+          GET_STRREF %kit_desc% desc_text
+          INNER_PATCH_SAVE desc_text ~%desc_text%~ BEGIN
+            REPLACE_TEXTUALLY ~%old_desc%~ ~%new_desc%
+%old_desc%~
           END
-          INNER_ACTION BEGIN
-            STRING_SET_EVALUATE ~%bard_desc%~ ~%bard_text%~
-          END
-		END
-//inspiration
-        PATCH_IF "%row_name%" STRING_EQUAL_CASE "BLADE" BEGIN
-          READ_2DA_ENTRY index 4 col_count inspiration_desc
-          SPRINT old_inspiration ~Disadvantages:~
-          SPRINT new_inspiration ~Disadvantages:
-– May not use Inspirations.~
-          GET_STRREF %inspiration_desc% inspiration_text
-          INNER_PATCH_SAVE inspiration_text ~%inspiration_text%~ BEGIN
-            REPLACE_TEXTUALLY ~%old_inspiration%~ ~%new_inspiration%~
-          END
-          INNER_ACTION BEGIN
-            STRING_SET_EVALUATE ~%inspiration_desc%~ ~%inspiration_text%~
-          END
-		END
-//inspiration
-        PATCH_IF "%row_name%" STRING_EQUAL_CASE "JESTER" BEGIN
-          READ_2DA_ENTRY index 4 col_count inspiration_desc
-          SPRINT old_inspiration ~Disadvantages:~
-          SPRINT new_inspiration ~Disadvantages:
-– May not use Inspirations.~
-          GET_STRREF %inspiration_desc% inspiration_text
-          INNER_PATCH_SAVE inspiration_text ~%inspiration_text%~ BEGIN
-            REPLACE_TEXTUALLY ~%old_inspiration%~ ~%new_inspiration%~
-          END
-          INNER_ACTION BEGIN
-            STRING_SET_EVALUATE ~%inspiration_desc%~ ~%inspiration_text%~
-          END
-		END
-//inspiration
-        PATCH_IF "%row_name%" STRING_EQUAL_CASE "SKALD" BEGIN
-          READ_2DA_ENTRY index 4 col_count inspiration_desc
-          SPRINT old_inspiration ~Disadvantages:~
-          SPRINT new_inspiration ~Disadvantages:
-– May not use Inspirations.~
-          GET_STRREF %inspiration_desc% inspiration_text
-          INNER_PATCH_SAVE inspiration_text ~%inspiration_text%~ BEGIN
-            REPLACE_TEXTUALLY ~%old_inspiration%~ ~%new_inspiration%~
-          END
-          INNER_ACTION BEGIN
-            STRING_SET_EVALUATE ~%inspiration_desc%~ ~%inspiration_text%~
-          END
-		END
-//inspiration
-        PATCH_IF "%row_name%" STRING_EQUAL_CASE "C0ABETT" BEGIN
-          READ_2DA_ENTRY index 4 col_count inspiration_desc
-          SPRINT old_inspiration ~Disadvantages:~
-          SPRINT new_inspiration ~Disadvantages:
-– May not use Inspirations.~
-          GET_STRREF %inspiration_desc% inspiration_text
-          INNER_PATCH_SAVE inspiration_text ~%inspiration_text%~ BEGIN
-            REPLACE_TEXTUALLY ~%old_inspiration%~ ~%new_inspiration%~
-          END
-          INNER_ACTION BEGIN
-            STRING_SET_EVALUATE ~%inspiration_desc%~ ~%inspiration_text%~
-          END
-		END
-//inspiration
-        PATCH_IF "%row_name%" STRING_EQUAL_CASE "C0DANCE" BEGIN
-          READ_2DA_ENTRY index 4 col_count inspiration_desc
-          SPRINT old_inspiration ~Disadvantages:~
-          SPRINT new_inspiration ~Disadvantages:
-– May not use Inspirations.~
-          GET_STRREF %inspiration_desc% inspiration_text
-          INNER_PATCH_SAVE inspiration_text ~%inspiration_text%~ BEGIN
-            REPLACE_TEXTUALLY ~%old_inspiration%~ ~%new_inspiration%~
-          END
-          INNER_ACTION BEGIN
-            STRING_SET_EVALUATE ~%inspiration_desc%~ ~%inspiration_text%~
-          END
-		END
-//inspiration
-        PATCH_IF "%row_name%" STRING_EQUAL_CASE "C0SDRUM" BEGIN
-          READ_2DA_ENTRY index 4 col_count inspiration_desc
-          SPRINT old_inspiration ~Disadvantages:~
-          SPRINT new_inspiration ~Disadvantages:
-– May not use Inspirations.~
-          GET_STRREF %inspiration_desc% inspiration_text
-          INNER_PATCH_SAVE inspiration_text ~%inspiration_text%~ BEGIN
-            REPLACE_TEXTUALLY ~%old_inspiration%~ ~%new_inspiration%~
-          END
-          INNER_ACTION BEGIN
-            STRING_SET_EVALUATE ~%inspiration_desc%~ ~%inspiration_text%~
-          END
-		END
-//inspiration
-        PATCH_IF "%row_name%" STRING_EQUAL_CASE "C0TRB" BEGIN
-          READ_2DA_ENTRY index 4 col_count inspiration_desc
-          SPRINT old_inspiration ~Disadvantages:~
-          SPRINT new_inspiration ~Disadvantages:
-– May not use Inspirations.~
-          GET_STRREF %inspiration_desc% inspiration_text
-          INNER_PATCH_SAVE inspiration_text ~%inspiration_text%~ BEGIN
-            REPLACE_TEXTUALLY ~%old_inspiration%~ ~%new_inspiration%~
-          END
-          INNER_ACTION BEGIN
-            STRING_SET_EVALUATE ~%inspiration_desc%~ ~%inspiration_text%~
-          END
-		END
-//inspiration
-        PATCH_IF "%row_name%" STRING_EQUAL_CASE "C0BDD" BEGIN
-          READ_2DA_ENTRY index 4 col_count inspiration_desc
-          SPRINT old_inspiration ~Disadvantages:~
-          SPRINT new_inspiration ~Disadvantages:
-– May not use Inspirations.~
-          GET_STRREF %inspiration_desc% inspiration_text
-          INNER_PATCH_SAVE inspiration_text ~%inspiration_text%~ BEGIN
-            REPLACE_TEXTUALLY ~%old_inspiration%~ ~%new_inspiration%~
-          END
-          INNER_ACTION BEGIN
-            STRING_SET_EVALUATE ~%inspiration_desc%~ ~%inspiration_text%~
-          END
-		END
-//inspiration
-        PATCH_IF "%row_name%" STRING_EQUAL_CASE "C0DEATHSINGER" BEGIN
-          READ_2DA_ENTRY index 4 col_count inspiration_desc
-          SPRINT old_inspiration ~Disadvantages:~
-          SPRINT new_inspiration ~Disadvantages:
-– May not use Inspirations.~
-          GET_STRREF %inspiration_desc% inspiration_text
-          INNER_PATCH_SAVE inspiration_text ~%inspiration_text%~ BEGIN
-            REPLACE_TEXTUALLY ~%old_inspiration%~ ~%new_inspiration%~
-          END
-          INNER_ACTION BEGIN
-            STRING_SET_EVALUATE ~%inspiration_desc%~ ~%inspiration_text%~
-          END
-		END
-//inspiration
-        PATCH_IF "%row_name%" STRING_EQUAL_CASE "C0_STRATEGIST" BEGIN
-          READ_2DA_ENTRY index 4 col_count inspiration_desc
-          SPRINT old_inspiration ~Disadvantages:~
-          SPRINT new_inspiration ~Disadvantages:
-– May not use Inspirations.~
-          GET_STRREF %inspiration_desc% inspiration_text
-          INNER_PATCH_SAVE inspiration_text ~%inspiration_text%~ BEGIN
-            REPLACE_TEXTUALLY ~%old_inspiration%~ ~%new_inspiration%~
-          END
-          INNER_ACTION BEGIN
-            STRING_SET_EVALUATE ~%inspiration_desc%~ ~%inspiration_text%~
-          END
-		END
-//NIGHTSINGER
-        PATCH_IF "%row_name%" STRING_EQUAL_CASE "C0SABARD" BEGIN
-          READ_2DA_ENTRY index 4 col_count nightsinger_desc
-          SPRINT old_nightsinger ~– The Nightsinger's Bard Song~
-          SPRINT new_nightsinger ~– May use Dark Inspirations. Inspirations provide various benefits that persist so long as they are within visual range of the bard.
-– The Nightsinger's Bard Song~
-          GET_STRREF %nightsinger_desc% nightsinger_text
-          INNER_PATCH_SAVE nightsinger_text ~%nightsinger_text%~ BEGIN
-            REPLACE_TEXTUALLY ~%old_nightsinger%~ ~%new_nightsinger%~
-          END
-          INNER_ACTION BEGIN
-            STRING_SET_EVALUATE ~%nightsinger_desc%~ ~%nightsinger_text%~
-          END
+          SET_2DA_ENTRY index 4 col_count RESOLVE_STR_REF (~%desc_text%~)
+            PRETTY_PRINT_2DA
 		END
 		
+//inspiration
+        PATCH_IF (%class_id% = 5) AND (
+				!("%row_name%" STRING_EQUAL_CASE "BARD")
+														 ) 
+                              BEGIN
+          READ_2DA_ENTRY index 4 col_count inspiration_desc
+          SPRINT old_inspiration ~Disadvantages:~
+          SPRINT new_inspiration ~Disadvantages:
+– May not use Inspirations.~
+          GET_STRREF %inspiration_desc% inspiration_text
+          INNER_PATCH_SAVE inspiration_text ~%inspiration_text%~ BEGIN
+            REPLACE_TEXTUALLY ~%old_inspiration%~ ~%new_inspiration%~
+          END
+            SET_2DA_ENTRY index 4 col_count RESOLVE_STR_REF (~%inspiration_text%~)
+            PRETTY_PRINT_2DA
+		END
+
       END
       BUT_ONLY
     END

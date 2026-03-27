@@ -3,7 +3,11 @@ ACTION_IF FILE_EXISTS_IN_GAME ~C0WL000.SPL~ THEN BEGIN
 
 OUTER_SET WARLOCK_EXISTS = 1
 
-    END
+    END ELSE BEGIN
+
+OUTER_SET WARLOCK_EXISTS = 0
+
+      END
 
 COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
   PATCH_IF (SOURCE_SIZE > 0x71) BEGIN // avoid crashing on empty items
@@ -23,3 +27,31 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
       END
     END
 BUT_ONLY
+
+ACTION_FOR_EACH description IN 
+    clastext  
+  BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~%description%.2da~ BEGIN
+      COPY_EXISTING ~%description%.2DA~ ~override~
+      COUNT_2DA_COLS col_count
+      COUNT_2DA_ROWS col_count rows
+      FOR (index = 0; index < rows; ++index) BEGIN
+        READ_2DA_ENTRY index 0 col_count row_name
+//bard
+
+        PATCH_IF "%row_name%" STRING_EQUAL_CASE "BARD" BEGIN
+          READ_2DA_ENTRY index 4 col_count kit_desc
+          SPRINT old_desc ~– May not equip shields larger than bucklers.~
+          SPRINT new_desc ~– May equip shields up to medium size.~
+          GET_STRREF %kit_desc% desc_text
+          INNER_PATCH_SAVE desc_text ~%desc_text%~ BEGIN
+            REPLACE_TEXTUALLY ~%old_desc%~ ~%new_desc%~
+          END
+          SET_2DA_ENTRY index 4 col_count RESOLVE_STR_REF (~%desc_text%~)
+            PRETTY_PRINT_2DA
+		END
+		
+      END
+      BUT_ONLY
+    END
+  END

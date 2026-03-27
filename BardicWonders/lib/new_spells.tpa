@@ -755,9 +755,7 @@ ACTION_FOR_EACH description IN
           INNER_PATCH_SAVE desc_text ~%desc_text%~ BEGIN
             REPLACE_TEXTUALLY ~%old_desc%~ ~%new_desc%~
           END
-          INNER_ACTION BEGIN
-            STRING_SET_EVALUATE ~%kit_desc%~ ~%desc_text%~
-          END
+                      SET_2DA_ENTRY index 4 col_count RESOLVE_STR_REF (%bard_text%)
 		END
 		
       END
