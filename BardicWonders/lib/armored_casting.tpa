@@ -121,20 +121,44 @@ ACTION_FOR_EACH description IN
 		
 //SKALD
         PATCH_IF "%row_name%" STRING_EQUAL_CASE "SKALD" BEGIN
-          READ_2DA_ENTRY index 4 col_count skald_desc
-          SPRINT old_skald ~– May Specialize (two slots) in any fighting style.~
-          SPRINT new_skald ~– May Specialize (two slots) in any fighting style.
-– Battle Caster: The Skald may cast spells while wearing any armor.~
-          GET_STRREF %skald_desc% skald_text
-          INNER_PATCH_SAVE skald_text ~%skald_text%~ BEGIN
-            REPLACE_TEXTUALLY ~%old_skald%~ ~%new_skald%~
+          READ_2DA_ENTRY index 4 col_count kit_desc
+          SPRINT old_skald_new ~May Specialize (two slots) in any fighting style.~
+          SPRINT old_skald_vanilla ~+1 bonus to hit and damage rolls.~
+          SPRINT new_skald ~– Battle Caster: The Skald may cast spells while wearing any armor.~
+          GET_STRREF %kit_desc% desc_text
+          INNER_PATCH_SAVE desc_text ~%desc_text%~ BEGIN
+            REPLACE_TEXTUALLY ~%old_skald_vanilla%~ ~%old_skald_vanilla%
+%new_skald%~
+            REPLACE_TEXTUALLY ~%old_skald_new%~ ~%old_skald_new%
+%new_skald%~
           END
-            SET_2DA_ENTRY index 4 col_count RESOLVE_STR_REF (~%skald_text%~)
+            SET_2DA_ENTRY index 4 col_count RESOLVE_STR_REF (~%desc_text%~)
             PRETTY_PRINT_2DA
 		END
 		
       END
+
+      COPY_EXISTING ~KITLIST.2DA~ ~override~
+      COUNT_2DA_COLS col_count
+      COUNT_2DA_ROWS col_count rows
+      FOR (index = 1; index < rows; ++index) BEGIN
+        READ_2DA_ENTRY index 1 col_count row_name
+        READ_2DA_ENTRY index 8 col_count class_id
+//inspiration
+        PATCH_IF "%row_name%" STRING_EQUAL_CASE "SKALD" BEGIN
+          READ_2DA_ENTRY index 4 col_count kit_desc
+          GET_STRREF %kit_desc% desc_text
+          INNER_PATCH_SAVE desc_text ~%desc_text%~ BEGIN
+            REPLACE_TEXTUALLY ~%old_skald_vanilla%~ ~%old_skald_vanilla%
+%new_skald%~
+            REPLACE_TEXTUALLY ~%old_skald_new%~ ~%old_skald_new%
+%new_skald%~
+          END
+            SET_2DA_ENTRY index 4 col_count RESOLVE_STR_REF (~%desc_text%~)
+            PRETTY_PRINT_2DA
+		      END
+		  END
+
       BUT_ONLY
     END
   END
-  

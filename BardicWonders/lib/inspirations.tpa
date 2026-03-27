@@ -56,23 +56,50 @@ ACTION_FOR_EACH description IN
 		END
 		
 //inspiration
-        PATCH_IF (%class_id% = 5) AND (
-				!("%row_name%" STRING_EQUAL_CASE "BARD")
-														 ) 
+        PATCH_IF ((class_id = 5) AND (
+				!("%row_name%" STRING_EQUAL_CASE "C0SABARD")
+														 )) 
                               BEGIN
-          READ_2DA_ENTRY index 4 col_count inspiration_desc
+          READ_2DA_ENTRY index 4 col_count kit_desc
           SPRINT old_inspiration ~Disadvantages:~
-          SPRINT new_inspiration ~Disadvantages:
-– May not use Inspirations.~
-          GET_STRREF %inspiration_desc% inspiration_text
-          INNER_PATCH_SAVE inspiration_text ~%inspiration_text%~ BEGIN
-            REPLACE_TEXTUALLY ~%old_inspiration%~ ~%new_inspiration%~
+          SPRINT new_inspiration ~– May not use Inspirations.~
+          SPRINT disadvantages_none ~
+– None.~
+          GET_STRREF %kit_desc% desc_text
+          INNER_PATCH_SAVE desc_text ~%desc_text%~ BEGIN
+            REPLACE_TEXTUALLY ~%old_inspiration%~ ~%old_inspiration%
+%new_inspiration%~
+            REPLACE_TEXTUALLY ~%disadvantages_none%~ ~~
           END
-            SET_2DA_ENTRY index 4 col_count RESOLVE_STR_REF (~%inspiration_text%~)
+            SET_2DA_ENTRY index 4 col_count RESOLVE_STR_REF (~%desc_text%~)
             PRETTY_PRINT_2DA
 		END
 
       END
+
+      COPY_EXISTING ~KITLIST.2DA~ ~override~
+      COUNT_2DA_COLS col_count
+      COUNT_2DA_ROWS col_count rows
+      FOR (index = 1; index < rows; ++index) BEGIN
+        READ_2DA_ENTRY index 1 col_count row_name
+        READ_2DA_ENTRY index 8 col_count class_id
+//inspiration
+        PATCH_IF ((class_id = 5) AND (
+				!("%row_name%" STRING_EQUAL_CASE "BARD")
+														 )) 
+                              BEGIN
+          READ_2DA_ENTRY index 4 col_count kit_desc
+          GET_STRREF %kit_desc% desc_text
+          INNER_PATCH_SAVE desc_text ~%desc_text%~ BEGIN
+            REPLACE_TEXTUALLY ~%old_inspiration%~ ~%old_inspiration%
+%new_inspiration%~
+            REPLACE_TEXTUALLY ~%disadvantages_none%~ ~~
+          END
+          SET_2DA_ENTRY index 4 col_count RESOLVE_STR_REF (~%desc_text%~)
+            PRETTY_PRINT_2DA
+		      END
+		  END
+
       BUT_ONLY
     END
   END
