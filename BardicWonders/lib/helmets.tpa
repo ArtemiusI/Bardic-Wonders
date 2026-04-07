@@ -3,7 +3,11 @@ ACTION_IF FILE_EXISTS_IN_GAME ~C0WL000.SPL~ THEN BEGIN
 
 OUTER_SET WARLOCK_EXISTS = 1
 
-    END
+    END ELSE BEGIN
+
+OUTER_SET WARLOCK_EXISTS = 0
+
+END
 
 COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
   PATCH_IF (SOURCE_SIZE > 0x71) BEGIN // avoid crashing on empty items
