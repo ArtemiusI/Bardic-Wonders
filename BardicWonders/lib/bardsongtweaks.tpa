@@ -72,11 +72,12 @@ COPY_EXISTING_REGEXP GLOB ~.*\.spl~ ~override~
     INNER_ACTION BEGIN
     
     COPY_EXISTING ~%bardsong_name%.spl~ ~override/%song_name%.spl~
+    LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = EVAL ~%bardsong_name%~ resource = EVAL ~%song_name%~ END
     COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/%bardsong_name%.SPL~
     LPF ALTER_SPELL_HEADER INT_VAR projectile = c0bardso END
-    LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = EVAL ~%bardsong_name%~ END
+    LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = BARDSONG resource = EVAL ~%song_name%~ END
 
-    COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/%bardsong_name%.EFF~
+    COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/%song_name%.EFF~
     WRITE_ASCIIE 0x30 ~%song_name%~
     END
     END
