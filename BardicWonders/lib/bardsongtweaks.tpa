@@ -1,10 +1,29 @@
 ADD_PROJECTILE ~%MOD_FOLDER%/bardsong/c0bardso.PRO~ ~C0 Bardsong~
 
+COPY_EXISTING ~KITLIST.2DA~ ~override~
+  READ_2DA_ENTRIES_NOW ~fig_kitlist~ 10
+  FOR (row = 1; row < fig_kitlist; row += 1) BEGIN
+  READ_2DA_ENTRY_FORMER ~fig_kitlist~ row 5 kit_clab
+  READ_2DA_ENTRY_FORMER ~fig_kitlist~ row 1 kit_label
+  READ_2DA_ENTRY_FORMER ~fig_kitlist~ row 8 kit_class
+  
+  PATCH_IF (%kit_class% = 5) BEGIN
+    PATCH_IF FILE_EXISTS_IN_GAME ~%kit_clab%.2da~ BEGIN
+      INNER_ACTION BEGIN
+      COPY_EXISTING ~%kit_clab%.2DA~ override
+        LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = AP_C0BARDX END
+        PRETTY_PRINT_2DA
+  END
+END
+END
+END
+
 ACTION_FOR_EACH invisible_area IN INAREANP INAREA INAREASM BIGNAREA INAREAPA BEGIN
     COPY_EXISTING ~%invisible_area%.pro~ ~OVERRIDE~
      WRITE_BYTE 0x21a 0
   END
 
+COPY ~%MOD_FOLDER%/bardsong/c0bardx.spl~ OVERRIDE
 COPY ~%MOD_FOLDER%/bardsong/c0bardsx.spl~ OVERRIDE
   LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Bard Song Ready~) END
 COPY ~%MOD_FOLDER%/bardsong/c0brdef1.bam~ OVERRIDE
@@ -70,7 +89,32 @@ COPY_EXISTING_REGEXP GLOB ~.*\.spl~ ~override~
     INNER_PATCH_SAVE song_name "%song_name%" BEGIN REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~__~ ~C0BW~ END
 
     INNER_ACTION BEGIN
+
+    COPY_EXISTING ~C0BARDX.SPL~ ~OVERRIDE~
+      LPF ADD_SPELL_EFFECT INT_VAR opcode = 309 target = 1 parameter1 = 0 parameter2 = 0 timing = 1 STR_VAR resource = EVAL ~%song_name%~
+      END
     
+    COPY_EXISTING_REGEXP GLOB ~.*\.spl~ ~override~
+    READ_LONG  0x64 ___#abil_off
+    READ_SHORT 0x68 ___#abil_num
+    READ_LONG  0x6a ___#fx_off
+    SET patch_bard_song_set = 0
+				 FOR (___#index1 = 0 ; ___#index1 < ___#abil_num ; ___#index1 = ___#index1 + 1) BEGIN
+				READ_SHORT (___#abil_off + 0x1e + (0x28 * ___#index1)) ___#abil_fx_num
+        READ_SHORT (___#abil_off + 0x20 + (0x28 * ___#index1)) ___#abil_fx_idx
+          FOR (___#index2 = ___#abil_fx_idx ; ___#index2 < (___#abil_fx_idx + ___#abil_fx_num) ; ___#index2 = ___#index2 + 1) BEGIN
+            READ_SHORT (___#fx_off + 0x30 * ___#index2) ___#opcode
+            READ_SHORT (___#fx_off + 0x30 * ___#index2 + 0x02) ___#target
+            READ_SHORT (___#fx_off + 0x30 * ___#index2 + 0x08) ___#param2
+	      PATCH_IF  (___#opcode = 251) BEGIN
+    LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 251 opcode = 326 target = 2 parameter2 = 0 parameter1 = 0 timing = 1 STR_VAR match_resource = EVAL ~%bardsong_name%~ resource = EVAL ~C0BARDX~ END
+    LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 251 opcode = 309 target = 2 parameter2 = 0 parameter1 = 1 timing = 4 duration = 1 STR_VAR match_resource = EVAL ~%bardsong_name%~ resource = EVAL ~%song_name%~ END
+              SET patch_bard_song_set = 1
+    END
+    END
+    END
+    BUT_ONLY
+
     COPY_EXISTING ~%bardsong_name%.spl~ ~override/%song_name%.spl~
     LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = EVAL ~%bardsong_name%~ resource = EVAL ~%song_name%~ END
     COPY ~%MOD_FOLDER%/bardsong/c0bardso.spl~ ~OVERRIDE/%bardsong_name%.SPL~
@@ -79,6 +123,13 @@ COPY_EXISTING_REGEXP GLOB ~.*\.spl~ ~override~
 
     COPY ~%MOD_FOLDER%/bardsong/c0bardso.eff~ ~OVERRIDE/%song_name%.EFF~
     WRITE_ASCIIE 0x30 ~%song_name%~
+
+    ACTION_FOR_EACH baldur_script IN baldur bdbaldur baldur25 BEGIN
+      ACTION_IF FILE_EXISTS_IN_GAME ~%baldur_script%.bcs~ BEGIN
+      EXTEND_TOP ~%baldur_script%.bcs~ ~%MOD_FOLDER%/bardsong/script/baldur.baf~ EVAL
+      END
+    END
+
     END
     END
     END

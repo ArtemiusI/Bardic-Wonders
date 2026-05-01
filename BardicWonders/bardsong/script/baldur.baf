@@ -1,149 +1,48 @@
 IF
     TriggerOverride(Player1,ModalState(BATTLESONG))
-    Class(Player1,BARD_ALL)
-    Kit(Player1,%kit_name%)
-    TriggerOverride(Player1,Global("C0IWSONG","LOCALS",0))
-    !TriggerOverride(Player1,Global("C0BWHLAB","LOCALS",1))
+    TriggerOverride(Player1,Global("%song_name%","LOCALS",1))
 THEN
   RESPONSE #100
-    ActionOverride(Player1,ReallyForceSpellRES("%bard_song%",Myself))
+    ActionOverride(Player1,ReallyForceSpellRES("%bardsong_name%",Myself))
     Continue()
 END
-
-IF
-    TriggerOverride(Player1,ModalState(BATTLESONG))
-    Class(Player1,BARD_ALL)
-    Kit(Player1,%kit_name%)
-    TriggerOverride(Player1,Global("C0IWSONG","LOCALS",0))
-    TriggerOverride(Player1,Global("C0BWHLAB","LOCALS",1))
-THEN
-  RESPONSE #100
-    ActionOverride(Player1,ReallyForceSpellRES("%hla_song%",Myself))
-    Continue()
-END
-
-
 IF
     TriggerOverride(Player2,ModalState(BATTLESONG))
-    Class(Player2,BARD_ALL)
-    Kit(Player2,%kit_name%)
-    TriggerOverride(Player2,Global("C0IWSONG","LOCALS",0))
-    !TriggerOverride(Player2,Global("C0BWHLAB","LOCALS",1))
+    TriggerOverride(Player2,Global("%song_name%","LOCALS",1))
 THEN
   RESPONSE #100
-    ActionOverride(Player2,ReallyForceSpellRES("%bard_song%",Myself))
+    ActionOverride(Player2,ReallyForceSpellRES("%bardsong_name%",Myself))
     Continue()
 END
-
-IF
-    TriggerOverride(Player2,ModalState(BATTLESONG))
-    Class(Player2,BARD_ALL)
-    Kit(Player2,%kit_name%)
-    TriggerOverride(Player2,Global("C0IWSONG","LOCALS",0))
-    TriggerOverride(Player2,Global("C0BWHLAB","LOCALS",1))
-THEN
-  RESPONSE #100
-    ActionOverride(Player2,ReallyForceSpellRES("%hla_song%",Myself))
-    Continue()
-END
-
-
 IF
     TriggerOverride(Player3,ModalState(BATTLESONG))
-    Class(Player3,BARD_ALL)
-    Kit(Player3,%kit_name%)
-    TriggerOverride(Player3,Global("C0IWSONG","LOCALS",0))
-    !TriggerOverride(Player3,Global("C0BWHLAB","LOCALS",1))
+    TriggerOverride(Player3,Global("%song_name%","LOCALS",1))
 THEN
   RESPONSE #100
-    ActionOverride(Player3,ReallyForceSpellRES("%bard_song%",Myself))
+    ActionOverride(Player3,ReallyForceSpellRES("%bardsong_name%",Myself))
     Continue()
 END
-
-IF
-    TriggerOverride(Player3,ModalState(BATTLESONG))
-    Class(Player3,BARD_ALL)
-    Kit(Player3,%kit_name%)
-    TriggerOverride(Player3,Global("C0IWSONG","LOCALS",0))
-    TriggerOverride(Player3,Global("C0BWHLAB","LOCALS",1))
-THEN
-  RESPONSE #100
-    ActionOverride(Player3,ReallyForceSpellRES("%hla_song%",Myself))
-    Continue()
-END
-
-
 IF
     TriggerOverride(Player4,ModalState(BATTLESONG))
-    Class(Player4,BARD_ALL)
-    Kit(Player4,%kit_name%)
-    TriggerOverride(Player4,Global("C0IWSONG","LOCALS",0))
-    !TriggerOverride(Player4,Global("C0BWHLAB","LOCALS",1))
+    TriggerOverride(Player4,Global("%song_name%","LOCALS",1))
 THEN
   RESPONSE #100
-    ActionOverride(Player4,ReallyForceSpellRES("%bard_song%",Myself))
+    ActionOverride(Player4,ReallyForceSpellRES("%bardsong_name%",Myself))
     Continue()
 END
-
-IF
-    TriggerOverride(Player4,ModalState(BATTLESONG))
-    Class(Player4,BARD_ALL)
-    Kit(Player4,%kit_name%)
-    TriggerOverride(Player4,Global("C0IWSONG","LOCALS",0))
-    TriggerOverride(Player4,Global("C0BWHLAB","LOCALS",1))
-THEN
-  RESPONSE #100
-    ActionOverride(Player4,ReallyForceSpellRES("%hla_song%",Myself))
-    Continue()
-END
-
-
 IF
     TriggerOverride(Player5,ModalState(BATTLESONG))
-    Class(Player5,BARD_ALL)
-    Kit(Player5,%kit_name%)
-    TriggerOverride(Player5,Global("C0IWSONG","LOCALS",0))
-    !TriggerOverride(Player5,Global("C0BWHLAB","LOCALS",1))
+    TriggerOverride(Player5,Global("%song_name%","LOCALS",1))
 THEN
   RESPONSE #100
-    ActionOverride(Player5,ReallyForceSpellRES("%bard_song%",Myself))
+    ActionOverride(Player5,ReallyForceSpellRES("%bardsong_name%",Myself))
     Continue()
 END
-
-IF
-    TriggerOverride(Player5,ModalState(BATTLESONG))
-    Class(Player5,BARD_ALL)
-    Kit(Player5,%kit_name%)
-    TriggerOverride(Player5,Global("C0IWSONG","LOCALS",0))
-    TriggerOverride(Player5,Global("C0BWHLAB","LOCALS",1))
-THEN
-  RESPONSE #100
-    ActionOverride(Player5,ReallyForceSpellRES("%hla_song%",Myself))
-    Continue()
-END
-
-
 IF
     TriggerOverride(Player6,ModalState(BATTLESONG))
-    Class(Player6,BARD_ALL)
-    Kit(Player6,%kit_name%)
-    TriggerOverride(Player6,Global("C0IWSONG","LOCALS",0))
-    !TriggerOverride(Player6,Global("C0BWHLAB","LOCALS",1))
+    TriggerOverride(Player6,Global("%song_name%","LOCALS",1))
 THEN
   RESPONSE #100
-    ActionOverride(Player6,ReallyForceSpellRES("%bard_song%",Myself))
+    ActionOverride(Player6,ReallyForceSpellRES("%bardsong_name%",Myself))
     Continue()
 END
-
-IF
-    TriggerOverride(Player6,ModalState(BATTLESONG))
-    Class(Player6,BARD_ALL)
-    Kit(Player6,%kit_name%)
-    TriggerOverride(Player6,Global("C0IWSONG","LOCALS",0))
-    TriggerOverride(Player6,Global("C0BWHLAB","LOCALS",1))
-THEN
-  RESPONSE #100
-    ActionOverride(Player6,ReallyForceSpellRES("%hla_song%",Myself))
-    Continue()
-END
-
