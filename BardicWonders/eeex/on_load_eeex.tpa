@@ -1,0 +1,20 @@
+
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~C0PR#EF.BCS~ BEGIN
+
+  COPY ~%MOD_FOLDER%/eeex/on_load~ ~override~
+
+  COPY ~%MOD_FOLDER%/eeex/profs/C0PR#XX.spl~ ~override/C0PR#XX.SPL~
+  COPY ~%MOD_FOLDER%/eeex/profs/C0PR#X1.spl~ ~override/C0PR#X1.SPL~
+  COPY ~%MOD_FOLDER%/eeex/profs/C0PR#X2.spl~ ~override/C0PR#X2.SPL~
+
+  COMPILE ~%MOD_FOLDER%/eeex/script/C0PR#EF.baf~
+
+  EXTEND_TOP ~C0PR#EF.BCS~ ~%MOD_FOLDER%/eeex/script/proficiencies.BAF~
+
+    ACTION_FOR_EACH baldur_script IN baldur bdbaldur baldur25 BEGIN
+      ACTION_IF FILE_EXISTS_IN_GAME ~%baldur_script%.bcs~ BEGIN
+      EXTEND_TOP ~%baldur_script%.bcs~ ~%MOD_FOLDER%/eeex/script/global_script.baf~
+      END
+    END
+
+END

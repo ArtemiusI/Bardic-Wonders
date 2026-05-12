@@ -1,0 +1,7 @@
+IF
+    Global("ApplyProficiencyEffects","LOCALS",0)
+THEN
+    RESPONSE #100
+        SetGlobal("ApplyProficiencyEffects","LOCALS",1)
+        ReallyForceSpellRES("C0PR#XX",Myself)  // No such index
+END

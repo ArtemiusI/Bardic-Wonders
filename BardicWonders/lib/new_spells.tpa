@@ -379,7 +379,6 @@ LPF CLONE_EFFECT INT_VAR match_opcode = 261 match_parameter2 = 1 parameter2 = 0 
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~SPPR308C.ITM~ THEN BEGIN
 COPY ~%MOD_FOLDER%/new_spells/iwd/SPPR308C.itm~ ~override~
 SAY NAME1 ~Remove Paralysis~
-SAY NAME2 ~Remove Paralysis~
 END
 
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~SCRL58.ITM~ THEN BEGIN
@@ -747,21 +746,39 @@ ACTION_FOR_EACH description IN
       COUNT_2DA_ROWS col_count rows
       FOR (index = 0; index < rows; ++index) BEGIN
         READ_2DA_ENTRY index 0 col_count row_name
-
+        READ_2DA_ENTRY index 1 col_count class_id
+//inspiration
         PATCH_IF "%row_name%" STRING_EQUAL_CASE "C0_GALLANT" BEGIN
           READ_2DA_ENTRY index 4 col_count kit_desc
           SPRINT old_desc ~<BARDIC_SPELLS>~
           SPRINT new_desc ~– Gains Bard-exclusive spells as priest spells.~
           GET_STRREF %kit_desc% desc_text
           INNER_PATCH_SAVE desc_text ~%desc_text%~ BEGIN
-            REPLACE_TEXTUALLY ~%old_desc%~ ~%new_desc%~
+            REPLACE_TEXTUALLY ~%old_desc%~ ~
+%new_desc%~
           END
-                      SET_2DA_ENTRY index 4 col_count RESOLVE_STR_REF (%bard_text%)
+            SET_2DA_ENTRY index 4 col_count RESOLVE_STR_REF (~%desc_text%~)
+            INNER_ACTION BEGIN
+            OUTER_SET new_description = RESOLVE_STR_REF (~%desc_text%~)
+            END
+            PRETTY_PRINT_2DA
 		END
-		
-      END
+		  END
+		  END
+
+      COPY_EXISTING ~KITLIST.2DA~ ~override~
+      COUNT_2DA_COLS col_count
+      COUNT_2DA_ROWS col_count rows
+      FOR (index = 1; index < rows; ++index) BEGIN
+        READ_2DA_ENTRY index 1 col_count row_name
+        READ_2DA_ENTRY index 8 col_count class_id
+//inspiration
+        PATCH_IF "%row_name%" STRING_EQUAL_CASE "C0_GALLANT" BEGIN
+          SET_2DA_ENTRY index 4 col_count new_description
+            PRETTY_PRINT_2DA
+		      END
+		  END
+
       BUT_ONLY
     END
   END
-  
-END

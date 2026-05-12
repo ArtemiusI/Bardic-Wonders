@@ -1,3 +1,4 @@
+INCLUDE ~%MOD_FOLDER%/eeex/on_load_eeex.tpa~
 
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~C0PR#CL.SPL~ BEGIN
 
@@ -412,9 +413,6 @@ COPY_EXISTING ~splprot.2da~ ~override~
 	  END
 	END
 
-COPY ~%MOD_FOLDER%/eeex/profs/C0PR#XX.spl~ ~override/C0PR#XX.SPL~
-COPY ~%MOD_FOLDER%/eeex/profs/C0PR#X1.spl~ ~override/C0PR#X1.SPL~
-COPY ~%MOD_FOLDER%/eeex/profs/C0PR#X2.spl~ ~override/C0PR#X2.SPL~
 COPY_EXISTING ~C0PR#CL.SPL~ ~OVERRIDE~
   LPF DELETE_EFFECT INT_VAR match_special = 99999 END
 
@@ -865,7 +863,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
         LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter2 = C0_PROFICIENCYCLUB END
         LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 2 parameter1 = 0 parameter2 = C0_PROFICIENCYCLUB timing = 2 power = 3 END
       END
-      PATCH_IF (type = 5) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b01110000) = 0b00000000) AND ((row4 BAND 0b00000000) = 0b00000000) AND !(((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b11111111) = 0b00000000) AND ((row3 BAND 0b01111111) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000))
+      PATCH_IF ((type = 5) OR (type = 31)) AND (((row1 BAND 0b01000000) = 0b00000000) AND ((row2 BAND 0b00001000) = 0b00000000) AND ((row3 BAND 0b01110000) = 0b00000000) AND ((row4 BAND 0b00000000) = 0b00000000) AND !(((row1 BAND 0b11000000) = 0b00000000) AND ((row2 BAND 0b11111111) = 0b00000000) AND ((row3 BAND 0b01111111) = 0b00000000) AND ((row4 BAND 0b01100000) = 0b00000000))
                                         ) BEGIN // if it is arrows
         WRITE_BYTE    0x1E (row1 BAND 0b00111111) 
         WRITE_BYTE    0x1F (row2 BAND 0b00000000)
@@ -881,6 +879,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
 		END
 		LPF DELETE_EFFECT
 			INT_VAR
+        match_power = 0
 				match_opcode = 319
 				match_parameter1 = 21
 				match_parameter2 = 5
@@ -905,20 +904,6 @@ BUT_ONLY_IF_IT_CHANGES
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~ 
    LPF ADD_CRE_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 0 parameter2 = 0 target = 2 timing = 9 STR_VAR resource = C0PR#CL END
-
-COPY_EXISTING ~CHARBASE.CRE~ ~OVERRIDE/CHARBASE1.CRE~
-
-COPY_EXISTING ~CHARBASE1.CRE~ ~OVERRIDE~
-   LPF ADD_CRE_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 0 parameter2 = 0 target = 2 timing = 4 duration = 1 STR_VAR resource = C0PR#CL END
-
-COPY_EXISTING ~CHARBASE1.CRE~ ~weidu_external/backup/ArtisansKitpack/temp/CHARBASE.CRE~
-COPY_EXISTING ~weidu_external/backup/ArtisansKitpack/temp~ ~OVERRIDE~
-
-ACTION_FOR_EACH baldur_script IN baldur bdbaldur baldur25 BEGIN
-ACTION_IF FILE_EXISTS_IN_GAME ~%baldur_script%.bcs~ BEGIN
-EXTEND_TOP ~%baldur_script%.bcs~ ~%MOD_FOLDER%/eeex/script/proficiencies_script.baf~
-END
-END
 
 END
 

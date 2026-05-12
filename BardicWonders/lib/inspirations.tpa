@@ -396,26 +396,42 @@ ACTION_FOR_EACH description IN
       COUNT_2DA_ROWS col_count rows
       FOR (index = 0; index < rows; ++index) BEGIN
         READ_2DA_ENTRY index 0 col_count row_name
-
+        READ_2DA_ENTRY index 1 col_count class_id
+//inspiration
         PATCH_IF "%row_name%" STRING_EQUAL_CASE "C0_GALLANT" BEGIN
           READ_2DA_ENTRY index 4 col_count kit_desc
-          SPRINT old_desc ~<BARDIC_INSPIRATIONS>~
-          SPRINT new_desc ~– May use Bardic Inspirations. Inspirations provide various benefits that persist so long as they are within visual range of the bard.~
+          SPRINT old_inspiration ~<BARDIC_INSPIRATIONS>~
+          SPRINT new_inspiration ~– May use Bardic Inspirations. Inspirations provide various benefits that persist so long as they are within visual range of the bard.~
           GET_STRREF %kit_desc% desc_text
           INNER_PATCH_SAVE desc_text ~%desc_text%~ BEGIN
-            REPLACE_TEXTUALLY ~%old_desc%~ ~%new_desc%~
+            REPLACE_TEXTUALLY ~%old_inspiration%~ ~
+%new_inspiration%~
           END
-          INNER_ACTION BEGIN
-            STRING_SET_EVALUATE ~%kit_desc%~ ~%desc_text%~
-          END
+            SET_2DA_ENTRY index 4 col_count RESOLVE_STR_REF (~%desc_text%~)
+            INNER_ACTION BEGIN
+            OUTER_SET new_description = RESOLVE_STR_REF (~%desc_text%~)
+            END
+            PRETTY_PRINT_2DA
 		END
-		
-      END
+		  END
+		  END
+
+      COPY_EXISTING ~KITLIST.2DA~ ~override~
+      COUNT_2DA_COLS col_count
+      COUNT_2DA_ROWS col_count rows
+      FOR (index = 1; index < rows; ++index) BEGIN
+        READ_2DA_ENTRY index 1 col_count row_name
+        READ_2DA_ENTRY index 8 col_count class_id
+//inspiration
+        PATCH_IF "%row_name%" STRING_EQUAL_CASE "C0_GALLANT" BEGIN
+          SET_2DA_ENTRY index 4 col_count new_description
+            PRETTY_PRINT_2DA
+		      END
+		  END
+
       BUT_ONLY
     END
   END
   
 COPY_EXISTING ~C0GALLAN.2DA~ ~OVERRIDE~
   LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = GA_C0BDI00 END // Inspirations
-
-END

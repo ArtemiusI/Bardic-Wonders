@@ -1,0 +1,6 @@
+IF
+    !InMyArea("C0PR#EF")
+THEN
+    RESPONSE #100
+        CreateCreatureObject("C0PR#EF",Player1,0,0,0)
+END

@@ -1,6 +1,20 @@
 COPY ~%MOD_FOLDER%/mage_bard/2da~ ~override~
 COPY ~%MOD_FOLDER%/mage_bard/spl~ ~override~
 
+INCLUDE ~%MOD_FOLDER%/eeex/profs_eeex.tpa~
+
+APPEND ~splprot.2da~ ~C0_KIT_CHECK 152 -1 1~ UNLESS ~C0_KIT_CHECK ~
+COPY_EXISTING ~splprot.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 0 ~stat~ // read column value
+	  PATCH_IF ~%stat%~ STRING_EQUAL_CASE ~C0_KIT_CHECK~ BEGIN
+	    SET C0_KIT_CHECK = %row%
+	  END
+	PRETTY_PRINT_2DA
+	END
+  
 LAF ADD_KIT_EX
   INT_VAR
     // Mage	= 1
@@ -609,7 +623,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
         LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter2 = C0_MAGE_BARD_EQUIPMENT END
         LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 parameter1 = 0 parameter2 = C0_MAGE_BARD_EQUIPMENT timing = 2 power = 2 STR_VAR resource = C0MGBD_ END
     END
-    PATCH_IF (proficiency = 0) AND ((row1 BAND 0b01000000) = 0b01000000) AND ((row3 BAND 0b00001001) = 0b00000000) BEGIN 
+    PATCH_IF (proficiency = 0) AND ((row1 BAND 0b01000000) = 0b01000000) AND ((row3 BAND 0b01000000) = 0b00000000) BEGIN 
           LPF ADD_ITEM_EQEFFECT
     INT_VAR
       opcode = 319
@@ -642,20 +656,20 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
    END
 BUT_ONLY
 
-COPY_EXISTING ~CHARBASE.CRE~ ~OVERRIDE/CHARBASE1.CRE~
-
-COPY_EXISTING ~CHARBASE1.CRE~ ~OVERRIDE~
-   LPF ADD_CRE_EFFECT INT_VAR opcode = 326 parameter1 = 10 parameter2 = 105 target = 1 timing = 4 duration = 1 STR_VAR resource = C0PR#MB1 END
-   LPF ADD_CRE_EFFECT INT_VAR opcode = 326 parameter1 = 13 parameter2 = 105 target = 1 timing = 4 duration = 1 STR_VAR resource = C0PR#MB1 END
-
-COPY_EXISTING ~CHARBASE1.CRE~ ~weidu_external/backup/ArtisansKitpack/temp/CHARBASE.CRE~
-COPY_EXISTING ~weidu_external/backup/ArtisansKitpack/temp~ ~OVERRIDE~
+COPY ~%MOD_FOLDER%/eeex/profs/C0PR#CL.spl~ ~override/C0PR#MB.SPL~
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = IDS_OF_SYMBOL (~CLASS~ ~MAGE_THIEF~) parameter2 = 105 STR_VAR resource = C0PR#MB1 END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = IDS_OF_SYMBOL (~CLASS~ ~FIGHTER_MAGE_THIEF~) parameter2 = 105 STR_VAR resource = C0PR#MB1 END
 
 COPY ~%MOD_FOLDER%/eeex/profs/C0PR#CL.spl~ ~override/C0PR#MB1.SPL~
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = C0PR#MB1 END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = C0PR#MB2 END
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 401 target = 1 timing = 9 special = IDS_OF_SYMBOL (~STATS~ ~C0_MAGE_BARD_EQUIPMENT~) parameter1 = 1 parameter2 = 1 END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 timing = 9 parameter2 = C0_KIT_CHECK parameter1 = IDS_OF_SYMBOL (~KIT~ ~C0_MAGE_BARD~) STR_VAR resource = C0PR#MB2 END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 timing = 9 parameter2 = C0_KIT_CHECK parameter1 = IDS_OF_SYMBOL (~KIT~ ~C0_FIGHTER_MAGE_BARD~) STR_VAR resource = C0PR#MB2 END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 timing = 9 parameter2 = C0_KIT_CHECK parameter1 = IDS_OF_SYMBOL (~KIT~ ~ILLUSIONIST_BARD~) STR_VAR resource = C0PR#MB2 END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 timing = 9 parameter2 = C0_KIT_CHECK parameter1 = IDS_OF_SYMBOL (~KIT~ ~C0_FIGHTER_ILLUSIONIST_BARD~) STR_VAR resource = C0PR#MB2 END
 
-COPY ~%MOD_FOLDER%/eeex/profs/C0PR#CL.spl~ ~override/C0PR#MB.SPL~
-   LPF ADD_SPELL_EFFECT INT_VAR opcode = 318 parameter1 = 0 parameter2 = 0 target = 1 timing = 9 duration = 1 STR_VAR resource = C0PR#MB1 END
+COPY ~%MOD_FOLDER%/eeex/profs/C0PR#CL.spl~ ~override/C0PR#MB2.SPL~
    LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 parameter1 = 0 parameter2 = 0 target = 1 timing = 0 duration = 1 STR_VAR resource = C0PR#MB1 END
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 401 target = 1 timing = 9 special = IDS_OF_SYMBOL (~STATS~ ~C0_MAGE_BARD_EQUIPMENT~) parameter1 = 0 parameter2 = 1 END
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0PR#89 END// BASTARD SW
@@ -678,6 +692,9 @@ COPY ~%MOD_FOLDER%/eeex/profs/C0PR#CL.spl~ ~override/C0PR#MB.SPL~
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0PR#105 END // SBOW
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0PR#106 END // DART
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0PR#107 END // SLING
+	
+COPY_EXISTING ~C0PR#XX.SPL~ ~OVERRIDE~
+	LPF CLONE_EFFECT INT_VAR match_opcode = 326 STR_VAR match_resource = C0PR#X1 resource = C0PR#MB	END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~LUMT0.2DA~ BEGIN
 COPY_EXISTING ~LUMT0.2DA~ ~OVERRIDE/LUC0MGBD.2DA~
@@ -768,14 +785,6 @@ LPF patch_add_hla STR_VAR ability = ~C0MGBD15~ ~GA_SPWI925~ num_allowed = 1 min_
       END
       ACTION_IF ("mage_hlas" = 2) THEN BEGIN
       END
-
-ACTION_IF !FILE_EXISTS_IN_GAME ~C0PR#CL~ BEGIN
-
-INCLUDE ~%MOD_FOLDER%/eeex/profs_eeex.tpa~
-
-  END ELSE BEGIN
-
-  END
 
 ACTION_IF MOD_IS_INSTALLED ~BardicWonders.tp2~ ~2003~ BEGIN
 ACTION_FOR_EACH description IN 

@@ -2,5 +2,5 @@ IF
     OnCreation()
 THEN
     RESPONSE #100
-        ApplySpellRES("C0PR#XX",Player1)
+        DestroySelf()
 END
