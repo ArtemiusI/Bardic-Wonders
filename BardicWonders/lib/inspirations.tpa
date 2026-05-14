@@ -433,5 +433,7 @@ ACTION_FOR_EACH description IN
     END
   END
   
+ACTION_IF FILE_EXISTS_IN_GAME ~C0GALLAN.2DA~ THEN BEGIN
 COPY_EXISTING ~C0GALLAN.2DA~ ~OVERRIDE~
   LPF set_clab_2da_entries INT_VAR f_MinLevel = 1 f_MaxLevel = 1 STR_VAR f_Entry = GA_C0BDI00 END // Inspirations
+END

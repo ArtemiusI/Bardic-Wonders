@@ -67,14 +67,14 @@ END
 
 ACTION_IF mage_bard_installed = 1 THEN BEGIN
 
-COPY_EXISTING ~C0PR#MB.SPL~ ~OVERRIDE~
+COPY_EXISTING ~C0PR#MB2.SPL~ ~OVERRIDE~
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 401 target = 1 timing = 9 special = IDS_OF_SYMBOL (~STATS~ ~IS_BARD_CLASS~) parameter1 = 1 parameter2 = 1 END
 
 END
 
 ACTION_IF gallant_installed = 1 THEN BEGIN
 
-COPY_EXISTING ~C0GALL1.SPL~ ~OVERRIDE~
+COPY_EXISTING ~C0PR#GA2.SPL~ ~OVERRIDE~
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 401 target = 1 timing = 9 special = IDS_OF_SYMBOL (~STATS~ ~IS_BARD_CLASS~) parameter1 = 1 parameter2 = 1 END
 
 END
